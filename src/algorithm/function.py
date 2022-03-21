@@ -1,35 +1,35 @@
-from os import system as sys
-
+import time
+import os.path
 import json
 
+from sys import argv as Input
+from os import system as Exec
+
 class System:
-    def __init__(self, PWD, repo):
-        self.PWD = PWD
-        self.repo = repo
+    home = os.path.expanduser('~')
+
+    def __init__(self, repository, _input_, dir) -> None:
+        self.repository = repository
+        self._input_ = _input_
+    
+    def fetchData(repository, home=home):
+        if os.path.exists(f"{home}/repository") is False:
+            Exec(f"git clone {repository} {home}/repository")
+        else:
+            Exec("git pull")
         
-    def pullData(self, PWD, repo):
         try:
-            if exits(f"{PWD}/<filename>") is True:
-                sys("rm <filename>")
-            sys(f"git clone {repo}")
+            with open(f"{home}/repository/student_data.json") as source:
+                studentData = json.load(source)
+                
+            with open(f"{home}/repository/teacher_data.json") as Source:
+                teacherData = json.load(Source)
+                
+        except FileNotFoundError or OSError or SystemError as e:
+            raise SystemExit(f"\033[1;31m> {e} occured. Aborting.\033[0m")            
+        except KeyboardInterrupt:
+            raise SystemExit(f"\033[31;1m> Keyboard Interrupt. Aborting.\033[0m")
+        else:
+            return studentData, teacherData
         
-            return True
-        except SystemError, KeyboardInterrupt, OSError, ConnectionError:
-            return False
-            
-    def getData():
-        try:
-            with open("<filename>") as data:
-                studentDATA = json.load(data)
-                
-            with open("<filename>") as Data:
-                teacherDATA = json.load(Data)
-                
-            return studentDATA, teacherDATA
-            
-        except FileNotFoundError:
-            while True:
-                if pullData() is True:
-                    return True, True
-                else:
-                    continue
+    
