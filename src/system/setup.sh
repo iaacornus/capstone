@@ -24,7 +24,7 @@ then
         true
     else
         echo -e "\e[1;32m> Installing git in the system ...\e[0m"
-        sudo $package_manager git python.pip
+        sudo $package_manager git "python.pip"
     fi
 
     # install required packages : #? likely passing
