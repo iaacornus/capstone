@@ -1,5 +1,6 @@
 from os import system as sys
 from os.path import exists
+from xml.dom.pulldom import START_DOCUMENT
 
 from bin.code_email import Email
 
@@ -23,20 +24,25 @@ class System:
             return False
             
     def getData(self):
-        try:
-            with open(f"{self.HOME}/capstone/<filename>") as data:
-                studentDATA = json.load(data)
+        count = 0
+
+        while True:
+            try:
+                with open(f"{self.HOME}/repo/<filename>") as data:
+                    studentDATA = json.load(data)
+                    
+                with open(f"{self.HOME}/repo/<filename>") as Data:
+                    teacherDATA = json.load(Data)
+                    
+                return studentDATA, teacherDATA
                 
-            with open(f"{self.HOME}/capstone/<filename>") as Data:
-                teacherDATA = json.load(Data)
-                
-            return studentDATA, teacherDATA
-            
-        except FileNotFoundError:
-            while True:
+            except FileNotFoundError:
                 if self.pullData() is True:
-                    return True, True
+                    continue
                 else:
+                    if count == 3:
+                        raise SystemExit("Too much error, please try again later.")
+                    count += 1
                     continue
 
     def setup(self):
@@ -48,12 +54,11 @@ class System:
         else:
             try:
                 while True:
-                    if self.pullData() is True:
-                        break
-                    else:
+                    if self.pullData() is not True:                    
                         continue
+                    else:
+                        break
             except:
                 raise SystemExit("Error")
             else:
-                return self.getData()
-
+                studentDATA, teacherDATA = self.getData()
