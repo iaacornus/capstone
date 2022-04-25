@@ -1,0 +1,6 @@
+opencv2
+numpy
+matplotlib
+pandas
+pyenchant
+geocoder
