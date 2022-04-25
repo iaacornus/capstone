@@ -1,35 +1,59 @@
-import time
-import os.path
+from os import system as sys
+from os.path import exists
+
+from bin.code_email import Email
+
 import json
 
-from sys import argv as Input
-from os import system as Exec
-
 class System:
-    home = os.path.expanduser('~')
-
-    def __init__(self, repository, _input_, dir) -> None:
-        self.repository = repository
-        self._input_ = _input_
-    
-    def fetchData(repository, home=home):
-        if os.path.exists(f"{home}/repository") is False:
-            Exec(f"git clone {repository} {home}/repository")
-        else:
-            Exec("git pull")
+    def __init__(self, HOME, repo, phrase, admin_email):
+        self.HOME = HOME
+        self.repo = repo
+        self.phrase = phrase
+        self.admin_email = admin_email
         
+    def pullData(self):
         try:
-            with open(f"{home}/repository/student_data.json") as source:
-                studentData = json.load(source)
-                
-            with open(f"{home}/repository/teacher_data.json") as Source:
-                teacherData = json.load(Source)
-                
-        except FileNotFoundError or OSError or SystemError as e:
-            raise SystemExit(f"\033[1;31m> {e} occured. Aborting.\033[0m")            
-        except KeyboardInterrupt:
-            raise SystemExit(f"\033[31;1m> Keyboard Interrupt. Aborting.\033[0m")
-        else:
-            return studentData, teacherData
+            if exists(f"{self.HOME}/capstone") is True:
+                sys(f"rm -rf {self.HOME}/capstone")
+            sys(f"git clone --branch database {self.repo}")
         
-    
+            return True
+        except SystemError or KeyboardInterrupt or OSError or ConnectionError:
+            return False
+            
+    def getData(self):
+        try:
+            with open(f"{self.HOME}/capstone/<filename>") as data:
+                studentDATA = json.load(data)
+                
+            with open(f"{self.HOME}/capstone/<filename>") as Data:
+                teacherDATA = json.load(Data)
+                
+            return studentDATA, teacherDATA
+            
+        except FileNotFoundError:
+            while True:
+                if self.pullData() is True:
+                    return True, True
+                else:
+                    continue
+
+    def setup(self):
+        email = Email(self.admin_email)
+        phrase = email.notify(setup=True)
+
+        if self.phrase != phrase:
+            raise SystemExit("Error")
+        else:
+            try:
+                while True:
+                    if self.pullData() is True:
+                        break
+                    else:
+                        continue
+            except:
+                raise SystemExit("Error")
+            else:
+                return self.getData()
+
