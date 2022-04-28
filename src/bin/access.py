@@ -1,54 +1,58 @@
-import os.path
 import sys
 import os
 
-from os import system as Exec
-
 from code_email import Email
+from misc.colors import colors
 
 #* passed
 # TODO : add system backup for email sending
 # TODO : optimize the code
 
-home = os.environ.get("HOME")
+def main():
+    HOME = os.path.expanduser('~')
+    C = colors()
 
-if os.path.exists("$HOME/.sys/create") is False:
-    try:
-        Exec(f"chmod +x {os.getcwd()}/setup.sh ; bash {os.getcwd()}/setup.sh")
-    except KeyboardInterrupt:
-        raise SystemExit("Operation Aborted.")
-
-with open(f"{home}/.sys/user_info", 'r') as email:
-    source = email.readlines()
-
-receiver_email = source[0].rstrip().strip()
-user = source[1].rstrip().strip()
-
-email = Email(receiver_email, user)
-app = sys.argv[1].strip()
-trial = 0
-
-while True:    
-    if trial == 3:
-        try:
-            email.send_alert(receiver_email)
-        except ConnectionError:
-            pass
-        finally:
-            print("\033[91m> Too much error. Signing off.\033[0m")
-            Exec("systemctl poweroff")
-    elif trial >= 1:
-        passphrase = email.send_phrase(receiver_email, user, dial=True)
-    else:
-        passphrase = email.send_phrase(receiver_email, user)
+    with open(f"{HOME}/.att_sys/user_info") as info:
+        source = info.readlines()
         
-    trial += 1
-    usr_inpt = str(input(f"\033[91m> Accessing {app}, sending the 24-key passphrase.\033[0m\n└─╼ Input the phrase sent to your email ({4-trial} left) : "))
+    receiver_email, user, password = source[0].rstrip().strip(), source[1].rstrip().strip(), source[2].rstrip().strip()
+    email = Email(receiver_email, user)
 
-    if usr_inpt == passphrase:
-        break
-    else:
-        continue        
+    
+    trial, mark = 0, False
 
-Exec(app)
-Exec(f"killall {app} && killall gnome-terminal")
+    while True:                  
+        if trial == 3:
+            try:
+                email.alert(receiver_email)
+            except ConnectionError:
+                pass
+            finally:
+                print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
+                os.system("systemctl poweroff")
+
+        if mark is False:
+            verify = input(f"> Kindly input your 32 character password (case sensitive {4-trial} left): ")
+
+            if verify != password:
+                trial += 1
+                send_new = input(f"{C.BOLD}Send a new temporary password to your email instead? [y/N]: {C.END}")
+            
+                if send_new in ['y', 'Y']:
+                    mark = True
+
+                continue
+            else:
+                return True
+
+        else:
+            new_pass = email.notify(setup=True)
+            verify_new = input(f"{C.BOLD+C.GREEN}> Kindly input your 32 character password (case sensitive {4-trial} left): ")
+            
+            if verify_new != new_pass:
+                trial += 1
+                continue
+            else:
+                return True
+    
+        return False
