@@ -1,9 +1,9 @@
 import sys
-sys.path.append('../')
+sys.path.append("../..")
 
 import os
 
-from code_email import Email
+from bin.code_email import Email
 from misc.colors import colors
 
 #* passed
@@ -59,5 +59,3 @@ def main():
     
         return False
     
-if __name__ == "__main__":
-    main()
