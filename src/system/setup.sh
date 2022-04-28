@@ -65,7 +65,7 @@ if [ ! -d "$HOME/.att_sys/" ]; then
     echo -e "\e[1;32m> User setup ...\e[0m"
 
     # take the username and email of the user
-    echo -e "\e[1m> This information is to be used in database, kindly use correct punctuation."
+    echo -e "\e[1m> This information is to be used in database, kindly use correct punctuation.\e[0m"
     read -p "└─╼ Enter the email for access codes and reports: " email
     read -p "└─╼ Enter the username: " user_name
     read -p "└─╼ Enter the school name: " school_name
@@ -78,7 +78,7 @@ if [ ! -d "$HOME/.att_sys/" ]; then
     echo -e "\e[1;32m> Appending user info ...\e[0m"
     echo -e "$email\n$user_name\n$password\n$school_name" >> $HOME/.att_sys/user_info
 
-    access=$(bash $HOME/.att_sys/system/utils/update.sh)
+    bash $HOME/.att_sys/system/utils/update.sh
 
     sec=10
     while [ $sec -ge 0 ]; do
