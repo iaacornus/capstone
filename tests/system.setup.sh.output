@@ -1,0 +1,142 @@
+test@fedora ❯ bash setup.sh 
+> Starting full system upgrade to fix CVE vulnerabilities ...
+Kindly input the current password : 'root' (no quotations) when prompted, and don't let the system die.
+> Checking the presence of git, installing if not installed ...
+> Checking the presence of python.pip, installing if not installed ...
+> Installing required packages ...
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: opencv-python in /home/test/.local/lib/python3.10/site-packages (from -r /home/test/capstone/requirements.txt (line 1)) (4.5.5.64)
+Requirement already satisfied: numpy in /home/test/.local/lib/python3.10/site-packages (from -r /home/test/capstone/requirements.txt (line 2)) (1.22.3)
+Requirement already satisfied: matplotlib in /home/test/.local/lib/python3.10/site-packages (from -r /home/test/capstone/requirements.txt (line 3)) (3.5.1)
+Requirement already satisfied: pandas in /home/test/.local/lib/python3.10/site-packages (from -r /home/test/capstone/requirements.txt (line 4)) (1.4.2)
+Requirement already satisfied: pyenchant in /usr/lib/python3.10/site-packages (from -r /home/test/capstone/requirements.txt (line 5)) (3.2.2)
+Requirement already satisfied: geocoder in /home/test/.local/lib/python3.10/site-packages (from -r /home/test/capstone/requirements.txt (line 6)) (1.38.1)
+Requirement already satisfied: fonttools>=4.22.0 in /home/test/.local/lib/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (4.33.3)
+Requirement already satisfied: pyparsing>=2.2.1 in /usr/lib/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (2.4.7)
+Requirement already satisfied: pillow>=6.2.0 in /usr/lib64/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (8.3.2)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/test/.local/lib/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (1.4.2)
+Requirement already satisfied: cycler>=0.10 in /home/test/.local/lib/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (0.11.0)
+Requirement already satisfied: python-dateutil>=2.7 in /usr/lib/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (2.8.1)
+Requirement already satisfied: packaging>=20.0 in /usr/lib/python3.10/site-packages (from matplotlib->-r /home/test/capstone/requirements.txt (line 3)) (21.3)
+Requirement already satisfied: pytz>=2020.1 in /home/test/.local/lib/python3.10/site-packages (from pandas->-r /home/test/capstone/requirements.txt (line 4)) (2022.1)
+Requirement already satisfied: six in /usr/lib/python3.10/site-packages (from geocoder->-r /home/test/capstone/requirements.txt (line 6)) (1.16.0)
+Requirement already satisfied: ratelim in /home/test/.local/lib/python3.10/site-packages (from geocoder->-r /home/test/capstone/requirements.txt (line 6)) (0.1.6)
+Requirement already satisfied: future in /home/test/.local/lib/python3.10/site-packages (from geocoder->-r /home/test/capstone/requirements.txt (line 6)) (0.18.2)
+Requirement already satisfied: click in /usr/lib/python3.10/site-packages (from geocoder->-r /home/test/capstone/requirements.txt (line 6)) (8.0.1)
+Requirement already satisfied: requests in /usr/lib/python3.10/site-packages (from geocoder->-r /home/test/capstone/requirements.txt (line 6)) (2.27.0)
+Requirement already satisfied: decorator in /home/test/.local/lib/python3.10/site-packages (from ratelim->geocoder->-r /home/test/capstone/requirements.txt (line 6)) (5.1.1)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/lib/python3.10/site-packages (from requests->geocoder->-r /home/test/capstone/requirements.txt (line 6)) (2.0.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/lib/python3.10/site-packages (from requests->geocoder->-r /home/test/capstone/requirements.txt (line 6)) (1.26.7)
+Requirement already satisfied: idna<4,>=2.5 in /usr/lib/python3.10/site-packages (from requests->geocoder->-r /home/test/capstone/requirements.txt (line 6)) (3.2)
+> Setting up a systemd service ...
+[sudo] password for test: 
+[Unit]
+Description=Check the repository for updates every 24 hours.
+After=network.target
+StartLimitIntervalSec=5
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User='exec test'
+ExecStart=/usr/bin/env python 'exec /home/test/repository/bin/service.py'
+
+[Install]
+WantedBy=multi-user.target
+--2022-04-28 23:36:08--  https://raw.githubusercontent.com/testno0/capstone/devel/src/system/setup.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3944 (3.9K) [text/plain]
+Saving to: ‘/home/test/.att_sys/system/setup.sh’
+
+setup.sh            100%[===================>]   3.85K  --.-KB/s    in 0s      
+
+2022-04-28 23:36:09 (73.9 MB/s) - ‘/home/test/.att_sys/system/setup.sh’ saved [3944/3944]
+
+--2022-04-28 23:36:09--  https://raw.githubusercontent.com/testno0/capstone/devel/src/system/.bashrc
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 703 [text/plain]
+Saving to: ‘/home/test/.bashrc’
+
+.bashrc             100%[===================>]     703  --.-KB/s    in 0s      
+
+2022-04-28 23:36:09 (68.1 MB/s) - ‘/home/test/.bashrc’ saved [703/703]
+
+> User setup ...
+> This information is to be used in database, kindly use correct punctuation.
+└─╼ Enter the email for access codes and reports: jaaaderang
+└─╼ Enter the username: user
+└─╼ Enter the school name: ccsgs
+> Your password is: S70A1ZEkl9]1o?9Z91623Hm67(r{d;8p
+> Appending user info ...
+bash: /home/test/.att_sys/system/utils/update.sh: No such file or directory
+> Setup done! Rebooting after : 10s ...
+> Setup done! Rebooting after : 9s ...
+^C
+test@fedora ❯ bash setup.sh 
+> Starting full system upgrade to fix CVE vulnerabilities ...
+Kindly input the current password : 'root' (no quotations) when prompted, and don't let the system die.
+> Checking the presence of git, installing if not installed ...
+> Checking the presence of python.pip, installing if not installed ...
+> Installing required packages ...
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: '/home/test/capstone/requirements.txt'
+> Setting up a systemd service ...
+[Unit]
+Description=Check the repository for updates every 24 hours.
+After=network.target
+StartLimitIntervalSec=5
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User='exec test'
+ExecStart=/usr/bin/env python 'exec /home/test/repository/bin/service.py'
+
+[Install]
+WantedBy=multi-user.target
+mv: cannot stat '/home/test/capstone/src/bin/*': No such file or directory
+mv: cannot stat '/home/test/capstone/src/algorithm/*': No such file or directory
+mv: cannot stat '/home/test/capstone/src/system/utils/*': No such file or directory
+--2022-04-28 23:37:53--  https://raw.githubusercontent.com/testno0/capstone/devel/src/system/setup.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3944 (3.9K) [text/plain]
+Saving to: ‘/home/test/.att_sys/system/setup.sh’
+
+setup.sh            100%[===================>]   3.85K  --.-KB/s    in 0.002s  
+
+2022-04-28 23:37:53 (1.98 MB/s) - ‘/home/test/.att_sys/system/setup.sh’ saved [3944/3944]
+
+mv: cannot stat '/home/test/capstone/src/misc/*': No such file or directory
+mv: cannot stat '/home/test/capstone/requirements.txt': No such file or directory
+--2022-04-28 23:37:53--  https://raw.githubusercontent.com/testno0/capstone/devel/src/system/.bashrc
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 703 [text/plain]
+Saving to: ‘/home/test/.bashrc’
+
+.bashrc             100%[===================>]     703  --.-KB/s    in 0s      
+
+2022-04-28 23:37:53 (72.3 MB/s) - ‘/home/test/.bashrc’ saved [703/703]
+
+> User setup ...
+> This information is to be used in database, kindly use correct punctuation.
+└─╼ Enter the email for access codes and reports: jaaaderang@gmail.com
+└─╼ Enter the username: user
+└─╼ Enter the school name: ccshs
+python: can't open file '/home/test/.att_sys/system/utils/password_gen.py': [Errno 2] No such file or directory
+> Your password is: 
+> Appending user info ...
+bash: /home/test/.att_sys/system/utils/update.py: No such file or directory
+> Setup done! Rebooting after : 10s ...
+> Setup done! Rebooting after : 9s ...
+^C
+test@fedora ❯ bash setup.sh f
