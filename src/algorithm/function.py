@@ -1,10 +1,9 @@
+import json
+
 from os import system as sys
 from os.path import exists
-from xml.dom.pulldom import START_DOCUMENT
 
 from bin.code_email import Email
-
-import json
 
 class System:
     def __init__(self, HOME, repo, phrase, admin_email):

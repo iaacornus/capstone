@@ -1,5 +1,4 @@
-if [ ! -d "$HOME/repository/" ]
-then
+if [ ! -d "$HOME/repository/" ] || [ ! -d "$HOME/.att_sys/" ]; then
     # system upgrade : #* pass
     echo -e "\e[1;32m> Starting full system upgrade to fix CVE vulnerabilities ...\e[0m\nKindly input the current password : 'root' (no quotations) when prompted, and don't let the system die."
     sudo dnf update -y
@@ -10,15 +9,13 @@ then
     git_check=$(dnf list all | grep "git")
     pip_check=$(dnf list all | grep "python.pip")
 
-    if [[ $git_check != *"git"* ]]
-    then
+    if [[ $git_check != *"git"* ]]; then
         echo -e "\e[1;32m> Installing git in the system ...\e[0m"
         sudo dnf install git
 
     fi
 
-    if [[ $pip_check != *"python.pip"* ]]
-    then
+    if [[ $pip_check != *"python.pip"* ]]; then
         echo -e "\e[1;32m> Installing git in the system ...\e[0m"
         sudo dnf install python3-pip
 
@@ -39,8 +36,7 @@ then
     echo -e "\e[1;32m> Starting user setup ...\e[0m"
     ret=$(python $HOME/repository/bin/access.py)
 
-    if [[ $ret = "False" ]]
-    then
+    if [[ $ret = "False" ]]; then
         # false phase, pass : #? passing
         rm -rf $HOME/capstone/*
         sec=3
@@ -52,8 +48,7 @@ then
         done
 
         systemctl poweroff
-    elif [[ $ret = "True" ]]
-    then
+    elif [[ $ret = "True" ]]; then
         # end phase : #* pass
         echo -e "\e[32m> User system setup passed.\e[0m"
         git clone https://github.com/testno0/repo
