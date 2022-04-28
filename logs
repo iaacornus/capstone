@@ -1,0 +1,205 @@
+commit b4f73ced94d987ae73ee54c8034f342aa16db764
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 19:56:08 2022 +0800
+
+    changed opencv2 to opencv-python
+
+commit d4406378e50decf0a66fdb354a19ce2f4b7429a5
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 19:45:49 2022 +0800
+
+    add instructions for install
+
+commit 64c669b4297b434e6f474a4f7909dce9df4d2a79
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 19:43:02 2022 +0800
+
+    improved syntaxes and formatting
+
+commit 2b865bd3a20e3ff89eb972b9234321eb64c412e2
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 22:37:54 2022 +0800
+
+    improved the setup script
+    
+    changed the sequence, add more work such as full system upgrade first.
+
+commit fee83e996df6b0e73d92c2aabca821153bb7d4ac
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 22:33:19 2022 +0800
+
+    moved into setup.sh
+
+commit d50f7a20324692e0bc64d0538790425d55fa33d5
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 22:19:34 2022 +0800
+
+    improved exception handling, setup, and add more feedback
+
+commit b250d101c22e37f5157eb130bb78e910aead8c03
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 22:19:07 2022 +0800
+
+    remove the excessive use of while loop
+    
+    the persistence was also decreased to level 3, instead of infinite
+
+commit 76a0d462076f5094c417ef0320c15db81beb4fe8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 22:18:13 2022 +0800
+
+    add alert message function
+
+commit 9763d9f65f1f49274f2f3da65f76301bc6ee029a
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 22:17:39 2022 +0800
+
+    add colors for easier diagnostic or response reading
+
+commit bb4c1a519d780d943a0816c9a6af4e2a9bdbdfc6
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:51:27 2022 +0800
+
+    created the systemd service for checking
+
+commit e0ef3d7f2967e7815cb9d2e10266d442179e23eb
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:44:26 2022 +0800
+
+    pre update
+
+commit 9cfff85e77d0d9725a6ef63c3879aff40b4f023c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:44:17 2022 +0800
+
+    add secure phrase send function and msg
+
+commit 877e1ce5c4dc2375e86170db1485a359686c40fb
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:44:00 2022 +0800
+
+    improved the codebase
+    
+    synched with function.py and simplified the codebase overall
+
+commit 19b98211c7819d5ccd086115f3eef9ef1033b97c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:43:11 2022 +0800
+
+    add dependency list
+
+commit d725e452f8c6991a1a3bcdc07a82365e92390ee1
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:43:01 2022 +0800
+
+    add gitignore
+
+commit 95e87ede62bc9a76b3f40bf7f32ce9525b6c8d01
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:42:27 2022 +0800
+
+    improved the codebase
+    
+    add secure setup function with integrated secure codephrase of 32 char
+
+commit b603a4a7b45c7bcfc9dddd6661a326c57f2ac5be
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Mon Apr 25 21:41:52 2022 +0800
+
+    removed manscrpt files
+
+commit 185770219b8b44408446247cb27bca0f6d0fadaf
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:28:38 2022 +0800
+
+    optimized the fetch data algorithm
+
+commit 9fe61ee33631e2fb4150a44720311e890f44a8d6
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:24:24 2022 +0800
+
+    add information
+
+commit 7e366a57d35774f63d6f24dea329ea1601d6824c
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:23:21 2022 +0800
+
+    moved to /src
+
+commit 0ee404b8f7220cc004016c7cb5eab5210dd1d94f
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:22:51 2022 +0800
+
+    moved to /src/bin
+
+commit 6b405ead38d2630722f54c4052bda0d600962d64
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:22:22 2022 +0800
+
+    moved to /src/algorithm
+
+commit 5d17b5bcf12d8cd275d08767aee2ec65b9df9966
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:21:50 2022 +0800
+
+    moved to src
+
+commit 5b9d5813d1d80dddc965efc81008ac645250e547
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:21:19 2022 +0800
+
+    renamed the folder code to src
+
+commit 2b1813b79ba12a2c7d7485cd0bb72a575bc09b06
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:20:18 2022 +0800
+
+    Create setup.sh
+
+commit 121a8c2bb929dcee5e15d9376e6645570c4b7156
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:20:01 2022 +0800
+
+    Create code_email.py
+
+commit 92f12b357c502da20119ed46eedbd071f735d172
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 21 15:16:14 2022 +0800
+
+    Create access.py
+
+commit 74d488c16403de4ac0edcb7ae45ad665c3d71c8e
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 14 22:29:34 2022 +0800
+
+    upload the methodology pdf
+
+commit 4bbdbeefb24779e8991c015055dad8eb816c2ffc
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 14 22:28:43 2022 +0800
+
+    Create function.py
+
+commit 3a0e00de9eb925d00514a11faa5c2a17e67e113c
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 14 22:23:31 2022 +0800
+
+    Create main.py
+
+commit 4e39c03dbd5bd2678a067c92f973b57213a9dc7b
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 14 22:13:56 2022 +0800
+
+    uploaded algorithm figure
+
+commit 785ac40abe07b87e35b5e090283611687bb271b0
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Mon Mar 14 22:12:35 2022 +0800
+
+    Create methodology.tex
+
+commit 9f76350a253e604d943f9ddeea7cbb7f094a8bb0
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Sun Mar 13 19:53:41 2022 +0800
+
+    Initial commit
