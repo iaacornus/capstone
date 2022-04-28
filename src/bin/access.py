@@ -15,7 +15,7 @@ def main():
     with open(f"{HOME}/.att_sys/user_info") as info:
         source = info.readlines()
         
-    receiver_email, user, password = source[0].rstrip().strip(), source[1].rstrip().strip(), source[2].rstrip().strip()
+    receiver_email, user, password, school_name = source[0].rstrip().strip(), source[1].rstrip().strip(), source[2].rstrip().strip(), source[3].rstrip().strip()
     email = Email(receiver_email, user)
 
     
@@ -46,7 +46,7 @@ def main():
                 return True
 
         else:
-            new_pass = email.notify(setup=True)
+            new_pass = email.send("setup", school_name)
             verify_new = input(f"{C.BOLD+C.GREEN}> Kindly input your 32 character password (case sensitive {4-trial} left): ")
             
             if verify_new != new_pass:
