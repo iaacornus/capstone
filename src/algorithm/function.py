@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../')
+
 import json
 
 from os import system as sys

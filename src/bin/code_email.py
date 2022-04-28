@@ -11,7 +11,7 @@ from email.message import EmailMessage
 
 class Email:
     port, smtp_server = 465, "smtp.gmail.com"
-    sender_email, password = None, None # fill up later
+    sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5" # fill up later
 
     def __init__(self, receiver_email, user):
         self.receiver_email = receiver_email

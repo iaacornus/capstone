@@ -1,4 +1,6 @@
 import sys
+sys.path.append('../')
+
 import os
 
 from code_email import Email
@@ -56,3 +58,6 @@ def main():
                 return True
     
         return False
+    
+if __name__ == "__main__":
+    main()

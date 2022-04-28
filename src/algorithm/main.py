@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../')
+
 from sys import argv as INPT, stdout
 from difflib import SequenceMatcher as SM
 from os import path
