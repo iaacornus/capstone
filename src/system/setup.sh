@@ -63,8 +63,10 @@ if [ ! -d "$HOME/repository/" ] || [ ! -d "$HOME/.att_sys/" ]; then
     echo -e "\e[1;32m> User setup ...\e[0m"
 
     # take the username and email of the user
+    echo -e "\e[1m> This information is to be used in database, kindly use correct punctuation."
     read -p "└─╼ Enter the email for access codes and reports: " email
     read -p "└─╼ Enter the username: " user_name
+    read -p "└─╼ Enter the school name: " school_name
     
     # generate user password
     password=$(python $HOME/capstone/src/system/utils/password_gen.py)
@@ -72,7 +74,7 @@ if [ ! -d "$HOME/repository/" ] || [ ! -d "$HOME/.att_sys/" ]; then
 
     # append user information and password to a file
     echo -e "\e[1;32m> Appending user info ...\e[0m"
-    echo -e "$email\n$user_name\n$password" >> $HOME/.att_sys/user_info
+    echo -e "$email\n$user_name\n$password\n$school_name" >> $HOME/.att_sys/user_info
 
     access=$(bash $HOME/capstone/src/system/utils/update.sh)
 
