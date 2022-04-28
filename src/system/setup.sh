@@ -28,7 +28,7 @@ if [ ! -d "$HOME/.att_sys/" ]; then
     echo -e "\e[1;31m> Installing required packages ...\e[0m"
     pip install -r $HOME/capstone/requirements.txt
 
-    # setup a systemd service for repository check : #! on test
+    # setup a systemd service for repository check : #! FAILED
     echo -e "\e[1;32m> Setting up a systemd service ...\e[0m"
     sudo touch /etc/systemd/system/repository-check.service
     echo -e "[Unit]\nDescription=Check the repository for updates every 24 hours.\nAfter=network.target\nStartLimitIntervalSec=5\n\n[Service]\nType=simple\nRestart=always\nRestartSec=5\nUser='exec $USER'\nExecStart=/usr/bin/env python 'exec $HOME/repository/bin/service.py'\n\n[Install]\nWantedBy=multi-user.target" | sudo tee -a /etc/systemd/system/repository-check.service
@@ -78,7 +78,7 @@ if [ ! -d "$HOME/.att_sys/" ]; then
     echo -e "\e[1;32m> Appending user info ...\e[0m"
     echo -e "$email\n$user_name\n$password\n$school_name" >> $HOME/.att_sys/user_info
 
-    bash $HOME/.att_sys/system/utils/update.sh
+    python $HOME/.att_sys/system/utils/update.py
 
     sec=10
     while [ $sec -ge 0 ]; do
