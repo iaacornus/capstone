@@ -22,42 +22,43 @@ receiver_email, user, password, school_name = source[0].rstrip().strip(), source
 email = Email(receiver_email, user)
 trial, mark = 0, False
 
-try:
-    while True:                  
-        if trial == 3:
-            try:
-                email.send("alert", school_name)
-            except ConnectionError:
-                pass
-            finally:
-                print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
-                os.system("systemctl poweroff")
+def access():
+    try:
+        while True:                  
+            if trial == 3:
+                try:
+                    email.send("alert", school_name)
+                except ConnectionError:
+                    pass
+                finally:
+                    print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
+                    os.system("systemctl poweroff")
 
-        if mark is False:
-            verify = input(f"{C.BOLD}> Kindly input your 32 character password (case sensitive {3-trial} left): {C.END}")
+            if mark is False:
+                verify = input(f"{C.BOLD}> Kindly input your 32 character password (case sensitive {3-trial} left): {C.END}")
 
-            if verify != password:
-                trial += 1
-                send_new = input(f"{C.BOLD}Send a new temporary password to your email instead? [y/N]: {C.END}")
-            
-                if send_new in ['y', 'Y']:
-                    mark = True
+                if verify != password:
+                    trial += 1
+                    send_new = input(f"{C.BOLD}Send a new temporary password to your email instead? [y/N]: {C.END}")
+                
+                    if send_new in ['y', 'Y']:
+                        mark = True
 
-                continue
+                    continue
+                else:
+                    return True
+                
             else:
-                print(True)
-                break
-
-        else:
-            new_pass = email.send("setup", school_name)
-            verify_new = input(f"{C.BOLD}> Kindly input your 32 character password (case sensitive {3-trial} left): {C.END}")
-            
-            if verify_new != new_pass:
-                trial += 1
-                continue
-            else:
-                print(True)
-                break
-except:
-    print(f"{C.BOLD+C.RED}> Probable intruder. Signing off.{C.END}")   
-    os.system("systemctl poweroff")
+                new_pass = email.send("setup", school_name)
+                verify_new = input(f"{C.BOLD}> Kindly input your 32 character password (case sensitive {3-trial} left): {C.END}")
+                
+                if verify_new != new_pass:
+                    trial += 1
+                    continue
+                else:
+                    return False
+        
+            return False
+    except:
+        print(f"{C.BOLD+C.RED}> Probable intruder. Signing off.{C.END}")   
+        os.system("systemctl poweroff")
