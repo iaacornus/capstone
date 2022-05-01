@@ -19,7 +19,7 @@ class Email:
         self.receiver_email = receiver_email
         self.user = user
 
-    def send(self, access, school_name, parent_name=None, teacher_name=None, student_name=None):
+    def send(self, access, school_name, student_name=None):
         msg, msg["From"], msg["To"] = EmailMessage(), self.sender_email, self.receiver_email
         phrase = ''.join([random.choice(random.choice([string.ascii_lowercase, string.ascii_uppercase, string.punctuation, string.digits])) for x in range(32)])
         
@@ -73,9 +73,6 @@ class Email:
                         Hello, TapTap is here to notify that {student_name} of {school_name} has finally arrived his class at {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}, and is present in school today. Thank you!
                     </p>
                     
-                    <p align=justify> 
-                        Other information of student in database:<br><br>Parent/Guardian: <i>{parent_name}</i><br>Teacher name:<i>{teacher_name}</i><blockquote>Cheers,<br>TapTap team</blockquote>
-                    </p>
                 </body>
             </html>
             """, subtype="html")            
