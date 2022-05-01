@@ -16,7 +16,7 @@ if [ ! -d "$HOME/.att_sys/" ]; then
 
     # append user information and password to a file
     echo -e "\e[1;32m> Appending user info ...\e[0m"
-    echo -e "$email\n$user_name\n$password\n$school_name" >> $HOME/.att_sys/user_info
+    echo -e "$email\n$user_name\n$password\n$school_name" > $HOME/.att_sys/user_info
 
     python $HOME/.att_sys/system/utils/update.py
 
