@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append(".")
 
 from sys import argv as INPT, stdout
 from difflib import SequenceMatcher as SM
@@ -14,7 +14,7 @@ from misc.colors import colors
 # although leave it blank as first, no one touchers the parameters
 
 HOME = path.expanduser('~')
-sysINIT = System(HOME, "https://github.com/testno0/repo")
+sysINIT = System(HOME, "https://github.com/testno0/repo", phrase, admin_email)
 C = colors()
 
 """ initiate the system, use try, except, else block to catch errors and
