@@ -3,13 +3,10 @@ sys.path.append(".")
 
 import os
 
-from code_email import Email
 from misc.colors import colors
+from bin.code_email import Email
 
-#? passed
-# TODO : add system backup for email sending
-# TODO : optimize the code
-
+#* passed
 
 HOME = os.path.expanduser('~')
 C = colors()
@@ -19,10 +16,11 @@ with open(f"{HOME}/.att_sys/user_info") as info:
     
 receiver_email, user, password, school_name = source[0].rstrip().strip(), source[1].rstrip().strip(), source[2].rstrip().strip(), source[3].rstrip().strip()
 email = Email(receiver_email, user)
-trial, mark = 0, False
 
 def access():
     try:
+        trial, mark = 0, False
+        
         while True:                  
             if trial == 3:
                 try:
@@ -31,14 +29,14 @@ def access():
                     pass
                 finally:
                     print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
-                    os.system("systemctl poweroff")
+                    #os.system("systemctl poweroff")
 
             if mark is False:
                 verify = input(f"{C.BOLD}> Kindly input your 32 character password (case sensitive {3-trial} left): {C.END}")
 
                 if verify != password:
                     trial += 1
-                    send_new = input(f"{C.BOLD}Send a new temporary password to your email instead? [y/N]: {C.END}")
+                    send_new = input(f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}\n{C.BOLD}Send a new temporary password to your email instead? [y/N]: {C.END}")
                 
                     if send_new in ['y', 'Y']:
                         mark = True
@@ -52,12 +50,12 @@ def access():
                 verify_new = input(f"{C.BOLD}> Kindly input your 32 character password (case sensitive {3-trial} left): {C.END}")
                 
                 if verify_new != new_pass:
+                    print(f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}")
                     trial += 1
                     continue
                 else:
-                    return False
+                    return True
         
-            return False
-    except:
+    except KeyboardInterrupt:
         print(f"{C.BOLD+C.RED}> Probable intruder. Signing off.{C.END}")   
-        os.system("systemctl poweroff")
+        #os.system("systemctl poweroff")
