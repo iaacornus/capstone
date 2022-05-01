@@ -3,7 +3,7 @@ sys.path.append(".")
 
 import json
 
-from os import system as sys
+from os import system as sys, path
 from os.path import exists
 
 from bin.code_email import Email
@@ -48,8 +48,11 @@ class System:
                     continue
 
     def setup(self):
-        email = Email(self.admin_email)
-        phrase = email.notify(setup=True)
+        with open(f"{path.expanduser('~')}/.att_sys/user_info") as info:
+            source = info.readlines()
+    
+        email = Email(self.admin_email, source[1].rstrip().strip())
+        phrase = email.send("setup", source[3].rstrip().strip())
 
         if self.phrase != phrase:
             raise SystemExit("Error")
