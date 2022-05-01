@@ -29,6 +29,6 @@ export PS1
 
 PROMPT_DIRTRIM=2
 
-alias taptap="python cli.py"
+alias taptap="python $HOME/.att_sys/cli.py"
 
 unset rc
