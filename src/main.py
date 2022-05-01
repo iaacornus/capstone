@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append(".")
 
 from sys import argv as INPT, stdout
 from difflib import SequenceMatcher as SM
@@ -13,19 +13,25 @@ from misc.colors import colors
 # repo link is the link of this repository https://github.com/testno0/repo
 # although leave it blank as first, no one touchers the parameters
 
+
 HOME = path.expanduser('~')
-sysINIT = System(HOME, "https://github.com/testno0/repo")
+
+with open(f"{HOME}/.att_sys/user_info") as info:
+    source = info.readlines()
+
+receiver_email, user, password, school_name = source[0].rstrip().strip(), source[1].rstrip().strip(), source[2].rstrip().strip(), source[3].rstrip().strip()
+sysINIT = System(HOME, "https://github.com/testno0/repo", receiver_email)
 C = colors()
 
 """ initiate the system, use try, except, else block to catch errors and
 to organize the procedures based on the cases the system gives. """
 
-def main():
+def main(school_name=school_name, source=source):
     try:
         print(f"{C.GREEN+C.BOLD}> Fetching data.{C.END}")
-        if path.exists(f"{HOME}/repo") is False:
+        if path.exists(f"{HOME}    def send(self, access, school_name, parent_name=None, teacher_name=None, student_name=None):/repo") is False:
             print(f"{C.GREEN+C.BOLD}> The repository is not setup. Setting up the repository.{C.END}")
-            studentDATA, teacherDATA = sysINIT.setup()        
+            studentDATA, teacherDATA = sysINIT.setup(school_name)        
         else:
             studentDATA, teacherDATA = sysINIT.getData()
 
@@ -47,17 +53,22 @@ def main():
         # remove the messages
         stdout.write("\033[K")
     
+    
         email = Email()
         while True:
-            cardID = INPT[0]
-            
+            pass
+            cardID = INPT[0]            
+                        
             for ID in studentDATA:
                 if SM(None, cardID, ID).ratio() == 1:
                     print(f"{C.GREEN+C.BOLD}> Student recognized.{C.END}")
-                    email.notify()
+                    # def send(self, access, school_name, parent_name=None, teacher_name=None, student_name=None):
+                    # leave at blank first
+                    email.send("student true", source[3].rstrip().strip(), studentDATA[ID][0])
                 else:
                     print(f"{C.RED+C.BOLD}> Error.{C.END}")
-                    email.alert()
+                    # leave at blank first
+                    email.send("student true", source[3].rstrip().strip(), studentDATA)[ID][0]
 
                     """ add more functinality later as described from methodology
                     paper, refer to the pdf in manscript folder. """
