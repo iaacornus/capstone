@@ -7,12 +7,15 @@ from os import system as sys, path
 from os.path import exists
 
 from bin.code_email import Email
+from bin.access import access
+from misc.colors import colors
 
 class System:
-    def __init__(self, HOME, repo, phrase, admin_email):
+    C = colors()
+    
+    def __init__(self, HOME, repo, admin_email):
         self.HOME = HOME
         self.repo = repo
-        self.phrase = phrase
         self.admin_email = admin_email
         
     def pullData(self):
@@ -29,6 +32,9 @@ class System:
         count = 0
 
         while True:
+            if count == 3:
+                raise SystemExit(f"{self.C.BOLD+self.C.RED}> Too much error, please try again later.{self.C.END}")
+
             try:
                 with open(f"{self.HOME}/repo/<filename>") as data:
                     studentDATA = json.load(data)
@@ -39,31 +45,28 @@ class System:
                 return studentDATA, teacherDATA
                 
             except FileNotFoundError:
-                if self.pullData() is True:
-                    continue
-                else:
-                    if count == 3:
-                        raise SystemExit("Too much error, please try again later.")
-                    count += 1
-                    continue
+                self.pullData()
+                count += 1
+                continue
 
-    def setup(self):
-        with open(f"{path.expanduser('~')}/.att_sys/user_info") as info:
-            source = info.readlines()
-    
-        email = Email(self.admin_email, source[1].rstrip().strip())
-        phrase = email.send("setup", source[3].rstrip().strip())
+    def setup(self, school_name):
+        ret = access()
+        trial = 0
 
-        if self.phrase != phrase:
-            raise SystemExit("Error")
+        if ret is False:
+            raise SystemExit(f"{self.C.BOLD+self.C.RED}> Too much error, please try again later.{self.C.END}")
         else:
             try:
                 while True:
+                    if trial == 3:
+                        break
+                    
                     if self.pullData() is not True:                    
+                        trial += 1
                         continue
                     else:
                         break
-            except:
-                raise SystemExit("Error")
+            except KeyboardInterrupt:
+                raise SystemExit(f"{self.C.BOLD+self.C.RED}> Too much error, please try again later.{self.C.END}")
             else:
                 studentDATA, teacherDATA = self.getData()
