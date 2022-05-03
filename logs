@@ -1,3 +1,71 @@
+commit 1abefd59c0e92ee9d749c9d8d36febdce101cc51
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:32:01 2022 +0800
+
+    simplified the src code moving into the app folder
+
+commit 2b64a6b05571fddc7f620e431d54d31fa13868bf
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:31:30 2022 +0800
+
+    add face_recognition as requirements and removed cv2
+
+commit 6424837a3bfddb1b63959a0552de4f4afe90e819
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:33:01 2022 +0800
+
+    the loop bug were removed, the trial limit were also barred into 3
+    
+    the feedback were also changed
+
+commit 0d7eea85a30488ef36919ba94ee14db4e392cbe8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:32:23 2022 +0800
+
+    satisfied the requirements of imports from code_email and function.py
+
+commit 37d76b8969274a929094033b5fe70d074ccb0668
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:30:24 2022 +0800
+
+    tested and add commands
+
+commit 476f4461b8cc05de87f72255b75d1b0b9bcf55df
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:05:24 2022 +0800
+
+    changed the message if the student is present
+
+commit 8a91a492c273e724e230482e8f36cc0fc30a889b
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:05:01 2022 +0800
+
+    fixed the system structure and add chmod to the script to easily execute the script
+
+commit 95c0ef822e1ccbb95a6532a3dd9c1219b325a96a
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:03:55 2022 +0800
+
+    used > redirection to avoid errors
+
+commit fe0a08a097df30a50656fe88984d3073698b8bbf
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:03:27 2022 +0800
+
+    changed the dir of alias
+
+commit 5a571de6825076bceb3b6046633dba54951c1a86
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:49:16 2022 +0800
+
+    add info about merging plan, and documentation of cli
+
+commit 3d91f5f95e7582d972367f9d01bb5a13c7f10123
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:48:48 2022 +0800
+
+    reexproted the logs as of may 01, 2022 @ 20:48
+
 commit f31e9cddbb5751d93f4d236b3c3f85f1e099fdb1
 Author: testno0 <jaaaderang@gmail.com>
 Date:   Sun May 1 20:30:38 2022 +0800
