@@ -1,24 +1,40 @@
 # system upgrade: #* pass
 echo -e "\e[1;32m> Starting full system upgrade to fix CVE vulnerabilities ...\e[0m\nKindly input the current password : 'root' (no quotations) when prompted, and don't let the system die."
-#sudo dnf update -y
+sudo dnf update -y
 
 # check for system utilities: #? likely passing    
 echo -e "\e[1;32m> Checking the presence of git, installing if not installed ...\e[0m"    
-git_check=$(dnf list all | grep "git")
+git_check=$(dnf list installed | grep -i "git")
 if [[ $git_check != *"git"* ]]; then
     echo -e "\e[1;32m> Installing git in the system ...\e[0m"
-    sudo dnf install git
+    sudo dnf install git -y
 
 fi
 
 # install pip if not installed: #? likely passing
 echo -e "\e[1;32m> Checking the presence of python.pip, installing if not installed ...\e[0m"
-pip_check=$(dnf list all | grep "python3-pip")
+pip_check=$(dnf list installed | grep "python3-pip")
 
 if [[ $pip_check != *"python3-pip"* ]]; then
     echo -e "\e[1;32m> Installing python3-pip in the system ...\e[0m"
-    sudo dnf install python3-pip
+    sudo dnf install python3-pip -y
 
+fi
+
+echo -e "\e[1;32m> Checking the presence of cmake, installing if not installed ...\e[0m"
+cmake_check=$(dnf list installed | grep -i "cmake[^-]$")
+
+if [[ $cmake_check != *"cmake"* ]]; then
+    echo -e "\e[1;32m> Installing python3-pip in the system ...\e[0m"
+    sudo dnf install cmake -y
+fi
+
+echo -e "\e[1;32m> Checking the presence of cmake, installing if not installed ...\e[0m"
+dlib_check=$(dnf list installed | grep -i "python.-dlib")
+
+if [[ $dlib_check != *"python3-dlib"* ]]; then
+    echo -e "\e[1;32m> Installing python3-pip in the system ...\e[0m"
+    sudo dnf install python3-dlib -y
 fi
 
 # install required packages: #? likely passing
@@ -36,27 +52,29 @@ sudo systemctl daemon-reload
 sudo systemctl enable repository-check.service
 
 # setup the dirs
-mkdir $HOME/.att_sys $HOME/.att_sys/bin $HOME/.att_sys/system $HOME/.att_sys/system/utils $HOME/.att_sys/misc
-touch $HOME/.att_sys/user_info
+mkdir -P $HOME/.att_sys/bak
+
+cp --recursive $HOME/capstone/src -t $HOME/.att_sys
+mv -recursive $HOME/capstone -t $HOME/.att_sys/bak
 
 # move the binaries: #? likely passing
 # main binaries@$HOME/.att_sys/bin/
-mv $HOME/capstone/src/bin/*.py $HOME/.att_sys/bin/
+# cp $HOME/capstone/src/bin/*.py $HOME/.att_sys/bin/
 
 # algorithm@$HOME/.att_sys/algorithm/
-mv $HOME/capstone/src/*.py $HOME/.att_sys/
+# cp $HOME/capstone/src/*.py $HOME/.att_sys/
 
 # utils@$HOME/.att_sys/system/utils
-mv $HOME/capstone/src/system/utils/*.py $HOME/.att_sys/system/utils
+# cp $HOME/capstone/src/system/utils/*.py $HOME/.att_sys/system/utils
 # download the setup script instead of moving it
 # pre setup script
-wget https://raw.githubusercontent.com/testno0/capstone/devel/src/system/pre_setup.sh -P $HOME/.att_sys/system/
+# wget https://raw.githubusercontent.com/testno0/capstone/devel/src/system/pre_setup.sh -P $HOME/.att_sys/system/
 # user setup script
-wget https://raw.githubusercontent.com/testno0/capstone/devel/src/system/user_setup.sh -P $HOME/.att_sys/system/
+# wget https://raw.githubusercontent.com/testno0/capstone/devel/src/system/user_setup.sh -P $HOME/.att_sys/system/
 
 # misc@HOME/.att_sys/misc
-mv $HOME/capstone/src/misc/*.py $HOME/.att_sys/misc
-mv $HOME/capstone/requirements.txt $HOME/.att_sys/
+# cp $HOME/capstone/src/misc/*.py $HOME/.att_sys/misc
+# cp $HOME/capstone/requirements.txt $HOME/.att_sys/
 
 # remove the old bashrc
 rm $HOME/.bashrc
