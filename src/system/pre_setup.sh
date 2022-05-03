@@ -44,7 +44,11 @@ pip install -r $HOME/capstone/requirements.txt
 # setup a systemd service for repository check : #! FAILED
 echo -e "\e[1;32m> Setting up a systemd service ...\e[0m"
 sudo touch /etc/systemd/system/repository-check.service
-echo -e "[Unit]\nDescription=Check the repository for updates every 24 hours.\nAfter=network.target\nStartLimitIntervalSec=5\n\n[Service]\nType=simple\nRestart=always\nRestartSec=5\nUser='exec $USER'\nExecStart=/usr/bin/env python 'exec $HOME/repository/bin/service.py'\n\n[Install]\nWantedBy=multi-user.target" | sudo tee -a /etc/systemd/system/repository-check.service
+echo -e "[Unit]\nDescription=Check the repository for updates every 24 hours.\nAfter=network.target\nStartLimitIntervalSec=5\n\n[Service]\nType=simple\nRestart=always\nRestartSec=5\nUser=\"%u\"\nExecStart=/usr/bin/env python \"%h\"/repository/bin/service.py'\n\n[Install]\nWantedBy=multi-user.target" | 
+
+# replaced with "specifiers" as described from systemd documentation, refer to: https://www.freedesktop.org/software/systemd/man/systemd.unit.html#Specifiers
+
+sudo tee -a /etc/systemd/system/repository-check.service
 
 #! FAILED
 
