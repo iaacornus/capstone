@@ -5,3 +5,4 @@ pandas
 pyenchant
 geocoder
 face_recognition
+pillow
