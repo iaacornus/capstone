@@ -4,10 +4,9 @@ sys.path.append(".")
 import json
 import cv2 as cv
 
-from os import system as sys, path
+from os import system as sys
 from os.path import exists
 
-from bin.code_email import Email
 from bin.access import access
 from misc.colors import colors
 
