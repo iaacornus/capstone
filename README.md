@@ -51,6 +51,40 @@ Date:   Tue May 10 15:17:52 2022 +0800
 
 The whole code undergone again intensive revision to fix all the errors, and improve the whole code base.
 
+# Coding Style
+
+Use [PEP 8](https://peps.python.org/pep-0008/) coding style. A few modifications are made, however, first is instead of 79 characters line limit, 99 is used instead, while the code and docstring limit stays at 72 characters. There is always extra indentation in continuation lines:
+
+```python
+# Add some extra indentation on the conditional continuation line.
+if (this_is_one_thing
+        and that_is_another_thing):
+    do_something()
+
+# not this one
+if (this_is_one_thing and
+    that_is_another_thing):
+    do_something()
+```
+
+And in closing brackets, do:
+
+```python
+# this is suggested
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+    ]
+
+# not this one
+result = some_function_that_takes_arguments(
+    'a', 'b', 'c',
+    'd', 'e', 'f',
+)
+```
+
+CamelCase is used in `class` names, and lowercase with underscores or simply lowercase for use in `function` names and variable names.
+
 # TapTap
 
 The help can be accessed with `-h` flag and outputs all the help.
