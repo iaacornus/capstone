@@ -5,15 +5,15 @@
 #define SS_PIN 10
 #define RST_PIN 9
 
-String UID = "43 12 9F 94";
-bool lock = true;
+String UID = "43 12 9F 94", UID_2 = "B3 E5 F 95";
+bool lock = true, check;
 
 Servo servo;
 LiquidCrystal_I2C lcd(0x27, 20, 4);
 MFRC522 rfid(SS_PIN, RST_PIN);
 
 
-int lcd_print(String message, int x, int y, bool clear) {
+void lcd_print(String message, int x, int y, bool clear) {
     if (clear == true) {
         lcd.clear();
     }
@@ -21,9 +21,23 @@ int lcd_print(String message, int x, int y, bool clear) {
     lcd.setCursor(x, y);
     lcd.print(message);
 
-    return 0;
+}
+
+bool checker(bool init_) {
+    if (init_ == true) {
+        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
+            return false;
+        } 
+    } else {
+        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }
+
 
 void setup() {
     Serial.begin(9600);
@@ -39,14 +53,12 @@ void setup() {
 void loop() {
     lcd_print("Welcome!", 6, 1, false);
     lcd_print("Please scan the card", 0, 2, false);
-    
-    if ( ! rfid.PICC_IsNewCardPresent()) {
-        return;
-    }
+    check = checker();
 
-    if ( ! rfid.PICC_READ_CARD_SERIAL()) {
+    if (check == false) {
         return;
-    }
+    } 
+
 
     lcd_print("Scanning", 0, 0, true);
     lcd_print("Please wait", 0, 1, false);
@@ -63,13 +75,27 @@ void loop() {
 
     ID.toUpperCase();
 
-    if (ID.substring(1) == UID) {
+
+    // start rfid card recognition
+    if (ID.substring(1) == UID || ID.substring(1) == UID_2) {
         servo.write(160);
-        lock = false
+        lock = false;
         
         while (lock != true) {
+            if (lock == false) {
+                break;
+            
+            }
+
             lcd_print("Door opened.", 4, 1, true);
-            delay(1500)
+            delay(1500);
+            check_2 = checker();
+            if (check == true) {
+                lock = false;
+                servo.write(70);
+                continue;
+
+            }
 
         }
     } else {
