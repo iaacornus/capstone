@@ -1,6 +1,8 @@
 numpy
+opencv-python
 matplotlib
 pandas
 pyenchant
 geocoder
 face_recognition
+pillow
