@@ -2,6 +2,7 @@ import sys
 sys.path.append(".")
 
 import json
+import cv2 as cv
 
 from os import system as sys, path
 from os.path import exists
@@ -9,6 +10,27 @@ from os.path import exists
 from bin.code_email import Email
 from bin.access import access
 from misc.colors import colors
+
+def av_cams():
+    index, arr = 0, []
+
+    while True:
+        cap = cv.VideoCapture(index)
+
+        if not cap.read()[0]:
+            break
+        else:
+            arr.append(index)
+        cap.release()
+        index += 1
+
+    if arr == []:
+        pass
+        # raise SystemExit(f"{C.RED+C.BOLD}> No camera available.{C.END}")
+    else:
+        input(f"\33[1;32m> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}\33[0m\nPress any key to clear ...")
+        sys.stdout.write("\033[K")
+
 
 class System:
     C = colors()
@@ -70,3 +92,4 @@ class System:
                 raise SystemExit(f"{self.C.BOLD+self.C.RED}> Too much error, please try again later.{self.C.END}")
             else:
                 studentDATA, teacherDATA = self.getData()
+
