@@ -808,3 +808,192 @@
   808  git commit -m "add the new commits"
   809  clear
   810  history > command_logs
+  159  lsblk
+  160  sudo wipefs -a /dev/sdc
+  161  sudo umount /dev/sdc
+  162  sudo umount /dev/sdc1
+  163  sudo wipefs -a /dev/sdc
+  164  lsblk
+  165  sudo gdisk /dev/sdc
+  166  clear
+  167  sudo mkfs.ext4 /dev/sdc1
+  168  cd temporary/
+  169  git clone -b face_recog https://github.com/testno0/capstone
+  170  cd temporary/capstone/
+  171  touch rfid/main2.cpp
+  172  flatpak install flathub org.gnome.Cheese
+  173  sudo dnf install cmake
+  174  souce venv/bin/activate
+  175  source venv/bin/activate
+  176  pip install -r requirements.txt 
+  177  sudo dnf install cmake
+  178  sudo dnf install python3-dlib
+  179  pip install -r requirements.txt 
+  180  sudo dnf install gcc-c++
+  181  clear
+  182  pip install -r requirements.txt 
+  183  clear
+  184  sudo dnf install openbla
+  185  sudo dnf install openblas
+  186  pip install -r requirements.txt 
+  187  sudo pip install -r requirements.txt 
+  188  sudo pip3 install -r requirements.txt 
+  189  pip install
+  190  sudo pip install -r requirements.txt 
+  191  sudo python3-pip install -r requirements.txt 
+  192  clear
+  193  exit
+  194  cd temporary/capstone/
+  195  clear
+  196  source venv/bin/activate
+  197  clear
+  198  pip install -r requirements.txt 
+  199  deactivate
+  200  toolbox enter
+  201  exit
+  202  source venv/bin/activate
+  203  clear
+  204  ssh icq-relationship-photographic-knew.trycloudflare.com
+  205  exit
+  206  cd temporary/capstone/
+  207  pull
+  208  ls
+  209  python -m venv venv
+  210  source venv/bin/activate
+  211  clear
+  212  deactivate
+  213  toolbox enter
+  214  htop
+  215  exit
+  216  source venv/bin/activate
+  217  clear
+  218  pip install -r requirements.txt 
+  219  clear
+  220  python src/tests/fr_test.py 
+  221  clear
+  222  pip install face_recognition
+  223  python -m pip install --upgrade pip
+  224  pip install face_recognition
+  225  sudo dnf install python-devel
+  226  pip install face_recognition
+  227  clear
+  228  pip install -r requirements.txt 
+  229  clear
+  230  python src/tests/fr_test.py 
+  231  python src/tests/fr_test2.py 
+  232  python src/tests/fr_test.py 
+  233  pip install python-cv2
+  234  pip install opencv2-python
+  235  pip install opencv-python
+  236  deactivate
+  237  exit
+  238  clear
+  239  cd temporary/capstone/
+  240  clear
+  241  toolbox enter
+  242  clear
+  243  cd temporary/capstone/
+  244  status
+  245  commit -m "fixed the while loop"
+  246  source /var/home/iaacornus/temporary/capstone/venv/bin/activate
+  247  /var/home/iaacornus/temporary/capstone/venv/bin/python /var/home/iaacornus/temporary/capstone/src/tests/fr_test.py
+  248  toolbox enter
+  249  deactivate
+  250  toolbox enter
+  251  htop
+  252  cat .git-credentials 
+  253  git config --global commit.gpgsign true
+  254  cd Development/workstation_setup/
+  255  ls
+  256  nano silverblue_setup.md 
+  257  status
+  258  add silverblue_setup.md 
+  259  commit -m "little changes"
+  260  git config user.name
+  261  clear
+  262  git config user.signingkey
+  263  commit -m "little changes"
+  264  killall gpg-agent
+  265  commit -m "little changes"
+  266  clear
+  267  git config --global rebase.autoStash true
+  268  clear
+  269  cd temporary/capstone/
+  270  status
+  271  commit -m "fixed while loops"
+  272  add src/bin/*
+  273  status
+  274  commit -m "face recognition pycache"
+  275  add src/face_recog.py src/tests/fr_test.py 
+  276  commit -m "successful face recognition build"
+  277  clear
+  278  add sample/
+  279  commit -m "face sample for testing"
+  280  status
+  281  add rfid/main2.cpp 
+  282  commit -m "another rfid build"
+  283  diff
+  284  add src/function.py 
+  285  commit -m "add av_cam function to simplify face_recognition.py"
+  286  clear
+  287  push origin face_recog
+  288  pull face_recog https://github.com/testno0/capstoen
+  289  pull face_recog https://github.com/testno0/capstone
+  290  pull
+  291  push origin face_recog
+  292  git pull
+  293  git rebase
+  294  git pull
+  295  git rebasels
+  296  rebase face_recog
+  297  lbranch
+  298  git checkout face_recog
+  299  ls
+  300  ls rfid/
+  301  git stash
+  302  git reset --merge
+  303  git stash
+  304  git checkout face_recog
+  305  status
+  306  push origin face_recog
+  307  pull
+  308  pull face_recog
+  309  pull https://github.com/testno0/capstone face_recog
+  310  push
+  311  git pull --rebase
+  312  git pull --rebase origin face_recog
+  313  rm -fr ".git/rebase-merge"
+  314  git pull --rebase origin face_recog
+  315  push origin main
+  316  clear
+  317  status
+  318  git rebase --skip
+  319  status
+  320  push origin face_recog
+  321  history
+  322  sudo dnf clean all
+  323  sudo dnf autoremove
+  324  clear
+  325  exit
+  326  toolbox enter
+  327  history | grep install
+  328  flatpak list
+  329  flatpak uninstall --system --delete-data org.gnome.Cheese
+  330  flatpak uninstall --unused
+  331  flatpak repair
+  332  clear
+  333  toolbox enter
+  334  toolbox list
+  335  toolbox rmi fedora-toolbox-35
+  336  toolbox rm -a
+  337  killall toolbox
+  338  toolbox rm -a
+  339  toolbox list
+  340  toolbox rm -a
+  341  toolbox rm fedora-toolbox-35
+  342  cd temporary/capstone/
+  343  ls
+  344  log
+  345  log >> logs 
+  346  log > logs 
+  347  history >> command_logs 

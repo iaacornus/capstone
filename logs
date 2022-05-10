@@ -1,3 +1,132 @@
+commit 08728ed3d6af99f7886b8fdae556b8e3ad18f553
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:17:52 2022 +0800
+
+    add av_cam function to simplify face_recognition.py
+
+commit 031bb3918d0aaac6cd49384bfc2f3929fe68e69b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:17:14 2022 +0800
+
+    another rfid build
+
+commit 4948218e6cae07badc0c8a0dcbc05ff45b81182e
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:16:54 2022 +0800
+
+    face sample for testing
+
+commit fa50446f592f10175c1251c894f9ea27c383fcec
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:16:42 2022 +0800
+
+    successful face recognition build
+
+commit 8912de58f0fe29dbcfb980a31292cc2444093f2b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:16:22 2022 +0800
+
+    face recognition pycache
+
+commit 3c4e3230dc286259f5823b6630616e508262190e
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 12:20:55 2022 +0800
+
+    fixed lock mechanism
+
+commit 6e282724d21103bf438c2e87b1c74ff79fa62129
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 12:15:54 2022 +0800
+
+    upp
+
+commit 96edca1570255437b786fe3696a9932c6ccc31a5
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 12:01:14 2022 +0800
+
+    fixed while loop
+
+commit 19568e5ed5dc91e47dc956409b77e02d927033a0
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 11:28:47 2022 +0800
+
+    optimized algorithm
+
+commit 1473b0c7320b6758a2f359c690015d3cf3425093
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 10:35:55 2022 +0800
+
+    Create main.cpp
+
+commit c916ec11f5453df8c08dbdfce56208f55bccbfc2
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 01:16:57 2022 +0800
+
+    changed exec env to specifiers
+
+commit f2ccbe8a081c51fcfa44dbbaaeea003b04fbe729
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:46:00 2022 +0800
+
+    initial codebase
+
+commit 33dc8651f092e5e13b83630b9249160e313e2b1c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:45:44 2022 +0800
+
+    add testing py file for fr
+
+commit c7fb7431596817e7d64d9e5ba02b90d9121ac7eb
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:14:30 2022 +0800
+
+    add python image library (PIL) -- pillow as deps
+
+commit 1a77c7460088380955888877f326eeecf9425cd1
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:14:10 2022 +0800
+
+    add obama faces as another ref
+
+commit 1f1fb87451955279afd0c5eb70e098fa20cc03cf
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:13:57 2022 +0800
+
+    add joe biden faces as references
+
+commit 9a0cba4fe1a186bc2a5961be460ba9568a17f225
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:08:23 2022 +0800
+
+    add sample faces for testing
+
+commit de938512623ebb2c324946d23f67a906ba8d891e
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:44:48 2022 +0800
+
+    add back opencv2 for coupling with face_recognition module
+
+commit 789712fa9146673f0e17d8c51013ffb1c335aa3f
+Merge: 756cbaf be696d8
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 3 23:37:36 2022 +0800
+
+    Merge pull request #2 from testno0/cli
+    
+    mini fixes, preperation for face recognition devel
+
+commit be696d8d42bddcbd177afcfcdcf43870a77ea059
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:34:00 2022 +0800
+
+    add the command logs in the virtual env used
+
+commit 81bc86ba2af5b0096180b6dea23a6bc012b4b3e8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:33:23 2022 +0800
+
+    add the new commits
+
 commit 1abefd59c0e92ee9d749c9d8d36febdce101cc51
 Author: testno0 <jaaaderang@gmail.com>
 Date:   Tue May 3 23:32:01 2022 +0800
@@ -9,6 +138,15 @@ Author: testno0 <jaaaderang@gmail.com>
 Date:   Tue May 3 23:31:30 2022 +0800
 
     add face_recognition as requirements and removed cv2
+
+commit 756cbaf5d9ee453a795ba6ca6e4267b0b4d5bbe0
+Merge: b6acf48 6424837
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Sun May 1 21:37:09 2022 +0800
+
+    Merge pull request #1 from testno0/cli
+    
+    cli implementation and other tests from test-v1-beta merged to devel branch for further testing and coding as well as implementation of other features
 
 commit 6424837a3bfddb1b63959a0552de4f4afe90e819
 Author: testno0 <jaaaderang@gmail.com>
