@@ -8,7 +8,7 @@
 #define RST_PIN 9
 
 String UID = "43 12 9F 94", UID_2 = "B3 E5 F 95";
-bool lock = true, check;
+bool lock = true, check, check_2;
 
 Servo servo;
 LiquidCrystal_I2C lcd(0x27, 20, 4);
@@ -24,22 +24,6 @@ void lcd_print(String message, int x, int y, bool clear) {
     lcd.print(message);
 
 }
-
-bool checker(bool init_) {
-    if (init_ == true) {
-        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_ReadCardSerial()) {
-            return false;
-        } 
-    } else {
-        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_ReadCardSerial()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-}
-
 
 void setup() {
     Serial.begin(9600);
@@ -57,10 +41,9 @@ void loop() {
     lcd_print("Please scan the card", 0, 2, false);
     check = checker(true);
 
-    if (check == false) {
-        return;
+    if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_ReadCardSerial()) {
+        return false;
     } 
-
 
     lcd_print("Scanning", 0, 0, true);
     lcd_print("Please wait", 0, 1, false);
@@ -68,38 +51,33 @@ void loop() {
 
     String ID = "";
     for (byte i = 0; i < rfid.uid.size; i++) {
-      lcd.print(".");
-      ID.concat(String(rfid.uid.uidByte[i] < 0x10 ? " 0" : " "));
-      ID.concat(String(rfid.uid.uidByte[i], HEX));
-      delay(300);
+        lcd.print(".");
+        ID.concat(String(rfid.uid.uidByte[i] < 0x10 ? " 0" : " "));
+        ID.concat(String(rfid.uid.uidByte[i], HEX));
+        delay(300);
   
-
     }
 
     ID.toUpperCase();
-
 
     // start rfid card recognition
     if (ID.substring(1) == UID || ID.substring(1) == UID_2) {
         servo.write(160);
         lock = false;
         
-        while (lock != true) {
-            if (lock == false) {
+        while (lock == false) {
+            if (lock == true) {
                 break;
-            
             }
 
             lcd_print("Door opened.", 4, 1, true);
             delay(1500);
-            bool check_2 = checker(false);
-            if (check == true) {
-                lock = false;
+
+            if (rfid.PICC_IsNewCardPresent() || rfid.PICC_ReadCardSerial()) {
+                lock = true;
                 servo.write(70);
                 continue;
-
             }
-
         }
     } else {
         lcd_print("Access denied.", 4, 1, true);
