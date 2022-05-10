@@ -4,7 +4,11 @@ Development branch of arduino and RFID software, next merge is devel -> v 1.0
 
 # Devel
 
-The merging would be `cli` -> `v1-test-beta` -> `v1`
+The merging would be `cli` -> `v1-test-beta` -> `v1`. On May 10, 2022@17:07:56, `face_recog` branch was merged into `devel` branch for further development.
+
+The next merging would be `devel` -> `v1-test-beta`. Some features are optimization of the face recognition algorithm as well as optimization and improvement of other code base.
+
+And finally, `v1-test-beta` would be merged with `v1` for final implementation, marking the start of phase 3.
 
 # Install
 
@@ -34,6 +38,18 @@ Date:   Thu Apr 28 19:43:02 2022 +0800
 ```
 
 The whole code undergone intensive revision to fix all the errors, and improve the whole code base, marking the start of phase 2.
+
+Starting at:
+
+```bash
+commit 08728ed3d6af99f7886b8fdae556b8e3ad18f553
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:17:52 2022 +0800
+
+    add av_cam function to simplify face_recognition.py
+```
+
+The whole code undergone again intensive revision to fix all the errors, and improve the whole code base.
 
 # TapTap
 
