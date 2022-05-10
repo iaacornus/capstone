@@ -10,6 +10,13 @@ The next merging would be `devel` -> `v1-test-beta`. Some features are optimizat
 
 And finally, `v1-test-beta` would be merged with `v1` for final implementation, marking the start of phase 3.
 
+# Merging
+
+The `devel` as forked into `pep8-adaptation` branch to change the code into PEP 8 guidelines, which will be forked into `pep8-ch-test`, for testing of the changes, and then merged into `devel` branch again for:
+
+> The next merging would be `devel` -> `v1-test-beta`. Some features are optimization of the face recognition algorithm as well as optimization and improvement of other code base.
+> And finally, `v1-test-beta` would be merged with `v1` for final implementation, marking the start of phase 3.
+
 # Install
 
 Clone the repository with
