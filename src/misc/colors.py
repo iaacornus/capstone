@@ -1,4 +1,5 @@
 class colors:
+    
     END      = "\33[0m"
     BOLD     = "\33[1m"
     ITALIC   = "\33[3m"

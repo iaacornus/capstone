@@ -9,9 +9,9 @@ import geocoder
 from datetime import datetime
 from email.message import EmailMessage
 
-#? passing
 
 class Email:
+
     port, smtp_server = 465, "smtp.gmail.com"
     sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5" # fill up later
 
@@ -20,8 +20,15 @@ class Email:
         self.user = user
 
     def send(self, access, school_name, student_name=None):
+        str_set = [
+            string.ascii_lowercase,
+            string.ascii_uppercase,
+            string.punctuation,
+            string.digits
+            ]
+        
         msg, msg["From"], msg["To"] = EmailMessage(), self.sender_email, self.receiver_email
-        phrase = ''.join([random.choice(random.choice([string.ascii_lowercase, string.ascii_uppercase, string.punctuation, string.digits])) for x in range(32)])
+        phrase = ''.join([random.choice(random.choice(str_set)) for x in range(32)])
         
         if access == "setup": 
             msg["Subject"] = "Secure access phrase"
@@ -78,15 +85,13 @@ class Email:
             """, subtype="html")            
         
         try:        
-            """ Send the email to the user for the code."""            
+            # send the email to the user for the code.         
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(self.smtp_server, self.port, context=context) as server:    
                 server.login(self.sender_email, self.password)
                 server.send_message(msg)
-        
         except ConnectionError:
-            return "Please try again later."
-        
+            return "Please try again later."        
         else:
             return phrase
         

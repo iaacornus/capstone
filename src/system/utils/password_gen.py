@@ -1,4 +1,11 @@
 import random
 import string
 
-print(''.join([random.choice(random.choice([string.ascii_lowercase, string.ascii_uppercase, string.punctuation, string.digits])) for x in range(32)]))
+str_set = [
+    string.ascii_lowercase,
+    string.ascii_uppercase,
+    string.punctuation,
+    string.digits
+    ]
+
+print(''.join([random.choice(random.choice([str_set])) for x in range(32)]))
