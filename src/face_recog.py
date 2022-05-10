@@ -5,29 +5,11 @@ import cv2 as cv
 
 from os.path import expanduser
 
-def av_cams():
-    index, arr = 0, []
-
-    while True:
-        cap = cv.VideoCapture(index)
-
-        if not cap.read()[0]:
-            break
-        else:
-            arr.append(index)
-        cap.release()
-        index += 1
-
-    if arr == []:
-        pass
-        # raise SystemExit(f"{C.RED+C.BOLD}> No camera available.{C.END}")
-    else:
-        input(f"\33[1;32m> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}\33[0m\nPress any key to clear ...")
-        sys.stdout.write("\033[K")
+from functions import av_cams
 
 
 def face_recognition():
-    #av_cams()
+    av_cams()
     __PATH__ = f"{expanduser('~')}/temporary/capstone/sample/"
     
     # load face references from __PATH__.
@@ -118,4 +100,3 @@ def face_recognition():
     vid.release()
     cv.destroyAllWindows()
     
-face_recognition()
