@@ -997,3 +997,44 @@
   345  log >> logs 
   346  log > logs 
   347  history >> command_logs 
+  348  status
+  349  add logs command_logs 
+  350  commit -m "update the logs and command logs for documentation" 
+  351  push
+  352  clear
+  353  cd ..
+  354  rm -rf capstone/
+  355  git clone -b devel https://github.com/testno0/capstone
+  356  cd capstone/
+  357  ls
+  358  nano README.md 
+  359  cd temporary/capstone/
+  360  ls
+  361  status
+  362  add README.md 
+  363  commit -m "include info about merging"
+  364  add src/function.py 
+  365  commit -m "remove other imports"
+  366  add src/face_recog.py 
+  367  commit -m "remove the duplicate of the function, and used the function from functions.py instead"
+  368  clear
+  369  push
+  370  cbranch pep8-adaptation
+  371  status
+  372  add .
+  373  commit -m "aligned with python pep8 rules"
+  374  status
+  375  add README.md 
+  376  commit -m "add pep8 coding style description"
+  377  push
+  378  push origin pep8-adaptation
+  379  clear
+  380  cbranch pep8-ch-test
+  381  rebase pep8-adaptation
+  382  clear
+  383  log > logs 
+  384  history
+  385  tails -n 100 history
+  386  tail -n 100 history
+  387  $(history | tail -n 100) >> command_logs 
+  388  history | tail -n 100 >> command_logs

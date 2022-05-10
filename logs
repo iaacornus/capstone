@@ -1,3 +1,48 @@
+commit 4324916edd8d1b5d27bac93fcaabc45008581be2
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:39:41 2022 +0800
+
+    add pep8 coding style description
+
+commit 108a05374a6719c5e7a454d42952fef548551770
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:38:37 2022 +0800
+
+    aligned with python pep8 rules
+
+commit 050fc4c7be07402011f09bfa13758318dd34515c
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:15:17 2022 +0800
+
+    remove the duplicate of the function, and used the function from functions.py instead
+
+commit f43ffb438eeac93fbd3c8859c1d171c36b7af1e6
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:14:43 2022 +0800
+
+    remove other imports
+
+commit 2eab9abc7fd3997150d2c688c3a796b181317e00
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:14:04 2022 +0800
+
+    include info about merging
+
+commit aba781928acc9a57bcf7ede4f7ab6e5e88cdcde4
+Merge: 789712f 6c368ab
+Author: James Aaron Erang <96870156+iaacornus@users.noreply.github.com>
+Date:   Tue May 10 17:06:41 2022 +0800
+
+    Merge pull request #3 from testno0/face_recog
+    
+    successfully implemented face recognition
+
+commit 6c368abdf5c3301bc84d5e8f45223749c9879d57
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:05:17 2022 +0800
+
+    update the logs and command logs for documentation
+
 commit 08728ed3d6af99f7886b8fdae556b8e3ad18f553
 Author: iaacornus <iaacornus.devel@gmail.com>
 Date:   Tue May 10 15:17:52 2022 +0800
