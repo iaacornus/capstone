@@ -1,6 +1,8 @@
+#include <Servo.h>
 #include <LiquidCrystal_I2C.h>
 #include <SPI.h>
 #include <MFRC522.h>
+
 
 #define SS_PIN 10
 #define RST_PIN 9
@@ -25,11 +27,11 @@ void lcd_print(String message, int x, int y, bool clear) {
 
 bool checker(bool init_) {
     if (init_ == true) {
-        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
+        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_ReadCardSerial()) {
             return false;
         } 
     } else {
-        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
+        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_ReadCardSerial()) {
             return false;
         } else {
             return true;
@@ -53,7 +55,7 @@ void setup() {
 void loop() {
     lcd_print("Welcome!", 6, 1, false);
     lcd_print("Please scan the card", 0, 2, false);
-    check = checker();
+    check = checker(true);
 
     if (check == false) {
         return;
@@ -65,11 +67,12 @@ void loop() {
     Serial.print("UID tag is: ");
 
     String ID = "";
-    for (byte i = 0; i < rfid.uid.size(); i++) {
-        lcd.print(".");
-        ID.concat(String(rfid.uid.uidByte[i] < 0x10? " 0" : " "));
-        ID.concat(String(rfid.uid.uidByte[i], HEX));
-        delay(300);
+    for (byte i = 0; i < rfid.uid.size; i++) {
+      lcd.print(".");
+      ID.concat(String(rfid.uid.uidByte[i] < 0x10 ? " 0" : " "));
+      ID.concat(String(rfid.uid.uidByte[i], HEX));
+      delay(300);
+  
 
     }
 
@@ -89,7 +92,7 @@ void loop() {
 
             lcd_print("Door opened.", 4, 1, true);
             delay(1500);
-            check_2 = checker();
+            bool check_2 = checker(false);
             if (check == true) {
                 lock = false;
                 servo.write(70);
