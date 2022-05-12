@@ -4,8 +4,8 @@ import smtplib
 import ssl
 import socket
 import os
-import geocoder
 
+import geocoder
 from datetime import datetime
 from email.message import EmailMessage
 
@@ -25,7 +25,7 @@ class Email:
             string.ascii_uppercase,
             string.punctuation,
             string.digits
-            ]
+        ]
         
         msg, msg["From"], msg["To"] = EmailMessage(), self.sender_email, self.receiver_email
         phrase = ''.join([random.choice(random.choice(str_set)) for x in range(32)])

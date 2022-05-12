@@ -1,6 +1,3 @@
-import sys
-sys.path.append('.')
-
 import json
 import cv2 as cv
 
@@ -28,8 +25,9 @@ def av_cams():
         pass
         # raise SystemExit(f"{C.RED+C.BOLD}> No camera available.{C.END}")
     else:
-        input(f"""
-              {C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}\nPress any key to clear ...""")
+        input(f"""\
+            {C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}\nPress any key to clear ...
+        """)
         sys.stdout.write("\033[K")
 
 
@@ -69,8 +67,8 @@ class System:
                 continue
         else:
             raise SystemExit(f"""\
-                {C.BOLD+C.RED}> Too much error, please try again later.{C.END}""")
-
+                {C.BOLD+C.RED}> Too much error, please try again later.{C.END}
+            """)
 
     def setup(self, school_name):
         ret = access()
@@ -78,7 +76,8 @@ class System:
 
         if not ret:
             raise SystemExit(f"""\
-                {C.BOLD+C.RED}> Too much error, please try again later.{C.END}""")
+                {C.BOLD+C.RED}> Too much error, please try again later.{C.END}
+            """)
         else:
             try:
                 while True:
@@ -92,6 +91,7 @@ class System:
                         break
             except KeyboardInterrupt:
                 raise SystemExit(f"""\
-                    {C.BOLD+C.RED}> Too much error, please try again later.{C.END}""")
+                    {C.BOLD+C.RED}> Too much error, please try again later.{C.END}
+                """)
             else:
                 return self.get_data()

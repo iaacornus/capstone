@@ -1,10 +1,10 @@
+from os.path import expanduser
+
 import face_recognition as fr
 import numpy as np
 import cv2 as cv
 
-from os.path import expanduser
-
-from functions import av_cams
+from function import av_cams
 
 
 def face_recognition():

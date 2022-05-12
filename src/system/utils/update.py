@@ -1,17 +1,12 @@
-import sys
-sys.path.append("..")
-
 import os
 
 from src.bin.access import access
 from misc.colors import colors as C
 
 
-HOME = os.path.expanduser('~')
-
-
 def update():
     ret = access()
+    HOME = os.path.expanduser('~')
     
     if ret:
         if not os.path.exists(f"{HOME}/repo"):        
@@ -23,6 +18,7 @@ def update():
         # false phase, pass : #? passing
         os.system("rm -rf {HOME}/repo/")
         
-        print(f"""
-              {C.BOLD+C.RED}> Verification error, repository was nuked by system for security.{C.END}""")            
+        print(f"""\
+            {C.BOLD+C.RED}> Verification error, repository was nuked by system for security.{C.END}
+        """)            
         #systemctl poweroff
