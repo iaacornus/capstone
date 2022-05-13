@@ -57,7 +57,7 @@ sudo systemctl enable repository-check.service
 # setup the dirs
 mkdir -p $HOME/.att_sys/bak
 
-cp --recursive $HOME/capstone/src/ -t $HOME/.att_sys
+cp --recursive $HOME/capstone/src/* -t $HOME/.att_sys
 cp --recursive $HOME/capstone -t $HOME/.att_sys/bak
 
 # move the binaries: #? likely passing
@@ -84,5 +84,6 @@ rm $HOME/.bashrc
 wget https://raw.githubusercontent.com/testno0/capstone/devel/src/system/.bashrc -P $HOME/
 source $HOME/.bashrc
 
-chmod -R +x $HOME/.att_sys/system/*.sh
+chmod -R +x $HOME/.att_sys/system/user_setup.sh
+chmod -R +x $HOME/.att_sys/system/pre_setup.sh
 ./$HOME/.att_sys/system/user_setup.sh
