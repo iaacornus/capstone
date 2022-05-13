@@ -58,6 +58,7 @@ def main():
                     "student true",
                     school_name,
                     student_data["ID"]
+                )
 
             else:
                 print(f"{C.RED+C.BOLD}> Error.{C.END}")

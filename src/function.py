@@ -22,14 +22,14 @@ def av_cams():
         index += 1
 
     if not arr:
-        pass
-        # raise SystemExit(f"{C.RED+C.BOLD}> No camera available.{C.END}")
+        return False
     else:
         print(
             f"{C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}"
         )
-        input("Press any key to clear ...")
+        input("Press any key to clear ...")        
         print("\033[K")
+        return True
 
 
 def draw_rectangle(color, name, frame, left, top, right, bottom):
@@ -56,11 +56,10 @@ def draw_rectangle(color, name, frame, left, top, right, bottom):
 
 
 class System:
-    def __init__(self, HOME, repo, admin_email):
+    def __init__(self, HOME, repo):
         self.HOME = HOME
         self.repo = repo
-        self.admin_email = admin_email
-        
+
     def pull_data(self):
         try:
             if exists(f"{self.HOME}/capstone"):
@@ -93,7 +92,7 @@ class System:
                 f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
             )
 
-    def setup(self, school_name):
+    def setup(self):
         ret = access()
         trial = 0
 
