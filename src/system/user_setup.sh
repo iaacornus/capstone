@@ -18,7 +18,7 @@ if [ ! -d "$HOME/.att_sys/user_info" ]; then
     echo -e "\e[1;32m> Appending user info ...\e[0m"
     echo -e "$email\n$user_name\n$password\n$school_name" > $HOME/.att_sys/user_info
 
-    python $HOME/.att_sys/system/utils/update.py
+    python utils/update.py
 
     sec=10
     while [ $sec -ge 0 ]; do
