@@ -12,7 +12,7 @@ if [ ! -d "$HOME/.att_sys/user_info" ]; then
     
     # generate user password
     password=$(python $HOME/.att_sys/system/utils/password_gen.py)
-    echo -e "\e[1;32m> Your password is:\e[1m $password"
+    echo -e "\e[1;32m> Your password is:\e[1;0m $password"
 
     # append user information and password to a file
     echo -e "\e[1;32m> Appending user info ...\e[0m"
