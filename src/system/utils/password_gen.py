@@ -8,4 +8,4 @@ str_set = [
     string.digits
 ]
 
-print(''.join([random.choice(random.choice([str_set])) for x in range(32)]))
+print(''.join([random.choice(random.choice(str_set)) for x in range(32)]))
