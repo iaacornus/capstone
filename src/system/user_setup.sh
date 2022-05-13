@@ -1,6 +1,6 @@
 # test 1: #* passed!
 
-if [ ! -d "$HOME/.att_sys/" ]; then
+if [ ! -d "$HOME/.att_sys/user_info" ]; then
     # user information setup : #* pass
     echo -e "\e[1;32m> User setup ...\e[0m"
 
