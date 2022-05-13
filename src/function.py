@@ -21,18 +21,40 @@ def av_cams():
         cap.release()
         index += 1
 
-    if arr == []:
+    if not arr:
         pass
         # raise SystemExit(f"{C.RED+C.BOLD}> No camera available.{C.END}")
     else:
-        input(f"""\
-            {C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}\nPress any key to clear ...
-        """)
+        print(
+            f"{C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}"
+        )
+        input("Press any key to clear ...")
         sys.stdout.write("\033[K")
 
 
-class System:
+def draw_rectangle(color, name, frame, left, top, right, bottom):
+    cv.rectangle(
+        frame,
+        (left, top),
+        (right, bottom),
+        color, 2
+    )
 
+    # Draw a label with a name below the face
+    cv.rectangle(
+        frame,
+        (left, bottom - 35),
+        (right, bottom),
+        color, cv.FILLED
+    )
+    font = cv.FONT_HERSHEY_DUPLEX
+    cv.putText(
+        frame, name,
+        (left + 6, bottom - 6),
+        font, 1.0, (255, 255, 255), 1
+    )
+
+class System:
     def __init__(self, HOME, repo, admin_email):
         self.HOME = HOME
         self.repo = repo
@@ -54,30 +76,30 @@ class System:
         while count < 3:
             try:
                 with open(f"{self.HOME}/repo/<filename>") as data:
-                    studentDATA = json.load(data)
+                    student_data = json.load(data)
                     
                 with open(f"{self.HOME}/repo/<filename>") as Data:
-                    teacherDATA = json.load(Data)
+                    teacher_data = json.load(Data)
                     
-                return studentDATA, teacherDATA
+                return student_data, teacher_data
                 
             except FileNotFoundError:
                 self.pull_data()
                 count += 1
                 continue
         else:
-            raise SystemExit(f"""\
-                {C.BOLD+C.RED}> Too much error, please try again later.{C.END}
-            """)
+            raise SystemExit(
+                f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
+            )
 
     def setup(self, school_name):
         ret = access()
         trial = 0
 
         if not ret:
-            raise SystemExit(f"""\
-                {C.BOLD+C.RED}> Too much error, please try again later.{C.END}
-            """)
+            raise SystemExit(
+                f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
+            )
         else:
             try:
                 while True:
@@ -90,8 +112,8 @@ class System:
                     else:
                         break
             except KeyboardInterrupt:
-                raise SystemExit(f"""\
-                    {C.BOLD+C.RED}> Too much error, please try again later.{C.END}
-                """)
+                raise SystemExit(
+                    f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
+                )
             else:
                 return self.get_data()
