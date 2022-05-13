@@ -6,6 +6,7 @@ from time import sleep
 from function import System
 from bin.code_email import Email
 from misc.colors import colors as C
+from face_recog import face_recognition
 
 # repo link is the link of this repository https://github.com/testno0/repo
 # although leave it blank as first, no one touchers the parameters
@@ -15,22 +16,23 @@ def main():
 
     HOME_ = path.expanduser("~")
 
-    with open(f"{HOME_}/.att_sys/user_info") as info:
-        source = info.readlines()
+    #with open(f"{HOME_}/.att_sys/user_info") as info:
+        #source = info.readlines()
 
-    receiver_email = source[0].rstrip().strip() 
-    school_name = source[3].rstrip().strip()
-    sys_initiate = System(HOME_, "https://github.com/testno0/repo", receiver_email)
+    #receiver_email = source[0].rstrip().strip() 
+    #school_name = source[3].rstrip().strip()
+    #sys_initiate = System(HOME_, "https://github.com/testno0/repo", receiver_email)
 
     try:
-        print(f"{C.GREEN+C.BOLD}> Fetching data.{C.END}")
+        pass
+        """    print(f"{C.GREEN+C.BOLD}> Fetching data.{C.END}")
         if not path.exists(f"{HOME_}/repo"):
             print(
                 f"{C.GREEN+C.BOLD}> The repository is not setup. Setting up the repository.{C.END}"
             )
             student_data, teacher_data = sys_initiate.setup(school_name)        
         else:
-            student_data, teacher_data = sys_initiate.get_data()
+            student_data, teacher_data = sys_initiate.get_data()"""
     except ConnectionError: # add other exceptions later
         raise SystemExit(f"{C.RED+C.BOLD}> Connection Error.{C.END}")
     except KeyboardInterrupt:
@@ -39,29 +41,29 @@ def main():
         raise SystemExit(f"{C.RED+C.BOLD}> System Error.{C.END}")
     else:
         # notify the user
-        print(f"{C.GREEN+C.BOLD+C.BLINK}> System ready.{C.END}", end="\r")
+        print(f"{C.GREEN+C.BOLD}> System ready.{C.END}", end="\r")
 
         sleep(5) # init free time
         sys.stdout.write("\033[K") # remove the messages
        
-        email = Email()
+        email = Email("jaaaderang@gmail.com", "tello")
         while True:
             cardID = sys.argv[0]            
-                        
-            for ID in student_data:
-                if SM(None, cardID, ID).ratio() == 1:
-                    print(f"{C.GREEN+C.BOLD}> Student recognized.{C.END}")
-                    email.send(
-                        "student true",
-                        school_name,
-                        student_data[ID][0]
-                    )
-                else:
-                    print(f"{C.RED+C.BOLD}> Error.{C.END}")
-                    # leave at blank first
-                    email.send(
-                        "student true",
-                        school_name,
-                        student_data[ID][0]
-                    )
+ 
+            if face_recognition():                        
+                print(f"{C.GREEN+C.BOLD}> Student recognized.{C.END}")
+                email.send(
+                    "student true",
+                    "hello",
+                    "hello"
+                )
+            else:
+                print(f"{C.RED+C.BOLD}> Error.{C.END}")
+                # leave at blank first
+                email.send(
+                    "student true",
+                    "hello",
+                    "hello"
+                )
+ 
             continue
