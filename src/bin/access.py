@@ -4,29 +4,20 @@ from misc.colors import colors as C
 from bin.code_email import Email
 
 
-def access():
-    HOME = os.path.expanduser("~")
-   
-    with open(f"{HOME}/.att_sys/user_info") as info:
+def access(home_):   
+    with open(f"{home_}/.att_sys/user_info") as info:
         source = info.readlines()
-    
-    receiver_email, user = source[0].rstrip().strip(), source[1].rstrip().strip() 
+        
     password, school_name = source[2].rstrip().strip(), source[3].rstrip().strip()
-    email = Email(receiver_email, user)
+    email = Email(
+        source[0].rstrip().strip(),
+        source[1].rstrip().strip()
+    )
 
     try:
         trial, mark = 0, False
         
-        while True:                  
-            if trial == 3:
-                try:
-                    email.send("alert", school_name)
-                except ConnectionError:
-                    pass # more error later
-                finally:
-                    print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
-                    #os.system("systemctl poweroff")
-
+        while trial < 3:                  
             if not mark:
                 print(f"{C.BOLD}")
                 verify = input(
@@ -63,6 +54,14 @@ def access():
                     continue
                 else:
                     return True
+        else:
+            try:
+                email.send("alert", school_name)
+            except ConnectionError:
+                pass # more error later
+            finally:
+                print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
+                #os.system("systemctl poweroff")
         
     except KeyboardInterrupt:
         print(f"{C.BOLD+C.RED}> Probable intruder. Signing off.{C.END}")   
