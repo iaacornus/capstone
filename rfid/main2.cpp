@@ -23,17 +23,11 @@ void lcd_print(String message, int x, int y, bool clear) {
 
 }
 
-bool checker(bool init_) {
-    if (init_ == true) {
-        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
-            return false;
-        } 
+bool checker() {
+    if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
+        return false;
     } else {
-        if ( ! rfid.PICC_IsNewCardPresent() || ! rfid.PICC_READ_CARD_SERIAL()) {
-            return false;
-        } else {
-            return true;
-        }
+        return true;
     }
 
 }
@@ -70,27 +64,23 @@ void loop() {
         ID.concat(String(rfid.uid.uidByte[i] < 0x10? " 0" : " "));
         ID.concat(String(rfid.uid.uidByte[i], HEX));
         delay(300);
-
     }
 
     ID.toUpperCase();
-
-
     // start rfid card recognition
     if (ID.substring(1) == UID || ID.substring(1) == UID_2) {
         servo.write(160);
         lock = false;
         
-        while (lock != true) {
-            if (lock == false) {
+        while (lock == false) {
+            if (lock == true) {
                 break;
-            
             }
 
             lcd_print("Door opened.", 4, 1, true);
             delay(1500);
             check_2 = checker();
-            if (check == true) {
+            if (check_2 == true) {
                 lock = false;
                 servo.write(70);
                 continue;
