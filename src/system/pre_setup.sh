@@ -25,7 +25,7 @@ echo -e "\e[1;32m> Checking the presence of cmake, installing if not installed .
 cmake_check=$(dnf list installed | grep -i "cmake[^-]$")
 
 if [[ $cmake_check != *"cmake"* ]]; then
-    echo -e "\e[1;32m> Installing python3-pip in the system ...\e[0m"
+    echo -e "\e[1;32m> Installing cmake in the system ...\e[0m"
     sudo dnf install cmake -y
 fi
 
@@ -33,7 +33,7 @@ echo -e "\e[1;32m> Checking the presence of cmake, installing if not installed .
 dlib_check=$(dnf list installed | grep -i "python.-dlib")
 
 if [[ $dlib_check != *"python3-dlib"* ]]; then
-    echo -e "\e[1;32m> Installing python3-pip in the system ...\e[0m"
+    echo -e "\e[1;32m> Installing python3-dlib in the system ...\e[0m"
     sudo dnf install python3-dlib -y
 fi
 
@@ -54,7 +54,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable repository-check.service
 
 # setup the dirs
-mkdir -P $HOME/.att_sys/bak
+mkdir -p $HOME/.att_sys/bak
 
 cp --recursive $HOME/capstone/src -t $HOME/.att_sys
 mv -recursive $HOME/capstone -t $HOME/.att_sys/bak
