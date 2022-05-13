@@ -2,9 +2,10 @@
 echo -e "\e[1;32m> Starting full system upgrade to fix CVE vulnerabilities ...\e[0m\nKindly input the current password : 'root' (no quotations) when prompted, and don't let the system die."
 sudo dnf update -y
 
-# check for system utilities: #? likely passing    
+# check for system utilities: #? likely passing
+dnf list installed 1> $HOME/capstone/installed    
 echo -e "\e[1;32m> Checking the presence of git, installing if not installed ...\e[0m"    
-git_check=$(dnf list installed | grep -i "git")
+git_check=$(cat $HOME/capstone/installed | grep -i "git")
 if [[ $git_check != *"git"* ]]; then
     echo -e "\e[1;32m> Installing git in the system ...\e[0m"
     sudo dnf install git -y
@@ -13,7 +14,7 @@ fi
 
 # install pip if not installed: #? likely passing
 echo -e "\e[1;32m> Checking the presence of python.pip, installing if not installed ...\e[0m"
-pip_check=$(dnf list installed | grep "python3-pip")
+pip_check=$(cat $HOME/capstone/installed | grep "python3-pip")
 
 if [[ $pip_check != *"python3-pip"* ]]; then
     echo -e "\e[1;32m> Installing python3-pip in the system ...\e[0m"
@@ -22,7 +23,7 @@ if [[ $pip_check != *"python3-pip"* ]]; then
 fi
 
 echo -e "\e[1;32m> Checking the presence of cmake, installing if not installed ...\e[0m"
-cmake_check=$(dnf list installed | grep -i "cmake[^-]$")
+cmake_check=$(cat $HOME/capstone/installed | grep -i "cmake[^-]$")
 
 if [[ $cmake_check != *"cmake"* ]]; then
     echo -e "\e[1;32m> Installing cmake in the system ...\e[0m"
@@ -30,7 +31,7 @@ if [[ $cmake_check != *"cmake"* ]]; then
 fi
 
 echo -e "\e[1;32m> Checking the presence of cmake, installing if not installed ...\e[0m"
-dlib_check=$(dnf list installed | grep -i "python.-dlib")
+dlib_check=$(cat $HOME/capstone/installed | grep -i "python.-dlib")
 
 if [[ $dlib_check != *"python3-dlib"* ]]; then
     echo -e "\e[1;32m> Installing python3-dlib in the system ...\e[0m"
@@ -56,8 +57,8 @@ sudo systemctl enable repository-check.service
 # setup the dirs
 mkdir -p $HOME/.att_sys/bak
 
-cp --recursive $HOME/capstone/src -t $HOME/.att_sys
-mv -recursive $HOME/capstone -t $HOME/.att_sys/bak
+cp --recursive $HOME/capstone/src/ -t $HOME/.att_sys
+cp --recursive $HOME/capstone -t $HOME/.att_sys/bak
 
 # move the binaries: #? likely passing
 # main binaries@$HOME/.att_sys/bin/
