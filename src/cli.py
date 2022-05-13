@@ -40,10 +40,11 @@ def program_options():
     )
     # (re)setup the user
     parser.add_argument(
-            "-s",
-            "--usersetup",
-            help="Setup the user (prompts to input the passphrase sent via email, if used again).",
-            action="store_true")
+        "-s",
+        "--usersetup",
+        help="Setup the user (prompts to input the passphrase sent via email, if used again).",
+        action="store_true"
+    )
     # destroy the system, can be used in case of intruder breach
     parser.add_argument(
         "-d",

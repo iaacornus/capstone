@@ -28,18 +28,20 @@ def access():
                     #os.system("systemctl poweroff")
 
             if not mark:
-                verify = input(f"""\
-                    {C.BOLD}\r
-                    > Kindly input your 32 character password (case sensitive {3-trial} left): 
-                    {C.END}\r
-                """)
+                print(f"{C.BOLD}")
+                verify = input(
+                    f"> Kindly input your 32 character password (case sensitive {3-trial} left): "
+                )
+                print(f"{C.END}")
 
                 if verify != password:
                     trial += 1
-                    print(f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}")
-                    send_new = input(f"""\
-                        {C.BOLD}Send a new temporary password to your email instead? [y/N]:{C.END}
-                    """)
+                    print(
+                        f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}{C.BOLD}"
+                    )
+                    send_new = input(
+                        f"Send a new temporary password to your email instead? [y/N]:{C.END}"
+                    )
                 
                     if send_new in ['y', 'Y']:
                         mark = True
@@ -49,12 +51,12 @@ def access():
                 
             else:
                 new_pass = email.send("setup", school_name)
-                verify_new = input(f"""\
-                    {C.BOLD}\r
-                    > Kindly input your 32 character password (case sensitive {3-trial} left):
-                    {C.END}\r
-                """)
-                
+                print(f"{C.BOLD}")
+                verify_new = input(
+                    f"> Kindly input your 32 character password (case sensitive {3-trial} left): "
+                )
+                print(f"{C.END}")                
+
                 if verify_new != new_pass:
                     print(f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}")
                     trial += 1
