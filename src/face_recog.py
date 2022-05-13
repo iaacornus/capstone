@@ -4,7 +4,7 @@ import face_recognition as fr
 import numpy as np
 import cv2 as cv
 
-from function import av_cams
+from function import av_cams, draw_rectangle
 
 
 def face_recognition():
@@ -23,11 +23,11 @@ def face_recognition():
     known_fe = [
         rf_encoding,
         rf_encoding2,    
-        ]
+    ]
     known_fnames = [
         "Ezekiel Lopez",
         "Laisie Angela Donato",
-        ]
+    ]
         
     # Initialize some variables
     face_locations, face_encodings, face_names = [], [], []     
@@ -63,9 +63,9 @@ def face_recognition():
                 # distance to the new face
                 face_distances = fr.face_distance(known_fe, face_encoding)
                 best_match_index = np.argmin(face_distances)
+
                 if matches[best_match_index]:
                     name = known_fnames[best_match_index]
-
                 face_names.append(name)
 
             for (top, right, bottom, left) in face_locations:
@@ -76,21 +76,19 @@ def face_recognition():
 
                 # output the box in the frame
                 if name != "unknown":
-                    cv.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
-
-                    # Draw a label with a name below the face
-                    cv.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 255, 0), cv.FILLED)
-                    font = cv.FONT_HERSHEY_DUPLEX
-                    cv.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+                    draw_rectangle(
+                        (0, 255, 0),
+                        name, frame,
+                        left, top,
+                        right, bottom
+                    )
                 else:
-                    cv.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
-
-                    # Draw a label with a name below the face
-                    cv.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv.FILLED)
-                    font = cv.FONT_HERSHEY_DUPLEX
-                    cv.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
-
-
+                    draw_rectangle(
+                        (0, 0, 255),
+                        name, frame,
+                        left, top,
+                        right, bottom
+                    )
         # display the resulting image
         cv.imshow("Video", frame)
 
