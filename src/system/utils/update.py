@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+
 import os
 
 from bin.access import access
