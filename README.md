@@ -10,6 +10,13 @@ The next merging would be `devel` -> `v1-test-beta`. Some features are optimizat
 
 And finally, `v1-test-beta` would be merged with `v1` for final implementation, marking the start of phase 3.
 
+# Merging
+
+The `devel` as forked into `pep8-adaptation` branch to change the code into PEP 8 guidelines, which will be forked into `pep8-ch-test`, for testing of the changes, and then merged into `devel` branch again for:
+
+> The next merging would be `devel` -> `v1-test-beta`. Some features are optimization of the face recognition algorithm as well as optimization and improvement of other code base.
+> And finally, `v1-test-beta` would be merged with `v1` for final implementation, marking the start of phase 3.
+
 # Install
 
 Clone the repository with
@@ -50,6 +57,40 @@ Date:   Tue May 10 15:17:52 2022 +0800
 ```
 
 The whole code undergone again intensive revision to fix all the errors, and improve the whole code base.
+
+# Coding Style
+
+Use [PEP 8](https://peps.python.org/pep-0008/) coding style. A few modifications are made, however, first is instead of 79 characters line limit, 99 is used instead, while the code and docstring limit stays at 72 characters. There is always extra indentation in continuation lines:
+
+```python
+# Add some extra indentation on the conditional continuation line.
+if (this_is_one_thing
+        and that_is_another_thing):
+    do_something()
+
+# not this one
+if (this_is_one_thing and
+    that_is_another_thing):
+    do_something()
+```
+
+And in closing brackets, do:
+
+```python
+# this is suggested
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+    ]
+
+# not this one
+result = some_function_that_takes_arguments(
+    'a', 'b', 'c',
+    'd', 'e', 'f',
+)
+```
+
+CamelCase is used in `class` names, and lowercase with underscores or simply lowercase for use in `function` names and variable names.
 
 # TapTap
 

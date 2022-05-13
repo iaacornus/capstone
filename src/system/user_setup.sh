@@ -1,6 +1,6 @@
 # test 1: #* passed!
 
-if [ ! -d "$HOME/.att_sys/" ]; then
+if [ ! -d "$HOME/.att_sys/user_info" ]; then
     # user information setup : #* pass
     echo -e "\e[1;32m> User setup ...\e[0m"
 
@@ -12,13 +12,13 @@ if [ ! -d "$HOME/.att_sys/" ]; then
     
     # generate user password
     password=$(python $HOME/.att_sys/system/utils/password_gen.py)
-    echo -e "\e[1;32m> Your password is: $password"
+    echo -e "\e[1;32m> Your password is:\e[1;0m $password"
 
     # append user information and password to a file
     echo -e "\e[1;32m> Appending user info ...\e[0m"
     echo -e "$email\n$user_name\n$password\n$school_name" > $HOME/.att_sys/user_info
 
-    python $HOME/.att_sys/system/utils/update.py
+    python utils/update.py
 
     sec=10
     while [ $sec -ge 0 ]; do
