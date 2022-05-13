@@ -56,7 +56,7 @@ def program_options():
     args = parser.parse_args()
     
     if args.use:
-        main() #? likely passing
+        main(os.path.expanduser("~")) #? likely passing
     elif args.update:
         update() #* passed
     elif args.usersetup:

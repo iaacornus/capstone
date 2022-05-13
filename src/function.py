@@ -62,9 +62,11 @@ class System:
 
     def pull_data(self):
         try:
-            if exists(f"{self.HOME}/capstone"):
-                sys(f"rm -rf {self.HOME}/capstone")
-            sys(f"git clone --branch database {self.repo}")
+            if exists(f"{self.HOME}/repo"):
+                sys(f"rm -rf {self.HOME}/repo")
+            sys(
+                f"git clone --branch database {self.repo} && mv {HOME_}/capstone {HOME_}/repo"
+            )
         
             return True
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
@@ -75,10 +77,10 @@ class System:
 
         while count < 3:
             try:
-                with open(f"{self.HOME}/repo/<filename>") as data:
+                with open(f"{self.HOME}/repo/student_data/info.json") as data:
                     student_data = json.load(data)
                     
-                with open(f"{self.HOME}/repo/<filename>") as Data:
+                with open(f"{self.HOME}/repo/teacher_data/info.json") as Data:
                     teacher_data = json.load(Data)
                     
                 return student_data, teacher_data
@@ -93,20 +95,16 @@ class System:
             )
 
     def setup(self):
-        ret = access()
         trial = 0
 
-        if not ret:
+        if not access(self.HOME):
             raise SystemExit(
                 f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
             )
         else:
             try:
-                while True:
-                    if trial == 3:
-                        break
-                    
-                    if self.pull_data() is not True:                    
+                while trial < 3:                    
+                    if not self.pull_data():                    
                         trial += 1
                         continue
                     else:

@@ -10,11 +10,10 @@ from face_recog import face_recognition
 
 # repo link is the link of this repository https://github.com/testno0/database
 # although leave it blank as first, no one touchers the parameters
-def main():
+def main(HOME_):
     """initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives."""
 
-    HOME_ = path.expanduser("~")
     with open(f"{HOME_}/.att_sys/user_info") as info:
         source = info.readlines()
 
@@ -62,7 +61,6 @@ def main():
 
             else:
                 print(f"{C.RED+C.BOLD}> Error.{C.END}")
-                # leave at blank first
                 email.send(
                     "student absent",
                     school_name
