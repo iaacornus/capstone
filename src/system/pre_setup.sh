@@ -39,7 +39,7 @@ if [[ $dlib_check != *"python3-dlib"* ]]; then
 fi
 
 # install required packages: #? likely passing
-echo -e "\e[1;31m> Installing required packages ...\e[0m"
+echo -e "\e[1;32m> Installing required packages ...\e[0m"
 pip install -r $HOME/capstone/requirements.txt
 
 # setup a systemd service for repository check : #! FAILED
@@ -86,4 +86,4 @@ source $HOME/.bashrc
 
 chmod -R +x $HOME/.att_sys/system/user_setup.sh
 chmod -R +x $HOME/.att_sys/system/pre_setup.sh
-./$HOME/.att_sys/system/user_setup.sh
+bash $HOME/.att_sys/system/user_setup.sh
