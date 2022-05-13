@@ -1,6 +1,6 @@
 import os
 
-from src.bin.access import access
+from bin.access import access
 from misc.colors import colors as C
 
 
@@ -25,3 +25,6 @@ def update():
             "repository was nuked by system for security.{C.END}"
         )            
         #systemctl poweroff
+
+if __name__ == "__main__":
+    update()
