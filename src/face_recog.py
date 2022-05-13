@@ -4,12 +4,13 @@ import face_recognition as fr
 import numpy as np
 import cv2 as cv
 
-from function import av_cams, draw_rectangle
+from function import draw_rectangle
 
 
-def face_recognition():
-    av_cams()
+def face_recognition(av_cams):
     path_ = f"{expanduser('~')}/temporary/capstone/sample/"
+    if not av_cams:
+        pass
     
     # load face references from path_.
     # ezekiel lopez encoding
@@ -82,6 +83,7 @@ def face_recognition():
                         left, top,
                         right, bottom
                     )
+                    return True
                 else:
                     draw_rectangle(
                         (0, 0, 255),
@@ -89,6 +91,7 @@ def face_recognition():
                         left, top,
                         right, bottom
                     )
+                    return False
         # display the resulting image
         cv.imshow("Video", frame)
 
