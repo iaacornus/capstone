@@ -9,7 +9,7 @@ from misc.colors import colors as C
 
 def update():
     ret = access()
-    HOME = os.path.expanduser('~')
+    HOME = os.path.expanduser("~")
     
     if ret:
         if not os.path.exists(f"{HOME}/repo"):        

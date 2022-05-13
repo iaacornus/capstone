@@ -29,7 +29,7 @@ def av_cams():
             f"{C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}"
         )
         input("Press any key to clear ...")
-        sys.stdout.write("\033[K")
+        print("\033[K")
 
 
 def draw_rectangle(color, name, frame, left, top, right, bottom):
