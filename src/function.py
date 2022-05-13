@@ -40,19 +40,20 @@ def draw_rectangle(color, name, frame, left, top, right, bottom):
         color, 2
     )
 
-    # Draw a label with a name below the face
     cv.rectangle(
         frame,
         (left, bottom - 35),
         (right, bottom),
         color, cv.FILLED
     )
+
     font = cv.FONT_HERSHEY_DUPLEX
     cv.putText(
         frame, name,
         (left + 6, bottom - 6),
         font, 1.0, (255, 255, 255), 1
     )
+
 
 class System:
     def __init__(self, HOME, repo, admin_email):
