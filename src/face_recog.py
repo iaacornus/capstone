@@ -13,21 +13,34 @@ def face_recognition(av_cams):
         pass
     
     # load face references from path_.
-    # ezekiel lopez encoding
-    ref_face = fr.load_image_file(f"{path_}/test_1.png")    
+    ref_face = fr.load_image_file(f"{path_}/test_1.png") # ezekiel lopez encoding
+    ref_face_2 = fr.load_image_file(f"{path_}/test_2.png") # laisie angela donato encoding
+    ref_face_3 = fr.load_image_file(f"{path_}/test_3.png") # nicole amber hennessey encoding
+    ref_face_4 = fr.load_image_file(f"{path_}/test_4.png") # raven gose encoding
+    ref_face_5 = fr.load_image_file(f"{path_}/test_5.png") # fiona leigh pagtama encoding
+    
+    #----------------------------------------------------------------
+    # encode the faces.
     rf_encoding = fr.face_encodings(ref_face)[0]
-
-    # laisie angela donato encoding
-    ref_face_2 = fr.load_image_file(f"{path_}/test_2.png")
     rf_encoding2 = fr.face_encodings(ref_face_2)[0]
-
+    rf_encoding3 = fr.face_encodings(ref_face_3)[0]
+    rf_encoding4 = fr.face_encodings(ref_face_4)[0]
+    rf_encoding5 = fr.face_encodings(ref_face_5)[0]    
+    
+    # include the encoded faces in the list
     known_fe = [
         rf_encoding,
-        rf_encoding2,    
+        rf_encoding2,
+        rf_encoding3,
+        rf_encoding4,
+        rf_encoding5    
     ]
     known_fnames = [
         "Ezekiel Lopez",
         "Laisie Angela Donato",
+        "Nicole Amber Hennessey",
+        "Raven Gose",
+        "Fiona Leigh Pagtama",
     ]
         
     # Initialize some variables
