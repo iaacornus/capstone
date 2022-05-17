@@ -4,9 +4,9 @@ import os
 
 from main import main
 from function import System
-from misc.colors import colors as C
+from demo import demo
 from system.utils.update import update
-
+from misc.colors import colors as C
 
 def program_options():
     description = """\
@@ -22,7 +22,7 @@ def program_options():
     # all of the functions listed below prompts for the local or
     # temporary password email to the user using python's stdlib smtplib
     # and ssl, this requires internet connection, else the user need to
-    # the password they received during the setup. 
+    # the password they received during the setup.
 
     # start/use the system
     parser.add_argument(
@@ -33,28 +33,34 @@ def program_options():
     )
     # update the database by calling the fetch database function from src.function
     parser.add_argument(
-        "-U",
+        "-update",
         "--update",
         help="Update the system",
         action="store_true"
     )
     # (re)setup the user
     parser.add_argument(
-        "-s",
+        "-setup",
         "--usersetup",
         help="Setup the user (prompts to input the passphrase sent via email, if used again).",
         action="store_true"
     )
     # destroy the system, can be used in case of intruder breach
     parser.add_argument(
-        "-d",
+        "-destroy",
         "--destroy",
         help="Destroy the user database.",
         action="store_true"
-    )    
-        
+    )
+    parser.add_argument(
+        "-demo",
+        "--demo",
+        help="Face recognition demonstration.",
+        action="store_true"
+    )
+
     args = parser.parse_args()
-    
+
     if args.use:
         main(os.path.expanduser("~")) #? likely passing
     elif args.update:
@@ -63,5 +69,8 @@ def program_options():
         os.system("./$HOME/.att_sys/system/setup.sh") #* passed
     elif args.destroy:
         os.system("echo 'rm -rf $HOME/.att_sys'") #* passed
+    elif args.demo:
+        demo()
+
 
 program_options()
