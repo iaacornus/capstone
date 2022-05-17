@@ -1,22 +1,25 @@
 import sys
+import os
 from difflib import SequenceMatcher as SM
-from os import path
-from time import sleep
+
+from rich.console import Console
 
 from function import System, av_cams
 from bin.code_email import Email
 from misc.colors import Colors as C
 from face_recog import face_recognition
 
+
 # repo link is the link of this repository https://github.com/testno0/database
 # although leave it blank as first, no one touchers the parameters
-def main(HOME_):
+def main(HOME_, log_, path_):
     """initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives."""
 
     with open(f"{HOME_}/.att_sys/user_info") as info:
         source = info.readlines()
 
+    console = Console()
     receiver_email = source[0].rstrip().strip()
     school_name = source[3].rstrip().strip()
     sys_initiate = System(
@@ -26,23 +29,59 @@ def main(HOME_):
     )
 
     try:
-        print(f"{C.GREEN+C.BOLD}> Fetching data.{C.END}")
-        if not path.exists(f"{HOME_}/repo"):
-            print(
-                f"{C.GREEN+C.BOLD}> The repository is not setup. Setting up the repository.{C.END}"
-            )
-            student_data, teacher_data = sys_initiate.setup(school_name)
-        else:
-            student_data, teacher_data = sys_initiate.get_data()
-    except ConnectionError: # add other exceptions later
-        raise SystemExit(f"{C.RED+C.BOLD}> Connection Error.{C.END}")
-    except KeyboardInterrupt:
-        raise SystemExit(f"{C.RED+C.BOLD}> Keyboard Interrupt.{C.END}")
-    except SystemError:
-        raise SystemExit(f"{C.RED+C.BOLD}> System Error.{C.END}")
+        with console.status("[bold][+] Fetching data.[/bold]", spinner="aesthetic"):
+            if not os.path.exists(f"{HOME_}/repo"):
+                console.log(
+                    "> The repository is not setup. Setting up the repository."
+                )
+                student_data, teacher_data = sys_initiate.setup(school_name)
+            else:
+                student_data, teacher_data = sys_initiate.get_data()
+
+        student_data_proc = []
+
+        console.log("[bold blue]> Preparing student_data ...[/bold blue]")
+        with console.status(
+                "[bold blue]> Fetching student names ...[/bold blue]", spinner="aesthetic"
+            ):
+            if log_: # for verbose
+                student_names = []
+                for name in student_data["name_init"]:
+                    console.log(f"[green]> {name} appended ...[/green]")
+                    student_names.append(name)
+            else: # this is more optimized and faster, thus preferred
+                student_names = [
+                    name for name in student_data["name_init"]
+                ]
+
+        with console.status(
+                "[bold]> Fetching student names ...[/bold]", spinner="aesthetic"
+            ):
+            for student in student_names:
+                if log_:
+                    console.log(
+                        f"[green]> Fetching data of {student} ...[/green]"
+                    )
+                student_data_proc.append(student_data["student"])
+
+        encoding_path = f"{HOME_}/.att_sys/student_data/encoding.py"
+        if not os.path.exists(encoding_path):
+            with console.status(
+                    "[bold]> Creating student module for face_recognition ...[/bold]", spinner="aesthetic"
+                ):
+                # initiate the file and add the needed import
+                os.system(
+                    f"echo -e 'import face_recognition as fr\n\nclass Encoding:\n' > {encoding_path}"
+                )
+                for i in range(len(student_data_proc)-1):
+                    os.system(
+                        f"echo '    face_ref_{i} = fr.load_image_file({path_}/std{i}.png)' >> {encoding_path}"
+                    )
+    except:
+        pass # the exceptions are moved to cli.py
     else:
         # notify the user
-        print(f"{C.GREEN+C.BOLD}> System ready.{C.END}", end="\r")
+        console.log("[bold green][+] System is ready.[/bold green]")
         sys.stdout.write("\033[K") # remove the messages
 
         email = Email(
@@ -50,20 +89,26 @@ def main(HOME_):
             source[1].rstrip().strip()
         )
         av_cams_eval = av_cams()
+
         while True:
-            if face_recognition(av_cams_eval):
-                print(f"{C.GREEN+C.BOLD}> Student recognized.{C.END}")
+            student = face_recognition(
+                av_cams_eval,
+                console,
+                face_encodings_=tuple(student_data_proc),
+                face_names_=tuple(student_names),
+            )
+            if student:
                 email.send(
                     "student true",
                     school_name,
                     student_data["ID"]
                 )
-
             else:
-                print(f"{C.RED+C.BOLD}> Error.{C.END}")
+                console.log("Face is not {student} (recognized).")
                 email.send(
                     "student absent",
-                    school_name
+                    school_name,
+                    student
                 )
 
             continue
