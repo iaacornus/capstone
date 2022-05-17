@@ -29,6 +29,10 @@ export PS1
 
 PROMPT_DIRTRIM=2
 
-alias taptap="python cli.py"
+if [ ! -d "$HOME/.att_sys/" ]; then
+	alias taptap="python $HOME/.att_sys/cli.py"
+else
+	alias taptap="echo 'taptap not installed.'"
+fi
 
 unset rc
