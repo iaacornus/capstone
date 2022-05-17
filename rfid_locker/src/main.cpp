@@ -69,14 +69,15 @@ void loop() {
     if (ID.substring(1) == UID || ID.substring(1) == UID_2) {
         lock = false;
         lcd_print("Door opened.", 4, 1, 3000, true, true);
+        servo.write(160);
 
-        if (timer.hasPassed(3000) || rfid.PICC_ReadCardSerial()) {
+        // 18000 ms for 5 minutes
+        if (timer.hasPassed(18000) || rfid.PICC_ReadCardSerial()) {
+            servo.write(70);
             timer.restart();
             lcd_print("Door locked.", 4, 1, 3000, true, true);
             lock = true;
-
         }
-
     } else {
         lcd_print("Access denied.", 4, 1, 5000, true, true);
     }
