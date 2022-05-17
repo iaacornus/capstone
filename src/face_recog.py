@@ -6,7 +6,7 @@ import cv2 as cv
 from rich.console import Console
 
 from function import draw_rectangle
-from misc.colors import Color as C
+from misc.colors import Colors as C
 
 def face_recognition(
         av_cams, cinit,

@@ -6,7 +6,7 @@ from main import main
 from function import System
 from demo import demo
 from system.utils.update import update
-from misc.colors import colors as C
+from misc.colors import Colors as C
 
 def program_options():
     description = """\

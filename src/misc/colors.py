@@ -1,4 +1,4 @@
-class colors:
+class Colors:
     END      = "\33[0m"
     BOLD     = "\33[1m"
 
