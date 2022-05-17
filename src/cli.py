@@ -8,6 +8,7 @@ from demo import demo
 from system.utils.update import update
 from misc.colors import Colors as C
 
+
 def program_options():
     description = """\
         This is a program designed to interact with the TapTap, an RFID system designed by Capstone
@@ -58,11 +59,18 @@ def program_options():
         help="Face recognition demonstration.",
         action="store_true"
     )
+    # show most of the background processes of the program
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="Show the processes of program.",
+        action="store_true"
+    )
 
     args = parser.parse_args()
 
     if args.use:
-        main(os.path.expanduser("~")) #? likely passing
+        main(os.path.expanduser("~"), args.verbose) #? likely passing
     elif args.update:
         update() #* passed
     elif args.usersetup:
