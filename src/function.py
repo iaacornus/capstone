@@ -3,30 +3,37 @@ from os import system as sys
 from os.path import exists
 
 import cv2 as cv
+from rich.console import Console
 
 from bin.access import access
-from misc.colors import colors as C
+from misc.colors import Colors as C
+
+
+console = Console()
 
 
 def av_cams():
-    index, arr = 0, []
+    index, cam_arr = 0, []
 
     while True:
-        cap = cv.VideoCapture(index)
+        with console.status("[bold]> Checking available cameras[/bold]"):
+            cap = cv.VideoCapture(index)
 
-        if not cap.read()[0]:
-            break
-        else:
-            arr.append(index)
-        cap.release()
-        index += 1
+            if not cap.read()[0]:
+                break
+            else:
+                cam_arr.append(index)
+            cap.release()
+            index += 1
 
-    if not arr:
+    if not cam_arr:
         return False
     else:
-        print(
-            f"{C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}"
+        console.log(
+            f"[bold green]> All available cameras found:"
         )
+        for num, cam in enumerate(cam_arr):
+            print(f"{num} {cam}")
         input("Press any key to clear ...")
         print("\033[K")
         return True
@@ -67,8 +74,8 @@ class System:
             sys(
                 f"git clone --branch database {self.repo} && mv {HOME_}/capstone {HOME_}/repo"
             )
-
             return True
+
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
             return False
 

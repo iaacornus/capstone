@@ -1,10 +1,14 @@
 import os
 
+from rich.console import Console
+
 from misc.colors import Colors as C
 from bin.code_email import Email
 
 
 def access(home_):
+    console = Console()
+
     with open(f"{home_}/.att_sys/user_info") as info:
         source = info.readlines()
 
@@ -19,19 +23,19 @@ def access(home_):
 
         while trial < 3:
             if not mark:
-                print(f"{C.BOLD}")
+                print(f"{C.BOLD}", end="")
                 verify = input(
                     f"> Kindly input your 32 character password (case sensitive {3-trial} left): "
                 )
-                print(f"{C.END}")
+                print(f"{C.END}", end="")
 
                 if verify != password:
                     trial += 1
-                    print(
-                        f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}{C.BOLD}"
+                    console.log(
+                        f"[bold][red]> Password doesn't match.[/red]{3-trial} left.[/bold]"
                     )
                     send_new = input(
-                        f"Send a new temporary password to your email instead? [y/N]:{C.END}"
+                        f">>>Send a new temporary password to your email instead? [y/N]:"
                     )
 
                     if send_new in ['y', 'Y']:
@@ -39,17 +43,18 @@ def access(home_):
                     continue
                 else:
                     return True
-
             else:
                 new_pass = email.send("setup", school_name)
-                print(f"{C.BOLD}")
+                print(f"{C.BOLD}", end="")
                 verify_new = input(
                     f"> Kindly input your 32 character password (case sensitive {3-trial} left): "
                 )
-                print(f"{C.END}")
+                print(f"{C.END}", end="")
 
                 if verify_new != new_pass:
-                    print(f"{C.RED+C.BOLD}> Password doesn't match. {3-trial} left.{C.END}")
+                    console.log(
+                        f"[bold][red]> Password doesn't match.[/red]{3-trial} left.[/bold]"
+                    )
                     trial += 1
                     continue
                 else:
@@ -60,9 +65,10 @@ def access(home_):
             except ConnectionError:
                 pass # more error later
             finally:
-                print(f"{C.BOLD+C.RED}> Too much error. Signing off.{C.END}")
+                console.log(
+                    f"[bold red]> Too much error, signing off.[/bold red]"
+                )
                 #os.system("systemctl poweroff")
 
     except KeyboardInterrupt:
-        print(f"{C.BOLD+C.RED}> Probable intruder. Signing off.{C.END}")
         #os.system("systemctl poweroff")
