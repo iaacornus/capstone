@@ -1,8 +1,8 @@
 import json
-import cv2 as cv
-
 from os import system as sys
 from os.path import exists
+
+import cv2 as cv
 
 from bin.access import access
 from misc.colors import colors as C
@@ -27,7 +27,7 @@ def av_cams():
         print(
             f"{C.GREEN+C.BOLD}> All available cameras: {[f'{num} {cam}' for num, cam in enumerate(arr)]}{C.END}"
         )
-        input("Press any key to clear ...")        
+        input("Press any key to clear ...")
         print("\033[K")
         return True
 
@@ -67,11 +67,11 @@ class System:
             sys(
                 f"git clone --branch database {self.repo} && mv {HOME_}/capstone {HOME_}/repo"
             )
-        
+
             return True
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
             return False
-            
+
     def get_data(self):
         count = 0
 
@@ -79,12 +79,12 @@ class System:
             try:
                 with open(f"{self.HOME}/repo/student_data/info.json") as data:
                     student_data = json.load(data)
-                    
+
                 with open(f"{self.HOME}/repo/teacher_data/info.json") as Data:
                     teacher_data = json.load(Data)
-                    
+
                 return student_data, teacher_data
-                
+
             except FileNotFoundError:
                 self.pull_data()
                 count += 1
@@ -103,8 +103,8 @@ class System:
             )
         else:
             try:
-                while trial < 3:                    
-                    if not self.pull_data():                    
+                while trial < 3:
+                    if not self.pull_data():
                         trial += 1
                         continue
                     else:
