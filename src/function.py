@@ -1,4 +1,5 @@
 import json
+from sys import stdout
 from os import system as sys
 from os.path import exists
 
@@ -16,7 +17,10 @@ def av_cams():
     index, cam_arr = 0, []
 
     while True:
-        with console.status("[bold]> Checking available cameras[/bold]"):
+        with console.status(
+                "[bold bright_cyan][+] Checking for available cameras ...[/bold bright_cyan]",
+                spinner="bouncingBar"
+            ):
             cap = cv.VideoCapture(index)
 
             if not cap.read()[0]:
@@ -35,7 +39,7 @@ def av_cams():
         for num, cam in enumerate(cam_arr):
             print(f"{num} {cam}")
         input("Press any key to clear ...")
-        print("\033[K")
+        stdout.write("\033[K") # remove the messages
         return True
 
 

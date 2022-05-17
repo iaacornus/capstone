@@ -12,13 +12,14 @@ from face_recog import face_recognition
 
 # repo link is the link of this repository https://github.com/testno0/database
 # although leave it blank as first, no one touchers the parameters
-def main(HOME_, log_, path_):
+def main(HOME_, log_):
     """initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives."""
 
     with open(f"{HOME_}/.att_sys/user_info") as info:
         source = info.readlines()
 
+    path_ = f"{os.path.expanduser('~')}/.att_sys/capstone/student_data/imgs"
     console = Console()
     receiver_email = source[0].rstrip().strip()
     school_name = source[3].rstrip().strip()
@@ -29,7 +30,12 @@ def main(HOME_, log_, path_):
     )
 
     try:
-        with console.status("[bold][+] Fetching data.[/bold]", spinner="aesthetic"):
+        student_data_proc = []
+
+        with console.status(
+                "[bold bright_cyan][+] Fetching data ...[/bold bright_cyan]",
+                spinner="bouncingBar"
+            ):
             if not os.path.exists(f"{HOME_}/repo"):
                 console.log(
                     "> The repository is not setup. Setting up the repository."
@@ -38,11 +44,9 @@ def main(HOME_, log_, path_):
             else:
                 student_data, teacher_data = sys_initiate.get_data()
 
-        student_data_proc = []
-
-        console.log("[bold blue]> Preparing student_data ...[/bold blue]")
         with console.status(
-                "[bold blue]> Fetching student names ...[/bold blue]", spinner="aesthetic"
+                "[bold bright_cyan][+] Fetching student names ...[/bold bright_cyan]",
+                spinner="bouncingBar"
             ):
             if log_: # for verbose
                 student_names = []
@@ -55,7 +59,8 @@ def main(HOME_, log_, path_):
                 ]
 
         with console.status(
-                "[bold]> Fetching student names ...[/bold]", spinner="aesthetic"
+                "[bold bright_cyan]> Processing student data ...[/bold]",
+                spinner="bouncingBar"
             ):
             for student in student_names:
                 if log_:
@@ -67,7 +72,8 @@ def main(HOME_, log_, path_):
         encoding_path = f"{HOME_}/.att_sys/student_data/encoding.py"
         if not os.path.exists(encoding_path):
             with console.status(
-                    "[bold]> Creating student module for face_recognition ...[/bold]", spinner="aesthetic"
+                    "[bold bright_cyan]> Creating module for encoding ...[/bold bright_cyan]",
+                    spinner="bouncingBar"
                 ):
                 # initiate the file and add the needed import
                 os.system(

@@ -8,15 +8,14 @@ from bin.code_email import Email
 
 def access(home_):
     console = Console()
-
-    with open(f"{home_}/.att_sys/user_info") as info:
-        source = info.readlines()
-
     password, school_name = source[2].rstrip().strip(), source[3].rstrip().strip()
     email = Email(
         source[0].rstrip().strip(),
         source[1].rstrip().strip()
     )
+
+    with open(f"{home_}/.att_sys/user_info") as info:
+        source = info.readlines()
 
     try:
         trial, mark = 0, False
@@ -68,7 +67,7 @@ def access(home_):
                 console.log(
                     f"[bold red]> Too much error, signing off.[/bold red]"
                 )
-                #os.system("systemctl poweroff")
+                os.system("systemctl poweroff")
 
     except KeyboardInterrupt:
-        #os.system("systemctl poweroff")
+        os.system("systemctl poweroff")

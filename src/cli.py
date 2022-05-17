@@ -69,16 +69,25 @@ def program_options():
 
     args = parser.parse_args()
 
-    if args.use:
-        main(os.path.expanduser("~"), args.verbose) #? likely passing
-    elif args.update:
-        update() #* passed
-    elif args.usersetup:
-        os.system("./$HOME/.att_sys/system/setup.sh") #* passed
-    elif args.destroy:
-        os.system("echo 'rm -rf $HOME/.att_sys'") #* passed
-    elif args.demo:
-        demo()
+    try:
+        if args.use:
+            main(os.path.expanduser("~"), args.verbose) #? likely passing
+        elif args.update:
+            update() #* passed
+        elif args.usersetup:
+            os.system("./$HOME/.att_sys/system/setup.sh") #* passed
+        elif args.destroy:
+            os.system("echo 'rm -rf $HOME/.att_sys'") #* passed
+        elif args.demo:
+            demo()
+    except ConnectionError: # add other exceptions later
+        raise SystemExit(f"{C.RED+C.BOLD}> Connection Error.{C.END}")
+
+    except KeyboardInterrupt:
+        raise SystemExit(f"{C.RED+C.BOLD}> Keyboard Interrupt.{C.END}")
+
+    except SystemError:
+        raise SystemExit(f"{C.RED+C.BOLD}> System Error.{C.END}")
 
 
 if __name__ == "__main__":
