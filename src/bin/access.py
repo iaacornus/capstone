@@ -24,18 +24,20 @@ def access(home_):
             if not mark:
                 print(f"{C.BOLD}", end="")
                 verify = input(
-                    f"> Kindly input your 32 character password (case sensitive {3-trial} left): "
+                    f"> Kindly input your 32 character password ({3-trial} left): "
                 )
                 print(f"{C.END}", end="")
 
                 if verify != password:
                     trial += 1
                     console.log(
-                        f"[bold][red]> Password doesn't match.[/red]{3-trial} left.[/bold]"
+                        f"[bold][red][-] Password doesn't match.[/red]{3-trial} left.[/bold]"
                     )
+                    print(f"{C.BOLD}", end="")
                     send_new = input(
-                        f">>>Send a new temporary password to your email instead? [y/N]:"
+                        f"> Send a new temporary password to your email instead? [y/N]:"
                     )
+                    print(f"{C.END}", end="")
 
                     if send_new in ['y', 'Y']:
                         mark = True
@@ -52,22 +54,18 @@ def access(home_):
 
                 if verify_new != new_pass:
                     console.log(
-                        f"[bold][red]> Password doesn't match.[/red]{3-trial} left.[/bold]"
+                        f"[bold][red][-] Password doesn't match.[/red]{3-trial} left.[/bold]"
                     )
                     trial += 1
                     continue
                 else:
                     return True
         else:
-            try:
-                email.send("alert", school_name)
-            except ConnectionError:
-                pass # more error later
-            finally:
-                console.log(
-                    f"[bold red]> Too much error, signing off.[/bold red]"
-                )
-                os.system("systemctl poweroff")
+            email.send("alert", school_name)
+            console.log(
+                f"[bold red][-] Too much error, signing off.[/bold red]"
+            )
+            os.system("systemctl poweroff")
 
     except KeyboardInterrupt:
         os.system("systemctl poweroff")
