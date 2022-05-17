@@ -36,7 +36,10 @@ def main(HOME_, log_):
             ):
             if not os.path.exists(f"{HOME_}/repo"):
                 console.log(
-                    "> The repository is not setup. Setting up the repository."
+                    "[bold red][-] The repository is not setup.[/bold red]"
+                )
+                console.log(
+                    "[bold bright_cyan][+] Setting up the repository ...[/bold bright_cyan]"
                 )
                 student_data, teacher_data = sys_initiate.setup(school_name)
             else:
@@ -49,7 +52,9 @@ def main(HOME_, log_):
             if log_: # for verbose
                 student_names = []
                 for name in student_data["name_init"]:
-                    console.log(f"[green]> {name} appended ...[/green]")
+                    console.log(
+                        f"[green]> [/green][cyan]{name}[/cyan][green] appended ...[/green]"
+                    )
                     student_names.append(name)
             else: # this is more optimized and faster, thus preferred
                 student_names = [
@@ -63,7 +68,7 @@ def main(HOME_, log_):
             for student in student_names:
                 if log_:
                     console.log(
-                        f"[green]> Fetching data of {student} ...[/green]"
+                        f"[green]> Fetching data of [/green][cyan]{student}[/cyan] [green]...[/green]"
                     )
                 student_data_proc.append(student_data["student"])
 
@@ -114,5 +119,4 @@ def main(HOME_, log_):
                     school_name,
                     student
                 )
-
             continue

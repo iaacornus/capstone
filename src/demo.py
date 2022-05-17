@@ -42,7 +42,7 @@ def demo():
     # load the function with the parameters it needs, unpack the tuple
     # for the decoding.
     with console.status(
-            "[bold bright_cyan][+] Preparing function ...[/bold bright_cyan]",
+            "[bold bright_cyan][+] Function running ...[/bold bright_cyan]",
             spinner="simpleDots"
         ):
         face_recognition(

@@ -13,7 +13,6 @@ def update(setup):
     HOME = os.path.expanduser("~")
     console = Console()
 
-
     if access(HOME):
         with console.status("[bold]> Updating repository ...[/bold]."):
             if not os.path.exists(f"{HOME}/repo"):

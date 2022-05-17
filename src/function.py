@@ -10,17 +10,15 @@ from bin.access import access
 from misc.colors import Colors as C
 
 
-console = Console()
-
-
 def av_cams():
+    console = Console()
     index, cam_arr = 0, []
 
-    while True:
-        with console.status(
-                "[bold bright_cyan][+] Checking for available cameras ...[/bold bright_cyan]",
-                spinner="simpleDots"
-            ):
+    with console.status(
+            "[bold bright_cyan][+] Checking for available cameras ...[/bold bright_cyan]",
+            spinner="simpleDots"
+        ):
+        while True:
             cap = cv.VideoCapture(index)
 
             if not cap.read()[0]:
@@ -34,9 +32,12 @@ def av_cams():
         return False
     else:
         console.log(
-            f"[bold green]> All available cameras found:"
+            f"[bold green]> All available cameras found:[/bold green]"
         )
         for num, cam in enumerate(cam_arr):
+            console.log(
+                f"[green]Camera: [/green][cyan]{num}, {cam}[/cyan]"
+            )
             print(f"{num} {cam}")
         input("Press any key to clear ...")
         stdout.write("\033[K") # remove the messages
@@ -75,9 +76,8 @@ class System:
         try:
             if exists(f"{self.HOME}/repo"):
                 sys(f"rm -rf {self.HOME}/repo")
-            sys(
-                f"git clone --branch database {self.repo} && mv {HOME_}/capstone {HOME_}/repo"
-            )
+            sys(f"git clone --branch database {self.repo}")
+            sys(f"mv {self.HOME}/capstone {self.HOME}/repo")
             return True
 
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
