@@ -3,58 +3,41 @@ from os.path import expanduser
 import face_recognition as fr
 import numpy as np
 import cv2 as cv
+from rich.console import Console
 
 from function import draw_rectangle
+from misc.colors import Color as C
 
-
-def face_recognition(av_cams):
-    path_ = f"{expanduser('~')}/temporary/capstone/sample/"
+def face_recognition(
+        av_cams, cinit,
+        face_encodings_,
+        face_names_
+    ):
     if not av_cams:
-        pass
-    
-    # load face references from path_.
-    ref_face = fr.load_image_file(f"{path_}/test_1.png") # ezekiel lopez encoding
-    ref_face_2 = fr.load_image_file(f"{path_}/test_2.png") # laisie angela donato encoding
-    ref_face_3 = fr.load_image_file(f"{path_}/test_3.png") # nicole amber hennessey encoding
-    ref_face_4 = fr.load_image_file(f"{path_}/test_4.png") # raven gose encoding
-    ref_face_5 = fr.load_image_file(f"{path_}/test_5.png") # fiona leigh pagtama encoding
-    
-    #----------------------------------------------------------------
-    # encode the faces.
-    rf_encoding = fr.face_encodings(ref_face)[0]
-    rf_encoding2 = fr.face_encodings(ref_face_2)[0]
-    rf_encoding3 = fr.face_encodings(ref_face_3)[0]
-    rf_encoding4 = fr.face_encodings(ref_face_4)[0]
-    rf_encoding5 = fr.face_encodings(ref_face_5)[0]    
-    
+        raise SystemExit(
+            f"{C.BOLD+C.RED}> There are no available cameras.{C.END}"
+        )
+    path_ = f"{expanduser('~')}/temporary/capstone/sample/"
+
     # include the encoded faces in the list
-    known_fe = [
-        rf_encoding,
-        rf_encoding2,
-        rf_encoding3,
-        rf_encoding4,
-        rf_encoding5    
-    ]
-    known_fnames = [
-        "Ezekiel Lopez",
-        "Laisie Angela Donato",
-        "Nicole Amber Hennessey",
-        "Raven Gose",
-        "Fiona Leigh Pagtama",
-    ]
-        
-    # Initialize some variables
-    face_locations, face_encodings, face_names = [], [], []     
+    known_fe, known_fnames = [], []
+    # the names and the face encoding should the of the same size
+    for fe_, fnames_ in zip(face_encodings_, face_names_):
+        known_fe.append(fe_)
+        known_fnames.append(fnames_)
+
+    # initialize some variables
+    face_locations, face_encodings, face_names = [], [], []
     process_this_frame = True
-    
+
     # video capture
     vid = cv.VideoCapture(0)
 
-    while True:   
+    while True:
         # take frame and references from video capture
         _, frame = vid.read()
 
-        # resizing to smaller frame, to avoid much larger use of gpu and 
+        # resizing to smaller frame, to avoid much larger use of gpu and
         # memory, also to decrease the processing time convert to
         # another color.
         small_frame = cv.resize(frame, (0, 0), fx=0.25, fy=0.25)
@@ -63,7 +46,7 @@ def face_recognition(av_cams):
         rgb_small_frame = small_frame[:, :, ::-1]
 
         if process_this_frame:
-            # get all the face endcoding and location in the current 
+            # get all the face endcoding and location in the current
             # frame returned by the live camera input.
             face_locations = fr.face_locations(rgb_small_frame)
             face_encodings = fr.face_encodings(rgb_small_frame, face_locations)
