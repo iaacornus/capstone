@@ -32,7 +32,7 @@ def main(HOME_, log_):
 
         with console.status(
                 "[bold bright_cyan][+] Fetching data ...[/bold bright_cyan]",
-                spinner="bouncingBar"
+                spinner="simpleDots"
             ):
             if not os.path.exists(f"{HOME_}/repo"):
                 console.log(
@@ -44,7 +44,7 @@ def main(HOME_, log_):
 
         with console.status(
                 "[bold bright_cyan][+] Fetching student names ...[/bold bright_cyan]",
-                spinner="bouncingBar"
+                spinner="simpleDots"
             ):
             if log_: # for verbose
                 student_names = []
@@ -58,7 +58,7 @@ def main(HOME_, log_):
 
         with console.status(
                 "[bold bright_cyan]> Processing student data ...[/bold]",
-                spinner="bouncingBar"
+                spinner="simpleDots"
             ):
             for student in student_names:
                 if log_:
@@ -71,7 +71,7 @@ def main(HOME_, log_):
         if not os.path.exists(encoding_path):
             with console.status(
                     "[bold bright_cyan]> Creating module for encoding ...[/bold bright_cyan]",
-                    spinner="bouncingBar"
+                    spinner="simpleDots"
                 ):
                 # initiate the file and add the needed import
                 os.system(

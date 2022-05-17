@@ -14,7 +14,7 @@ def demo():
 
     with console.status(
             "[bold bright_cyan][+] Loading user images ...[/bold bright_cyan]",
-            spinner="bouncingBar"
+            spinner="simpleDots"
         ):
         # load face references from path_.
         ref_face = fr.load_image_file(f"{path_}/test_1.png") # ezekiel lopez encoding
@@ -27,7 +27,7 @@ def demo():
 
     with console.status(
             "[bold bright_cyan][+] Encoding user faces ...[/bold bright_cyan]",
-            spinner="bouncingBar"
+            spinner="simpleDots"
         ):
         #----------------------------------------------------------------
         # encode the faces.
@@ -43,7 +43,7 @@ def demo():
     # for the decoding.
     with console.status(
             "[bold bright_cyan][+] Preparing function ...[/bold bright_cyan]",
-            spinner="bouncingBar"
+            spinner="simpleDots"
         ):
         face_recognition(
             av_cams_,

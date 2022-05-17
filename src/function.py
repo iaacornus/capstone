@@ -19,7 +19,7 @@ def av_cams():
     while True:
         with console.status(
                 "[bold bright_cyan][+] Checking for available cameras ...[/bold bright_cyan]",
-                spinner="bouncingBar"
+                spinner="simpleDots"
             ):
             cap = cv.VideoCapture(index)
 

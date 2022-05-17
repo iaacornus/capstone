@@ -95,7 +95,7 @@ class Email:
         try:
             with console.status(
                 "[bold bright_cyan][+] Sending email ...[/bold bright_cyan]",
-                spinner="bouncingBar"
+                spinner="simpleDots"
             ):
                 context = ssl.create_default_context()
 
