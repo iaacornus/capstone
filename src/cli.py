@@ -2,6 +2,8 @@ import argparse
 import sys
 import os
 
+from rich.console import Console
+
 from main import main
 from function import System
 from demo import demo
@@ -10,6 +12,7 @@ from misc.colors import Colors as C
 
 
 def program_options():
+    console = Console()
     description = """\
         This is a program designed to interact with the TapTap, an RFID system designed by Capstone
         Group 5.
@@ -81,13 +84,20 @@ def program_options():
         elif args.demo:
             demo()
     except ConnectionError: # add other exceptions later
-        raise SystemExit(f"{C.RED+C.BOLD}> Connection Error.{C.END}")
-
+        console.log(
+            "[bold red][-] Connection error.[/bold red]"
+        )
+        raise SystemExit
     except KeyboardInterrupt:
-        raise SystemExit(f"{C.RED+C.BOLD}> Keyboard Interrupt.{C.END}")
-
+        console.log(
+            "[bold red][-] Keyboard interrupt.[/bold red]"
+        )
+        raise SystemExit
     except SystemError:
-        raise SystemExit(f"{C.RED+C.BOLD}> System Error.{C.END}")
+        console.log(
+            "[bold red][-] System error.[/bold red]"
+        )
+        raise SystemExit
 
 
 if __name__ == "__main__":
