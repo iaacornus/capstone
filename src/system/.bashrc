@@ -10,7 +10,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-export PATH
+export PATH="$PATH:$HOME/.att_sys/"
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -24,13 +24,11 @@ if [ -d ~/.bashrc.d ]; then
 	done
 fi
 
-PS1="\u@\h ❯ "
+PS1="\u@\h:\w $ "
 export PS1
 
 PROMPT_DIRTRIM=2
 
-alias update="bash $HOME/.att_sys/system/utils/update.sh"
-alias setup="bash $HOME/.att_sys/system/setup.sh"
-alias documentation-help="cat $HOME/.att_sys/help.txt"
+alias taptap="python cli.py"
 
 unset rc

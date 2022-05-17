@@ -1,3 +1,517 @@
+commit 08728ed3d6af99f7886b8fdae556b8e3ad18f553
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:17:52 2022 +0800
+
+    add av_cam function to simplify face_recognition.py
+
+commit 031bb3918d0aaac6cd49384bfc2f3929fe68e69b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:17:14 2022 +0800
+
+    another rfid build
+
+commit 4948218e6cae07badc0c8a0dcbc05ff45b81182e
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:16:54 2022 +0800
+
+    face sample for testing
+
+commit fa50446f592f10175c1251c894f9ea27c383fcec
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:16:42 2022 +0800
+
+    successful face recognition build
+
+commit 8912de58f0fe29dbcfb980a31292cc2444093f2b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 15:16:22 2022 +0800
+
+    face recognition pycache
+
+commit 3c4e3230dc286259f5823b6630616e508262190e
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 12:20:55 2022 +0800
+
+    fixed lock mechanism
+
+commit 6e282724d21103bf438c2e87b1c74ff79fa62129
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 12:15:54 2022 +0800
+
+    upp
+
+commit 96edca1570255437b786fe3696a9932c6ccc31a5
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 12:01:14 2022 +0800
+
+    fixed while loop
+
+commit 19568e5ed5dc91e47dc956409b77e02d927033a0
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 11:28:47 2022 +0800
+
+    optimized algorithm
+
+commit 1473b0c7320b6758a2f359c690015d3cf3425093
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 10 10:35:55 2022 +0800
+
+    Create main.cpp
+
+commit c916ec11f5453df8c08dbdfce56208f55bccbfc2
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 01:16:57 2022 +0800
+
+    changed exec env to specifiers
+
+commit f2ccbe8a081c51fcfa44dbbaaeea003b04fbe729
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:46:00 2022 +0800
+
+    initial codebase
+
+commit 33dc8651f092e5e13b83630b9249160e313e2b1c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:45:44 2022 +0800
+
+    add testing py file for fr
+
+commit c7fb7431596817e7d64d9e5ba02b90d9121ac7eb
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:14:30 2022 +0800
+
+    add python image library (PIL) -- pillow as deps
+
+commit 1a77c7460088380955888877f326eeecf9425cd1
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:14:10 2022 +0800
+
+    add obama faces as another ref
+
+commit 1f1fb87451955279afd0c5eb70e098fa20cc03cf
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:13:57 2022 +0800
+
+    add joe biden faces as references
+
+commit 9a0cba4fe1a186bc2a5961be460ba9568a17f225
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Wed May 4 00:08:23 2022 +0800
+
+    add sample faces for testing
+
+commit de938512623ebb2c324946d23f67a906ba8d891e
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:44:48 2022 +0800
+
+    add back opencv2 for coupling with face_recognition module
+
+commit 789712fa9146673f0e17d8c51013ffb1c335aa3f
+Merge: 756cbaf be696d8
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Tue May 3 23:37:36 2022 +0800
+
+    Merge pull request #2 from testno0/cli
+    
+    mini fixes, preperation for face recognition devel
+
+commit be696d8d42bddcbd177afcfcdcf43870a77ea059
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:34:00 2022 +0800
+
+    add the command logs in the virtual env used
+
+commit 81bc86ba2af5b0096180b6dea23a6bc012b4b3e8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:33:23 2022 +0800
+
+    add the new commits
+
+commit 1abefd59c0e92ee9d749c9d8d36febdce101cc51
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:32:01 2022 +0800
+
+    simplified the src code moving into the app folder
+
+commit 2b64a6b05571fddc7f620e431d54d31fa13868bf
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Tue May 3 23:31:30 2022 +0800
+
+    add face_recognition as requirements and removed cv2
+
+commit 756cbaf5d9ee453a795ba6ca6e4267b0b4d5bbe0
+Merge: b6acf48 6424837
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Sun May 1 21:37:09 2022 +0800
+
+    Merge pull request #1 from testno0/cli
+    
+    cli implementation and other tests from test-v1-beta merged to devel branch for further testing and coding as well as implementation of other features
+
+commit 6424837a3bfddb1b63959a0552de4f4afe90e819
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:33:01 2022 +0800
+
+    the loop bug were removed, the trial limit were also barred into 3
+    
+    the feedback were also changed
+
+commit 0d7eea85a30488ef36919ba94ee14db4e392cbe8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:32:23 2022 +0800
+
+    satisfied the requirements of imports from code_email and function.py
+
+commit 37d76b8969274a929094033b5fe70d074ccb0668
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:30:24 2022 +0800
+
+    tested and add commands
+
+commit 476f4461b8cc05de87f72255b75d1b0b9bcf55df
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:05:24 2022 +0800
+
+    changed the message if the student is present
+
+commit 8a91a492c273e724e230482e8f36cc0fc30a889b
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:05:01 2022 +0800
+
+    fixed the system structure and add chmod to the script to easily execute the script
+
+commit 95c0ef822e1ccbb95a6532a3dd9c1219b325a96a
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:03:55 2022 +0800
+
+    used > redirection to avoid errors
+
+commit fe0a08a097df30a50656fe88984d3073698b8bbf
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 21:03:27 2022 +0800
+
+    changed the dir of alias
+
+commit 5a571de6825076bceb3b6046633dba54951c1a86
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:49:16 2022 +0800
+
+    add info about merging plan, and documentation of cli
+
+commit 3d91f5f95e7582d972367f9d01bb5a13c7f10123
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:48:48 2022 +0800
+
+    reexproted the logs as of may 01, 2022 @ 20:48
+
+commit f31e9cddbb5751d93f4d236b3c3f85f1e099fdb1
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:30:38 2022 +0800
+
+    fixed the output as well as exception handling, and variable ref
+
+commit 71dadfe6b5feba0b2dc948cca4290a7f77eadcbc
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:29:29 2022 +0800
+
+    fixed the setup() function
+    
+    other information were instead retrieved from the user file info instead of being a parameter
+
+commit d4f53bde7fa1fca58c14de78c0a925585dfc3b6a
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:28:23 2022 +0800
+
+    fixed imports and conditions
+
+commit af0959f35eb4c1d4dbe560016115a4945d135f28
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:26:55 2022 +0800
+
+    removed other entries
+
+commit caab29e7867b022f5a9076a6cbb315a971be8d69
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:24:17 2022 +0800
+
+    removed tests folder since it is nonsensical
+
+commit 58e37cd49c8195a6e8fae9f6943382b91e2a4f5e
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 20:23:40 2022 +0800
+
+    aliased python cli.py to taptap instead of creating a setup.py script
+
+commit a6551f4c70df4fd1722582bf44d18a32d236939b
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:50:06 2022 +0800
+
+    moved the user setup part from setup.sh
+
+commit 19f03e5faa4243b37dc17291651d4a169c3cc459
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:47:29 2022 +0800
+
+    splited into user_setup.sh and pre_setup.sh
+
+commit adca9b4f18cde381634c2ae6c95e2763d6064ce4
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:47:07 2022 +0800
+
+    moved into src/
+
+commit 2a207b345f5b87a7f47c18e1a7e79fd858cafef0
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:46:26 2022 +0800
+
+    turned into function, so can be easily called from cli.py
+
+commit 0833ccd355942f2deceaf6b001b9949bfd3aa60e
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:45:59 2022 +0800
+
+    removed the .bashrc, since alias aren't needed anymore as the options were unified in cli.py
+
+commit 533edcc6d6e246d22305e124ac9eca19e90f1281
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:45:30 2022 +0800
+
+    used for -s option in cli.py
+
+commit 530ce099ded8022f38df86f59aa13760811878f8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:45:07 2022 +0800
+
+    isolated the system setup from user setup, due to the options made in cli program
+    
+    since having to redo all the steps may brick the system and is too trivial and troublesome
+
+commit e68e9528852c84df987d8f8cc29e5d6c7471e5de
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:44:00 2022 +0800
+
+    moved to src/ instead of src/algorithm
+    
+    this was done for easier navigation of the application
+
+commit 59e7dd68fa0c1f7458480e4b72627208011a2829
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:43:21 2022 +0800
+
+    created cli for the program
+
+commit dfade36107847e7643f879761d1161f041811d3c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:19:05 2022 +0800
+
+    add another dir for .gitignore
+
+commit da66dbf2e046eb786d91eb4d3fe46d889bd35f57
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:18:05 2022 +0800
+
+    this was added to allow relative imports
+
+commit 215a208a96b9fad34440e4c178c906385f6f9335
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 19:17:39 2022 +0800
+
+    fixed imports
+
+commit 1b20af51f53f08b5dffdbc87b466d7e42f08b6c8
+Author: testno0 <96910593+testno0@users.noreply.github.com>
+Date:   Sun May 1 18:45:01 2022 +0800
+
+    turned into function
+
+commit 2cb6adaa4884cb442d1f3e25dd807621abfe508c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 01:37:51 2022 +0800
+
+    add the pycache
+
+commit 5ad17c5c643546610cad5a4eda75a7fd5188cc6e
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 01:37:13 2022 +0800
+
+    put the loop into try, else statement to further enforce the security
+
+commit f974397be4097fdc6d535ca2204f0ea2fd6ac2ca
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 01:36:24 2022 +0800
+
+    add alert msg, and changed some of the formatting and conducted a test
+
+commit c96207ec81fd34b0dd01bda67cd48483b034941d
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Sun May 1 01:36:00 2022 +0800
+
+    add the test log of access.py
+
+commit b6acf4811cd8df50a1c110bb6b6e46e31db95be2
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:55:11 2022 +0800
+
+    used the github template of .gitignore and add pycache folder
+
+commit 9c65e3e05f5de5ca1d00311cf4ea1d513c87a8b2
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:52:58 2022 +0800
+
+    fixed the sys.path
+
+commit d76baa8a25cfe5bd6b9856374371b581aa06bdfe
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:52:24 2022 +0800
+
+    removed function, that the script can catch the value
+
+commit fb8697c08552eaaa4b64d796914689bf89befa9a
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:51:41 2022 +0800
+
+    fixed bash to python, it was also discovered that the systemd setup part is failing
+
+commit dfa45f8c4c3864e3bdcc93f03622f2370daead05
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:50:52 2022 +0800
+
+    output of setup.sh
+
+commit d7eaf989609261ab969b3da4471cee6b4a4e72cd
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:35:26 2022 +0800
+
+    removed the accidental import
+
+commit 1c4fca9076834ba29b3b4414f410e0c13c478c0e
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:35:07 2022 +0800
+
+    print was used instead of return to store the variable in bash script
+
+commit e2cefe80c61cfc3decb3eef9763d7d714ac776b8
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:34:39 2022 +0800
+
+    evaluators were fixed, as well as feedbacks
+
+commit 08363d2f7e30bb587b02b74d2b619b3ce4aca75a
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:21:17 2022 +0800
+
+    replaced with update.py
+
+commit 53a3ede30965ccc42b39f2f13e2e283f4e50b13d
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:20:59 2022 +0800
+
+    fixed the formatting
+
+commit be3887c9a75c2d69dd723a5c39295321ef1bc9b1
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:20:48 2022 +0800
+
+    changed the sys.append
+
+commit cad839a79ce799de8c82c02d6a13bcc0c1494c18
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 23:20:30 2022 +0800
+
+    removed update.sh and replaced with update.py
+
+commit 33797d25deb59cd3691c7c7dcdad74305d9eb813
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 22:55:59 2022 +0800
+
+    fixed errors
+
+commit 3ebe813fec22ff925dd15fea725121f4f283072c
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 22:55:24 2022 +0800
+
+    add the other dir to their path, for successful import
+
+commit d166d28b470c4105402f3137e9c7f8fd8cb25930
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:59:29 2022 +0800
+
+    synchronized with the changes from setup.sh and code_email.py
+
+commit a5b177f7bb614c9a4f9079c9d8166ffa35c03d21
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:59:07 2022 +0800
+
+    add prompt for school name
+
+commit fa4020f9c9c32b47772878cfe243f48f39e7b3de
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:58:41 2022 +0800
+
+    merged the 2 email functions, and add more information in the msg
+    
+    the informations included are school name, parent, student and teachers name, as well as the time that the student logged in
+
+commit b2f2be4bd0f12e29bf6b5b97efb0015085ddcfa7
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:31:16 2022 +0800
+
+    enforced the password access, not foolproof, can be easily wrecked by non idiots user, but since the user will be idiots, it should work
+
+commit 0e1ac1eac3001496e280ee6116f0922426efef91
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:14:34 2022 +0800
+
+    add password generator for setup.
+
+commit 3f1b4e3dd667900267f6eb17857da47bd15a2c4f
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:14:14 2022 +0800
+
+    initial src code, integrated the secure access
+
+commit e54593bd77bafff86df97a59c13276c4a8d04072
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 21:11:52 2022 +0800
+
+    improved the accessing algorithm
+    
+    add backup, same concept with forgot password. enforced the trial limit to 3
+
+commit b03b9d6d6b4dc4b2a069419948bb600634d0d74f
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 20:49:14 2022 +0800
+
+    fixed the initialized setup script
+    
+    fixed the dir of the src codes, improved the user setup, and fixed the secure setup
+
+commit 8c2ac64cac32744c7e917345de7c497b8ff2a218
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 20:46:27 2022 +0800
+
+    modified the bashrc
+    
+    replaced the alias with new alias, fix PS1 to more friendly prompt, and removed the other functions
+
+commit 754cb51a61493acc637fa1ccb6c8a5be63ef5e45
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 20:41:28 2022 +0800
+
+    add bashrc to the system
+
+commit 2f37ea47eed360bc7ad8d3454421392d1400bf13
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 19:59:24 2022 +0800
+
+    export git log to logs file for traces and documentation
+
+commit c3b42ef8925a84f25b0a1354ce2cf09394d0bea9
+Author: testno0 <jaaaderang@gmail.com>
+Date:   Thu Apr 28 19:59:08 2022 +0800
+
+    announced the start of phase 2
+
 commit b4f73ced94d987ae73ee54c8034f342aa16db764
 Author: testno0 <jaaaderang@gmail.com>
 Date:   Thu Apr 28 19:56:08 2022 +0800

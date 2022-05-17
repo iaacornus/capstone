@@ -130,7 +130,3 @@ dmypy.json
 
 # cache folder
 */__pycache__/*
-
-# another pycache
-bin/__pycache__/code_email.cpython-310.pyc
-

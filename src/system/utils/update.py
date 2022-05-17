@@ -1,25 +1,36 @@
 import sys
-sys.path.insert(0, "..")
+sys.path.append("..")
 
 import os
 
-from bin.access import main
-from misc.colors import colors
+from rich.console import Console
 
-HOME = os.path.expanduser('~')
-C = colors()
+from bin.access import access
+from misc.colors import colors as C
 
-ret = main()
 
-if ret is True:
-    if os.path.exists(f"{HOME}/repo") is True:        
-        os.system("git clone https://github.com/testno0/repo $HOME/ &> /dev/null")
+def update(setup):
+    HOME = os.path.expanduser("~")
+    console = Console()
+
+
+    if access(HOME):
+        with console.status("[bold]> Updating repository ...[/bold]."):
+            if not os.path.exists(f"{HOME}/repo"):
+                console.log("[bold red][-] Local repository not found[/bold red]")
+                console.log(
+                    "[bold bright_cyan][+] Cloning the repository.[/bold bright_cyan]"
+                )
+                os.system(
+                    f"git clone https://github.com/testno0/repo {HOME} &> /dev/null"
+                )
+            else:
+                console.log("[bold bright_cyan][+] Pulling updates ...[/bold bright_cyan]")
+                os.system(f"cd {HOME}/repo/ && git pull")
     else:
-        print(f"{C.BOLD+C.GREEN} User system setup passed.{C.END}")
-        os.system("cd {HOME}/repo/ && git pull")
-else:
-    # false phase, pass : #? passing
-    os.system("rm -rf {HOME}/repo/")
-    
-    print(f"{C.BOLD+C.RED}> Verification error, repository was nuked by system for security.{C.END}")            
-    #systemctl poweroff
+        os.system(f"rm -rf {HOME}/repo/")
+        console.log("[bold red][-] Verification error.\n> Nuking the repository ...[/bold red]")
+        os.system("systemctl poweroff")
+
+if __name__ == "__main__":
+    update()
