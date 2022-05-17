@@ -9,7 +9,7 @@ from function import draw_rectangle
 from misc.colors import Colors as C
 
 def face_recognition(
-        av_cams, cinit,
+        av_cams,
         face_encodings_,
         face_names_
     ):
@@ -32,7 +32,6 @@ def face_recognition(
 
     # video capture
     vid = cv.VideoCapture(0)
-
     while True:
         # take frame and references from video capture
         _, frame = vid.read()
@@ -87,7 +86,7 @@ def face_recognition(
                         left, top,
                         right, bottom
                     )
-                    return False
+                    return name
         # display the resulting image
         cv.imshow("Video", frame)
 
