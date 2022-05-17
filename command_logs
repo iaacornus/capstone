@@ -1,999 +1,397 @@
-    1  sudo dnf update
-    2  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    3  sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-    4  dnf check-update
-    5  sudo dnf install code
-    6  ls
-    7  git clone https://github.com/testno0/capstone
-    8  git clone https://github.com/iaacornus/workstation_setup
-    9  cd workstation_setup/
-   10  ls
-   11  cd
-   12  source .bashrc
-   13  clear
-   14  cd capstone/
-   15  git pull 
-   16  cd
-   17  git clone https://github.com/iaacornus/project_repo
-   18  cd
-   19  clear
-   20  git pull
-   21  cd capstone/
-   22  git pull
-   23  git config --global credential.helper store
-   24  cd
-   25  git clone https://github.com/iaacornus/project_repo
-   26  git config --global credential.helper store
-   27  git pull
-   28  cd capstone/
-   29  git pull
-   30  rm -rf capstone/
-   31  git clone -b devel https://github.com/testno0/capstone
-   32  cd capstone/
-   33  git status
-   34  git add src/algorithm/function.py 
-   35  git add .
-   36  git status
-   37  git commit -m "improved syntax and formatting"
-   38  cd
-   39  git config --global user.email "testno0"
-   40  git config --global user.name "testno0"
-   41  git config --global user.email "jaaaderang@gmail.com"
-   42  clear
-   43  git config user.email
-   44  git config user.name
-   45  cd capstone/p
-   46  cd capstone/
-   47  git status
-   48  git commit -m "improved syntaxes and formatting"
-   49  clear
-   50  git add README.md 
-   51  git status 
-   52  git commit -m "add instructions for install"
-   53  cd capstone/
-   54  ls
-   55  cd
-   56  sudo dnf install python3-pip
-   57  clear
-   58  cd capstone/
-   59  pip install -r requirements.txt 
-   60  cd
-   61  wget https://raw.githubusercontent.com/testno0/capstone/devel/src/algorithm/function.py
-   62  ls
-   63  cat function.py 
-   64  clear
-   65  nano .bashrc
-   66  source .bashrc
-   67  python access.py
-   68  python $PATH/access.py
-   69  access.py
-   70  nano .bashrc
-   71  source .bashrc
-   72  python access.py
-   73  access.py
-   74  nano .bashrc
-   75  source .bashrc
-   76  access.py
-   77  python access.py
-   78  clear
-   79  nano .bashrc
-   80  clear
-   81  nano .bashrc
-   82  source .bashrc
-   83  python access.py
-   84  nano .bashrc
-   85  cd src/system/
-   86  ls
-   87  mkdir utils
-   88  cd utils/
-   89  touch update.sh
-   90  touch init.sh
-   91  touch password_gen.py
-   92  git status
-   93  git add requirements.txt 
-   94  git commit -m "changed opencv2 to opencv-python"
-   95  clear
-   96  git history
-   97  git log
-   98  clear
-   99  touch logs
-  100  git log > logs
-  101  clear
-  102  git status
-  103  git add README.md 
-  104  git commit -m "announced the start of phase 2"
-  105  git add logs 
-  106  git commit -m "export git log to logs file for traces and documentation"
-  107  clear
-  108  touch test.py
-  109  rm test.py 
-  110  touch test.sh
-  111  nano test.sh 
-  112  bash test.sh 
-  113  nano test.sh 
-  114  bash test.sh 
-  115  clear
-  116  cd
-  117  git status
-  118  cd capstone/
-  119  git status
-  120  clear
-  121  rm test.sh 
-  122  cp ~/.bashrc ~/capstone/src/system/
-  123  git status
-  124  git add src/system/.bashrc 
-  125  git commit -m "add bashrc to the system"
-  126  echo \u
-  127  echo $USER
-  128  clear
-  129  git status
-  130  git add src/system/.bashrc 
-  131  git commit -m "modified the bashrc" -m "replaced the alias with new alias, fix PS1 to more friendly prompt, and removed the other functions"
-  132  clear
-  133  git status
-  134  git add src/system/setup.sh 
-  135  git commit -m "fixed the initialized setup script" -m "fixed the dir of the src codes, improved the user setup, and fixed the secure setup"
-  136  git status
-  137  clear
-  138  git status
-  139  git diff
-  140  clear
-  141  git status
-  142  git add src/bin/access.py 
-  143  git commit -m "improved the accessing algorithm" -m "add backup, same concept with forgot password. enforced the trial limit to 3"
-  144  git status
-  145  git add src/system/utils/
-  146  git add src/system/utils/update.sh 
-  147  git status
-  148  git restore --staged src/system/*
-  149  git status
-  150  git add src/system/utils/update.sh 
-  151  git commit -m "initial src code, integrated the secure access"
-  152  git add src/system/utils/password_gen.py 
-  153  git commit -m "add password generator for setup."
-  154  git status
-  155  cd
-  156  cd capstone/ && git pull
-  157  groupadd hello
-  158  sudo groupadd hello
-  159  cd
-  160  mkdir test
-  161  sudo chown :hello $HOME/test
-  162  sudo chmod g=r,o= $HOME/.att_sys
-  163  sudo chmod g=r,o= $HOME/test
-  164  sudo chmod g+s $HOME/.att_sys
-  165  sudo chmod g+s $HOME/test
-  166  ls
-  167  cat test/
-  168  cd test/
-  169  clear
-  170  sudo chown :hello $HOME/test
-  171  cd
-  172  sudo chown :hello $HOME/test
-  173  cd capstone/
-  174  git status
-  175  git diff
-  176  cd
-  177  cd test/
-  178  git clone https://github.com/testno0/capstone > /dev/null
-  179  ls
-  180  rm -rf capstone/
-  181  git clone https://github.com/testno0/capstone >> /dev/null
-  182  rm -rf capstone/
-  183  git clone https://github.com/testno0/capstone | /dev/null
-  184  clear
-  185  rm -rf capstone/
-  186  git clone https://github.com/testno0/capstone &>/dev/null
-  187  ls
-  188  rm -rf capstone/
-  189  git clone https://github.com/testno0/capstone &>/dev/null
-  190  rm -rf capstone/
-  191  git clone https://github.com/testno0/capstone &> /dev/null
-  192  clear
-  193  cd
-  194  ls
-  195  cd capstone/
-  196  git status
-  197  git commit src/system/utils/update.sh 
-  198  git add src/system/utils/update.sh 
-  199  git commit src/system/utils/update.sh 
-  200  git diff
-  201  git commit -m "enforced the password access, not foolproof, can be easily wrecked by non idiots user, but since the user will be idiots, it should work"
-  202  git status
-  203  git add src/bin/access.py 
-  204  git restore --staged 
-  205  git restore --staged src/bin/access.py
-  206  git status
-  207  git add src/bin/code_email.py 
-  208  git commit -m "merged the 2 email functions, and add more information in the msg" -m "the informations included are school name, parent, student and teachers name, as well as the time that the student logged in"
-  209  git add src/system/setup.sh 
-  210  git commit -m "add prompt for school name"
-  211  git add src/bin/access.py 
-  212  git commit -m "synchronized with the changes from setup.sh and code_email.py"
-  213  clear
-  214  git status
-  215  git push origin devel 
-  216  clear
-  217  git config --global credential.helper store
-  218  git pull
-  219  clear
-  220  git config --global credential.helper store
-  221  cd
-  222  git config --global credential.helper store
-  223  clear
-  224  /bin/python
-  225  clear
-  226          elif access == "student entry" 
-  227  ls
-  228  cd
-  229  ls
-  230  ls -lah
-  231  cd .bash
-  232  cd .bashrc/
-  233  ls
-  234  ls -lah
-  235  mv .bashrc ~
-  236  mv .bashrc ~/.bashrcs
-  237  cd
-  238  rm -rf .bashrc
-  239  mv .bashrcs .bashrc
-  240  source .bashrc
-  241  clear
-  242  ls
-  243  cd
-  244  rm -rf capstone/
-  245  git clone -b devel https://github.com/testno0/capstone
-  246  cd capstone/
-  247  ls
-  248  cd src/
-  249  ls
-  250  cd system/
-  251  ls
-  252  bash setup.sh 
-  253  clear
-  254  cd
-  255  ls
-  256  cd devel/capstone/
-  257  ls
-  258  cd src/system/
-  259  ls
-  260  bash setup.sh 
-  261  clear
-  262  echo pwd
-  263  pwd
-  264  ls
-  265  bash setup.sh 
-  266  clear
-  267  bash setup.sh 
-  268  clearclear
-  269  clear
-  270  bash setup.sh 
-  271  cd capstone/
-  272  ls
-  273  cd src/system/
-  274  ls
-  275  bash setup.sh 
-  276  cd
-  277  git pull
-  278  cd capstone/
-  279  git pull
-  280  cd
-  281  mkdir devel
-  282  cd devel/
-  283  git clone -b devel https://github.com/testno0/capstone
-  284  cd capstone/
-  285  cd
-  286  rm -rf capstone/
-  287  git clone -b devel https://github.com/testno0/capstone
-  288  systemctl status respository-update.service
-  289  cd
-  290  rm -rf capstone/
-  291  git clone -b devel https://github.com/testno0/capstone
-  292  cd devel/capstone/
-  293  ls
-  294  cd src/system/utils/
-  295  ls
-  296  bash update.sh 
-  297  cd
-  298  cd devel/capstone/
-  299  ls
-  300  cd src/
-  301  ls
-  302  python bin/access.py 
-  303  git status
-  304  git add .
-  305  git status
-  306  git restore --staged bin/__pycache__/code_email.cpython-310.pyc
-  307  git status
-  308  git restore --staged misc/__pycache__/*
-  309  git status
-  310  git restore *
-  311  git status
-  312  git restore --staged *
-  313  gits status
-  314  git status
-  315  git add algorithm/.
-  316  git status
-  317  git add bin/.
-  318  git commit -m "add the other dir to their path, for successful import"
-  319  git add system/.
-  320  git restore --staged *
-  321  git status
-  322  git add system/setup.sh 
-  323  git commit -m "fixed errors"
-  324  pwd
-  325  cd system/utils/
-  326  ls
-  327  bash update.sh 
-  328  pwd
-  329  bash update.sh 
-  330  clear
-  331  ls
-  332  echo
-  333  bash update.sh 
-  334  clear
-  335  bash update.sh 
-  336  pwd
-  337  bash update.sh 
-  338  python $HOME/devel/capstone/src/bin/access.py
-  339  ls
-  340  mv update.sh update.py
-  341  git statis
-  342  git status
-  343  git add update.
-  344  git commit -m "rewrite into python file, since $ret can't make interactive eval of access.py"
-  345  clear
-  346  python update.py 
-  347  clear
-  348  cd ..
-  349  ls
-  350  bash setup.sh 
-  351  /bin/python /home/test/devel/capstone/src/bin/access.py
-  352  pwd
-  353  cd src/misc/
-  354  touch __init__.py
-  355  /bin/python /home/test/devel/capstone/src/bin/access.py
-  356  clear
-  357  /bin/python /home/test/devel/capstone/src/bin/access.py
-  358  cd misc
-  359  ls
-  360  cd ..
-  361  cd misc/
-  362  touch __init__.py
-  363  /bin/python
-  364  c;ear
-  365  clear
-  366  ls
-  367  cd devel/capstone/
-  368  ls
-  369  cd src/
-  370  git status
-  371  git add system/utils/update.py 
-  372  git diff
-  373  git commit -m "removed update.sh and replaced with update.py"
-  374  git status
-  375  git add bin/access.py 
-  376  git commit -m "changed the sys.append"
-  377  git add system/utils/password_gen.py 
-  378  git commit -m "fixed the formatting"
-  379  git add system/utils/update.sh 
-  380  git commit -m "replaced with update.py"
-  381  git status
-  382  git push origin devel 
-  383  ls
-  384  bash system/setup.sh 
-  385  ls
-  386  cd system/utils/
-  387  ls
-  388  bash test.sh 
-  389  nano test.sh 
-  390  bash test.sh 
-  391  nano test.sh 
-  392  bash test.sh 
-  393  clear
-  394  bash test.sh 
-  395  clear
-  396  rm test.sh 
-  397  ls
-  398  cd ..
-  399  ls
-  400  git status
-  401  git add setup.sh 
-  402  git commit -m "evaluators were fixed, as well as feedbacks"
-  403  git add utils/password_gen.py 
-  404  git commit -m "print was used instead of return to store the variable in bash script"
-  405  git add utils/update.py 
-  406  git commit -m "removed the accidental import"
-  407  clear
-  408  git push origin devel 
-  409  ls
-  410  bash setup.sh 
-  411  bash $HOME/.att_sys/system/utils/update.py
-  412  python $HOME/.att_sys/system/utils/update.py
-  413  clear
-  414  cd
-  415  ls
-  416  cd capstone/
-  417  cd
-  418  rm -rf capstone/
-  419  git clone https://github.com/testno0/casptone
-  420  git clone -b devel https://github.com/testno0/capstone
-  421  cd
-  422  ls
-  423  cd capstone/
-  424  ls
-  425  cd src/system/utils/
-  426  ls
-  427  systemctl status repository-check.service
-  428  clear
-  429  cd
-  430  nano test.sh
-  431  bash test
-  432  bash test.sh 
-  433  cd
-  434  clear
-  435  ls
-  436  rm -rf capstone/
-  437  git clone -b devel https://github.com/testno0/capstone
-  438  rm -rf capstone/
-  439  git clone -b devel https://github.com/testno0/capstone
-  440  clear
-  441  /bin/python /home/test/devel/capstone/test.py
-  442  bash test.sh 
-  443  cd devel/
-  444  cd capstone/src/
-  445  ls
-  446  python bin/access.py 
-  447  clear
-  448  clear
-  449  python bin/access.py 
-  450  clear
-  451  python bin/access.py 
-  452  /bin/python
-  453  clear
-  454  /bin/python /home/test/devel/capstone/src/bin/access.py
-  455  cd devel/capstone/
-  456  ls
-  457  git status
-  458  status
-  459  clear
-  460  git status
-  461  rm .git/index
-  462  git status
-  463  git diff
-  464  clear
-  465  git pull
-  466  cd ..
-  467  rm -rf capstone/
-  468  git clone -b test-v1-beta https://github.com/testno0/capstone
-  469  cd capstone/
-  470  python src/bin/access.py 
-  471  clear
-  472  python src/bin/access.py 
-  473  cd devel/capstone/
-  474  python src/bin/access.py 
-  475  clear
-  476  python src/bin/access.py 
-  477  ls
-  478  python -n src/*
-  479  python -m src/*
-  480  cd src/
-  481  ls
-  482  python -m algorithm.main
-  483  python -m algorithm.function
-  484  python -m algorithm.main
-  485  python main.py
-  486  ls
-  487  python algorithm/main.py 
-  488  cd ..
-  489  ls
-  490  cd src/
-  491  python -m bin.code_email
-  492  python algorithm/main.py 
-  493  pwd
-  494  touch __init__.py
-  495  python algorithm/main.py 
-  496  python bin/access.py 
-  497  clear
-  498  python bin/access.py 
-  499  python algorithm/main.py 
-  500  clear
-  501  ls
-  502  git status
-  503  cd ..
-  504  ls
-  505  cd ..
-  506  ls
-  507  mkdir cli
-  508  cd cli/
-  509  git clone -b test-v1-beta https://github.com/testno0/capstone
-  510  clear
-  511  /bin/python /home/test/devel/capstone/src/bin/access.py
-  512  pwd
-  513  cd src/
-  514  touch bin/__init__.py
-  515  /bin/python /home/test/devel/capstone/src/bin/access.py
-  516  /bin/python /home/test/devel/capstone/src/bin/code_email.py
-  517  clear
-  518  touch misc/__init__.py
-  519  /bin/python /home/test/devel/capstone/src/bin/access.py
-  520  clear
-  521  /bin/python /home/test/devel/capstone/src/bin/access.py
-  522  clear
-  523  /bin/python /home/test/devel/capstone/src/bin/access.py
-  524  clear
-  525  /bin/python /home/test/devel/capstone/src/bin/access.py
-  526  touch algorithm/__init__.py
-  527  pwd
-  528  touch cli.py
-  529  rm -rf algorithm/
-  530  cd devel/cli/capstone/
-  531  ls
-  532  cd src/
-  533  cd
-  534  nano .bashrc
-  535  source .bashrc
-  536  cd devel/cli/capstone/
-  537  cd src/
-  538  git status
-  539  git diff
-  540  git add bin/access.py 
-  541  git restore --staged bin/access.py
-  542  git status
-  543  ls
-  544  python algorithm/main.py 
-  545  python algorithm/function.py 
-  546  gita add algorithm/function.py 
-  547  git add algorithm/function.py 
-  548  git add algorithm/main.py 
-  549  git status
-  550  git add bin/access.py 
-  551  git commit -m "fixed imports"
-  552  git add __init__.py bin/__init__.py misc/__init__.py 
-  553  git commit -m "this was added to allow relative imports"
-  554  git status
-  555  git add ../.gitignore 
-  556  git commit -m "add another dir for .gitignore"
-  557  git push origin test-v1-beta 
-  558  git config --global credential.helper store
-  559  clear
-  560  pwd
-  561  cd src/
-  562  ls
-  563  touch misc/__init__.py bin/__init__.py
-  564  touch __init__.py
-  565  pwd
-  566  cd devel/capstone/
-  567  git pull
-  568  cd ..
-  569  rm -rf capstone/
-  570  ls
-  571  git clone -b test-v1-beta https://github.com/testno0/capstone
-  572  ls
-  573  cd capstone/
-  574  ls
-  575  git checkout -b cli 
-  576  ls
-  577  cd src/
-  578  mv algorithm/* .
-  579  ls
-  580  rm -rf algorithm/
-  581  touch cli.py
-  582  touch utils.py
-  583  git status
-  584  git add cli.py 
-  585  git commit -m "created cli for the program"
-  586  git add function.py main.py 
-  587  git commit -m "moved to src/ instead of src/algorithm" -m "this was done for easier navigation of the application"
-  588  git add system/pre_setup.sh 
-  589  git commit -m "isolated the system setup from user setup, due to the options made in cli program" -m "since having to redo all the steps may brick the system and is too trivial and troublesome"
-  590  git status
-  591  git add system/user_setup.sh 
-  592  git commit -m "used for -s option in cli.py"
-  593  git add system/.bashrc 
-  594  git commit -m "removed the .bashrc, since alias aren't needed anymore as the options were unified in cli.py"
-  595  git add system/utils/update.py 
-  596  git commit -m "turned into function, so can be easily called from cli.py"
-  597  git status
-  598  git add algorithm/* 
-  599  git add algorithm
-  600  git status
-  601  git commit -m "moved into src/"
-  602  git add system/setup.sh 
-  603  git commit -m "splited into user_setup.sh and pre_setup.sh"
-  604  git status
-  605  git push origin cli 
-  606  git diff
-  607  git add system/user_setup.sh 
-  608  git commit -m "moved the user setup part from setup.sh"
-  609  ls
-  610  python cli.py -u
-  611  python cli.py
-  612  clear
-  613  python cli.py
-  614  clear
-  615  python cli.py
-  616  clear
-  617  python cli.py 0u
-  618  python cli.py -u
-  619  python cli.py -U
-  620  /bin/python /home/test/devel/capstone/src/main.py
-  621  cd devel/capstone/src/
-  622  ls
-  623  python cli.py -U
-  624  cd devel/capstone/src/
-  625  clear
-  626  python cli.py --update
-  627  clear
-  628  python cli.py --setup
-  629  git status
-  630  git add system/.bashrc 
-  631  git commit -m "aliased python cli.py to taptap instead of creating a setup.py script"
-  632  cd ..
-  633  ls
-  634  rm -rf tests/
-  635  git status
-  636  git add tests 
-  637  git status
-  638  git commit -m "removed tests folder since it is nonsensical"
-  639  git status
-  640  git rm --cached */__pycache__/*
-  641  git status
-  642  git ad .gitignore
-  643  git add .gitignore
-  644  git restore --staged .gitignore
-  645  git add .gitignore
-  646  git commit -m "removed other entries"
-  647  git status
-  648  git rm src/bin/__pycache__/code_email.cpython-310.pyc
-  649  git rm -f src/bin/__pycache__/code_email.cpython-310.pyc
-  650  git status
-  651  git restore --staged src/bin/__pycache__/
-  652  git status
-  653  git diff
-  654  git add src/system/utils/update.py 
-  655  git commit -m "fixed imports and conditions"
-  656  git status
-  657  git add src/function.py 
-  658  git commit -m "fixed the setup() function" -m "other information were instead retrieved from the user file info instead of being a parameter"
-  659  git diff
-  660  git add src/bin/access.py 
-  661  git commit -m "fixed the output as well as exception handling, and variable ref"
-  662  git status
-  663  clear
-  664  git push origin cli 
-  665  python cli.py -U
-  666  cd src/
-  667  python cli.py -U
-  668  python cli.py -u
-  669  python cli.py -h
-  670  cd ..
-  671  git log
-  672  git log > logs
-  673  git status
-  674  git add logs 
-  675  git commit -m "reexproted the logs as of may 01, 2022 @ 20:48"
-  676  git add README.md 
-  677  git commit -m "add info about merging plan, and documentation of cli"
-  678  clear
-  679  git push origin cli 
-  680  clear
-  681  git status
-  682  git diff
-  683  git status
-  684  cd src/
-  685  git add system/.bashrc 
-  686  git commit -m "changed the dir of alias"
-  687  git add system/user_setup.sh 
-  688  git commit -m "used > redirection to avoid errors"
-  689  git add system/pre_setup.sh 
-  690  git commit -m "fixed the system structure and add chmod to the script to easily execute the script"
-  691  git status
-  692  git add bin/code_email.py 
-  693  git commit -m "changed the message if the student is present"
-  694  clear
-  695  git diff
-  696  python cli.py --use
-  697  cd
-  698  ls
-  699  cd .att_sys/
-  700  ls
-  701  cat user_info 
-  702  cd
-  703  cp .bashrc ~/devel/capstone/src/system/
-  704  git status
-  705  cd devel/capstone/src/
-  706  clear
-  707  git status
-  708  git diff
-  709  python cli.py --use
-  710  cd
-  711  cat .att_sys/user_info 
-  712  cd devel/capstone/src/
-  713  python cli.py --use
-  714  /bin/python /home/test/devel/capstone/src/main.py
-  715  cd
-  716  cat .att_sys/user_info 
-  717  clear
-  718  python cli.py --destroy
-  719  git status
-  720  git add cli.py 
-  721  git diff
-  722  git commit -m "tested and add commands"
-  723  git status
-  724  git add main.py 
-  725  git status
-  726  git commit -m "satisfied the requirements of imports from code_email and function.py"
-  727  git add function.py 
-  728  git commit -m "the loop bug were removed, the trial limit were also barred into 3" -m "the feedback were also changed"
-  729  git push origin cli 
-  730  ls ~
-  731  ls ~ | less
-  732  less < ls `
-  733  less < ls ~
-  734  less < $(ls ~)
-  735  less test.sh
-  736  cat > test.sh
-  737  cat < test.sh > hello.txt
-  738  cat hello.txt 
-  739  cat test
-  740  cat test.sh 
-  741  echo "hello"" > test.sh
-  742  echo "hello" > test.sh
-  743  cat test.sh 
-  744  cat < test.sh > hello.txt
-  745  cat hello.txt 
-  746  cat test.sh | less
-  747  less < cat test.sh
-  748  ls
-  749  ls | tee hello.txt 
-  750  cat hello.txt 
-  751  env
-  752  echo 'The quick brown; fox jumps over the lazy  dog' > sample.txt
-  753  cut -c 5 sample.txt 
-  754  cut -f 2 sample.txt
-  755  cut -c -5 sample.txt
-  756  cut -c 5- sample.txt
-  757  cut -f 2 sample.txt
-  758  nano sample.txt 
-  759  cut -f 2 sample.txt
-  760  cut -f 1 -d ";" sample.txt
-  761  nano sample.txt 
-  762  cut -c 1 sample.txt 
-  763  cut -c 1-10 sample.txt 
-  764  journalctl -xb
-  765  journalctl -xb | head
-  766  clear
-  767  journalctl -xb | head
-  768  clear
-  769  journalctl -xb | tail -f
-  770  tail -f /var/log/syslog
-  771  journalctl -xb > log.txt
-  772  tail -f log.txt 
-  773  pip install face_recognition
-  774  sudo dnf install cmake
-  775  pip install face_recognition
-  776  cmake
-  777  pip3 install face_recognition
-  778  sudo dnf install python3-dlib
-  779  pip3 install face_recognition
-  780  dnf list installed | grep -i "python.dlib"
-  781  dnf list installed | grep -i "python3-dlib"
-  782  dnf list installed | grep -i "python.-dlib"
-  783  cp -h
-  784  cp --help
-  785  cp --help | grep -i "-r"
-  786  cp --help | grep -i "r"
-  787  clear
-  788  cp --help | grep -i "r"
-  789  clear
-  790  mkdir .att_sys
-  791  cd devel/capstone/
-  792  status
-  793  git status
-  794  add requirements.txt 
-  795  git add requirements.txt 
-  796  git commit -m "add face_recognition as requirements and removed cv2"
-  797  add src/system/pre_setup.sh 
-  798  git add src/system/pre_setup.sh 
-  799  git commit -m "simplified the src code moving into the app folder"
-  800  clear
-  801  git log > logs
-  802  status
-  803  git status
-  804  git add logs 
-  805  diff
-  806  git diff
-  807  clear
-  808  git commit -m "add the new commits"
-  809  clear
-  810  history > command_logs
-  159  lsblk
-  160  sudo wipefs -a /dev/sdc
-  161  sudo umount /dev/sdc
-  162  sudo umount /dev/sdc1
-  163  sudo wipefs -a /dev/sdc
-  164  lsblk
-  165  sudo gdisk /dev/sdc
-  166  clear
-  167  sudo mkfs.ext4 /dev/sdc1
-  168  cd temporary/
-  169  git clone -b face_recog https://github.com/testno0/capstone
-  170  cd temporary/capstone/
-  171  touch rfid/main2.cpp
-  172  flatpak install flathub org.gnome.Cheese
-  173  sudo dnf install cmake
-  174  souce venv/bin/activate
-  175  source venv/bin/activate
-  176  pip install -r requirements.txt 
-  177  sudo dnf install cmake
-  178  sudo dnf install python3-dlib
-  179  pip install -r requirements.txt 
-  180  sudo dnf install gcc-c++
-  181  clear
-  182  pip install -r requirements.txt 
-  183  clear
-  184  sudo dnf install openbla
-  185  sudo dnf install openblas
-  186  pip install -r requirements.txt 
-  187  sudo pip install -r requirements.txt 
-  188  sudo pip3 install -r requirements.txt 
-  189  pip install
-  190  sudo pip install -r requirements.txt 
-  191  sudo python3-pip install -r requirements.txt 
-  192  clear
-  193  exit
-  194  cd temporary/capstone/
-  195  clear
-  196  source venv/bin/activate
-  197  clear
-  198  pip install -r requirements.txt 
-  199  deactivate
-  200  toolbox enter
-  201  exit
-  202  source venv/bin/activate
-  203  clear
-  204  ssh icq-relationship-photographic-knew.trycloudflare.com
-  205  exit
-  206  cd temporary/capstone/
-  207  pull
-  208  ls
-  209  python -m venv venv
-  210  source venv/bin/activate
-  211  clear
-  212  deactivate
-  213  toolbox enter
-  214  htop
-  215  exit
-  216  source venv/bin/activate
-  217  clear
-  218  pip install -r requirements.txt 
-  219  clear
-  220  python src/tests/fr_test.py 
-  221  clear
-  222  pip install face_recognition
-  223  python -m pip install --upgrade pip
-  224  pip install face_recognition
-  225  sudo dnf install python-devel
-  226  pip install face_recognition
-  227  clear
-  228  pip install -r requirements.txt 
-  229  clear
-  230  python src/tests/fr_test.py 
-  231  python src/tests/fr_test2.py 
-  232  python src/tests/fr_test.py 
-  233  pip install python-cv2
-  234  pip install opencv2-python
-  235  pip install opencv-python
-  236  deactivate
-  237  exit
-  238  clear
-  239  cd temporary/capstone/
-  240  clear
-  241  toolbox enter
-  242  clear
-  243  cd temporary/capstone/
-  244  status
-  245  commit -m "fixed the while loop"
-  246  source /var/home/iaacornus/temporary/capstone/venv/bin/activate
-  247  /var/home/iaacornus/temporary/capstone/venv/bin/python /var/home/iaacornus/temporary/capstone/src/tests/fr_test.py
-  248  toolbox enter
-  249  deactivate
-  250  toolbox enter
-  251  htop
-  252  cat .git-credentials 
-  253  git config --global commit.gpgsign true
-  254  cd Development/workstation_setup/
-  255  ls
-  256  nano silverblue_setup.md 
-  257  status
-  258  add silverblue_setup.md 
-  259  commit -m "little changes"
-  260  git config user.name
-  261  clear
-  262  git config user.signingkey
-  263  commit -m "little changes"
-  264  killall gpg-agent
-  265  commit -m "little changes"
-  266  clear
-  267  git config --global rebase.autoStash true
-  268  clear
-  269  cd temporary/capstone/
-  270  status
-  271  commit -m "fixed while loops"
-  272  add src/bin/*
-  273  status
-  274  commit -m "face recognition pycache"
-  275  add src/face_recog.py src/tests/fr_test.py 
-  276  commit -m "successful face recognition build"
-  277  clear
-  278  add sample/
-  279  commit -m "face sample for testing"
-  280  status
-  281  add rfid/main2.cpp 
-  282  commit -m "another rfid build"
-  283  diff
-  284  add src/function.py 
-  285  commit -m "add av_cam function to simplify face_recognition.py"
+  148  cd
+  149  cd temporary/capstone/
+  150  ls
+  151  nano requirements.txt
+  152  add .
+  153  commit -m "removed pillow from dependency list"
+  154  push rfid-locker
+  155  git config --global credential.helper store
+  156  cd
+  157  ls -a | grep git
+  158  git config --global credential.helper store
+  159  ls -a | grep git
+  160  cd temporary/capstone/
+  161  ls
+  162  git pull
+  163  git config --global credential.helper store
+  164  cd
+  165  git config --global credential.helper store
+  166  ls -a | grep git
+  167  cat .git-credentials
+  168  flatpak -h
+  169  flatpak install flathub org.libreoffice.LibreOffice
+  170  flatpak install flathub org.mozilla.Thunderbird
+  171  flatpak install flathub org.gnome.Boxes
+  172  flatpak install flathub org.jaspstats.JASP
+  173  flatpak uninstall --system --delete-data org.jaspstats.JASP
+  174  flatpak uninstall --system --delete-data --unused
+  175  clear
+  176  flatpak repair
+  177  flatpak install flathub org.jaspstats.JASP
+  178  flatpak uninstall --system --delete-data org.jaspstats.JASP
+  179  flatpak uninstall --system --delete-data --unused
+  180  clear
+  181  flatpak repair
+  182  clear
+  183  uptime
+  184  flatpak uninstall --system --delete-data  org.texstudio.TeXstudio
+  185  clear
+  186  flatpak uninstall --unused
+  187  clear
+  188  flatpak install flathub org.texstudio.TeXstudio
+  189  flatpak uninstall --system --delete-data org.texstudio.TeXstudio
+  190  clear
+  191  flatpak repair
+  192  flatpak uninstall --system --delete-data --unused
+  193  flatpak install flathub org.videolan.VLC
+  194  flatpak install flathub org.zotero.Zotero
+  195  flatpak install flathub org.gimp.GIMP
+  196  flatpak install flathub org.gnome.Music
+  197  flatpak install flathub org.gnome.GTG
+  198  flatpak install flathub org.kde.labplot2
+  199  clear
+  200  systemctl reboot
+  201  cd
+  202  clear
+  203  pio settings set projects_dir ~/Development
+  204  platformio settings set projects_dir ~/Development
+  205  clear
+  206  cd
+  207  platformio settings set projects_dir ~/Development
+  208  clear
+  209  flatpak update
+  210  clear
+  211  cd Development/
+  212  ls
+  213  cd michi
+  214  ls
+  215  pull
+  216  history | grep mod
+  217  modinfo -F version nvidia
+  218  clear
+  219  flatpak install flathub org.jaspstats.JASP
+  220  clear
+  221  flatpak install flathub org.texstudio.TeXstudio
+  222  flatpak -h
+  223  sudo dnf update
+  224  exir
+  225  exit
+  226  flatpak uninstall --system --delete-data  org.texstudio.TeXstudio
+  227  flatpak uninstall --system --delete-data --unused
+  228  flatpak repair
+  229  flatpak
+  230  flatpak install flathub org.texstudio.TeXstudio
+  231  flatpak uninstall --system --delete-data  org.texstudio.TeXstudio
+  232  flatpak install flathub org.texstudio.TeXstudio
+  233  flatpak repair
+  234  toolbox enter
+  235  rpm-ostree upgrade
+  236  clear
+  237  toolbox enter
+  238  curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
+  239  sudo service udev restart
+  240  sudo udevadm control --reload-rules
+  241  sudo udevadm trigger
+  242  sudo rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
+  243  clear
+  244  systemctl reboot
+  245  flatpak install flathub com.discordapp.Discord
+  246  flatpak install flathub im.riot.Riot
+  247  flatpak install flathub com.brave.Browser
+  248  flatpak install flathub com.bitwarden.desktop
+  249  clear
+  250  clear
+  251  flatpak kill com.discordapp.Discord
+  252  rpm-ostree status
+  253  sudo dnf clean all
+  254  sudo dnf autoremove
+  255  clear
+  256  exit
+  257  flatpak update
+  258  sudo flatpak repair
+  259  flatpak repair
+  260  clear
+  261  flatpak repair
+  262  clear
+  263  flatpak update
+  264  clear
+  265  toolbox enter
+  266  systemctl reboot
+  267  rpm-ostree status
+  268  ostree -h
+  269  ostree admin -h
+  270  sudo ostree admin pin 1
+  271  rpm-ostree status
+  272  sudo ostree admin unpin 1
+  273  sudo ostree admin pin 0
+  274  rpm-ostree status
+  275  sudo ostree admin pin --unpin 1
+  276  rpm-ostree status
+  277  ostree -h
+  278  ostree prune -h
+  279  ostree admin -h
+  280  sudo ostree admin cleanup -r
+  281  sudo ostree admin cleanup -h
+  282  sudo ostree admin cleanup
+  283  rpm-ostree status
+  284  rpm-ostree cleanup -r
+  285  rpm-ostree status
   286  clear
-  287  push origin face_recog
-  288  pull face_recog https://github.com/testno0/capstoen
-  289  pull face_recog https://github.com/testno0/capstone
-  290  pull
-  291  push origin face_recog
-  292  git pull
-  293  git rebase
-  294  git pull
-  295  git rebasels
-  296  rebase face_recog
-  297  lbranch
-  298  git checkout face_recog
-  299  ls
-  300  ls rfid/
-  301  git stash
-  302  git reset --merge
-  303  git stash
-  304  git checkout face_recog
-  305  status
-  306  push origin face_recog
-  307  pull
-  308  pull face_recog
-  309  pull https://github.com/testno0/capstone face_recog
-  310  push
-  311  git pull --rebase
-  312  git pull --rebase origin face_recog
-  313  rm -fr ".git/rebase-merge"
-  314  git pull --rebase origin face_recog
-  315  push origin main
-  316  clear
-  317  status
-  318  git rebase --skip
-  319  status
-  320  push origin face_recog
-  321  history
-  322  sudo dnf clean all
-  323  sudo dnf autoremove
-  324  clear
-  325  exit
-  326  toolbox enter
-  327  history | grep install
-  328  flatpak list
-  329  flatpak uninstall --system --delete-data org.gnome.Cheese
-  330  flatpak uninstall --unused
-  331  flatpak repair
-  332  clear
-  333  toolbox enter
-  334  toolbox list
-  335  toolbox rmi fedora-toolbox-35
-  336  toolbox rm -a
-  337  killall toolbox
-  338  toolbox rm -a
-  339  toolbox list
-  340  toolbox rm -a
-  341  toolbox rm fedora-toolbox-35
-  342  cd temporary/capstone/
-  343  ls
-  344  log
-  345  log >> logs 
-  346  log > logs 
-  347  history >> command_logs 
+  287  flatpak list
+  288  flatpak kill im.riot.Riot
+  289  clear
+  290  sudo dnf install python3-pip
+  291  exit
+  292  toolbox enter
+  293  source venv/bin/activate
+  294  clear
+  295  cat requirements.txt
+  296  pip install pip --upgrade
+  297  python -m pip install pip --upgrade
+  298  pip install -r requirements.txt
+  299  clear
+  300  python
+  301  python3
+  302  python3 -m pip install -r requirements.txt
+  303  pip install -r requirements.txt
+  304  deactivate
+  305  clear
+  306  pip
+  307  exit
+  308  source venv/bin/activate
+  309  pip
+  310  python3-pip
+  311  exit
+  312  cd Development/michi/
+  313  python -m venv venv
+  314  touch .gitignore
+  315  toolbox enter
+  316  clea
+  317  clear
+  318  toolbox enter
+  319  exit
+  320  pip
+  321  source venv/bin/activate
+  322  pip
+  323  sudo dnf install python3-pip
+  324  python3-pip
+  325  pip
+  326  pip install -r requirements.txt
+  327  clear
+  328  pip install -r requirements.txt
+  329  pip3
+  330  deactivate
+  331  exit
+  332  cd Development/michi/
+  333  rm -rf venv/
+  334  python -m venv venv
+  335  toolbox enter
+  336  source venv/bin/activate
+  337  pip
+  338  clear
+  339  toolbox enter
+  340  clear
+  341  ls
+  342  exit
+  343  pip
+  344  cd Development/michi/
+  345  ls
+  346  source venv/bin/activate
+  347  pip
+  348  deactivate
+  349  exit
+  350  cd Development/michi/
+  351  stattus
+  352  status
+  353  add .gitignore
+  354  commit -m "include gitignore'
+  355  commit -m "include gitignore
+  356  commit -m "include gitignore"
+  357  clear
+  358  status
+  359  add database/
+  360  grm src/database/
+  361  grm -r src/database/
+  362  status
+  363  commit -m "moved src/database to ./database
+  364  commit -m "moved src/database to ./database"
+  365  add requirements.txt
+  366  commit -m "removed json"
+  367  clear
+  368  status
+  369  add src/func.py
+  370  commit -m "complied with pep8, and optimized the algorithm"
+  371  clear
+  372  status
+  373  add src/main.py
+  374  commit -m "complied with pep8, optimized the algorithm"
+  375  diff
+  376  add src/func.py
+  377  commit -m "changed the link down message"
+  378  rm src/colors.py
+  379  grm src/colors.py
+  380  status
+  381  commit -m "removed colors.py and used rich.console instead"
+  382  add requirements.txt
+  383  commit -m "include rich as dependency"
+  384  status
+  385  add README.md
+  386  commit -m "include other info and removed some"
+  387  status
+  388  add database/params.json
+  389  commit -m "fixed formatting"
+  390  clear
+  391  push devel
+  392  toolbox enter
+  393  source venv/bin/activate
+  394  cd Development/michi/
+  395  clear
+  396  source venv/bin/activate
+  397  clear
+  398  pip install -r requirements.txt
+  399  clear
+  400  deactivate
+  401  clear
+  402  source /var/home/iaacornus/Development/michi/venv/bin/activate
+  403  source /var/home/iaacornus/Development/michi/venv/bin/activate
+  404  flatpak list
+  405  git config --global color.branch auto
+  406  git config --global color.diff auto
+  407  git config --global color.interactive auto
+  408  git config --global color.status auto
+  409  cd Downloads/
+  410  ls
+  411  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  412  flatpak install flathub com.jgraph.drawio.desktop
+  413  flatpak list | grep riot
+  414  htop
+  415  systemctl --failed
+  416  clear
+  417  git config --global color.ui auto
+  418  cd Development/
+  419  cd michi/
+  420  ls
+  421  status
+  422  diff
+  423  status
+  424  add src/main.py
+  425  status
+  426  clear
+  427  diff
+  428  status
+  429  clear
+  430  cdx
+  431  cd
+  432  git config
+  433  nano .gitconfig
+  434  cd temporary/capstone/
+  435  status
+  436  add rfid_locker/src/main.cpp
+  437  commit -m "complied with c++ recommendations"
+  438  status
+  439  add rfid/main.cpp.bak
+  440  commit -m "rfid old code backup"
+  441  add rfid_locker/src/main.cpp
+  442  commit -m "rfid locker code"
+  443  clear
+  444  status
+  445  diff
+  446  stash
+  447  clear
+  448  push rfid-locker
+  449  clear
+  450  switch devel
+  451  pull
+  452  fetch
+  453  clear
+  454  cd temporary/capstone/
+  455  pull
+  456  cd temporary/capstone/
+  457  ls
+  458  status
+  459  pull
+  460  push devel
+  461  pull -ff
+  462  pull --ff
+  463  cd temporary/capstone/
+  464  status
+  465  add src/function.py
+  466  commit -m "fixed imports"
+  467  status
+  468  add requirements.txt
+  469  commit -m "include rich as dependency"
+  470  touch src/demo.py
+  471  statu
+  472  status
+  473  add src/cli.py
+  474  commit -m "include demo function as option"
+  475  add src/cli.py
+  476  commit -m "include some measures to avoid use as module"
+  477  status
+  478  add src/demo.py
+  479  commit -m "for demonstration of face recognition"
+  480  status
+  481  add requirements.txt
+  482  commit -m "add version numbers to avoid dependency breaking"
+  483  add src/face_recog.py
+  484  commit -m "used console.log and removed default faces by turning it as function parameter"
+  485  add src/system/utils/update.py
+  486  commit -m "switched to rich.console and add logs"
+  487  status
+  488  add src/cli.py src/bin/access.py
+  489  add src/main.py src/face_recog.py src/misc/colors.py
+  490  status
+  491  commit -m "name bug fixes"
+  492  add src/demo.py
+  493  commit -m "class bug fix"
+  494  clear
+  495  add src/function.py
+  496  status
+  497  add .
+  498  commit -m "switched to console.log from rich, for more informative stdout"
+  499  clear
+  500  push devel
+  501  status
+  502  add src/bin/access.py
+  503  add .
+  504  remove .
+  505  status
+  506  add src/bin/access.py
+  507  status
+  508  remove .
+  509  add src/cli.py
+  510  commit -m "include verbose option"
+  511  status
+  512  add src/face_recog.py
+  513  commit -m "removed unused variables and put back return functions"
+  514  add src/main.py
+  515  commit -m "integrated the face recognition function"
+  516  clear
+  517  status
+  518  add .
+  519  commit -m "fixed stdout of processes"
+  520  add src/cli.py
+  521  commit -m "used log for exception for more informative output"
+  522  add src/bin/access.py
+  523  add src/bin/code_email.py
+  524  commit -m "fixed stdout and stderr"
+  525  add src/system/utils/update.py
+  526  commit -m "fixed the process stdout"
+  527  status
+  528  add requirements.txt
+  529  commit -m "remove unused dependencies"
+  530  touch INSTALL.md
+  531  add INSTALL.md
+  532  commit -m "installation tutorial"
+  533  push devel
+  534  clear
+  535  branch
+  536  cd ..
+  537  ls
+  538  mkdir devel
+  539  cd devel/
+  540  git clone -b test-v1-beta https://github.com/testno0/capstone
+  541  log
+  542  cd capstone/
+  543  log > logs
+  544  history > command_logs

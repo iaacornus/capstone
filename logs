@@ -1,3 +1,456 @@
+commit 983ffe78e3c5a9b843fcb05598ebbea5dcae3dfd
+Merge: dfade36 e673442
+Author: James Aaron Erang <96870156+iaacornus@users.noreply.github.com>
+Date:   Tue May 17 20:27:24 2022 +0800
+
+    Merge pull request #6 from testno0/devel
+    
+    for further testing and optimizations
+
+commit e6734429705cd97fdeb442052aa036a675df145c
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:26:00 2022 +0800
+
+    installation tutorial
+
+commit e58ff265ffeddce99e32b1d10020e709b262ed75
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:13:11 2022 +0800
+
+    remove unused dependencies
+
+commit 51e9021a5f5cc3e6fd8aacdd7527a6140db899da
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:12:05 2022 +0800
+
+    fixed the process stdout
+
+commit dd4cf7bf93701b22a80e66682905d6c20e4286b1
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:06:39 2022 +0800
+
+    fixed stdout and stderr
+
+commit 2c4b8e2167c7a93e0e54a20f7f23547e64605d20
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:04:38 2022 +0800
+
+    used log for exception for more informative output
+
+commit 26d6d59265d2ec62f4c2644c69bf907c81998829
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 19:58:08 2022 +0800
+
+    fixed stdout of processes
+
+commit f103206600d2ee42a9155f5f1affaf4f1d459f6d
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 19:48:52 2022 +0800
+
+    integrated the face recognition function
+
+commit ff7a8bb17044cd9e71e88c4e335a35981b1536b4
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 19:48:15 2022 +0800
+
+    removed unused variables and put back return functions
+
+commit 12156180efe2b5406d7efe22b2c364aee83879fd
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 19:02:58 2022 +0800
+
+    include verbose option
+
+commit 037127a91f10d375e6e0238e3540e266531709e7
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:31:15 2022 +0800
+
+    switched to console.log from rich, for more informative stdout
+
+commit 0170db34aa76b7f720f5db03c6082f41e1fcc9c5
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:26:03 2022 +0800
+
+    class bug fix
+
+commit edd650c3b86a0c101b961ec3ef6afd12b9bdc5bc
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:25:51 2022 +0800
+
+    name bug fixes
+
+commit 724f92c16bb4a3b602ed218cf2391022cf375fc4
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:19:24 2022 +0800
+
+    switched to rich.console and add logs
+
+commit 4da4ec18cf70d7c1e059739d87ef40fc317b2136
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:11:13 2022 +0800
+
+    used console.log and removed default faces by turning it as function parameter
+
+commit 089e988b8773a139cacd07e939fc27b7120d6ede
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:10:37 2022 +0800
+
+    add version numbers to avoid dependency breaking
+
+commit 0d9ebe734b02b32cf245ae0275ecfa57e80a28a2
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 16:07:19 2022 +0800
+
+    for demonstration of face recognition
+
+commit 6c733b67766a506960f47685e589425d41fe73b7
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 15:45:14 2022 +0800
+
+    include some measures to avoid use as module
+
+commit a7bf4b9fdec70a5d12a930ea1b20fe86a578f1ef
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 15:44:42 2022 +0800
+
+    include demo function as option
+
+commit 3efb998b3515ce5478751bab20d6aec92c026bc9
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 15:23:44 2022 +0800
+
+    include rich as dependency
+
+commit 6323365379ee10c6685f993bf6b0c7a3f4e93edc
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 15:22:12 2022 +0800
+
+    fixed imports
+
+commit e64ccf012441993ac84290c4f352e40394055023
+Merge: f0f72d8 a2c3f81
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 15:20:22 2022 +0800
+
+    Merge branch 'devel' of https://github.com/testno0/capstone into devel
+
+commit a2c3f810f24783f6346fbd7ddea56c6aceb7f4e2
+Merge: 7cd1ee5 a862047
+Author: James Aaron Erang <96870156+iaacornus@users.noreply.github.com>
+Date:   Tue May 17 12:48:31 2022 +0800
+
+    Merge pull request #5 from testno0/rfid-locker
+    
+    working rfid code with timer
+
+commit a86204772d195b56e400da9519c5d9f2652dd316
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 12:45:49 2022 +0800
+
+    rfid locker code
+
+commit fe4e1f9b309e4d939501a614d56f1fcaeaa45492
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 12:45:30 2022 +0800
+
+    rfid old code backup
+
+commit bf2e1fe097ef664e38fed0ed141a9f6f59bc9afa
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 12:12:21 2022 +0800
+
+    complied with c++ recommendations
+
+commit 2493860198670262be4869d0c304d5e90da52fe9
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Mon May 16 02:28:02 2022 +0800
+
+    removed pillow from dependency list
+
+commit f0f72d8fe696914e7e422ec3978772fd62004d21
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sun May 15 14:02:31 2022 +0800
+
+    included the new faces in samples/
+
+commit 8a3cde2a530834fe3aeae8be724239095ed464d3
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sun May 15 13:56:18 2022 +0800
+
+    include other faces
+
+commit 32997ad7121c7f3a7e0ea5bc71bf360010913eb6
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sun May 15 00:14:40 2022 +0800
+
+    initial commit on revision of rfid locker src code
+
+commit 7cd1ee53a0e5e0603ac1c4717a8de4cb4f13fd4a
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 02:06:06 2022 +0800
+
+    optimized and simplified the code
+
+commit 1fb34483c1e2067a8c64968e03954b7b40add71b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:48:21 2022 +0800
+
+    initial fix
+
+commit fcb15b32f7066896be2436c7da04a5e2cd5206af
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:42:29 2022 +0800
+
+    removed unncessary files
+
+commit 4efa8800f009429ea6801c03ae776f16b135cfc6
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:40:49 2022 +0800
+
+    little fixes
+
+commit 18c9e48a5e987f7bc82a99ff9617501b3e1ffdee
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:39:59 2022 +0800
+
+    uncommented commented blocks, and simplified the code
+
+commit a0544c06aeab54263f1d361a89949e261a435cf9
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:39:13 2022 +0800
+
+    synched with changes from access.py
+
+commit ec702e4525a1c190420a13c28f719de7ddd7c320
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:31:42 2022 +0800
+
+    decreased the unused variables
+
+commit 49def8188f9a8b5e4cf58bc79bb4d6892cbb3c3a
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:25:43 2022 +0800
+
+    simplified the code
+
+commit 6fabf9f90bec2c39c24bd62021b5880c318e678b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Sat May 14 01:24:24 2022 +0800
+
+    fixed password generator
+
+commit efd8efda40b4b817f26d7fa9b0a79499164ed1f9
+Merge: 050fc4c a91260b
+Author: James Aaron Erang <96870156+iaacornus@users.noreply.github.com>
+Date:   Fri May 13 22:57:48 2022 +0800
+
+    Merge pull request #4 from testno0/pep8-ch-test
+    
+    complied with pep 8 recommendation, and tested the setup script, as well as some perfomance improvements.
+
+commit a91260b7a695a506be62d19f3fa9e7c4ff346de4
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 22:54:23 2022 +0800
+
+    fixed consistency
+
+commit b5e67bc6bea3aeed1b1b9d99b43c02a2217f93a4
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 22:53:46 2022 +0800
+
+    used relative path to call update.py
+
+commit 13971c2dced1e363e5b44f3c157ec233873124d0
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 22:53:20 2022 +0800
+
+    for testing purposes
+
+commit 6a778b9457d0fff0bb39871b9f834a1f64315537
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 22:52:31 2022 +0800
+
+    include return functions and removed av_cam() function every call to increase the performance
+
+commit 424cd8c38681f332633fd764bc84e92dda7bd767
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 19:11:49 2022 +0800
+
+    marked system and utils dir as regular package
+
+commit 9f32e8aa1f62d1496b0e90d5901df61f7af3bf97
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 19:08:17 2022 +0800
+
+    add path
+
+commit b29e37175733aca07b0755d1ee8b1b3e738b0fbb
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 19:08:07 2022 +0800
+
+    fixed color of output
+
+commit 087fbf9739eace374bff2009d0229a54a0bc118d
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 19:07:52 2022 +0800
+
+    fixed user_setup.sh call
+
+commit 5992cd21e3ae58a56d596d9dd976e16db02e1cf4
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 19:00:18 2022 +0800
+
+    add condition for update() call
+
+commit 07d84e982d279a631953e8c4e86228238605c3dc
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:59:53 2022 +0800
+
+    fixed output display
+
+commit ed9c5981c4f824d842452a75fa3aaaa434bc8d7e
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:49:11 2022 +0800
+
+    fixed cp -r command, and chmod
+
+commit fffa49a9808cefdd694f7e9d2b045487c66cd93b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:47:22 2022 +0800
+
+    optimized the dependency checking process and fixed the commands
+
+commit a6d41ec2434b195e1e9fadf7bc42880ea27ee68d
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:36:31 2022 +0800
+
+    fixed condition
+
+commit 9b2eb20739e5576868ad71e847905dc903bc7c51
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:36:20 2022 +0800
+
+    fixed syntaxes as well as messages
+
+commit 6bbd7193cc94fe4be1a9b005200443f0b07f2443
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:21:53 2022 +0800
+
+    Revert "add the texfile of manscrpt"
+    
+    This reverts commit e1e9bc2576fe4916f197afee67b8e1f121ae8246.
+
+commit e1e9bc2576fe4916f197afee67b8e1f121ae8246
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:21:10 2022 +0800
+
+    add the texfile of manscrpt
+
+commit 41369c75a8318bef0887bc6dbb448d11caf36d00
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:19:24 2022 +0800
+
+    complied with pep8
+
+commit a46bf7804bf42e2382f540c5484b6e728d7d4881
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:12:43 2022 +0800
+
+    removed unused variables
+
+commit 713075bcfbfeec3f08e29a61eaaf69d583c141f6
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:11:01 2022 +0800
+
+    simplified by moving the draw rectangle code block to function.py
+
+commit f246d39961abb07d21938b98197e4a538f19d2da
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:10:37 2022 +0800
+
+    complied with pep8 more, and removed unused variables
+
+commit 8df18bf7995d0d9397d56ca9b485408842009826
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:10:21 2022 +0800
+
+    create draw_rectangle() function to simplify face_recognition.py
+
+commit d675339517a6bdd4df79d2c4e142672eb626048e
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 18:00:41 2022 +0800
+
+    switched to use of string instead of docstring in fstring, and include draw_rectangle function to simplify main.py
+
+commit 692ed72e667a71f0452d30e1defadf34f0e8d03f
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 01:18:28 2022 +0800
+
+    fixed systemd script
+
+commit b2d1900acc4e7a133633d5dd7b0725ebfc325567
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 01:18:14 2022 +0800
+
+    removed unicode char, and add /var/home/iaacornus/.att_sys to /var/home/iaacornus/miniconda3/condabin:/var/home/iaacornus/.local/bin:/var/home/iaacornus/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin
+
+commit 832641c88290f5604c8ff6ca56a69cb9d05849d2
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 13 01:17:37 2022 +0800
+
+    removed other unnecessary imports, and comply to pep8 more
+
+commit e4a3e65d47125e3dd866b76cddce6c6a0767f724
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:45:09 2022 +0800
+
+    add more merging info
+
+commit 4324916edd8d1b5d27bac93fcaabc45008581be2
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:39:41 2022 +0800
+
+    add pep8 coding style description
+
+commit 108a05374a6719c5e7a454d42952fef548551770
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:38:37 2022 +0800
+
+    aligned with python pep8 rules
+
+commit 050fc4c7be07402011f09bfa13758318dd34515c
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:15:17 2022 +0800
+
+    remove the duplicate of the function, and used the function from functions.py instead
+
+commit f43ffb438eeac93fbd3c8859c1d171c36b7af1e6
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:14:43 2022 +0800
+
+    remove other imports
+
+commit 2eab9abc7fd3997150d2c688c3a796b181317e00
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:14:04 2022 +0800
+
+    include info about merging
+
+commit aba781928acc9a57bcf7ede4f7ab6e5e88cdcde4
+Merge: 789712f 6c368ab
+Author: James Aaron Erang <96870156+iaacornus@users.noreply.github.com>
+Date:   Tue May 10 17:06:41 2022 +0800
+
+    Merge pull request #3 from testno0/face_recog
+    
+    successfully implemented face recognition
+
+commit 6c368abdf5c3301bc84d5e8f45223749c9879d57
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 10 17:05:17 2022 +0800
+
+    update the logs and command logs for documentation
+
 commit 08728ed3d6af99f7886b8fdae556b8e3ad18f553
 Author: iaacornus <iaacornus.devel@gmail.com>
 Date:   Tue May 10 15:17:52 2022 +0800
