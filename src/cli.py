@@ -73,4 +73,5 @@ def program_options():
         demo()
 
 
-program_options()
+if __name__ == "__main__":
+    program_options()
