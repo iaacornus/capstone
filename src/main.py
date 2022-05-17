@@ -10,8 +10,6 @@ from misc.colors import Colors as C
 from face_recog import face_recognition
 
 
-# repo link is the link of this repository https://github.com/testno0/database
-# although leave it blank as first, no one touchers the parameters
 def main(HOME_, log_):
     """initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives."""

@@ -6,7 +6,7 @@ import os
 from rich.console import Console
 
 from bin.access import access
-from misc.colors import colors as C
+from misc.colors import Colors as C
 
 
 def update(setup):
@@ -31,6 +31,7 @@ def update(setup):
         os.system(f"rm -rf {HOME}/repo/")
         console.log("[bold red][-] Verification error.\n> Nuking the repository ...[/bold red]")
         os.system("systemctl poweroff")
+
 
 if __name__ == "__main__":
     update()
