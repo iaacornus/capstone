@@ -1,3 +1,69 @@
+commit 062bb7ab411088d87849f0da1dcd5bc4dc8f5b0d
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 20 01:15:25 2022 +0800
+
+    complied with codiga suggestions
+
+commit 5c1ddfcd837733c2053f1ad02af2216d8e04e0f5
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Fri May 20 00:57:00 2022 +0800
+
+    code base improvements
+
+commit d73ee85e201cad298e3673700c62d4a5feb15ad3
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 21:08:28 2022 +0800
+
+    bug fixes, and increased consistency of stdout and stderr
+
+commit 158659e1e9e313a0b2c5a863350b6c5bd765d4c8
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:59:51 2022 +0800
+
+    changed spinner from bouncing bar to simple dots, as per vote of members
+
+commit 43907ab7b0e881a0e3b922601db2eacd1aa7b664
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:55:55 2022 +0800
+
+    put back the servo.write method for locking mechanism
+
+commit e47012875fa90861b62fba458bc730b85e3b99e4
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:52:43 2022 +0800
+
+    add readme for deprecated folder
+
+commit 6dd17c8fd6801f2ef72024619327af91e39c8b4b
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:51:51 2022 +0800
+
+    moved to deprecated folder
+
+commit f7baf0a96f8dbb7a8aabe65f6b88018d538ee21a
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:49:40 2022 +0800
+
+    some cleaning
+
+commit e1830294cf9eee5a0a8cb79024e88222b0cb4d9a
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:49:09 2022 +0800
+
+    fix alias
+
+commit 4a39dfcc8d468d7dc4097c5fb569da5e542c2674
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:45:40 2022 +0800
+
+    updated information
+
+commit 48ed9570c065b2cc62790e513e69195cbc5ef7d6
+Author: iaacornus <iaacornus.devel@gmail.com>
+Date:   Tue May 17 20:31:13 2022 +0800
+
+    updated logs
+
 commit 983ffe78e3c5a9b843fcb05598ebbea5dcae3dfd
 Merge: dfade36 e673442
 Author: James Aaron Erang <96870156+iaacornus@users.noreply.github.com>

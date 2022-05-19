@@ -1,397 +1,244 @@
-  148  cd
-  149  cd temporary/capstone/
-  150  ls
-  151  nano requirements.txt
-  152  add .
-  153  commit -m "removed pillow from dependency list"
-  154  push rfid-locker
-  155  git config --global credential.helper store
-  156  cd
-  157  ls -a | grep git
-  158  git config --global credential.helper store
-  159  ls -a | grep git
-  160  cd temporary/capstone/
-  161  ls
-  162  git pull
-  163  git config --global credential.helper store
-  164  cd
-  165  git config --global credential.helper store
-  166  ls -a | grep git
-  167  cat .git-credentials
-  168  flatpak -h
-  169  flatpak install flathub org.libreoffice.LibreOffice
-  170  flatpak install flathub org.mozilla.Thunderbird
-  171  flatpak install flathub org.gnome.Boxes
-  172  flatpak install flathub org.jaspstats.JASP
-  173  flatpak uninstall --system --delete-data org.jaspstats.JASP
-  174  flatpak uninstall --system --delete-data --unused
-  175  clear
-  176  flatpak repair
-  177  flatpak install flathub org.jaspstats.JASP
-  178  flatpak uninstall --system --delete-data org.jaspstats.JASP
-  179  flatpak uninstall --system --delete-data --unused
-  180  clear
-  181  flatpak repair
-  182  clear
-  183  uptime
-  184  flatpak uninstall --system --delete-data  org.texstudio.TeXstudio
-  185  clear
-  186  flatpak uninstall --unused
-  187  clear
-  188  flatpak install flathub org.texstudio.TeXstudio
-  189  flatpak uninstall --system --delete-data org.texstudio.TeXstudio
-  190  clear
-  191  flatpak repair
-  192  flatpak uninstall --system --delete-data --unused
-  193  flatpak install flathub org.videolan.VLC
-  194  flatpak install flathub org.zotero.Zotero
-  195  flatpak install flathub org.gimp.GIMP
-  196  flatpak install flathub org.gnome.Music
-  197  flatpak install flathub org.gnome.GTG
-  198  flatpak install flathub org.kde.labplot2
-  199  clear
-  200  systemctl reboot
-  201  cd
-  202  clear
-  203  pio settings set projects_dir ~/Development
-  204  platformio settings set projects_dir ~/Development
-  205  clear
-  206  cd
-  207  platformio settings set projects_dir ~/Development
-  208  clear
-  209  flatpak update
-  210  clear
-  211  cd Development/
-  212  ls
-  213  cd michi
-  214  ls
-  215  pull
-  216  history | grep mod
-  217  modinfo -F version nvidia
-  218  clear
-  219  flatpak install flathub org.jaspstats.JASP
-  220  clear
-  221  flatpak install flathub org.texstudio.TeXstudio
-  222  flatpak -h
-  223  sudo dnf update
-  224  exir
-  225  exit
-  226  flatpak uninstall --system --delete-data  org.texstudio.TeXstudio
-  227  flatpak uninstall --system --delete-data --unused
-  228  flatpak repair
-  229  flatpak
-  230  flatpak install flathub org.texstudio.TeXstudio
-  231  flatpak uninstall --system --delete-data  org.texstudio.TeXstudio
-  232  flatpak install flathub org.texstudio.TeXstudio
-  233  flatpak repair
-  234  toolbox enter
-  235  rpm-ostree upgrade
-  236  clear
-  237  toolbox enter
-  238  curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
-  239  sudo service udev restart
-  240  sudo udevadm control --reload-rules
-  241  sudo udevadm trigger
-  242  sudo rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
-  243  clear
-  244  systemctl reboot
-  245  flatpak install flathub com.discordapp.Discord
-  246  flatpak install flathub im.riot.Riot
-  247  flatpak install flathub com.brave.Browser
-  248  flatpak install flathub com.bitwarden.desktop
-  249  clear
-  250  clear
-  251  flatpak kill com.discordapp.Discord
-  252  rpm-ostree status
-  253  sudo dnf clean all
-  254  sudo dnf autoremove
-  255  clear
-  256  exit
-  257  flatpak update
-  258  sudo flatpak repair
-  259  flatpak repair
-  260  clear
-  261  flatpak repair
-  262  clear
-  263  flatpak update
-  264  clear
-  265  toolbox enter
-  266  systemctl reboot
-  267  rpm-ostree status
-  268  ostree -h
-  269  ostree admin -h
-  270  sudo ostree admin pin 1
-  271  rpm-ostree status
-  272  sudo ostree admin unpin 1
-  273  sudo ostree admin pin 0
-  274  rpm-ostree status
-  275  sudo ostree admin pin --unpin 1
-  276  rpm-ostree status
-  277  ostree -h
-  278  ostree prune -h
-  279  ostree admin -h
-  280  sudo ostree admin cleanup -r
-  281  sudo ostree admin cleanup -h
-  282  sudo ostree admin cleanup
-  283  rpm-ostree status
-  284  rpm-ostree cleanup -r
-  285  rpm-ostree status
-  286  clear
-  287  flatpak list
-  288  flatpak kill im.riot.Riot
-  289  clear
-  290  sudo dnf install python3-pip
-  291  exit
-  292  toolbox enter
-  293  source venv/bin/activate
-  294  clear
-  295  cat requirements.txt
-  296  pip install pip --upgrade
-  297  python -m pip install pip --upgrade
-  298  pip install -r requirements.txt
-  299  clear
-  300  python
-  301  python3
-  302  python3 -m pip install -r requirements.txt
-  303  pip install -r requirements.txt
-  304  deactivate
-  305  clear
-  306  pip
-  307  exit
-  308  source venv/bin/activate
-  309  pip
-  310  python3-pip
-  311  exit
-  312  cd Development/michi/
-  313  python -m venv venv
-  314  touch .gitignore
-  315  toolbox enter
-  316  clea
-  317  clear
-  318  toolbox enter
-  319  exit
-  320  pip
-  321  source venv/bin/activate
-  322  pip
-  323  sudo dnf install python3-pip
-  324  python3-pip
-  325  pip
-  326  pip install -r requirements.txt
-  327  clear
-  328  pip install -r requirements.txt
-  329  pip3
-  330  deactivate
-  331  exit
-  332  cd Development/michi/
-  333  rm -rf venv/
-  334  python -m venv venv
-  335  toolbox enter
-  336  source venv/bin/activate
-  337  pip
-  338  clear
-  339  toolbox enter
-  340  clear
-  341  ls
-  342  exit
-  343  pip
-  344  cd Development/michi/
-  345  ls
-  346  source venv/bin/activate
-  347  pip
-  348  deactivate
-  349  exit
-  350  cd Development/michi/
-  351  stattus
-  352  status
-  353  add .gitignore
-  354  commit -m "include gitignore'
-  355  commit -m "include gitignore
-  356  commit -m "include gitignore"
-  357  clear
-  358  status
-  359  add database/
-  360  grm src/database/
-  361  grm -r src/database/
-  362  status
-  363  commit -m "moved src/database to ./database
-  364  commit -m "moved src/database to ./database"
-  365  add requirements.txt
-  366  commit -m "removed json"
-  367  clear
-  368  status
-  369  add src/func.py
-  370  commit -m "complied with pep8, and optimized the algorithm"
-  371  clear
-  372  status
-  373  add src/main.py
-  374  commit -m "complied with pep8, optimized the algorithm"
-  375  diff
-  376  add src/func.py
-  377  commit -m "changed the link down message"
-  378  rm src/colors.py
-  379  grm src/colors.py
-  380  status
-  381  commit -m "removed colors.py and used rich.console instead"
-  382  add requirements.txt
-  383  commit -m "include rich as dependency"
-  384  status
-  385  add README.md
-  386  commit -m "include other info and removed some"
-  387  status
-  388  add database/params.json
-  389  commit -m "fixed formatting"
-  390  clear
-  391  push devel
-  392  toolbox enter
-  393  source venv/bin/activate
-  394  cd Development/michi/
-  395  clear
-  396  source venv/bin/activate
-  397  clear
-  398  pip install -r requirements.txt
-  399  clear
-  400  deactivate
-  401  clear
-  402  source /var/home/iaacornus/Development/michi/venv/bin/activate
-  403  source /var/home/iaacornus/Development/michi/venv/bin/activate
-  404  flatpak list
-  405  git config --global color.branch auto
-  406  git config --global color.diff auto
-  407  git config --global color.interactive auto
-  408  git config --global color.status auto
-  409  cd Downloads/
-  410  ls
-  411  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  412  flatpak install flathub com.jgraph.drawio.desktop
-  413  flatpak list | grep riot
-  414  htop
-  415  systemctl --failed
-  416  clear
-  417  git config --global color.ui auto
-  418  cd Development/
-  419  cd michi/
-  420  ls
-  421  status
-  422  diff
-  423  status
-  424  add src/main.py
-  425  status
-  426  clear
-  427  diff
-  428  status
-  429  clear
-  430  cdx
-  431  cd
-  432  git config
-  433  nano .gitconfig
-  434  cd temporary/capstone/
-  435  status
-  436  add rfid_locker/src/main.cpp
-  437  commit -m "complied with c++ recommendations"
-  438  status
-  439  add rfid/main.cpp.bak
-  440  commit -m "rfid old code backup"
-  441  add rfid_locker/src/main.cpp
-  442  commit -m "rfid locker code"
-  443  clear
-  444  status
-  445  diff
-  446  stash
-  447  clear
-  448  push rfid-locker
-  449  clear
-  450  switch devel
-  451  pull
-  452  fetch
-  453  clear
-  454  cd temporary/capstone/
-  455  pull
-  456  cd temporary/capstone/
-  457  ls
-  458  status
-  459  pull
-  460  push devel
-  461  pull -ff
-  462  pull --ff
-  463  cd temporary/capstone/
-  464  status
-  465  add src/function.py
-  466  commit -m "fixed imports"
-  467  status
-  468  add requirements.txt
-  469  commit -m "include rich as dependency"
-  470  touch src/demo.py
-  471  statu
-  472  status
-  473  add src/cli.py
-  474  commit -m "include demo function as option"
-  475  add src/cli.py
-  476  commit -m "include some measures to avoid use as module"
-  477  status
-  478  add src/demo.py
-  479  commit -m "for demonstration of face recognition"
-  480  status
-  481  add requirements.txt
-  482  commit -m "add version numbers to avoid dependency breaking"
-  483  add src/face_recog.py
-  484  commit -m "used console.log and removed default faces by turning it as function parameter"
-  485  add src/system/utils/update.py
-  486  commit -m "switched to rich.console and add logs"
-  487  status
-  488  add src/cli.py src/bin/access.py
-  489  add src/main.py src/face_recog.py src/misc/colors.py
-  490  status
-  491  commit -m "name bug fixes"
-  492  add src/demo.py
-  493  commit -m "class bug fix"
-  494  clear
-  495  add src/function.py
-  496  status
-  497  add .
-  498  commit -m "switched to console.log from rich, for more informative stdout"
-  499  clear
-  500  push devel
-  501  status
-  502  add src/bin/access.py
-  503  add .
-  504  remove .
-  505  status
-  506  add src/bin/access.py
-  507  status
-  508  remove .
-  509  add src/cli.py
-  510  commit -m "include verbose option"
-  511  status
-  512  add src/face_recog.py
-  513  commit -m "removed unused variables and put back return functions"
-  514  add src/main.py
-  515  commit -m "integrated the face recognition function"
-  516  clear
-  517  status
-  518  add .
-  519  commit -m "fixed stdout of processes"
-  520  add src/cli.py
-  521  commit -m "used log for exception for more informative output"
-  522  add src/bin/access.py
-  523  add src/bin/code_email.py
-  524  commit -m "fixed stdout and stderr"
-  525  add src/system/utils/update.py
-  526  commit -m "fixed the process stdout"
-  527  status
-  528  add requirements.txt
-  529  commit -m "remove unused dependencies"
-  530  touch INSTALL.md
-  531  add INSTALL.md
-  532  commit -m "installation tutorial"
-  533  push devel
-  534  clear
-  535  branch
-  536  cd ..
-  537  ls
-  538  mkdir devel
-  539  cd devel/
-  540  git clone -b test-v1-beta https://github.com/testno0/capstone
-  541  log
-  542  cd capstone/
-  543  log > logs
-  544  history > command_logs
+  769  add .
+  770  commit -m "complied with codiga suggestions"
+  771  clear
+  772  push
+  773  status
+  774  add .
+  775  reset .
+  776  status
+  777  add .
+  778  commit -m "removed duplicated by turning the code block into function"
+  779  branch img-viewer
+  780  switch img-viewer
+  781  status
+  782  add .
+  783  reset .
+  784  add src/utils/scp_utils.py
+  785  status
+  786  commit -m "create function to view and fetch img from the site metadata"
+  787  clear
+  788  status
+  789  add .
+  790  commit -m "include opencv-python and specific the version numbers"
+  791  clear
+  792  status
+  793  add .
+  794  commit -m "fixed connection error due to wrong base link"
+  795  clear
+  796  status
+  797  push
+  798  push img-viewer
+  799  status
+  800  add src/utils/md_init.py
+  801  commit -m "removed scp_check function, as it is unneccessary"
+  802  add src/utils/md_init.py src/main.py
+  803  commit -m "fix small errors"
+  804  add src/utils/scp_utils.py
+  805  commit -m "include function for image viewing"
+  806  add src/cli.py
+  807  commit -m "option for image view"
+  808  clear
+  809  push
+  810  push img-viewer
+  811  clear
+  812  status
+  813  add src/cli.py src/main.py
+  814  commit -m "fixes"
+  815  add src/utils/md_init.py
+  816  commit -m "optimized codebase"
+  817  add src/utils/scp_utils.py
+  818  commit -m "restructured the code and fixed the fetch_img and view_img function, as well as some bug fixes"
+  819  push
+  820  push img-viewer
+  821  branch codiga-suggestions
+  822  switch codiga-suggestions
+  823  status
+  824  add .
+  825  commit -m "complied with codiga suggestions"
+  826  clear
+  827  push codiga-suggestions
+  828  pull
+  829  pull https://github.com/iaacornus/scpterm codiga-suggestions
+  830  status
+  831  add .
+  832  commit -m "removed extra spaces"
+  833  push
+  834  push codiga-suggestions
+  835  switch img-viewer
+  836  pull
+  837  pull https://github.com/iaacornus/scpterm img-viewer
+  838  status
+  839  add ,
+  840  add /
+  841  add .
+  842  commit -m "view now has an integrated image viewer:
+  843  commit -m "view now has an integrated image viewer"
+  844  clear
+  845  switch devel
+  846  stash
+  847  switch devel
+  848  pull
+  849  clear
+  850  ls
+  851  cd src/
+  852  ls
+  853  rm -rf misc/
+  854  status
+  855  grm -r misc
+  856  status
+  857  commit -m "removed unused"
+  858  status
+  859  add ../setup.py
+  860  commit -m "preparation for next patch"
+  861  clear
+  862  status
+  863  pull
+  864  status
+  865  add utils/*
+  866  add utils/
+  867  status
+  868  commit -m "fixed image viewer integration"
+  869  switch image-viewer
+  870  switch img-viewer
+  871  status
+  872  add scp.egg-info/
+  873  add utils/scp_utils.py
+  874  status
+  875  switch img-viewer
+  876  commit -m "bug fixes"
+  877  switch img-viewer
+  878  status
+  879  switch devel
+  880  status
+  881  add .
+  882  status
+  883  add .
+  884  status
+  885  reset .
+  886  status
+  887  add cli.py
+  888  commit -m "restructured"
+  889  add .
+  890  commit -m "bug fixes and improvements
+  891  commit -m "bug fixes and improvements"
+  892  push
+  893  clear
+  894  push
+  895  branch 0.2.0
+  896  push 0.20
+  897  push 0.2.0
+  898  switch 0.2.0
+  899  status
+  900  add .
+  901  commit -m "removed string comments"
+  902  clear
+  903  cd ..
+  904  source venv/bin/activate
+  905  clear
+  906  python src/cli.py -h
+  907  python src/cli.py -l
+  908  deactivate
+  909  clear
+  910  status
+  911  add README.md samples/0.2.0.gif
+  912  commit -m "updated information for 0.2.0"
+  913  status
+  914  add .
+  915  status
+  916  commit -m "renamed to version number"
+  917  push 0.2.0
+  918  clear
+  919  cd Development/scpterm/
+  920  ls
+  921  rm -rf dist/ build/
+  922  ls
+  923  clear
+  924  toolbox enter fedora-toolbox-35
+  925  cd Development/scpterm/
+  926  toolbox enter fedora-toolbox-35
+  927  hash
+  928  hash 1
+  929  hash "a"
+  930  sha256sum a
+  931  echo "hello" | hexdump
+  932  echo "Hello" | hexdump
+  933  echo "GH 5H 7Y 8U" | hexdump
+  934  echo "GH 5H 8U 7Y" | hexdump
+  935  cd temporary/devel/capstone/
+  936  LS
+  937  ls
+  938  pull
+  939  flatpak update
+  940  clear
+  941  toolbox enter
+  942  sudo dnf update
+  943  clear
+  944  exit
+  945  sudo dnf update
+  946  clear
+  947  exit
+  948  toolbox enter fedora-toolbox-35
+  949  flatpak update
+  950  flatpak repair
+  951  clear
+  952  clear
+  953  rpm-ostree upgrade --check
+  954  rpm-ostree upgrade
+  955  sudo rpm-ostree upgrade
+  956  journalctl -t 'rpm-ostree(akmods.prein)'
+  957  clear
+  958  htop
+  959  systemctl --failed
+  960  clear
+  961  rpm-ostree upgrade
+  962  top
+  963  killall python
+  964  top
+  965  clear
+  966  rpm-ostree upgrade
+  967  sudo rpm-ostree upgrade
+  968  journalctl -t 'rpm-ostree(akmods.prein)'
+  969  sudo rpm-ostree upgrade
+  970  systemctl reboot
+  971  flatpak update
+  972  cd Development/scpterm/
+  973  clear
+  974  python src/cli.py -d 002
+  975  source venv/bin/activate
+  976  python src/cli.py -d 002
+  977  clear
+  978  alias scp="python src/cli.py"
+  979  scp -d 002
+  980  clear
+  981  scp
+  982  scp -init
+  983  scp -init -r
+  984  clear
+  985  echo $Lines
+  986  echo $LINES
+  987  echo $ROW
+  988  echo $ROWS
+  989  echo $COLUMS
+  990  echo $COLUMNS
+  991  python src/main.py
+  992  clear
+  993  python src/main.py
+  994  clear
+  995  python src/main.py
+  996  clear
+  997  top
+  998  rpm-ostree upgrade
+  999  clear
+ 1000  systemctl reboot
+ 1001  cd temporary/devel/capstone/
+ 1002  ls
+ 1003  status
+ 1004  add .
+ 1005  commit -m "code base improvements"
+ 1006  push
+ 1007  status
+ 1008  add .
+ 1009  commit -m "complied with codiga suggestions"
+ 1010  push
+ 1011  log > logs
+ 1012  history > command_logs
