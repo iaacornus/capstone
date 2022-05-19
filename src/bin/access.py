@@ -4,6 +4,7 @@ from rich.console import Console
 
 from misc.colors import Colors as C
 from bin.code_email import Email
+from src.function import System
 
 
 def access(home_):
@@ -55,7 +56,7 @@ def access(home_):
                     )
                     trial += 1
                     continue
-            return True
+            raise SystemExit
 
         email.send("alert", school_name)
         os.system(f"rm -rf {home_}/repo/")

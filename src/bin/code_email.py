@@ -112,3 +112,5 @@ class Email:
             console.log("[bold red][-] Connection error.[/bold red]")
         else:
             return phrase
+
+        return False

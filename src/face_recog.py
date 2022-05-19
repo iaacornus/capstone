@@ -1,16 +1,12 @@
-from os.path import expanduser
-
 import face_recognition as fr
 import numpy as np
 import cv2 as cv
-from rich.console import Console
 
 from function import draw_rectangle
 from misc.colors import Colors as C
 
 
 def face_recognition(av_cams, face_encodings_, face_names_):
-    path_ = f"{expanduser('~')}/temporary/capstone/sample/"
     process_this_frame = True
 
     # initialize some variables include the encoded faces in the list
