@@ -10,6 +10,7 @@ from datetime import datetime
 from email.message import EmailMessage
 from rich.console import Console
 
+
 class Email:
     port, smtp_server = 465, "smtp.gmail.com"
     sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5" # fill up later
@@ -30,11 +31,11 @@ class Email:
         msg = EmailMessage()
         msg["From"] = self.sender_email
         msg["To"] = self.receiver_email
-        phrase = ''.join([random.choice(random.choice(str_set)) for x in range(32)])
+        phrase = "".join([random.choice(random.choice(str_set)) for x in range(32)])
 
         if access == "setup":
             msg["Subject"] = "Secure access phrase"
-            msg.set_content(f"""\
+            msg.set_content(f"""\from misc.colors import Colors as C
                 <!DOCTYPE html>
                 <html>
                     </body>
@@ -94,9 +95,9 @@ class Email:
 
         try:
             with console.status(
-                "[bold bright_cyan][+] Sending email ...[/bold bright_cyan]",
-                spinner="simpleDots"
-            ):
+                    "[bold bright_cyan][+] Sending email ...[/bold bright_cyan]",
+                    spinner="simpleDots"
+                ):
                 context = ssl.create_default_context()
 
                 with smtplib.SMTP_SSL(
@@ -107,8 +108,6 @@ class Email:
                     server.login(self.sender_email, self.password)
                     server.send_message(msg)
         except ConnectionError:
-            console.log(
-                f"[bold red][-] Connection error.[/bold red]"
-            )
+            console.log(f"[bold red][-] Connection error.[/bold red]")
         else:
             return phrase

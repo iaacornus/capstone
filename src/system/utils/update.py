@@ -6,10 +6,9 @@ import os
 from rich.console import Console
 
 from bin.access import access
-from misc.colors import Colors as C
 
 
-def update(setup):
+def update():
     HOME = os.path.expanduser("~")
     console = Console()
 

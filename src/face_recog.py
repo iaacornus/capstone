@@ -8,27 +8,23 @@ from rich.console import Console
 from function import draw_rectangle
 from misc.colors import Colors as C
 
-def face_recognition(
-        av_cams,
-        face_encodings_,
-        face_names_
-    ):
+
+def face_recognition(av_cams, face_encodings_, face_names_):
+    path_ = f"{expanduser('~')}/temporary/capstone/sample/"
+    process_this_frame = True
+
+    # initialize some variables include the encoded faces in the list
+    known_fe, known_fnames = [], []
+    face_locations, face_encodings, face_names = [], [], []
+
     if not av_cams:
         raise SystemExit(
             f"{C.BOLD+C.RED}> There are no available cameras.{C.END}"
         )
-    path_ = f"{expanduser('~')}/temporary/capstone/sample/"
-
-    # include the encoded faces in the list
-    known_fe, known_fnames = [], []
     # the names and the face encoding should the of the same size
     for fe_, fnames_ in zip(face_encodings_, face_names_):
         known_fe.append(fe_)
         known_fnames.append(fnames_)
-
-    # initialize some variables
-    face_locations, face_encodings, face_names = [], [], []
-    process_this_frame = True
 
     # video capture
     vid = cv.VideoCapture(0)
@@ -78,7 +74,6 @@ def face_recognition(
                         left, top,
                         right, bottom
                     )
-                    return True
                 else:
                     draw_rectangle(
                         (0, 0, 255),
@@ -86,7 +81,6 @@ def face_recognition(
                         left, top,
                         right, bottom
                     )
-                    return name
         # display the resulting image
         cv.imshow("Video", frame)
 

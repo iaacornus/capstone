@@ -21,12 +21,12 @@ def av_cams():
         while True:
             cap = cv.VideoCapture(index)
 
-            if not cap.read()[0]:
-                break
-            else:
+            if cap.read()[0]:
                 cam_arr.append(index)
-            cap.release()
-            index += 1
+                cap.release()
+                index += 1
+                continue
+            break
 
     if not cam_arr:
         return False
@@ -38,7 +38,6 @@ def av_cams():
             console.log(
                 f"[green]Camera: [/green][cyan]{num}, {cam}[/cyan]"
             )
-            print(f"{num} {cam}")
         input("Press any key to clear ...")
         stdout.write("\033[K") # remove the messages
         return True
@@ -76,6 +75,7 @@ class System:
         try:
             if exists(f"{self.HOME}/repo"):
                 sys(f"rm -rf {self.HOME}/repo")
+
             sys(f"git clone --branch database {self.repo}")
             sys(f"mv {self.HOME}/capstone {self.HOME}/repo")
             return True
@@ -100,10 +100,10 @@ class System:
                 self.pull_data()
                 count += 1
                 continue
-        else:
-            raise SystemExit(
-                f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
-            )
+
+        raise SystemExit(
+            f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
+        )
 
     def setup(self):
         trial = 0
@@ -112,17 +112,16 @@ class System:
             raise SystemExit(
                 f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
             )
+
+        try:
+            while trial < 3:
+                if not self.pull_data():
+                    trial += 1
+                    continue
+                break
+        except KeyboardInterrupt:
+            raise SystemExit(
+                f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
+            )
         else:
-            try:
-                while trial < 3:
-                    if not self.pull_data():
-                        trial += 1
-                        continue
-                    else:
-                        break
-            except KeyboardInterrupt:
-                raise SystemExit(
-                    f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
-                )
-            else:
-                return self.get_data()
+            return self.get_data()

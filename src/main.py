@@ -1,12 +1,10 @@
 import sys
 import os
-from difflib import SequenceMatcher as SM
 
 from rich.console import Console
 
 from function import System, av_cams
 from bin.code_email import Email
-from misc.colors import Colors as C
 from face_recog import face_recognition
 
 
@@ -14,7 +12,7 @@ def main(HOME_, log_):
     """initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives."""
 
-    with open(f"{HOME_}/.att_sys/user_info") as info:
+    with open(f"{HOME_}/.att_sys/user_info", "r", encoding="utf-8") as info:
         source = info.readlines()
 
     path_ = f"{os.path.expanduser('~')}/.att_sys/capstone/student_data/imgs"
