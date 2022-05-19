@@ -55,13 +55,14 @@ def access(home_):
                     )
                     trial += 1
                     continue
-        else:
-            email.send("alert", school_name)
-            os.system(f"rm -rf {_home_}/repo/")
-            console.log(
-                "[bold red][-] Verification error.\n> Nuking the repository ...[/bold red]"
-            )
-            os.system("systemctl poweroff")
+            return True
+
+        email.send("alert", school_name)
+        os.system(f"rm -rf {home_}/repo/")
+        console.log(
+            "[bold red][-] Verification error.\n> Nuking the repository ...[/bold red]"
+        )
+        os.system("systemctl poweroff")
 
     except KeyboardInterrupt:
         os.system("systemctl poweroff")

@@ -12,6 +12,11 @@ def main(_home_, log_):
     """initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives."""
 
+    path_ = f"{os.path.expanduser('~')}/.att_sys/capstone/student_data/imgs"
+    receiver_email = source[0].rstrip().strip()
+    school_name = source[3].rstrip().strip()
+    student_data_proc = []
+
     with open(f"{_home_}/.att_sys/user_info", "r", encoding="utf-8") as info:
         source = info.readlines()
 
@@ -21,12 +26,6 @@ def main(_home_, log_):
         "https://github.com/testno0/repo",
         receiver_email
     )
-
-    path_ = f"{os.path.expanduser('~')}/.att_sys/capstone/student_data/imgs"
-    receiver_email = source[0].rstrip().strip()
-    school_name = source[3].rstrip().strip()
-
-    student_data_proc = []
 
     with console.status(
             "[bold bright_cyan][+] Fetching data ...[/bold bright_cyan]",
