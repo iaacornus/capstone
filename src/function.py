@@ -28,11 +28,9 @@ def av_cams():
                 continue
             break
 
-    if not cam_arr:
-        return False
-    else:
+    if cam_arr:
         console.log(
-            f"[bold green]> All available cameras found:[/bold green]"
+            "[bold green]> All available cameras found:[/bold green]"
         )
         for num, cam in enumerate(cam_arr):
             console.log(
@@ -41,6 +39,8 @@ def av_cams():
         input("Press any key to clear ...")
         stdout.write("\033[K") # remove the messages
         return True
+
+    return False
 
 
 def draw_rectangle(color, name, frame, left, top, right, bottom):
@@ -67,17 +67,17 @@ def draw_rectangle(color, name, frame, left, top, right, bottom):
 
 
 class System:
-    def __init__(self, HOME, repo):
-        self.HOME = HOME
+    def __init__(self, _home_, repo):
+        self._home_ = _home_
         self.repo = repo
 
     def pull_data(self):
         try:
-            if exists(f"{self.HOME}/repo"):
-                sys(f"rm -rf {self.HOME}/repo")
+            if exists(f"{self._home_}/repo"):
+                sys(f"rm -rf {self._home_}/repo")
 
             sys(f"git clone --branch database {self.repo}")
-            sys(f"mv {self.HOME}/capstone {self.HOME}/repo")
+            sys(f"mv {self._home_}/capstone {self._home_}/repo")
             return True
 
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
@@ -88,14 +88,17 @@ class System:
 
         while count < 3:
             try:
-                with open(f"{self.HOME}/repo/student_data/info.json") as data:
-                    student_data = json.load(data)
+                with open(
+                        f"{self._home_}/repo/student_data/info.json", encoding="utf-8"
+                    ) as data_1:
+                    student_data = json.load(data_1)
 
-                with open(f"{self.HOME}/repo/teacher_data/info.json") as Data:
-                    teacher_data = json.load(Data)
+                with open(
+                        f"{self._home_}/repo/teacher_data/info.json", encoding="utf-8"
+                    ) as data_2:
+                    teacher_data = json.load(data_2)
 
                 return student_data, teacher_data
-
             except FileNotFoundError:
                 self.pull_data()
                 count += 1
@@ -108,7 +111,7 @@ class System:
     def setup(self):
         trial = 0
 
-        if not access(self.HOME):
+        if not access(self._home_):
             raise SystemExit(
                 f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
             )

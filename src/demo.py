@@ -48,11 +48,11 @@ def demo():
         face_recognition(
             av_cams_,
             face_encodings_= (
-                ref_face,
-                ref_face_2,
-                ref_face_3,
-                ref_face_4,
-                ref_face_5
+                rf_encoding,
+                rf_encoding2,
+                rf_encoding3,
+                rf_encoding4,
+                rf_encoding5
             ),
             face_names_= (
                 "Ezekiel Lopez",

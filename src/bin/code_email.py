@@ -5,9 +5,10 @@ import ssl
 import socket
 import os
 
-import geocoder
 from datetime import datetime
 from email.message import EmailMessage
+
+import geocoder
 from rich.console import Console
 
 
@@ -108,6 +109,6 @@ class Email:
                     server.login(self.sender_email, self.password)
                     server.send_message(msg)
         except ConnectionError:
-            console.log(f"[bold red][-] Connection error.[/bold red]")
+            console.log("[bold red][-] Connection error.[/bold red]")
         else:
             return phrase
