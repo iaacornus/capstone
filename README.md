@@ -1,5 +1,7 @@
 # Capstone
 
+![](https://api.codiga.io/project/33619/score/svg)
+
 Development branch of arduino and RFID software, next merge is devel -> v 1.0
 
 # Development
