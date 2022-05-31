@@ -76,7 +76,7 @@ def main(_home_, verbose=False):
     encoding_path = f"{_home_}/.att_sys/student_data/encoding.py"
     if not os.path.exists(encoding_path):
         with console.status(
-                "[bold magenta]> Creating module for encoding ...[/bold magenta]", spinner="simpleDots"
+                "[bold magenta]> Creating encoding module ...[/bold magenta]", spinner="simpleDots"
             ):
             # initiate the file and add the needed import
             os.system(
