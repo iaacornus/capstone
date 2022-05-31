@@ -28,7 +28,7 @@ def main(_home_, log_):
     )
 
     with console.status(
-            "[bold bright_cyan][+] Fetching data ...[/bold bright_cyan]",
+            "[bold magenta][+] Fetching data ...[/bold magenta]",
             spinner="simpleDots"
         ):
         if not os.path.exists(f"{_home_}/repo"):
@@ -36,14 +36,14 @@ def main(_home_, log_):
                 "[bold red][-] The repository is not setup.[/bold red]"
             )
             console.log(
-                "[bold bright_cyan][+] Setting up the repository ...[/bold bright_cyan]"
+                "[bold magenta][+] Setting up the repository ...[/bold magenta]"
             )
             student_data, _ = sys_initiate.setup(school_name)
         else:
             student_data, _ = sys_initiate.get_data()
 
     with console.status(
-            "[bold bright_cyan][+] Fetching student names ...[/bold bright_cyan]",
+            "[bold magenta][+] Fetching student names ...[/bold magenta]",
             spinner="simpleDots"
         ):
         if log_: # for verbose
@@ -57,7 +57,7 @@ def main(_home_, log_):
             student_names = list(student_data["name_init"])
 
     with console.status(
-            "[bold bright_cyan]> Processing student data ...[/bold]",
+            "[bold magenta]> Processing student data ...[/bold]",
             spinner="simpleDots"
         ):
         for student in student_names:
@@ -71,7 +71,7 @@ def main(_home_, log_):
     encoding_path = f"{_home_}/.att_sys/student_data/encoding.py"
     if not os.path.exists(encoding_path):
         with console.status(
-                "[bold bright_cyan]> Creating module for encoding ...[/bold bright_cyan]",
+                "[bold magenta]> Creating module for encoding ...[/bold magenta]",
                 spinner="simpleDots"
             ):
             # initiate the file and add the needed import

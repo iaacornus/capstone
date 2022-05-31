@@ -13,8 +13,7 @@ def demo():
     path_ = f"{expanduser('~')}/temporary/capstone/sample/"
 
     with console.status(
-            "[bold bright_cyan][+] Loading user images ...[/bold bright_cyan]",
-            spinner="simpleDots"
+            "[bold magenta][+] Loading user images ...[/bold magenta]", spinner="simpleDots"
         ):
         # load face references from path_.
         ref_face = fr.load_image_file(f"{path_}/test_1.png") # ezekiel lopez encoding
@@ -26,7 +25,7 @@ def demo():
         console.log("[bold green]> Faces loaded successfully.[/bold green]")
 
     with console.status(
-            "[bold bright_cyan][+] Encoding user faces ...[/bold bright_cyan]",
+            "[bold magenta][+] Encoding user faces ...[/bold magenta]",
             spinner="simpleDots"
         ):
         #----------------------------------------------------------------
@@ -42,8 +41,7 @@ def demo():
     # load the function with the parameters it needs, unpack the tuple
     # for the decoding.
     with console.status(
-            "[bold bright_cyan][+] Function running ...[/bold bright_cyan]",
-            spinner="simpleDots"
+            "[bold magenta][+] Function running ...[/bold magenta]", spinner="simpleDots"
         ):
         face_recognition(
             av_cams_,

@@ -14,8 +14,8 @@ from misc.colors import Colors as C
 def program_options():
     console = Console()
     description = """\
-        This is a program designed to interact with the TapTap, an RFID system designed by Capstone
-        Group 5.
+        This is a program designed to interact with the TapTap,
+        an RFID system designed by Capstone Group 5.
     """
     parser = argparse.ArgumentParser(
         prog="taptap",
@@ -84,19 +84,13 @@ def program_options():
         elif args.demo:
             demo()
     except ConnectionError: # add other exceptions later
-        console.log(
-            "[bold red][-] Connection error.[/bold red]"
-        )
+        console.log("[bold red][-] Connection error.[/bold red]")
         raise SystemExit
     except KeyboardInterrupt:
-        console.log(
-            "[bold red][-] Keyboard interrupt.[/bold red]"
-        )
+        console.log("[bold red][-] Keyboard interrupt.[/bold red]")
         raise SystemExit
     except SystemError:
-        console.log(
-            "[bold red][-] System error.[/bold red]"
-        )
+        console.log("[bold red][-] System error.[/bold red]")
         raise SystemExit
 
 

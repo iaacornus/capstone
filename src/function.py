@@ -15,7 +15,7 @@ def av_cams():
     index, cam_arr = 0, []
 
     with console.status(
-            "[bold bright_cyan][+] Checking for available cameras ...[/bold bright_cyan]",
+            "[bold magenta][+] Checking for available cameras ...[/bold magenta]",
             spinner="simpleDots"
         ):
         while True:

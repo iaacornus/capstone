@@ -15,13 +15,13 @@ def update():
         if not os.path.exists(f"{_home_}/repo"):
             console.log("[bold red][-] Local repository not found[/bold red]")
             console.log(
-                "[bold bright_cyan][+] Cloning the repository.[/bold bright_cyan]"
+                "[bold magenta][+] Cloning the repository.[/bold magenta]"
             )
             os.system(
                 f"git clone https://github.com/testno0/repo {_home_} &> /dev/null"
             )
         else:
-            console.log("[bold bright_cyan][+] Pulling updates ...[/bold bright_cyan]")
+            console.log("[bold magenta][+] Pulling updates ...[/bold magenta]")
             os.system(f"cd {_home_}/repo/ && git pull")
 
 if __name__ == "__main__":
