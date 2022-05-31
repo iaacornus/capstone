@@ -1,69 +1,52 @@
+from code_email import Email
+from os import system as Exec
+import os.path
+import sys
 import os
 
-from rich.console import Console
+#* passed
+# TODO : add system backup for email sending
+# TODO : optimize the code
 
-from misc.colors import Colors as C
-from bin.code_email import Email
-from src.function import System
+home = os.environ.get("HOME")
 
-
-def access(home_):
-    with open(f"{home_}/.att_sys/user_info", "r", encoding="utf-8") as info:
-        source = info.readlines()
-
-    console = Console()
-    password, school_name = source[2].rstrip().strip(), source[3].rstrip().strip()
-    email = Email(
-        source[0].rstrip().strip(),
-        source[1].rstrip().strip()
-    )
-    trial, mark = 0, False
-
+if os.path.exists("$HOME/.sys/create") is False:
     try:
-        while trial < 3:
-            if not mark:
-                print(f"{C.BOLD}", end="")
-                verify = input(
-                    f"> Kindly input your 32 character password ({3-trial} left): "
-                )
-                print(f"{C.END}", end="")
-
-                if verify != password:
-                    trial += 1
-                    console.log(
-                        f"[bold][red][-] Password doesn't match.[/red]{3-trial} left.[/bold]"
-                    )
-                    print(f"{C.BOLD}", end="")
-                    send_new = input(
-                        "> Send a new temporary password to your email instead? [y/N]:"
-                    )
-                    print(f"{C.END}", end="")
-
-                    if send_new in ['y', 'Y']:
-                        mark = True
-                    continue
-            else:
-                new_pass = email.send("setup", school_name)
-                print(f"{C.BOLD}", end="")
-                verify_new = input(
-                    f"> Kindly input your 32 character password (case sensitive {3-trial} left): "
-                )
-                print(f"{C.END}", end="")
-
-                if verify_new != new_pass:
-                    console.log(
-                        f"[bold][red][-] Password doesn't match.[/red]{3-trial} left.[/bold]"
-                    )
-                    trial += 1
-                    continue
-            raise SystemExit
-
-        email.send("alert", school_name)
-        os.system(f"rm -rf {home_}/repo/")
-        console.log(
-            "[bold red][-] Verification error.\n> Nuking the repository ...[/bold red]"
-        )
-        os.system("systemctl poweroff")
-
+        Exec(f"chmod +x {os.getcwd()}/setup.sh ; bash {os.getcwd()}/setup.sh")
     except KeyboardInterrupt:
-        os.system("systemctl poweroff")
+        raise SystemExit("Operation Aborted.")
+
+with open(f"{home}/.sys/user_info", 'r') as email:
+    source = email.readlines()
+
+receiver_email = source[0].rstrip().strip()
+user = source[1].rstrip().strip()
+
+email = Email(receiver_email, user)
+app = sys.argv[1].strip()
+trial = 0
+
+while True:    
+    if trial == 3:
+        try:
+            email.send_alert(receiver_email)
+        except ConnectionError:
+            pass
+        finally:
+            print("\033[91m> Too much error. Signing off.\033[0m")
+            Exec("systemctl poweroff")
+    elif trial >= 1:
+        passphrase = email.send_phrase(receiver_email, user, dial=True)
+    else:
+        passphrase = email.send_phrase(receiver_email, user)
+        
+    trial += 1
+    usr_inpt = str(input(f"\033[91m> Accessing {app}, sending the 24-key passphrase.\033[0m\n└─╼ Input the phrase sent to your email ({4-trial} left) : "))
+
+    if usr_inpt == passphrase:
+        break
+    else:
+        continue        
+
+Exec(app)
+Exec(f"killall {app} && killall gnome-terminal")
