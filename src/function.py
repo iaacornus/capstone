@@ -15,8 +15,7 @@ def av_cams():
     index, cam_arr = 0, []
 
     with console.status(
-            "[bold magenta][+] Checking for available cameras ...[/bold magenta]",
-            spinner="simpleDots"
+            "[bold magenta][+] Checking for available cameras ...[/bold magenta]", spinner="simpleDots"
         ):
         while True:
             cap = cv.VideoCapture(index)
@@ -29,13 +28,10 @@ def av_cams():
             break
 
     if cam_arr:
-        console.log(
-            "[bold green]> All available cameras found:[/bold green]"
-        )
+        console.log("[bold green]> All available cameras found:[/bold green]")
         for num, cam in enumerate(cam_arr):
-            console.log(
-                f"[green]Camera: [/green][cyan]{num}, {cam}[/cyan]"
-            )
+            console.log(f"[green]Camera: [/green][cyan]{num}, {cam}[/cyan]")
+
         input("Press any key to clear ...")
         stdout.write("\033[K") # remove the messages
         return True
@@ -104,17 +100,13 @@ class System:
                 count += 1
                 continue
 
-        raise SystemExit(
-            f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
-        )
+        raise SystemExit(f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}")
 
     def setup(self):
         trial = 0
 
         if not access(self._home_):
-            raise SystemExit(
-                f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
-            )
+            raise SystemExit(f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}")
 
         try:
             while trial < 3:
@@ -123,8 +115,6 @@ class System:
                     continue
                 break
         except KeyboardInterrupt:
-            raise SystemExit(
-                f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
-            )
+            raise SystemExit(f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}")
         else:
             return self.get_data()

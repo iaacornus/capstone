@@ -8,9 +8,19 @@ from bin.code_email import Email
 from face_recog import face_recognition
 
 
-def main(_home_, log_):
-    """initiate the system, use try, except, else block to catch errors
-    and to organize the procedures based on the cases the system gives."""
+def main(_home_, verbose=False):
+    """
+    initiate the system, use try, except, else block to catch errors
+    and to organize the procedures based on the cases the system gives.
+
+    Returns
+    -------
+    None
+
+    NOTES:
+    console.log was used to display further information, this includes
+    the time as well as line and source code file in the stdout.
+    """
 
     with open(f"{_home_}/.att_sys/user_info", "r", encoding="utf-8") as info:
         source = info.readlines()
@@ -28,25 +38,21 @@ def main(_home_, log_):
     )
 
     with console.status(
-            "[bold magenta][+] Fetching data ...[/bold magenta]",
-            spinner="simpleDots"
+            "[bold magenta][+] Fetching data ...[/bold magenta]", spinner="simpleDots"
         ):
         if not os.path.exists(f"{_home_}/repo"):
             console.log(
                 "[bold red][-] The repository is not setup.[/bold red]"
-            )
-            console.log(
-                "[bold magenta][+] Setting up the repository ...[/bold magenta]"
+                + "[bold magenta][+] Setting up the repository ...[/bold magenta]"
             )
             student_data, _ = sys_initiate.setup(school_name)
         else:
             student_data, _ = sys_initiate.get_data()
 
     with console.status(
-            "[bold magenta][+] Fetching student names ...[/bold magenta]",
-            spinner="simpleDots"
+            "[bold magenta][+] Fetching student names ...[/bold magenta]", spinner="simpleDots"
         ):
-        if log_: # for verbose
+        if verbose: # for verbose
             student_names = []
             for name in student_data["name_init"]:
                 console.log(
@@ -57,27 +63,24 @@ def main(_home_, log_):
             student_names = list(student_data["name_init"])
 
     with console.status(
-            "[bold magenta]> Processing student data ...[/bold]",
-            spinner="simpleDots"
+            "[bold magenta]> Processing student data ...[/bold]", spinner="simpleDots"
         ):
         for student in student_names:
-            if log_:
+            if verbose: # just print the student name and other information, and proceed
+                        # with the iteration process.
                 console.log(
-                    "[green]> Fetching data of [/green]"
-                    + f"[cyan]{student}[/cyan] [green]...[/green]"
+                    f"[green]> Fetching data of [/green][cyan]{student}[/cyan] [green]...[/green]"
                 )
             student_data_proc.append(student_data["student"])
 
     encoding_path = f"{_home_}/.att_sys/student_data/encoding.py"
     if not os.path.exists(encoding_path):
         with console.status(
-                "[bold magenta]> Creating module for encoding ...[/bold magenta]",
-                spinner="simpleDots"
+                "[bold magenta]> Creating module for encoding ...[/bold magenta]", spinner="simpleDots"
             ):
             # initiate the file and add the needed import
             os.system(
-                "echo -e 'import face_recognition as fr" +
-                f"\n\nclass Encoding:\n' > {encoding_path}"
+                f"echo -e 'import face_recognition as fr \n\nclass Encoding:\n' > {encoding_path}"
             )
             for i in range(len(student_data_proc)-1):
                 os.system(
@@ -99,9 +102,11 @@ def main(_home_, log_):
         student = face_recognition(
             av_cams_eval,
             console,
-            face_encodings_=tuple(student_data_proc),
+            face_encodings_=tuple(student_data_proc), # use tuple to avoid mutations
             face_names_=tuple(student_names),
         )
+        # some configurations for email function, can add more and can
+        # be tweaked further for different use.
         if student:
             email.send(
                 "student true",

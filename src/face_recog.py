@@ -7,6 +7,15 @@ from misc.colors import Colors as C
 
 
 def face_recognition(av_cams, face_encodings_, face_names_):
+    """
+    Currently returns none, basically a function for access and encoding
+    of faces.
+
+    Returns
+    -------
+    None
+    """
+
     process_this_frame = True
 
     # initialize some variables include the encoded faces in the list
@@ -14,9 +23,8 @@ def face_recognition(av_cams, face_encodings_, face_names_):
     face_locations, face_encodings, face_names = [], [], []
 
     if not av_cams:
-        raise SystemExit(
-            f"{C.BOLD+C.RED}> There are no available cameras.{C.END}"
-        )
+        raise SystemExit(f"{C.BOLD+C.RED}> There are no available cameras.{C.END}")
+
     # the names and the face encoding should the of the same size
     for fe_, fnames_ in zip(face_encodings_, face_names_):
         known_fe.append(fe_)
