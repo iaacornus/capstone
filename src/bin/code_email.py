@@ -4,7 +4,6 @@ import smtplib
 import ssl
 import socket
 import os
-
 from datetime import datetime
 from email.message import EmailMessage
 

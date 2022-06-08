@@ -4,7 +4,6 @@ from rich.console import Console
 
 from misc.colors import Colors as C
 from bin.code_email import Email
-from src.function import System
 
 
 def access(home_):
