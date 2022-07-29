@@ -1,4 +1,6 @@
-from numpy import argmin
+from re import A
+from typing import Any
+from numpy import argmin, ndarray
 from cv2 import (
     VideoCapture,
     resize,
@@ -15,7 +17,11 @@ from function import draw_rectangle
 from misc.colors import Colors as C
 
 
-def face_recognition(av_cams, face_encodings_, face_names_) -> None:
+def face_recognition(
+        av_cams: bool,
+        face_encodings_: tuple[Any],
+        face_names_: tuple[Any]
+    ) -> None:
     """
     Currently returns none, basically a function for access and encoding
     of faces.
@@ -25,11 +31,14 @@ def face_recognition(av_cams, face_encodings_, face_names_) -> None:
     None
     """
 
-    process_this_frame = True
+    process_this_frame: bool = True
 
     # initialize some variables include the encoded faces in the list
-    known_fe, known_fnames = [], []
-    face_locations, face_encodings, face_names = [], [], []
+    known_fe: list[str] = []
+    known_fnames: list[str] = []
+    face_locations: list[Any] = []
+    face_encodings: list[Any] = []
+    face_names: list[Any] = []
 
     if not av_cams:
         raise SystemExit(
@@ -42,7 +51,7 @@ def face_recognition(av_cams, face_encodings_, face_names_) -> None:
         known_fnames.append(fnames_)
 
     # video capture
-    vid = VideoCapture(0)
+    vid: object = VideoCapture(0)
     while True:
         # take frame and references from video capture
         _, frame = vid.read()
@@ -58,21 +67,23 @@ def face_recognition(av_cams, face_encodings_, face_names_) -> None:
         if process_this_frame:
             # get all the face endcoding and location in the current
             # frame returned by the live camera input.
-            face_locations = face_locations(rgb_small_frame)
-            face_encodings = face_encodings(rgb_small_frame, face_locations)
+            face_locations: ndarray = face_locations(rgb_small_frame)
+            face_encodings: ndarray = face_encodings(
+                    rgb_small_frame, face_locations
+                )
 
-            face_names = []
+            face_names: list[Any] = []
             for face_encoding in face_encodings:
-                matches = compare_faces(known_fe, face_encoding)
-                name = "unknown"
+                matches: Any = compare_faces(known_fe, face_encoding)
+                name: str = "unknown"
 
                 # Or instead, use the known face with the smallest
                 # distance to the new face
-                face_distances = face_distance(known_fe, face_encoding)
-                best_match_index = argmin(face_distances)
+                face_distances: Any = face_distance(known_fe, face_encoding)
+                best_match_index: Any = argmin(face_distances)
 
                 if matches[best_match_index]:
-                    name = known_fnames[best_match_index]
+                    name: str = known_fnames[best_match_index]
                 face_names.append(name)
 
             for (top, right, bottom, left) in face_locations:

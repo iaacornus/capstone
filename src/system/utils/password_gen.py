@@ -10,13 +10,13 @@ from time import sleep
 
 
 def password_gen() -> None:
-    str_set = [
+    str_set: list[str] = [
             ascii_lowercase,
             ascii_uppercase,
             punctuation,
             digits
         ]
-    password = "".join([choice(choice(str_set)) for x in range(32)])
+    password: str = "".join([choice(choice(str_set)) for x in range(32)])
 
     for n in range(10):
         print(f"Your password is: {password}\nRemoving in {10-n}", end="\r")

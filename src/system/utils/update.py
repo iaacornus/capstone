@@ -7,8 +7,8 @@ from src.bin.access import access
 
 
 def update() -> None:
-    HOME = expanduser("~")
-    console = Console()
+    console: object = Console()
+    HOME: str = expanduser("~")
     access(HOME)
 
     with console.status("[bold]> Updating repository ...[/bold]."):

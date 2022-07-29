@@ -9,22 +9,22 @@ def access(HOME) -> None:
     with open(
             f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:
-        source = info.readlines()
+        source: list[str] = info.readlines()
 
-    console = Console()
-    password, school_name = (
-            source[2].strip(), source[3].strip()
-        )
-    email = Email(
+    console: object = Console()
+    password: str = source[2].strip()
+    school_name: str = source[3].strip()
+
+    email: object = Email(
             source[0].strip(),
             source[1].strip()
         )
-    mark = False
+    mark: bool = False
 
     try:
         for n in range(3):
             if not mark:
-                verify = input(
+                verify: str = input(
                     (
                         f"{C.BOLD}> Kindly input your 32 character"
                         f" password ({3-n} left): {C.END}"
@@ -38,7 +38,7 @@ def access(HOME) -> None:
                             f".[/red]{3-n} left.[/bold]"
                         )
                     )
-                    send_new = input(
+                    send_new: str = input(
                         (
                             f"{C.BOLD}> Send a new temporary password"
                             f" to your email instead? [y/N]: {C.END}"
@@ -49,8 +49,8 @@ def access(HOME) -> None:
                         mark = True
                     continue
             else:
-                new_pass = email.send("setup", school_name)
-                verify_new = input(
+                new_pass: str | bool = email.send("setup", school_name)
+                verify_new: str = input(
                     (
                         f"{C.BOLD}> Kindly input your 32 character "
                         f"password (case sensitive {3-n} left): {C.END}"

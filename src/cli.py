@@ -13,13 +13,13 @@ def program_options() -> None:
     This is an example use of the algorithm via cli program.
     """
 
-    console = Console()
+    console: object = Console()
 
-    description = (
+    description: str = (
             "This is a program designed to interact with"
             " face recognition algorithm Capstone Group 5."
         )
-    parser = ArgumentParser(
+    parser: object = ArgumentParser(
             prog="EasyWiz",
             usage="EasyWiz [OPTIONS]",
             description=description

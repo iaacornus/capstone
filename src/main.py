@@ -9,7 +9,7 @@ from bin.code_email import Email
 from face_recog import face_recognition
 
 
-def main(HOME, verbose=False) -> None:
+def main(HOME: str, verbose: bool = False) -> None:
     """
     initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives.
@@ -26,15 +26,15 @@ def main(HOME, verbose=False) -> None:
     with open(
             f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:
-        source = info.readlines()
+        source: list[str] = info.readlines()
 
-    path_ = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
-    receiver_email = source[0].rstrip().strip()
-    school_name = source[3].rstrip().strip()
-    student_data_proc = []
+    path_: str = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
+    receiver_email: str = source[0].rstrip().strip()
+    school_name: str = source[3].rstrip().strip()
+    student_data_proc: list[str] = []
 
-    console = Console()
-    sys_initiate = System(
+    console: object = Console()
+    sys_initiate: object = System(
         HOME,
         "https://github.com/testno0/repo",
         receiver_email
@@ -52,16 +52,20 @@ def main(HOME, verbose=False) -> None:
                     "Setting up the repository ...[/bold magenta]"
                 )
             )
-            student_data, _ = sys_initiate.setup(school_name)
+            student_data: tuple[
+                    dict[str, list[str]], dict[str, list[str]]
+                ] = sys_initiate.setup(school_name)[0]
         else:
-            student_data, _ = sys_initiate.get_data()
+            student_data: tuple[
+                    dict[str, list[str]], dict[str, list[str]]
+                ] =  sys_initiate.get_data()
 
     with console.status(
             "[bold magenta][+] Fetching student names ...[/bold magenta]",
             spinner="simpleDots"
         ):
         if verbose: # for verbose
-            student_names = []
+            student_names: list[str] = []
             for name in student_data["name_init"]:
                 console.log(
                     (
@@ -71,11 +75,11 @@ def main(HOME, verbose=False) -> None:
                 )
                 student_names.append(name)
         else: # this is more optimized and faster, thus preferred
-            student_names = list(student_data["name_init"])
+            student_names: list[str] = list(student_data["name_init"])
 
     with console.status(
             "[bold magenta]> Processing student data ...[/bold]",
-             spinner="simpleDots"
+            spinner="simpleDots"
         ):
         for student in student_names:
             if verbose: # just print the student name and other information, and proceed
@@ -88,7 +92,7 @@ def main(HOME, verbose=False) -> None:
                 )
             student_data_proc.append(student_data["student"])
 
-    encoding_path = f"{HOME}/.att_sys/student_data/encoding.py"
+    encoding_path: str = f"{HOME}/.att_sys/student_data/encoding.py"
     if not exists(encoding_path):
         with console.status(
                 "[bold magenta]> Creating encoding module ...[/bold magenta]",
@@ -113,11 +117,11 @@ def main(HOME, verbose=False) -> None:
     console.log("[bold green][+] System is ready.[/bold green]")
     stdout.write("\033[K") # remove the messages
 
-    email = Email(
+    email: object = Email(
         source[0].rstrip().strip(),
         source[1].rstrip().strip()
     )
-    av_cams_eval = av_cams()
+    av_cams_eval: bool = av_cams()
 
     while True:
         student = face_recognition(

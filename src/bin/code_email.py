@@ -9,43 +9,51 @@ from string import (
 from socket import gethostbyname, gethostname
 from datetime import datetime
 from email.message import EmailMessage
-from ssl import create_default_context
+from ssl import SSLContext, create_default_context
 from smtplib import SMTP_SSL
+from typing_extensions import Self
 
 from geocoder import ip
 from rich.console import Console
 
 
 class Email:
-    port, smtp_server = 465, "smtp.gmail.com"
-    sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5"
+    port: int = 465
+    smtp_server: str = "smtp.gmail.com"
+    sender_email: str = "clydebotrfid@gmail.com"
+    password: str = "CCSHSRFIDG5"
 
-    def __init__(self, receiver_email, user) -> None:
-        self.receiver_email = receiver_email
-        self.user = user
+    def __init__(self: Self, receiver_email: str, user: str) -> None:
+        self.receiver_email: str = receiver_email
+        self.user: str = user
 
-    def send(self, access, school_name, student_name=None) -> bool | str:
-        console = Console()
-        msg = EmailMessage()
+    def send(
+            self: Self,
+            access: str,
+            school_name: str,
+            student_name: str = None
+        ) -> bool | str:
+        console: object = Console()
+        msg: object = EmailMessage()
 
-        msg["From"] = self.sender_email
-        msg["To"] = self.receiver_email
-        str_set = [
+        msg["From"]: str = self.sender_email
+        msg["To"]: str = self.receiver_email
+        str_set: list[str] = [
                 ascii_lowercase,
                 ascii_uppercase,
                 punctuation,
                 digits
             ]
 
-        phrase = "".join(
+        phrase: str = "".join(
                 [choice(choice(str_set)) for x in range(32)]
             )
 
         if access == "setup":
             with open("../msg/setup.msg", "r", encoding="utf-8") as msg_file:
-                msg = msg_file.read()
+                msg: str = msg_file.read()
 
-            msg["Subject"] = "Secure access phrase"
+            msg["Subject"]: str = "Secure access phrase"
             msg.set_content(
                 (
                     msg
@@ -90,9 +98,9 @@ class Email:
 
         elif access == "alert":
             with open("../msg/setup.msg", "r", encoding="utf-8") as msg_file:
-                msg = msg_file.read()
+                msg: str = msg_file.read()
 
-            msg["Subject"] = "Breach attempt alert."
+            msg["Subject"]: str = "Breach attempt alert."
             msg.set_content(
                 (
                     msg
@@ -142,9 +150,9 @@ class Email:
 
         elif access == "student true":
             with open("../msg/setup.msg", "r", encoding="utf-8") as msg_file:
-                msg = msg_file.read()
+                msg: str = msg_file.read()
 
-            msg["Subject"] = f"{student_name} registered"
+            msg["Subject"]: str = f"{student_name} registered"
             msg.set_content(
                 (
                     msg
@@ -171,7 +179,7 @@ class Email:
                     "[bold magenta][+] Sending email ...[/bold magenta]",
                     spinner="simpleDots"
                 ):
-                context = create_default_context()
+                context: SSLContext = create_default_context()
 
                 with SMTP_SSL(
                         self.smtp_server,

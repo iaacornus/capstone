@@ -1,4 +1,6 @@
 from json import load
+from telnetlib import SE
+from typing_extensions import Self
 from system import stdout
 from os import system
 from os.path import exists
@@ -17,8 +19,9 @@ from misc.colors import Colors as C
 
 
 def av_cams() -> bool:
-    console = Console()
-    index, cam_arr = 0, []
+    console: object = Console()
+    index: int = 0
+    cam_arr: list[int] = []
 
     with console.status(
             "[bold magenta][+] Checking for cameras ...[/bold magenta]",
@@ -47,7 +50,13 @@ def av_cams() -> bool:
 
 
 def draw_rectangle(
-        color, name, frame, left, top, right, bottom
+        color: str,
+        name: str,
+        frame: tuple[int, int, int],
+        left: int,
+        top: int,
+        right: int,
+        bottom: int
     ) -> None:
     rectangle(
         frame,
@@ -72,12 +81,12 @@ def draw_rectangle(
 
 
 class System:
-    def __init__(self, HOME, repo) -> None:
+    def __init__(self: Self, HOME: str, repo: str) -> None:
         self.HOME = HOME
         self.repo = repo
         self.PATH = f"{self.HOME}/repo"
 
-    def pull_data(self) -> bool:
+    def pull_data(self: Self) -> bool:
         try:
             if exists(f"{self.PATH}"):
                 system(f"rm -rf {self.PATH}")
@@ -94,7 +103,7 @@ class System:
             ):
             return False
 
-    def get_data(self) -> None:
+    def get_data(self: Self) -> None:
         for _ in range(3):
             try:
                 with open(
@@ -102,26 +111,25 @@ class System:
                         "r",
                         encoding="utf-8"
                     ) as data_1:
-                    student_data = load(data_1)
+                    student_data: dict[str, list[str]] = load(data_1)
 
                 with open(
                         f"{self.PATH}/teacher_data/info.json",
                         "r",
                         encoding="utf-8"
                     ) as data_2:
-                    teacher_data = load(data_2)
+                    teacher_data: dict[str, list[str]] = load(data_2)
 
                 return student_data, teacher_data
             except FileNotFoundError:
                 self.pull_data()
-                count += 1
                 continue
 
         raise SystemExit(
             f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
         )
 
-    def setup(self) -> None:
+    def setup(self: Self) -> None:
         if not access(self.HOME):
             raise SystemExit(
                 (
