@@ -8,7 +8,7 @@ from bin.code_email import Email
 from face_recog import face_recognition
 
 
-def main(_home_, verbose=False):
+def main(HOME, verbose=False):
     """
     initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives.
@@ -23,7 +23,7 @@ def main(_home_, verbose=False):
     """
 
     with open(
-            f"{_home_}/.att_sys/user_info", "r", encoding="utf-8"
+            f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:
         source = info.readlines()
 
@@ -34,7 +34,7 @@ def main(_home_, verbose=False):
 
     console = Console()
     sys_initiate = System(
-        _home_,
+        HOME,
         "https://github.com/testno0/repo",
         receiver_email
     )
@@ -43,7 +43,7 @@ def main(_home_, verbose=False):
             "[bold magenta][+] Fetching data ...[/bold magenta]",
             spinner="simpleDots"
         ):
-        if not os.path.exists(f"{_home_}/repo"):
+        if not os.path.exists(f"{HOME}/repo"):
             console.log(
                 (
                     "[bold red][-] The repository is not setup."
@@ -87,7 +87,7 @@ def main(_home_, verbose=False):
                 )
             student_data_proc.append(student_data["student"])
 
-    encoding_path = f"{_home_}/.att_sys/student_data/encoding.py"
+    encoding_path = f"{HOME}/.att_sys/student_data/encoding.py"
     if not os.path.exists(encoding_path):
         with console.status(
                 "[bold magenta]> Creating encoding module ...[/bold magenta]",

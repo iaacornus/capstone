@@ -6,12 +6,12 @@ from src.bin.access import access
 
 
 def update():
-    _home_ = os.path.expanduser("~")
+    HOME = os.path.expanduser("~")
     console = Console()
-    access(_home_)
+    access(HOME)
 
     with console.status("[bold]> Updating repository ...[/bold]."):
-        if not os.path.exists(f"{_home_}/repo"):
+        if not os.path.exists(f"{HOME}/repo"):
             console.log(
                 "[bold red][-] Local repository not found[/bold red]"
             )
@@ -23,14 +23,14 @@ def update():
             os.system(
                 (
                     f"git clone -b database https://github"
-                    ".com/testno0/capstone {_home_} &> /dev/null"
+                    ".com/testno0/capstone {HOME} &> /dev/null"
                 )
             )
         else:
             console.log(
                 "[bold magenta][+] Pulling updates ...[/bold magenta]"
             )
-            os.system(f"cd {_home_}/.att_sys/repo/ && git pull")
+            os.system(f"cd {HOME}/.att_sys/repo/ && git pull")
 
 
 if __name__ == "__main__":

@@ -64,10 +64,10 @@ def draw_rectangle(color, name, frame, left, top, right, bottom):
 
 
 class System:
-    def __init__(self, home, repo):
-        self.home = home
+    def __init__(self, HOME, repo):
+        self.HOME = HOME
         self.repo = repo
-        self.PATH = f"{self.home}/repo"
+        self.PATH = f"{self.HOME}/repo"
 
     def pull_data(self):
         try:
@@ -75,7 +75,7 @@ class System:
                 sys(f"rm -rf {self.PATH}")
 
             sys(f"git clone --branch database {self.repo}")
-            sys(f"mv {self.home}/capstone {self.PATH}")
+            sys(f"mv {self.HOME}/capstone {self.PATH}")
             return True
 
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
@@ -113,7 +113,7 @@ class System:
     def setup(self):
         trial = 0
 
-        if not access(self.home):
+        if not access(self.HOME):
             raise SystemExit(
                 (
                     f"{C.BOLD+C.RED}> Too much error"

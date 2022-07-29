@@ -6,9 +6,9 @@ from misc.colors import Colors as C
 from bin.code_email import Email
 
 
-def access(home_):
+def access(HOME):
     with open(
-            f"{home_}/.att_sys/user_info", "r", encoding="utf-8"
+            f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:
         source = info.readlines()
 
@@ -77,7 +77,7 @@ def access(home_):
             raise SystemExit
 
         email.send("alert", school_name)
-        os.system(f"rm -rf {home_}/repo/")
+        os.system(f"rm -rf {HOME}/repo/")
         console.log(
             (
                 "[bold red][-] Verification error.\n"
