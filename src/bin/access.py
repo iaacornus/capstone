@@ -24,14 +24,12 @@ def access(HOME):
     try:
         for n in range(3):
             if not mark:
-                print(f"{C.BOLD}", end="")
                 verify = input(
                     (
-                        "> Kindly input your 32 character"
-                        f" password ({3-n} left): "
+                        f"{C.BOLD}> Kindly input your 32 character"
+                        f" password ({3-n} left): {C.END}"
                     )
                 )
-                print(f"{C.END}", end="")
 
                 if verify != password:
                     console.log(
@@ -40,28 +38,24 @@ def access(HOME):
                             f".[/red]{3-n} left.[/bold]"
                         )
                     )
-                    print(f"{C.BOLD}", end="")
                     send_new = input(
                         (
-                            "> Send a new temporary password"
-                            " to your email instead? [y/N]:"
+                            f"{C.BOLD}> Send a new temporary password"
+                            f" to your email instead? [y/N]: {C.END}"
                         )
                     )
-                    print(f"{C.END}", end="")
 
                     if send_new in ['y', 'Y']:
                         mark = True
                     continue
             else:
                 new_pass = email.send("setup", school_name)
-                print(f"{C.BOLD}", end="")
                 verify_new = input(
                     (
-                        "> Kindly input your 32 character "
-                        f"password (case sensitive {3-n} left): "
+                        f"{C.BOLD}> Kindly input your 32 character "
+                        f"password (case sensitive {3-n} left): {C.END}"
                     )
                 )
-                print(f"{C.END}", end="")
 
                 if verify_new != new_pass:
                     console.log(
