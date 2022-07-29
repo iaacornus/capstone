@@ -13,11 +13,11 @@ def access(HOME):
 
     console = Console()
     password, school_name = (
-            source[2].rstrip().strip(), source[3].rstrip().strip()
+            source[2].strip(), source[3].strip()
         )
     email = Email(
-            source[0].rstrip().strip(),
-            source[1].rstrip().strip()
+            source[0].strip(),
+            source[1].strip()
         )
     trial, mark = 0, False
 
