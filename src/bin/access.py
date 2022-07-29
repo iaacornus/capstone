@@ -19,26 +19,25 @@ def access(HOME):
             source[0].strip(),
             source[1].strip()
         )
-    trial, mark = 0, False
+    mark = False
 
     try:
-        while trial < 3:
+        for n in range(3):
             if not mark:
                 print(f"{C.BOLD}", end="")
                 verify = input(
                     (
                         "> Kindly input your 32 character"
-                        f" password ({3-trial} left): "
+                        f" password ({3-n} left): "
                     )
                 )
                 print(f"{C.END}", end="")
 
                 if verify != password:
-                    trial += 1
                     console.log(
                         (
                             "[bold][red][-] Password doesn't match"
-                            f".[/red]{3-trial} left.[/bold]"
+                            f".[/red]{3-n} left.[/bold]"
                         )
                     )
                     print(f"{C.BOLD}", end="")
@@ -59,7 +58,7 @@ def access(HOME):
                 verify_new = input(
                     (
                         "> Kindly input your 32 character "
-                        f"password (case sensitive {3-trial} left): "
+                        f"password (case sensitive {3-n} left): "
                     )
                 )
                 print(f"{C.END}", end="")
@@ -68,10 +67,9 @@ def access(HOME):
                     console.log(
                         (
                             "[bold][red][-] Password doesn't"
-                            f" match.[/red]{3-trial} left.[/bold]"
+                            f" match.[/red]{3-n} left.[/bold]"
                         )
                     )
-                    trial += 1
                     continue
             raise SystemExit
 

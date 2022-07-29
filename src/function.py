@@ -93,9 +93,7 @@ class System:
             return False
 
     def get_data(self):
-        count = 0
-
-        while count < 3:
+        for _ in range(3):
             try:
                 with open(
                         f"{self.PATH}/student_data/info.json",
@@ -122,8 +120,6 @@ class System:
         )
 
     def setup(self):
-        trial = 0
-
         if not access(self.HOME):
             raise SystemExit(
                 (
@@ -133,9 +129,8 @@ class System:
             )
 
         try:
-            while trial < 3:
+            for _ in range(3):
                 if not self.pull_data():
-                    trial += 1
                     continue
                 break
         except KeyboardInterrupt:
