@@ -132,17 +132,17 @@ def main(HOME: str, verbose: bool = False) -> None:
             )
         # some configurations for email function, can add more and can
         # be tweaked further for different use.
-        if student:
-            email.send(
-                "student true",
-                school_name,
-                student_data["ID"]
-            )
-        else:
-            console.log(f"Face is not {student}.")
-            email.send(
-                "student absent",
-                school_name,
-                student
-            )
-        continue
+        # if student:
+        #     email.send(
+        #         "student true",
+        #         school_name,
+        #         student_data["ID"]
+        #     )
+        # else:
+        #     console.log(f"Face is not {student}.")
+        #     email.send(
+        #         "student absent",
+        #         school_name,
+        #         student
+        #     )
+        # continue
