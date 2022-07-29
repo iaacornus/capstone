@@ -22,20 +22,23 @@ class Email:
     def send(self, access, school_name, student_name=None):
         console = Console()
         str_set = [
-            string.ascii_lowercase,
-            string.ascii_uppercase,
-            string.punctuation,
-            string.digits
-        ]
+                string.ascii_lowercase,
+                string.ascii_uppercase,
+                string.punctuation,
+                string.digits
+            ]
 
         msg = EmailMessage()
         msg["From"] = self.sender_email
         msg["To"] = self.receiver_email
-        phrase = "".join([random.choice(random.choice(str_set)) for x in range(32)])
+        phrase = "".join(
+                [random.choice(random.choice(str_set)) for x in range(32)]
+            )
 
         if access == "setup":
             msg["Subject"] = "Secure access phrase"
-            msg.set_content(f"""\from misc.colors import Colors as C
+            msg.set_content(
+                f"""\
                 <!DOCTYPE html>
                 <html>
                     </body>
@@ -55,7 +58,8 @@ class Email:
 
         elif access == "alert":
             msg["Subject"] = "Breach attempt alert."
-            msg.set_content(f"""\
+            msg.set_content(
+                f"""\
                 <!DOCTYPE html>
                 <html>
                     </body>
@@ -79,7 +83,8 @@ class Email:
 
         elif access == "student true":
             msg["Subject"] = f"{student_name} registered"
-            msg.set_content(f"""\
+            msg.set_content(
+                f"""\
                 <!DOCTYPE html>
                 <html>
                     </body>

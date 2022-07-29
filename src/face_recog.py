@@ -23,7 +23,9 @@ def face_recognition(av_cams, face_encodings_, face_names_):
     face_locations, face_encodings, face_names = [], [], []
 
     if not av_cams:
-        raise SystemExit(f"{C.BOLD+C.RED}> There are no available cameras.{C.END}")
+        raise SystemExit(
+            f"{C.BOLD+C.RED}> There are no available cameras.{C.END}"
+        )
 
     # the names and the face encoding should the of the same size
     for fe_, fnames_ in zip(face_encodings_, face_names_):

@@ -22,7 +22,9 @@ def main(_home_, verbose=False):
     the time as well as line and source code file in the stdout.
     """
 
-    with open(f"{_home_}/.att_sys/user_info", "r", encoding="utf-8") as info:
+    with open(
+            f"{_home_}/.att_sys/user_info", "r", encoding="utf-8"
+        ) as info:
         source = info.readlines()
 
     path_ = f"{os.path.expanduser('~')}/.att_sys/capstone/student_data/imgs"
@@ -38,54 +40,72 @@ def main(_home_, verbose=False):
     )
 
     with console.status(
-            "[bold magenta][+] Fetching data ...[/bold magenta]", spinner="simpleDots"
+            "[bold magenta][+] Fetching data ...[/bold magenta]",
+            spinner="simpleDots"
         ):
         if not os.path.exists(f"{_home_}/repo"):
             console.log(
-                "[bold red][-] The repository is not setup.[/bold red]"
-                + "[bold magenta][+] Setting up the repository ...[/bold magenta]"
+                (
+                    "[bold red][-] The repository is not setup."
+                    "[/bold red] [bold magenta] [+] "
+                    "Setting up the repository ...[/bold magenta]"
+                )
             )
             student_data, _ = sys_initiate.setup(school_name)
         else:
             student_data, _ = sys_initiate.get_data()
 
     with console.status(
-            "[bold magenta][+] Fetching student names ...[/bold magenta]", spinner="simpleDots"
+            "[bold magenta][+] Fetching student names ...[/bold magenta]",
+            spinner="simpleDots"
         ):
         if verbose: # for verbose
             student_names = []
             for name in student_data["name_init"]:
                 console.log(
-                    f"[green]> [/green][cyan]{name}[/cyan][green] appended ...[/green]"
+                    (
+                        f"[green]> [/green][cyan]{name}"
+                        "[/cyan][green] appended ...[/green]"
+                    )
                 )
                 student_names.append(name)
         else: # this is more optimized and faster, thus preferred
             student_names = list(student_data["name_init"])
 
     with console.status(
-            "[bold magenta]> Processing student data ...[/bold]", spinner="simpleDots"
+            "[bold magenta]> Processing student data ...[/bold]",
+             spinner="simpleDots"
         ):
         for student in student_names:
             if verbose: # just print the student name and other information, and proceed
                         # with the iteration process.
                 console.log(
-                    f"[green]> Fetching data of [/green][cyan]{student}[/cyan] [green]...[/green]"
+                    (
+                        f"[green]> Fetching data of [/green]"
+                        "[cyan]{student}[/cyan] [green]...[/green]"
+                    )
                 )
             student_data_proc.append(student_data["student"])
 
     encoding_path = f"{_home_}/.att_sys/student_data/encoding.py"
     if not os.path.exists(encoding_path):
         with console.status(
-                "[bold magenta]> Creating encoding module ...[/bold magenta]", spinner="simpleDots"
+                "[bold magenta]> Creating encoding module ...[/bold magenta]",
+                spinner="simpleDots"
             ):
             # initiate the file and add the needed import
             os.system(
-                f"echo -e 'import face_recognition as fr \n\nclass Encoding:\n' > {encoding_path}"
+                (
+                    f"echo -e 'import face_recognition as fr"
+                    " \n\nclass Encoding:\n' > {encoding_path}"
+                )
             )
             for i in range(len(student_data_proc)-1):
                 os.system(
-                    f"echo '    face_ref_{i} = "
-                    + f"fr.load_image_file({path_}/std{i}.png)' >> {encoding_path}"
+                    (
+                        f"echo '    face_ref_{i} = fr.load_image_file("
+                        f"{path_}/std{i}.png)' >> {encoding_path}"
+                    )
                 )
 
     # notify the user
@@ -100,11 +120,11 @@ def main(_home_, verbose=False):
 
     while True:
         student = face_recognition(
-            av_cams_eval,
-            console,
-            face_encodings_=tuple(student_data_proc), # use tuple to avoid mutations
-            face_names_=tuple(student_names),
-        )
+                av_cams_eval,
+                console,
+                face_encodings_=tuple(student_data_proc), # use tuple to avoid mutations
+                face_names_=tuple(student_names),
+            )
         # some configurations for email function, can add more and can
         # be tweaked further for different use.
         if student:
@@ -114,7 +134,7 @@ def main(_home_, verbose=False):
                 student_data["ID"]
             )
         else:
-            console.log("Face is not {student} (recognized).")
+            console.log(f"Face is not {student}.")
             email.send(
                 "student absent",
                 school_name,

@@ -15,7 +15,8 @@ def av_cams():
     index, cam_arr = 0, []
 
     with console.status(
-            "[bold magenta][+] Checking for cameras ...[/bold magenta]", spinner="simpleDots"
+            "[bold magenta][+] Checking for cameras ...[/bold magenta]",
+            spinner="simpleDots"
         ):
         while True:
             cap = cv.VideoCapture(index)
@@ -63,17 +64,18 @@ def draw_rectangle(color, name, frame, left, top, right, bottom):
 
 
 class System:
-    def __init__(self, _home_, repo):
-        self._home_ = _home_
+    def __init__(self, home, repo):
+        self.home = home
         self.repo = repo
+        self.PATH = f"{self.home}/repo"
 
     def pull_data(self):
         try:
-            if exists(f"{self._home_}/repo"):
-                sys(f"rm -rf {self._home_}/repo")
+            if exists(f"{self.PATH}"):
+                sys(f"rm -rf {self.PATH}")
 
             sys(f"git clone --branch database {self.repo}")
-            sys(f"mv {self._home_}/capstone {self._home_}/repo")
+            sys(f"mv {self.home}/capstone {self.PATH}")
             return True
 
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
@@ -85,12 +87,16 @@ class System:
         while count < 3:
             try:
                 with open(
-                        f"{self._home_}/repo/student_data/info.json", encoding="utf-8"
+                        f"{self.PATH}/student_data/info.json",
+                        "r",
+                        encoding="utf-8"
                     ) as data_1:
                     student_data = json.load(data_1)
 
                 with open(
-                        f"{self._home_}/repo/teacher_data/info.json", encoding="utf-8"
+                        f"{self.PATH}/teacher_data/info.json",
+                        "r",
+                        encoding="utf-8"
                     ) as data_2:
                     teacher_data = json.load(data_2)
 
@@ -100,13 +106,20 @@ class System:
                 count += 1
                 continue
 
-        raise SystemExit(f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}")
+        raise SystemExit(
+            f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
+        )
 
     def setup(self):
         trial = 0
 
-        if not access(self._home_):
-            raise SystemExit(f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}")
+        if not access(self.home):
+            raise SystemExit(
+                (
+                    f"{C.BOLD+C.RED}> Too much error"
+                    ", please try again later.{C.END}"
+                )
+            )
 
         try:
             while trial < 3:
@@ -115,6 +128,11 @@ class System:
                     continue
                 break
         except KeyboardInterrupt:
-            raise SystemExit(f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}")
+            raise SystemExit(
+                (
+                    f"{C.BOLD+C.RED}> Too much error"
+                    ", please try again later.{C.END}"
+                )
+            )
         else:
             return self.get_data()

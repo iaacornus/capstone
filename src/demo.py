@@ -13,14 +13,20 @@ def demo():
     path_ = f"{expanduser('~')}/temporary/capstone/sample/"
 
     with console.status(
-            "[bold magenta][+] Loading user images ...[/bold magenta]", spinner="simpleDots"
+            "[bold magenta][+] Loading user images ...[/bold magenta]",
+            spinner="simpleDots"
         ):
         # load face references from path_.
-        ref_face = fr.load_image_file(f"{path_}/test_1.png") # ezekiel lopez encoding
-        ref_face_2 = fr.load_image_file(f"{path_}/test_2.png") # laisie angela donato encoding
-        ref_face_3 = fr.load_image_file(f"{path_}/test_3.png") # nicole amber hennessey encoding
-        ref_face_4 = fr.load_image_file(f"{path_}/test_4.png") # raven gose encoding
-        ref_face_5 = fr.load_image_file(f"{path_}/test_5.png") # fiona leigh pagtama encoding
+        # ezekiel lopez encoding
+        ref_face = fr.load_image_file(f"{path_}/test_1.png")
+        # laisie angela donato encoding
+        ref_face_2 = fr.load_image_file(f"{path_}/test_2.png")
+        # nicole amber hennessey encoding
+        ref_face_3 = fr.load_image_file(f"{path_}/test_3.png")
+        # raven gose encoding
+        ref_face_4 = fr.load_image_file(f"{path_}/test_4.png")
+        # fiona leigh pagtama encoding
+        ref_face_5 = fr.load_image_file(f"{path_}/test_5.png")
 
         console.log("[bold green]> Faces loaded successfully.[/bold green]")
 
@@ -41,24 +47,25 @@ def demo():
     # load the function with the parameters it needs, unpack the tuple
     # for the decoding.
     with console.status(
-            "[bold magenta][+] Function running ...[/bold magenta]", spinner="simpleDots"
+            "[bold magenta][+] Function running ...[/bold magenta]",
+            spinner="simpleDots"
         ):
         face_recognition(
             av_cams_,
             face_encodings_= (
-                rf_encoding,
-                rf_encoding2,
-                rf_encoding3,
-                rf_encoding4,
-                rf_encoding5
-            ),
+                    rf_encoding,
+                    rf_encoding2,
+                    rf_encoding3,
+                    rf_encoding4,
+                    rf_encoding5
+                ),
             face_names_= (
-                "Ezekiel Lopez",
-                "Laisie Angela Donato",
-                "Nicole Amber Hennessey",
-                "Raven Gose",
-                "Fiona Leigh Pagtama",
-            )
+                    "Ezekiel Lopez",
+                    "Laisie Angela Donato",
+                    "Nicole Amber Hennessey",
+                    "Raven Gose",
+                    "Fiona Leigh Pagtama",
+                )
         )
 
 

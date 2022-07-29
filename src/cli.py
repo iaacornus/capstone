@@ -15,14 +15,16 @@ def program_options():
 
     console = Console()
 
-    description = """\
-        This is a program designed to interact with face recognition algorithm Capstone Group 5.
-    """
+    description = (
+            "This is a program designed to interact with"
+            " face recognition algorithm Capstone Group 5."
+        )
+
     parser = argparse.ArgumentParser(
-        prog="EasyWiz",
-        usage="EasyWiz [OPTIONS]",
-        description=description
-    )
+            prog="EasyWiz",
+            usage="EasyWiz [OPTIONS]",
+            description=description
+        )
 
     # all of the functions listed below prompts for the local or
     # temporary password email to the user using python's stdlib smtplib
@@ -44,7 +46,10 @@ def program_options():
     # (re)setup the user
     parser.add_argument(
         "--setup", "--setup",
-        help="Setup the user (prompts to input the passphrase sent via email, if used again).",
+        help=(
+                "Setup the user (prompts to input the "
+                "passphrase sent via email, if used again)."
+            ),
         action="store_true"
     )
     # destroy the system, can be used in case of intruder breach
