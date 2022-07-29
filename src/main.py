@@ -29,8 +29,8 @@ def main(HOME: str, verbose: bool = False) -> None:
         source: list[str] = info.readlines()
 
     path_: str = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
-    receiver_email: str = source[0].rstrip().strip()
-    school_name: str = source[3].rstrip().strip()
+    receiver_email: str = source[0].strip()
+    school_name: str = source[3].strip()
     student_data_proc: list[str] = []
 
     console: object = Console()
@@ -118,8 +118,8 @@ def main(HOME: str, verbose: bool = False) -> None:
     stdout.write("\033[K") # remove the messages
 
     email: object = Email(
-        source[0].rstrip().strip(),
-        source[1].rstrip().strip()
+        source[0].strip(),
+        source[1].strip()
     )
     av_cams_eval: bool = av_cams()
 
