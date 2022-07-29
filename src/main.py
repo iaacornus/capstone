@@ -1,5 +1,6 @@
-import sys
-import os
+from os import system
+from os.path import expanduser, exists
+from sys import stdout
 
 from rich.console import Console
 
@@ -19,7 +20,7 @@ def main(HOME, verbose=False):
 
     NOTES:
     console.log was used to display further information, this includes
-    the time as well as line and source code file in the stdout.
+    the time as well as line and source code file in the
     """
 
     with open(
@@ -27,7 +28,7 @@ def main(HOME, verbose=False):
         ) as info:
         source = info.readlines()
 
-    path_ = f"{os.path.expanduser('~')}/.att_sys/capstone/student_data/imgs"
+    path_ = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
     receiver_email = source[0].rstrip().strip()
     school_name = source[3].rstrip().strip()
     student_data_proc = []
@@ -43,7 +44,7 @@ def main(HOME, verbose=False):
             "[bold magenta][+] Fetching data ...[/bold magenta]",
             spinner="simpleDots"
         ):
-        if not os.path.exists(f"{HOME}/repo"):
+        if not exists(f"{HOME}/repo"):
             console.log(
                 (
                     "[bold red][-] The repository is not setup."
@@ -88,20 +89,20 @@ def main(HOME, verbose=False):
             student_data_proc.append(student_data["student"])
 
     encoding_path = f"{HOME}/.att_sys/student_data/encoding.py"
-    if not os.path.exists(encoding_path):
+    if not exists(encoding_path):
         with console.status(
                 "[bold magenta]> Creating encoding module ...[/bold magenta]",
                 spinner="simpleDots"
             ):
             # initiate the file and add the needed import
-            os.system(
+            system(
                 (
                     f"echo -e 'import face_recognition as fr"
                     " \n\nclass Encoding:\n' > {encoding_path}"
                 )
             )
             for i in range(len(student_data_proc)-1):
-                os.system(
+                system(
                     (
                         f"echo '    face_ref_{i} = fr.load_image_file("
                         f"{path_}/std{i}.png)' >> {encoding_path}"
@@ -110,7 +111,7 @@ def main(HOME, verbose=False):
 
     # notify the user
     console.log("[bold green][+] System is ready.[/bold green]")
-    sys.stdout.write("\033[K") # remove the messages
+    stdout.write("\033[K") # remove the messages
 
     email = Email(
         source[0].rstrip().strip(),

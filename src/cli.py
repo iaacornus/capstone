@@ -1,6 +1,6 @@
-import argparse
-import os
-
+from argparse import ArgumentParser
+from os import system
+from os.path import expanduser
 from rich.console import Console
 
 from main import main
@@ -20,7 +20,7 @@ def program_options():
             " face recognition algorithm Capstone Group 5."
         )
 
-    parser = argparse.ArgumentParser(
+    parser = ArgumentParser(
             prog="EasyWiz",
             usage="EasyWiz [OPTIONS]",
             description=description
@@ -74,13 +74,13 @@ def program_options():
 
     try:
         if args.use:
-            main(os.path.expanduser("~"), args.verbose) #? likely passing
+            main(expanduser("~"), args.verbose) #? likely passing
         elif args.update:
             update() #* passed
         elif args.setup:
-            os.system("./$HOME/.att_sys/system/setup.sh") #* passed
+            system("./$HOME/.att_sys/system/setup.sh") #* passed
         elif args.destroy:
-            os.system("echo 'rm -rf $HOME/.att_sys'") #* passed
+            system("echo 'rm -rf $HOME/.att_sys'") #* passed
         elif args.demo:
             demo()
     except ConnectionError: # add other exceptions later

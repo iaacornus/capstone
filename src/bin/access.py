@@ -1,5 +1,4 @@
-import os
-
+from os import system
 from rich.console import Console
 
 from misc.colors import Colors as C
@@ -77,14 +76,14 @@ def access(HOME):
             raise SystemExit
 
         email.send("alert", school_name)
-        os.system(f"rm -rf {HOME}/repo/")
+        system(f"rm -rf {HOME}/repo/")
         console.log(
             (
                 "[bold red][-] Verification error.\n"
                 "> Nuking the repository ...[/bold red]"
             )
         )
-        os.system("systemctl poweroff")
+        system("systemctl poweroff")
 
     except KeyboardInterrupt:
-        os.system("systemctl poweroff")
+        system("systemctl poweroff")

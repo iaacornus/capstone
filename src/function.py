@@ -1,9 +1,15 @@
-import json
-from sys import stdout
-from os import system as sys
+from json import load
+from system import stdout
+from os import system
 from os.path import exists
 
-import cv2 as cv
+from cv2 import (
+    VideoCapture,
+    FILLED,
+    rectangle,
+    FONT_HERSHEY_DUPLEX,
+    putText
+)
 from rich.console import Console
 
 from bin.access import access
@@ -19,7 +25,7 @@ def av_cams():
             spinner="simpleDots"
         ):
         while True:
-            cap = cv.VideoCapture(index)
+            cap = VideoCapture(index)
 
             if cap.read()[0]:
                 cam_arr.append(index)
@@ -41,22 +47,22 @@ def av_cams():
 
 
 def draw_rectangle(color, name, frame, left, top, right, bottom):
-    cv.rectangle(
+    rectangle(
         frame,
         (left, top),
         (right, bottom),
         color, 2
     )
 
-    cv.rectangle(
+    rectangle(
         frame,
         (left, bottom - 35),
         (right, bottom),
-        color, cv.FILLED
+        color, FILLED
     )
 
-    font = cv.FONT_HERSHEY_DUPLEX
-    cv.putText(
+    font = FONT_HERSHEY_DUPLEX
+    putText(
         frame, name,
         (left + 6, bottom - 6),
         font, 1.0, (255, 255, 255), 1
@@ -72,10 +78,10 @@ class System:
     def pull_data(self):
         try:
             if exists(f"{self.PATH}"):
-                sys(f"rm -rf {self.PATH}")
+                system(f"rm -rf {self.PATH}")
 
-            sys(f"git clone --branch database {self.repo}")
-            sys(f"mv {self.HOME}/capstone {self.PATH}")
+            system(f"git clone --branch database {self.repo}")
+            system(f"mv {self.HOME}/capstone {self.PATH}")
             return True
 
         except SystemError or KeyboardInterrupt or OSError or ConnectionError:
@@ -91,14 +97,14 @@ class System:
                         "r",
                         encoding="utf-8"
                     ) as data_1:
-                    student_data = json.load(data_1)
+                    student_data = load(data_1)
 
                 with open(
                         f"{self.PATH}/teacher_data/info.json",
                         "r",
                         encoding="utf-8"
                     ) as data_2:
-                    teacher_data = json.load(data_2)
+                    teacher_data = load(data_2)
 
                 return student_data, teacher_data
             except FileNotFoundError:

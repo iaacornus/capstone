@@ -1,6 +1,15 @@
-import face_recognition as fr
-import numpy as np
-import cv2 as cv
+from numpy import argmin
+from cv2 import (
+    VideoCapture,
+    resize,
+    imshow,
+    waitKey,
+    destroyAllWindows
+)
+from face_recognition import (
+    face_distance,
+    compare_faces
+)
 
 from function import draw_rectangle
 from misc.colors import Colors as C
@@ -33,7 +42,7 @@ def face_recognition(av_cams, face_encodings_, face_names_):
         known_fnames.append(fnames_)
 
     # video capture
-    vid = cv.VideoCapture(0)
+    vid = VideoCapture(0)
     while True:
         # take frame and references from video capture
         _, frame = vid.read()
@@ -41,7 +50,7 @@ def face_recognition(av_cams, face_encodings_, face_names_):
         # resizing to smaller frame, to avoid much larger use of gpu and
         # memory, also to decrease the processing time convert to
         # another color.
-        small_frame = cv.resize(frame, (0, 0), fx=0.25, fy=0.25)
+        small_frame = resize(frame, (0, 0), fx=0.25, fy=0.25)
 
         # convert to another color.
         rgb_small_frame = small_frame[:, :, ::-1]
@@ -49,18 +58,18 @@ def face_recognition(av_cams, face_encodings_, face_names_):
         if process_this_frame:
             # get all the face endcoding and location in the current
             # frame returned by the live camera input.
-            face_locations = fr.face_locations(rgb_small_frame)
-            face_encodings = fr.face_encodings(rgb_small_frame, face_locations)
+            face_locations = face_locations(rgb_small_frame)
+            face_encodings = face_encodings(rgb_small_frame, face_locations)
 
             face_names = []
             for face_encoding in face_encodings:
-                matches = fr.compare_faces(known_fe, face_encoding)
+                matches = compare_faces(known_fe, face_encoding)
                 name = "unknown"
 
                 # Or instead, use the known face with the smallest
                 # distance to the new face
-                face_distances = fr.face_distance(known_fe, face_encoding)
-                best_match_index = np.argmin(face_distances)
+                face_distances = face_distance(known_fe, face_encoding)
+                best_match_index = argmin(face_distances)
 
                 if matches[best_match_index]:
                     name = known_fnames[best_match_index]
@@ -88,11 +97,11 @@ def face_recognition(av_cams, face_encodings_, face_names_):
                         right, bottom
                     )
         # display the resulting image
-        cv.imshow("Video", frame)
+        imshow("Video", frame)
 
         # hit 'q' on the keyboard to quit!
-        if cv.waitKey(1) & 0xFF == ord('q'):
+        if waitKey(1) & 0xFF == ord('q'):
             break
 
     vid.release()
-    cv.destroyAllWindows()
+    destroyAllWindows()

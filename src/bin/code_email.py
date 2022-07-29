@@ -1,13 +1,18 @@
-import random
-import string
-import smtplib
-import ssl
-import socket
-import os
+from os import getlogin
+from random import choice
+from string import (
+    ascii_lowercase,
+    ascii_uppercase,
+    punctuation,
+    digits
+)
+from socket import gethostbyname, gethostname
 from datetime import datetime
 from email.message import EmailMessage
+from ssl import create_default_context
+from smtplib import SMTP_SSL
 
-import geocoder
+from geocoder import ip
 from rich.console import Console
 
 
@@ -22,17 +27,17 @@ class Email:
     def send(self, access, school_name, student_name=None):
         console = Console()
         str_set = [
-                string.ascii_lowercase,
-                string.ascii_uppercase,
-                string.punctuation,
-                string.digits
+                ascii_lowercase,
+                ascii_uppercase,
+                punctuation,
+                digits
             ]
 
         msg = EmailMessage()
         msg["From"] = self.sender_email
         msg["To"] = self.receiver_email
         phrase = "".join(
-                [random.choice(random.choice(str_set)) for x in range(32)]
+                [choice(choice(str_set)) for x in range(32)]
             )
 
         if access == "setup":
@@ -57,19 +62,19 @@ class Email:
                         )
                         .replace(
                             "{HOSTNAME}",
-                            socket.gethostname()
+                            gethostname()
                         )
                         .replace(
                             "{USERNAME}",
-                            os.getlogin()
+                            getlogin()
                         )
                         .replace(
                             "{IP_ADDR}",
-                            socket.gethostbyname(socket.gethostname())
+                            gethostbyname(gethostname())
                         )
                         .replace(
                             "{LOC}",
-                            geocoder.ip("me")
+                            ip("me")
                         )
                         .replace(
                             "{DATETIME}",
@@ -104,19 +109,19 @@ class Email:
                         )
                         .replace(
                             "{USERNAME}",
-                            os.getlogin()
+                            getlogin()
                         )
                         .replace(
                             "{HOSTNAME}",
-                            socket.gethostname()
+                            gethostname()
                         )
                         .replace(
                             "{IP_ADDR}",
-                            socket.gethostbyname(socket.gethostname())
+                            gethostbyname(gethostname())
                         )
                         .replace(
                             "{LOC}",
-                            geocoder.ip("me")
+                            ip("me")
                         )
                         .replace(
                             "{DATETIME}",
@@ -165,9 +170,9 @@ class Email:
                     "[bold magenta][+] Sending email ...[/bold magenta]",
                     spinner="simpleDots"
                 ):
-                context = ssl.create_default_context()
+                context = create_default_context()
 
-                with smtplib.SMTP_SSL(
+                with SMTP_SSL(
                         self.smtp_server,
                         self.port,
                         context=context

@@ -1,6 +1,9 @@
 from os.path import expanduser
 
-import face_recognition as fr
+from face_recognition import (
+    load_image_file,
+    face_encodings,
+)
 from rich.console import Console
 
 from face_recog import face_recognition
@@ -18,15 +21,15 @@ def demo():
         ):
         # load face references from path_.
         # ezekiel lopez encoding
-        ref_face = fr.load_image_file(f"{path_}/test_1.png")
+        ref_face = load_image_file(f"{path_}/test_1.png")
         # laisie angela donato encoding
-        ref_face_2 = fr.load_image_file(f"{path_}/test_2.png")
+        ref_face_2 = load_image_file(f"{path_}/test_2.png")
         # nicole amber hennessey encoding
-        ref_face_3 = fr.load_image_file(f"{path_}/test_3.png")
+        ref_face_3 = load_image_file(f"{path_}/test_3.png")
         # raven gose encoding
-        ref_face_4 = fr.load_image_file(f"{path_}/test_4.png")
+        ref_face_4 = load_image_file(f"{path_}/test_4.png")
         # fiona leigh pagtama encoding
-        ref_face_5 = fr.load_image_file(f"{path_}/test_5.png")
+        ref_face_5 = load_image_file(f"{path_}/test_5.png")
 
         console.log("[bold green]> Faces loaded successfully.[/bold green]")
 
@@ -36,11 +39,11 @@ def demo():
         ):
         #----------------------------------------------------------------
         # encode the faces.
-        rf_encoding = fr.face_encodings(ref_face)[0]
-        rf_encoding2 = fr.face_encodings(ref_face_2)[0]
-        rf_encoding3 = fr.face_encodings(ref_face_3)[0]
-        rf_encoding4 = fr.face_encodings(ref_face_4)[0]
-        rf_encoding5 = fr.face_encodings(ref_face_5)[0]
+        rf_encoding = face_encodings(ref_face)[0]
+        rf_encoding2 = face_encodings(ref_face_2)[0]
+        rf_encoding3 = face_encodings(ref_face_3)[0]
+        rf_encoding4 = face_encodings(ref_face_4)[0]
+        rf_encoding5 = face_encodings(ref_face_5)[0]
 
         console.log("[bold green]> Faces encoded successfully.[/bold green]")
 
