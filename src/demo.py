@@ -13,23 +13,23 @@ from function import av_cams
 def demo():
     console = Console()
     av_cams_ = av_cams()
-    path_ = f"{expanduser('~')}/temporary/capstone/sample/"
+    PATH = f"{expanduser('~')}/temporary/capstone/sample/"
 
     with console.status(
             "[bold magenta][+] Loading user images ...[/bold magenta]",
             spinner="simpleDots"
         ):
-        # load face references from path_.
+        # load face references from PATH.
         # ezekiel lopez encoding
-        ref_face = load_image_file(f"{path_}/test_1.png")
+        ref_face = load_image_file(f"{PATH}/test_1.png")
         # laisie angela donato encoding
-        ref_face_2 = load_image_file(f"{path_}/test_2.png")
+        ref_face_2 = load_image_file(f"{PATH}/test_2.png")
         # nicole amber hennessey encoding
-        ref_face_3 = load_image_file(f"{path_}/test_3.png")
+        ref_face_3 = load_image_file(f"{PATH}/test_3.png")
         # raven gose encoding
-        ref_face_4 = load_image_file(f"{path_}/test_4.png")
+        ref_face_4 = load_image_file(f"{PATH}/test_4.png")
         # fiona leigh pagtama encoding
-        ref_face_5 = load_image_file(f"{path_}/test_5.png")
+        ref_face_5 = load_image_file(f"{PATH}/test_5.png")
 
         console.log("[bold green]> Faces loaded successfully.[/bold green]")
 

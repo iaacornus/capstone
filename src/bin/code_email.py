@@ -18,7 +18,7 @@ from rich.console import Console
 
 class Email:
     port, smtp_server = 465, "smtp.gmail.com"
-    sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5" # fill up later
+    sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5"
 
     def __init__(self, receiver_email, user):
         self.receiver_email = receiver_email
@@ -26,6 +26,10 @@ class Email:
 
     def send(self, access, school_name, student_name=None):
         console = Console()
+        msg = EmailMessage()
+
+        msg["From"] = self.sender_email
+        msg["To"] = self.receiver_email
         str_set = [
                 ascii_lowercase,
                 ascii_uppercase,
@@ -33,9 +37,6 @@ class Email:
                 digits
             ]
 
-        msg = EmailMessage()
-        msg["From"] = self.sender_email
-        msg["To"] = self.receiver_email
         phrase = "".join(
                 [choice(choice(str_set)) for x in range(32)]
             )

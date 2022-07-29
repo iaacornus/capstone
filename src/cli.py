@@ -19,7 +19,6 @@ def program_options():
             "This is a program designed to interact with"
             " face recognition algorithm Capstone Group 5."
         )
-
     parser = ArgumentParser(
             prog="EasyWiz",
             usage="EasyWiz [OPTIONS]",
