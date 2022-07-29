@@ -82,15 +82,12 @@ def program_options() -> None:
             system("echo 'rm -rf $HOME/.att_sys'") #* passed
         elif args.demo:
             demo()
-    except ConnectionError: # add other exceptions later
-        console.log("[bold red][-] Connection error.[/bold red]")
-        raise SystemExit
-    except KeyboardInterrupt:
-        console.log("[bold red][-] Keyboard interrupt.[/bold red]")
-        raise SystemExit
-    except SystemError:
-        console.log("[bold red][-] System error.[/bold red]")
-        raise SystemExit
+    except (
+            ConnectionError,
+            KeyboardInterrupt,
+            SystemError
+        ) as Err:
+        raise SystemExit(f"Encounter: {Err}, aborting ...")
 
 
 if __name__ == "__main__":
