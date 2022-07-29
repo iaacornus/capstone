@@ -84,7 +84,12 @@ class System:
             system(f"mv {self.HOME}/capstone {self.PATH}")
             return True
 
-        except SystemError or KeyboardInterrupt or OSError or ConnectionError:
+        except (
+                SystemError,
+                KeyboardInterrupt,
+                OSError,
+                ConnectionError
+            ):
             return False
 
     def get_data(self):
