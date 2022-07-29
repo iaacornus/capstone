@@ -7,6 +7,8 @@ from src.bin.access import access
 
 
 def update() -> None:
+    """For fetching update of the repository."""
+
     console: object = Console()
     HOME: str = expanduser("~")
     access(HOME)

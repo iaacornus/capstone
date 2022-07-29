@@ -18,6 +18,8 @@ from rich.console import Console
 
 
 class Email:
+    """Email reporting utility."""
+
     port: int = 465
     smtp_server: str = "smtp.gmail.com"
     sender_email: str = "clydebotrfid@gmail.com"
@@ -33,6 +35,17 @@ class Email:
             school_name: str,
             student_name: str = None
         ) -> bool | str:
+        """Send email to the receiver.
+
+        Arguments:
+        access: str -- the type of email to send.
+        school_name: str -- the name of the school.
+        student_name: str -- name of the student.
+
+        Returns false when an exception was raised, and return the
+        phrase when the email was sent successfully.
+        """
+
         console: object = Console()
         msg: object = EmailMessage()
 

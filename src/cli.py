@@ -8,9 +8,7 @@ from system.utils.update import update
 
 
 def program_options() -> None:
-    """
-    This is an example use of the algorithm via cli program.
-    """
+    """This is an example use of the algorithm via cli program."""
 
     description: str = (
             "This is a program designed to interact with"

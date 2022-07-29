@@ -10,19 +10,6 @@ from face_recog import face_recognition
 
 
 def main(HOME: str, verbose: bool = False) -> None:
-    """
-    initiate the system, use try, except, else block to catch errors
-    and to organize the procedures based on the cases the system gives.
-
-    Returns
-    -------
-    None
-
-    NOTES:
-    console.log was used to display further information, this includes
-    the time as well as line and source code file in the
-    """
-
     with open(
             f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:

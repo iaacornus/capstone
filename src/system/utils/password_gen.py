@@ -10,6 +10,8 @@ from time import sleep
 
 
 def password_gen() -> None:
+    """Generate 32 char password and print the hash for shell capture."""
+
     str_set: list[str] = [
             ascii_lowercase,
             ascii_uppercase,

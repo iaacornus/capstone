@@ -5,6 +5,8 @@ from bin.code_email import Email
 
 
 def access(HOME) -> None:
+    """For repository access. Not fool proof."""
+
     with open(
             f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:

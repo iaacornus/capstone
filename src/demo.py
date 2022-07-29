@@ -12,6 +12,8 @@ from function import av_cams
 
 
 def demo() -> None:
+    """Function for demonstration of the algorithm."""
+
     console: object = Console()
     av_cams_: bool = av_cams()
     BASE_PATH: str = "/".join(dirname(__file__).split("/")[:-1])

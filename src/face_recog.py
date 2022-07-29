@@ -21,14 +21,7 @@ def face_recognition(
         known_fe: tuple[str] | list[str],
         known_fnames: tuple[str] | list[str]
     ) -> None:
-    """
-    Currently returns none, basically a function for access and encoding
-    of faces.
-
-    Returns
-    -------
-    None
-    """
+    """Recognize the subject based on the face image."""
 
     process_this_frame: bool = True
 

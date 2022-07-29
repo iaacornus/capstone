@@ -17,6 +17,8 @@ from bin.access import access
 
 
 def av_cams() -> bool:
+    """Check the working cameras in the machine."""
+
     console: object = Console()
     index: int = 0
     cam_arr: list[int] = []
@@ -56,6 +58,16 @@ def draw_rectangle(
         right: int,
         bottom: int
     ) -> None:
+    """Draw a rectangle in the detected face of the subject.
+
+    Arguments:
+    color: str -- the color of the rectangle border.
+    name: str -- identified name of the subject.
+    frame: tuple[int, int, int] -- size of the frame.
+    left: int, top: int, right: int, bottom: int -- end coordinates of
+        the face of the subject.
+    """
+
     rectangle(
         frame,
         (left, top),
@@ -79,12 +91,16 @@ def draw_rectangle(
 
 
 class System:
+    """For initiation and setup of the program."""
+
     def __init__(self: Self, HOME: str, repo: str) -> None:
         self.HOME = HOME
         self.repo = repo
         self.PATH = f"{self.HOME}/repo"
 
     def pull_data(self: Self) -> bool:
+        """Fetch the repository in the server."""
+
         try:
             if exists(f"{self.PATH}"):
                 system(f"rm -rf {self.PATH}")
@@ -102,6 +118,8 @@ class System:
             return False
 
     def get_data(self: Self) -> None:
+        """Scrape the data from the pulled repository."""
+
         for _ in range(3):
             try:
                 with open(
@@ -126,6 +144,8 @@ class System:
         raise SystemExit("> Too much error, please try again later.")
 
     def setup(self: Self) -> None:
+        """Setup function."""
+
         if not access(self.HOME):
             raise SystemExit("> Too much error please try again later.")
 
