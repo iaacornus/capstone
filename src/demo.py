@@ -1,4 +1,4 @@
-from os.path import expanduser
+from os.path import expanduser, dirname
 from typing import Any
 
 from face_recognition import (
@@ -14,7 +14,8 @@ from function import av_cams
 def demo() -> None:
     console: object = Console()
     av_cams_: bool = av_cams()
-    PATH: str = f"{expanduser('~')}/temporary/capstone/sample/"
+    BASE_PATH: str = "/".join(dirname(__file__).split("/")[:-1])
+    PATH: str = f"{BASE_PATH}/sample/"
 
     with console.status(
             "[bold magenta][+] Loading user images ...[/bold magenta]",
