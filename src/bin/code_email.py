@@ -20,11 +20,11 @@ class Email:
     port, smtp_server = 465, "smtp.gmail.com"
     sender_email, password = "clydebotrfid@gmail.com", "CCSHSRFIDG5"
 
-    def __init__(self, receiver_email, user):
+    def __init__(self, receiver_email, user) -> None:
         self.receiver_email = receiver_email
         self.user = user
 
-    def send(self, access, school_name, student_name=None):
+    def send(self, access, school_name, student_name=None) -> bool | str:
         console = Console()
         msg = EmailMessage()
 

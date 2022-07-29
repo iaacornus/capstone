@@ -8,7 +8,7 @@ from demo import demo
 from system.utils.update import update
 
 
-def program_options():
+def program_options() -> None:
     """
     This is an example use of the algorithm via cli program.
     """

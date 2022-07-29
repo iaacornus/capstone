@@ -5,7 +5,7 @@ from misc.colors import Colors as C
 from bin.code_email import Email
 
 
-def access(HOME):
+def access(HOME) -> None:
     with open(
             f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
         ) as info:

@@ -10,7 +10,7 @@ from face_recog import face_recognition
 from function import av_cams
 
 
-def demo():
+def demo() -> None:
     console = Console()
     av_cams_ = av_cams()
     PATH = f"{expanduser('~')}/temporary/capstone/sample/"

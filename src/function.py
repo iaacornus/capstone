@@ -16,7 +16,7 @@ from bin.access import access
 from misc.colors import Colors as C
 
 
-def av_cams():
+def av_cams() -> bool:
     console = Console()
     index, cam_arr = 0, []
 
@@ -46,7 +46,9 @@ def av_cams():
     return False
 
 
-def draw_rectangle(color, name, frame, left, top, right, bottom):
+def draw_rectangle(
+        color, name, frame, left, top, right, bottom
+    ) -> None:
     rectangle(
         frame,
         (left, top),
@@ -70,12 +72,12 @@ def draw_rectangle(color, name, frame, left, top, right, bottom):
 
 
 class System:
-    def __init__(self, HOME, repo):
+    def __init__(self, HOME, repo) -> None:
         self.HOME = HOME
         self.repo = repo
         self.PATH = f"{self.HOME}/repo"
 
-    def pull_data(self):
+    def pull_data(self) -> bool:
         try:
             if exists(f"{self.PATH}"):
                 system(f"rm -rf {self.PATH}")
@@ -92,7 +94,7 @@ class System:
             ):
             return False
 
-    def get_data(self):
+    def get_data(self) -> None:
         for _ in range(3):
             try:
                 with open(
@@ -119,7 +121,7 @@ class System:
             f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
         )
 
-    def setup(self):
+    def setup(self) -> None:
         if not access(self.HOME):
             raise SystemExit(
                 (

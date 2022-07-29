@@ -6,7 +6,7 @@ from rich.console import Console
 from src.bin.access import access
 
 
-def update():
+def update() -> None:
     HOME = expanduser("~")
     console = Console()
     access(HOME)

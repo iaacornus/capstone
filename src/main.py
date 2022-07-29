@@ -9,7 +9,7 @@ from bin.code_email import Email
 from face_recog import face_recognition
 
 
-def main(HOME, verbose=False):
+def main(HOME, verbose=False) -> None:
     """
     initiate the system, use try, except, else block to catch errors
     and to organize the procedures based on the cases the system gives.

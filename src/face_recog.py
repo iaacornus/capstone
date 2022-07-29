@@ -15,7 +15,7 @@ from function import draw_rectangle
 from misc.colors import Colors as C
 
 
-def face_recognition(av_cams, face_encodings_, face_names_):
+def face_recognition(av_cams, face_encodings_, face_names_) -> None:
     """
     Currently returns none, basically a function for access and encoding
     of faces.
