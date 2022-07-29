@@ -3,8 +3,8 @@ echo -e "\e[1;32m> Starting full system upgrade to fix CVE vulnerabilities ...\e
 sudo dnf update -y
 
 # check for system utilities: #? likely passing
-dnf list installed 1> $HOME/capstone/installed    
-echo -e "\e[1;32m> Checking the presence of git, installing if not installed ...\e[0m"    
+dnf list installed 1> $HOME/capstone/installed
+echo -e "\e[1;32m> Checking the presence of git, installing if not installed ...\e[0m"
 git_check=$(cat $HOME/capstone/installed | grep -i "git")
 if [[ $git_check != *"git"* ]]; then
     echo -e "\e[1;32m> Installing git in the system ...\e[0m"
@@ -44,15 +44,16 @@ pip install -r $HOME/capstone/requirements.txt
 
 # setup a systemd service for repository check : #! FAILED
 echo -e "\e[1;32m> Setting up a systemd service ...\e[0m"
-sudo touch /etc/systemd/system/repository-check.service
-echo -e "[Unit]\nDescription=Check the repository for updates every 24 hours.\nAfter=network.target\nStartLimitIntervalSec=5\n\n[Service]\nType=simple\nRestart=always\nRestartSec=5\nUser=\"%u\"\nExecStart=/usr/bin/env python \"%h\"/repository/bin/service.py'\n\n[Install]\nWantedBy=multi-user.target" | sudo tee -a /etc/systemd/system/repository-check.service
+mkdir -p $HOME/.config/systemd/user
+echo -e "[Unit]\nDescription=Check the repository for updates every 24 hours.\nAfter=network.target\nStartLimitIntervalSec=5\n\n[Service]\nType=simple\nRestart=always\nRestartSec=5\nUser=\"%u\"\nExecStart=/usr/bin/env python \"%h\"/repository/bin/service.py'\n\n[Install]\nWantedBy=multi-user.target" > $HOME/.config/systemd/user/repository-check.service
 
 # replaced with "specifiers" as described from systemd documentation, refer to: https://www.freedesktop.org/software/systemd/man/systemd.unit.html#Specifiers
 
 #! FAILED
 
-sudo systemctl daemon-reload
-sudo systemctl enable repository-check.service
+systemctl --user daemon-reload
+systemctl --user start repository-check.service
+systemctl --user enable repository-check.service
 
 # setup the dirs
 mkdir -p $HOME/.att_sys/bak
