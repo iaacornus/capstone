@@ -19,8 +19,8 @@ from misc.colors import Colors as C
 
 def face_recognition(
         av_cams: bool,
-        face_encodings_: tuple[Any],
-        face_names_: tuple[Any]
+        known_fe: tuple[str] | list[str],
+        known_fnames: tuple[str] | list[str]
     ) -> None:
     """
     Currently returns none, basically a function for access and encoding
@@ -34,8 +34,6 @@ def face_recognition(
     process_this_frame: bool = True
 
     # initialize some variables include the encoded faces in the list
-    known_fe: list[str] = []
-    known_fnames: list[str] = []
     face_locations: list[Any] = []
     face_encodings: list[Any] = []
     face_names: list[Any] = []
@@ -44,11 +42,6 @@ def face_recognition(
         raise SystemExit(
             f"{C.BOLD+C.RED}> There are no available cameras.{C.END}"
         )
-
-    # the names and the face encoding should the of the same size
-    for fe_, fnames_ in zip(face_encodings_, face_names_):
-        known_fe.append(fe_)
-        known_fnames.append(fnames_)
 
     # video capture
     vid: object = VideoCapture(0)
