@@ -1,5 +1,4 @@
 from json import load
-from telnetlib import SE
 from typing_extensions import Self
 from system import stdout
 from os import system
@@ -15,7 +14,6 @@ from cv2 import (
 from rich.console import Console
 
 from bin.access import access
-from misc.colors import Colors as C
 
 
 def av_cams() -> bool:
@@ -125,18 +123,11 @@ class System:
                 self.pull_data()
                 continue
 
-        raise SystemExit(
-            f"{C.BOLD+C.RED}> Too much error, please try again later.{C.END}"
-        )
+        raise SystemExit("> Too much error, please try again later.")
 
     def setup(self: Self) -> None:
         if not access(self.HOME):
-            raise SystemExit(
-                (
-                    f"{C.BOLD+C.RED}> Too much error"
-                    ", please try again later.{C.END}"
-                )
-            )
+            raise SystemExit("> Too much error please try again later.")
 
         try:
             for _ in range(3):
@@ -144,11 +135,6 @@ class System:
                     continue
                 break
         except KeyboardInterrupt:
-            raise SystemExit(
-                (
-                    f"{C.BOLD+C.RED}> Too much error"
-                    ", please try again later.{C.END}"
-                )
-            )
+            raise SystemExit("> Too much error, please try again later.")
         else:
             return self.get_data()

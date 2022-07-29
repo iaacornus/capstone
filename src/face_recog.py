@@ -14,7 +14,6 @@ from face_recognition import (
 )
 
 from function import draw_rectangle
-from misc.colors import Colors as C
 
 
 def face_recognition(
@@ -39,9 +38,7 @@ def face_recognition(
     face_names: list[Any] = []
 
     if not av_cams:
-        raise SystemExit(
-            f"{C.BOLD+C.RED}> There are no available cameras.{C.END}"
-        )
+        raise SystemExit("> There are no available cameras.")
 
     # video capture
     vid: object = VideoCapture(0)

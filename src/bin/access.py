@@ -1,7 +1,6 @@
 from os import system
 from rich.console import Console
 
-from misc.colors import Colors as C
 from bin.code_email import Email
 
 
@@ -25,23 +24,20 @@ def access(HOME) -> None:
         for n in range(3):
             if not mark:
                 verify: str = input(
-                    (
-                        f"{C.BOLD}> Kindly input your 32 character"
-                        f" password ({3-n} left): {C.END}"
-                    )
+                    "> Kindly input your 32 character password ({3-n} left): "
                 )
 
                 if verify != password:
                     console.log(
                         (
-                            "[bold][red][-] Password doesn't match"
-                            f".[/red]{3-n} left.[/bold]"
+                            "[bold][red][-] Password doesn't"
+                            " match .[/red]{3-n} left.[/bold]"
                         )
                     )
                     send_new: str = input(
                         (
-                            f"{C.BOLD}> Send a new temporary password"
-                            f" to your email instead? [y/N]: {C.END}"
+                            "> Send a new temporary password"
+                            " to your email instead? [y/N]: "
                         )
                     )
 
@@ -52,8 +48,8 @@ def access(HOME) -> None:
                 new_pass: str | bool = email.send("setup", school_name)
                 verify_new: str = input(
                     (
-                        f"{C.BOLD}> Kindly input your 32 character "
-                        f"password (case sensitive {3-n} left): {C.END}"
+                        "> Kindly input your 32 character "
+                        f"password (case sensitive {3-n} left): "
                     )
                 )
 
