@@ -7,7 +7,7 @@
         </p>
 
         <p align=justify>
-            If you are not trying to access, ignore this email. The details of the computer are:<br><br>User: <i>{USER}</i><br>HOSTNAME: <i>{HOSTNAME}</i><br>IP address: <i>{IP_ADDR}</i><br>Tracked from:<i> {LOC}) at {DATETIME}</i>.
+            If you are not trying to access, ignore this email. The details of the computer are:<br><br>User: <i>{USERNAME}</i><br>HOSTNAME: <i>{HOSTNAME}</i><br>IP address: <i>{IP_ADDR}</i><br>Tracked from:<i> {LOC}) at {DATETIME}</i>.
         </p>
 
         <p align=justify>
