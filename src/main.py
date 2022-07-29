@@ -28,7 +28,7 @@ def main(HOME: str, verbose: bool = False) -> None:
         ) as info:
         source: list[str] = info.readlines()
 
-    path_: str = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
+    PATH: str = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
     receiver_email: str = source[0].strip()
     school_name: str = source[3].strip()
     student_data_proc: list[str] = []
@@ -109,7 +109,7 @@ def main(HOME: str, verbose: bool = False) -> None:
                 system(
                     (
                         f"echo '    face_ref_{i} = fr.load_image_file("
-                        f"{path_}/std{i}.png)' >> {encoding_path}"
+                        f"{PATH}/std{i}.png)' >> {encoding_path}"
                     )
                 )
 
