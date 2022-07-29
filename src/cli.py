@@ -1,7 +1,6 @@
 from argparse import ArgumentParser
 from os import system
 from os.path import expanduser
-from rich.console import Console
 
 from main import main
 from demo import demo
@@ -12,8 +11,6 @@ def program_options() -> None:
     """
     This is an example use of the algorithm via cli program.
     """
-
-    console: object = Console()
 
     description: str = (
             "This is a program designed to interact with"
