@@ -25,48 +25,39 @@ def access(HOME) -> None:
     try:
         for n in range(3):
             if not mark:
-                verify: str = input(
+                if input(
                     (
                         f"{Signs.INPT} Kindly input your 32"
                         f" character password ({3-n} left): "
                     )
-                )
-
-                if verify != password:
+                ) != password:
                     print(
                         f"{Signs.FAIL} Password didn't match. {3-n} left."
                     )
-                    send_new: str = input(
+                    if input(
                         (
                             f"{Signs.INPT} Send a new temporary password"
                             " to your email instead? [y/N]: "
                         )
-                    )
-
-                    if send_new in ['y', 'Y']:
+                    ).lower() == "y":
                         mark = True
                     continue
             else:
-                new_pass: str | bool = email.send("setup", school_name)
-                verify_new: str = input(
+                if input(
                     (
                         f"{Signs.INPT} Kindly input your 32 character "
                         f"password (case sensitive {3-n} left): "
                     )
-                )
-
-                if verify_new != new_pass:
+                ) != email.send("setup", school_name):
                     print(
-                        f"{Signs.FAIL} Password didn't match.{3-n} left."
+                        f"{Signs.FAIL} Password didn't match. {3-n} left."
                     )
                     continue
             raise SystemExit
 
         email.send("alert", school_name)
         system(f"rm -rf {HOME}/repo/")
-        print(
-            f"{Signs.FAIL} Verification error. Nuking the repository ..."
-        )
-        system("systemctl poweroff")
+        print(f"{Signs.FAIL} Verification error.")
+        raise KeyboardInterrupt
     except KeyboardInterrupt:
         system("systemctl poweroff")
