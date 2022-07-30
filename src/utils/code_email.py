@@ -47,7 +47,6 @@ class Email:
 
     def send(
             self: Self,
-            HOME: str,
             access: str,
             school_name: str,
             student_name: str = None
