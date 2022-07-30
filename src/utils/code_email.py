@@ -65,178 +65,172 @@ class Email:
             )
         access = None
 
-        if access == "setup":
-            with open(
-                    f"{HOME}/.easywiz/misc/msg/setup.msg",
-                    "r",
-                    encoding="utf-8"
-                ) as msg_file:
-                msg: str = msg_file.read()
+        match access:
+            case "setup":
+                with open(
+                        f"{HOME}/.easywiz/misc/msg/setup.msg",
+                        "r",
+                        encoding="utf-8"
+                    ) as msg_file:
+                    msg: str = msg_file.read()
 
-            msg["Subject"]: str = "Secure access phrase"
-            msg.set_content(
-                (
-                    msg
-                        .replace(
-                            "{RECEIVER_EMAIL}",
-                            self.receiver_email
-                        )
-                        .replace(
-                            "{USER}",
-                            self.user
-                        )
-                        .replace(
-                            "{SCHOOL_NAME}",
-                            school_name
-                        )
-                        .replace(
-                            "{HOSTNAME}",
-                            gethostname()
-                        )
-                        .replace(
-                            "{USERNAME}",
-                            getlogin()
-                        )
-                        .replace(
-                            "{IP_ADDR}",
-                            gethostbyname(gethostname())
-                        )
-                        .replace(
-                            "{LOC}",
-                            ip("me")
-                        )
-                        .replace(
-                            "{DATETIME}",
-                            datetime.now().strftime(
-                                "%d/%m/%Y %H:%M:%S"
+                msg["Subject"]: str = "Secure access phrase"
+                msg.set_content(
+                    (
+                        msg
+                            .replace(
+                                "{RECEIVER_EMAIL}",
+                                self.receiver_email
                             )
-                        )
-
-                ),
-                subtype="html"
-            )
-        elif access == "alert":
-            with open(
-                    f"{HOME}/.easywiz/misc/msg/alert.msg",
-                    "r",
-                    encoding="utf-8"
-                ) as msg_file:
-                msg: str = msg_file.read()
-
-            msg["Subject"]: str = "Breach attempt alert."
-            msg.set_content(
-                (
-                    msg
-                        .replace(
-                            "{RECEIVER_EMAIL}",
-                            self.receiver_email
-                        )
-                        .replace(
-                            "{USER}",
-                            self.user
-                        )
-                        .replace(
-                            "{SCHOOL_NAME}",
-                            school_name
-                        )
-                        .replace(
-                            "{USERNAME}",
-                            getlogin()
-                        )
-                        .replace(
-                            "{HOSTNAME}",
-                            gethostname()
-                        )
-                        .replace(
-                            "{IP_ADDR}",
-                            gethostbyname(gethostname())
-                        )
-                        .replace(
-                            "{LOC}",
-                            ip("me")
-                        )
-                        .replace(
-                            "{DATETIME}",
-                            datetime.now().strftime(
-                                "%d/%m/%Y %H:%M:%S"
+                            .replace(
+                                "{USER}",
+                                self.user
                             )
-                        )
-                ),
-                subtype="html"
-            )
-            msg.set_content(
-                f"""\
-
-                """,
-                subtype="html"
-            )
-        elif access == "student true":
-            with open(
-                    f"{HOME}/.easywiz/misc/msg/student_present.msg",
-                    "r",
-                    encoding="utf-8"
-                ) as msg_file:
-                msg: str = msg_file.read()
-
-            msg["Subject"]: str = f"{student_name} registered"
-            msg.set_content(
-                (
-                    msg
-                        .replace(
-                            "{STUDENT_NAME}",
-                            student_name
-                        )
-                        .replace(
-                            "{SCHOOL_NAME}",
-                            school_name
-                        )
-                        .replace(
-                            "{DATETIME}",
-                            datetime.now().strftime(
-                                "%d/%m/%Y %H:%M:%S"
+                            .replace(
+                                "{SCHOOL_NAME}",
+                                school_name
                             )
-                        )
-
-                ),
-                subtype="html"
-            )
-        elif access == "intruder":
-            with open(
-                    f"{HOME}/.easywiz/misc/msg/student_present.msg",
-                    "r",
-                    encoding="utf-8"
-                ) as msg_file:
-                msg: str = msg_file.read()
-
-            msg["Subject"]: str = f"Intruder detection notice"
-            msg.set_content(
-                (
-                    msg
-                        .replace(
-                            "{RECEIVER_EMAIL}",
-                            self.receiver_email
-                        )
-                        .replace(
-                            "{SCHOOL_NAME}",
-                            school_name
-                        )
-                        .replace(
-                            "{USER}",
-                            self.user
-                        )
-                        .replace(
-                            "{DATETIME}",
-                            datetime.now().strftime(
-                                "%d/%m/%Y %H:%M:%S"
+                            .replace(
+                                "{HOSTNAME}",
+                                gethostname()
                             )
-                        )
+                            .replace(
+                                "{USERNAME}",
+                                getlogin()
+                            )
+                            .replace(
+                                "{IP_ADDR}",
+                                gethostbyname(gethostname())
+                            )
+                            .replace(
+                                "{LOC}",
+                                ip("me")
+                            )
+                            .replace(
+                                "{DATETIME}",
+                                datetime.now().strftime(
+                                    "%d/%m/%Y %H:%M:%S"
+                                )
+                            )
 
-                ),
-                subtype="html"
-            )
+                    ),
+                    subtype="html"
+                )
+            case "alert":
+                with open(
+                        f"{HOME}/.easywiz/misc/msg/alert.msg",
+                        "r",
+                        encoding="utf-8"
+                    ) as msg_file:
+                    msg: str = msg_file.read()
 
-        if access is None:
-            return False
+                msg["Subject"]: str = "Breach attempt alert."
+                msg.set_content(
+                    (
+                        msg
+                            .replace(
+                                "{RECEIVER_EMAIL}",
+                                self.receiver_email
+                            )
+                            .replace(
+                                "{USER}",
+                                self.user
+                            )
+                            .replace(
+                                "{SCHOOL_NAME}",
+                                school_name
+                            )
+                            .replace(
+                                "{USERNAME}",
+                                getlogin()
+                            )
+                            .replace(
+                                "{HOSTNAME}",
+                                gethostname()
+                            )
+                            .replace(
+                                "{IP_ADDR}",
+                                gethostbyname(gethostname())
+                            )
+                            .replace(
+                                "{LOC}",
+                                ip("me")
+                            )
+                            .replace(
+                                "{DATETIME}",
+                                datetime.now().strftime(
+                                    "%d/%m/%Y %H:%M:%S"
+                                )
+                            )
+                    ),
+                    subtype="html"
+                )
+            case "student true":
+                with open(
+                        f"{HOME}/.easywiz/misc/msg/student_present.msg",
+                        "r",
+                        encoding="utf-8"
+                    ) as msg_file:
+                    msg: str = msg_file.read()
+
+                msg["Subject"]: str = f"{student_name} registered"
+                msg.set_content(
+                    (
+                        msg
+                            .replace(
+                                "{STUDENT_NAME}",
+                                student_name
+                            )
+                            .replace(
+                                "{SCHOOL_NAME}",
+                                school_name
+                            )
+                            .replace(
+                                "{DATETIME}",
+                                datetime.now().strftime(
+                                    "%d/%m/%Y %H:%M:%S"
+                                )
+                            )
+
+                    ),
+                    subtype="html"
+                )
+            case "intruder":
+                with open(
+                        f"{HOME}/.easywiz/misc/msg/student_present.msg",
+                        "r",
+                        encoding="utf-8"
+                    ) as msg_file:
+                    msg: str = msg_file.read()
+
+                msg["Subject"]: str = f"Intruder detection notice"
+                msg.set_content(
+                    (
+                        msg
+                            .replace(
+                                "{RECEIVER_EMAIL}",
+                                self.receiver_email
+                            )
+                            .replace(
+                                "{SCHOOL_NAME}",
+                                school_name
+                            )
+                            .replace(
+                                "{USER}",
+                                self.user
+                            )
+                            .replace(
+                                "{DATETIME}",
+                                datetime.now().strftime(
+                                    "%d/%m/%Y %H:%M:%S"
+                                )
+                            )
+
+                    ),
+                    subtype="html"
+                )
+            case None:
+                return False
 
         try:
             print(
