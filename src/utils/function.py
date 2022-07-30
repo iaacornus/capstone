@@ -108,8 +108,10 @@ class System:
                 OSError,
                 ConnectionError
             ) as Err:
+            print(f"{Signs.FAIL} {Err}, retrying ...")
             return False
         else:
+            print(f"{Signs.PASS} Repository fetched.")
             return True
 
     def get_data(self: Self) -> None:
