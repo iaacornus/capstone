@@ -39,7 +39,7 @@ def initiate(
             "[bold magenta][+] Fetching data ...[/bold magenta]",
             spinner="simpleDots"
         ):
-        if not exists(f"{HOME}/repo"):
+        if not exists(f"{HOME}/.easywiz/repo"):
             console.log(
                 (
                     "[bold red][-] The repository is not setup."
