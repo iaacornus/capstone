@@ -1,6 +1,5 @@
-from os import system, walk
+from os import walk
 from os.path import exists
-from sys import stdout
 from typing import Any
 
 from rich.console import Console
@@ -58,7 +57,7 @@ def initiate(
     return receiver_email, school_name, data
 
 
-def main(HOME: str, verbose: bool = False) -> None:
+def main(HOME: str) -> None:
     console: object = Console()
     receiver_email, school_name, data = initiate(console, HOME)
 
@@ -67,7 +66,7 @@ def main(HOME: str, verbose: bool = False) -> None:
     PATH: str = f"{HOME}/.easywiz/repo/student_data/imgs/"
     IMGS_PATH: list[str] = []
     student_names: list[str] = []
-    face_encodings: list[Any] = []
+    student_encodings: list[Any] = []
 
     with console.status(
             "[bold magenta][+] Fetching data ...[/bold magenta]",
@@ -95,11 +94,10 @@ def main(HOME: str, verbose: bool = False) -> None:
                 continue
             else:
                 if not not img_encode:
-                    face_encodings.append(img_encode[0])
+                    student_encodings.append(img_encode[0])
 
     # notify the user
     console.log("[bold green][+] System is ready.[/bold green]")
-    stdout.write("\033[K") # remove the messages
 
     av_cams_eval: bool = av_cams()
 
