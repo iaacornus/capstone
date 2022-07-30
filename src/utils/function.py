@@ -11,39 +11,32 @@ from cv2 import (
     FONT_HERSHEY_DUPLEX,
     putText
 )
-from rich.console import Console
 
 from src.utils.access import access
+from src.misc.signs import Signs
 
 
 def av_cams() -> bool:
     """Check the working cameras in the machine."""
-
-    console: object = Console()
     index: int = 0
     cam_arr: list[int] = []
 
-    with console.status(
-            "[bold magenta][+] Checking for cameras ...[/bold magenta]",
-            spinner="simpleDots"
-        ):
-        while True:
-            cap = VideoCapture(index)
+    print(f"{Signs.PROC} Searching for available cameras ...")
+    while True:
+        cap = VideoCapture(index)
 
-            if cap.read()[0]:
-                cam_arr.append(index)
-                cap.release()
-                index += 1
-                continue
-            break
+        if cap.read()[0]:
+            cam_arr.append(index)
+            cap.release()
+            index += 1
+            continue
+        break
 
     if cam_arr:
-        console.log("[bold green]> All available cameras found:[/bold green]")
+        print(f"{Signs.INFO} All available cameras found:")
         for num, cam in enumerate(cam_arr):
-            console.log(f"[green]Camera: [/green][cyan]{num}, {cam}[/cyan]")
+            print(f"\tCamera: {num}, {cam}")
 
-        input("Press any key to clear ...")
-        stdout.write("\033[K") # remove the messages
         return True
 
     return False
@@ -98,10 +91,11 @@ class System:
         self.repo = repo
         self.PATH = f"{self.HOME}/.easywiz/repo"
 
-    def pull_data(self: Self) -> bool:
+    def pull_data(self: Self) -> tuple[bool, str | None]:
         """Fetch the repository in the server."""
 
         try:
+            print(f"{Signs.PROC} Pulling data from repository ...")
             if exists(f"{self.PATH}"):
                 system(f"rm -rf {self.PATH}")
 
@@ -113,16 +107,19 @@ class System:
                 KeyboardInterrupt,
                 OSError,
                 ConnectionError
-            ):
-            return False
+            ) as Err:
+            return False, Err
         else:
-            return True
+            return True, None
 
     def get_data(self: Self) -> None:
         """Scrape the data from the pulled repository."""
 
         for _ in range(3):
             try:
+                print(
+                    f"{Signs.PROC} Scraping data from local repository ..."
+                )
                 with open(
                         f"{self.PATH}/student_data/info.json",
                         "r",
@@ -137,18 +134,28 @@ class System:
                     ) as data_2:
                     teacher_data: dict[str, list[str]] = load(data_2)
             except FileNotFoundError:
+                print(
+                    f"{Signs.FAIL} File not found, fetching repository ..."
+                )
                 self.pull_data()
                 continue
             else:
+                print(
+                    f"{Signs.PASS} Student and teacher data fetched."
+                )
                 return student_data, teacher_data
 
-        raise SystemExit("> Too much error, please try again later.")
+        raise SystemExit(
+            f"{Signs.FAIL} Too much error, aborting ..."
+        )
 
     def setup(self: Self) -> None:
         """Setup function."""
 
         if not access(self.HOME):
-            raise SystemExit("> Too much error please try again later.")
+            raise SystemExit(
+                f"{Signs.FAIL} Too much error, aborting ..."
+            )
 
         try:
             for _ in range(3):
@@ -156,6 +163,8 @@ class System:
                     continue
                 break
         except KeyboardInterrupt:
-            raise SystemExit("> Too much error, please try again later.")
+            raise SystemExit(
+                f"{Signs.FAIL} Too much error, aborting ..."
+            )
         else:
             return self.get_data()

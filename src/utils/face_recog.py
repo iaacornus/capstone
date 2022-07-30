@@ -1,4 +1,3 @@
-from re import A
 from typing import Any
 from typing_extensions import Self
 from numpy import argmin, ndarray
@@ -16,12 +15,14 @@ from face_recognition import (
 
 from src.utils.function import draw_rectangle
 from src.utils.code_email import Email
+from src.misc.signs import Signs
 
 
 class FaceRecog:
     def __init__(
             self: Self, receiver_email: str, user: str, school_name: str
         ) -> None:
+        print(f"{Signs.PROC} Initiating utilities ...")
         self.email: object = Email(
                 receiver_email,
                 user
@@ -44,7 +45,9 @@ class FaceRecog:
         face_names: list[Any] = []
 
         if not av_cams:
-            raise SystemExit("> There are no available cameras.")
+            raise SystemExit(
+                f"{Signs.FAIL} There are no available cameras, aborting ..."
+            )
 
         # video capture
         vid: object = VideoCapture(0)
@@ -90,6 +93,7 @@ class FaceRecog:
 
                     # output the box in the frame
                     if name != "unknown":
+                        print(f"{Signs.INFO} Student recognized as: {name}")
                         draw_rectangle(
                             (0, 255, 0),
                             name, frame,
@@ -102,6 +106,7 @@ class FaceRecog:
                             name
                         )
                     else:
+                        print(f"{Signs.INFO} Student not recognized.")
                         draw_rectangle(
                             (0, 0, 255),
                             name, frame,

@@ -15,7 +15,7 @@ from smtplib import SMTP_SSL
 from typing_extensions import Self
 
 from geocoder import ip
-from rich.console import Console
+from src.misc.signs import Signs
 
 
 class Email:
@@ -47,7 +47,6 @@ class Email:
         phrase when the email was sent successfully.
         """
 
-        console: object = Console()
         msg: object = EmailMessage()
 
         HOME: str = expanduser("~")
@@ -240,22 +239,24 @@ class Email:
             return False
 
         try:
-            with console.status(
-                    "[bold magenta][+] Sending email ...[/bold magenta]",
-                    spinner="simpleDots"
-                ):
-                context: SSLContext = create_default_context()
-
-                with SMTP_SSL(
-                        self.smtp_server,
-                        self.port,
-                        context=context
-                    ) as server:
-                    server.login(self.sender_email, self.password)
-                    server.send_message(msg)
+            print(
+                (
+                    f"{Signs.PROC} Sending email ...\n{Signs.INFO}"
+                    f" Receiver: {self.receiver_email}, context: {access}"
+                )
+            )
+            context: SSLContext = create_default_context()
+            with SMTP_SSL(
+                    self.smtp_server,
+                    self.port,
+                    context=context
+                ) as server:
+                server.login(self.sender_email, self.password)
+                server.send_message(msg)
         except ConnectionError:
-            console.log("[bold red][-] Connection error.[/bold red]")
+            print(f"{Signs.FAIL} Connection error, email not sent.")
         else:
+            print(f"{Signs.PASS} Email sent successfully.")
             return phrase
 
         return False

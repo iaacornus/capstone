@@ -4,6 +4,7 @@ from os.path import expanduser, exists
 from rich.console import Console
 
 from src.utils.access import access
+from src.misc.signs import Signs
 
 
 def update() -> None:
@@ -13,13 +14,13 @@ def update() -> None:
     HOME: str = expanduser("~")
     access(HOME)
 
-    with console.status("[bold]> Updating repository ...[/bold]."):
+    with console.status(f"{Signs.PROC} Updating repository ..."):
         if not exists(f"{HOME}/repo"):
-            console.log(
-                "[bold red][-] Local repository not found[/bold red]"
-            )
-            console.log(
-                "[bold magenta][+] Cloning the repository.[/bold magenta]"
+            print(
+                (
+                    f"{Signs.RFAIL} Local repository not found.\n"
+                    f"{Signs.RPROC} Cloning the repository ..."
+                )
             )
 
             # clone the repository and redirect stdout to /dev/null, this is a secret
@@ -31,9 +32,7 @@ def update() -> None:
             )
             system("mv $HOME/capstone $HOME/.easywiz/repo/")
         else:
-            console.log(
-                "[bold magenta][+] Pulling updates ...[/bold magenta]"
-            )
+            print(f"{Signs.RPROC} Pulling updates ...")
             system(f"cd {HOME}/.easywiz/repo/; git pull > /dev/null")
 
 

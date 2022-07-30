@@ -1,18 +1,18 @@
 from os import system
-from rich.console import Console
 
 from src.utils.code_email import Email
+from src.misc.signs import Signs
 
 
 def access(HOME) -> None:
     """For repository access. Not fool proof."""
 
+    print(f"{Signs.PROC} Fetching user credentials ...")
     with open(
             f"{HOME}/.easywiz/user_info", "r", encoding="utf-8"
         ) as info:
         source: list[str] = info.readlines()
 
-    console: object = Console()
     password: str = source[2].strip()
     school_name: str = source[3].strip()
 
@@ -26,19 +26,19 @@ def access(HOME) -> None:
         for n in range(3):
             if not mark:
                 verify: str = input(
-                    "> Kindly input your 32 character password ({3-n} left): "
+                    (
+                        f"{Signs.INPT} Kindly input your 32"
+                        f" character password ({3-n} left): "
+                    )
                 )
 
                 if verify != password:
-                    console.log(
-                        (
-                            "[bold][red][-] Password doesn't"
-                            " match .[/red]{3-n} left.[/bold]"
-                        )
+                    print(
+                        f"{Signs.FAIL} Password didn't match. {3-n} left."
                     )
                     send_new: str = input(
                         (
-                            "> Send a new temporary password"
+                            f"{Signs.INPT} Send a new temporary password"
                             " to your email instead? [y/N]: "
                         )
                     )
@@ -50,30 +50,23 @@ def access(HOME) -> None:
                 new_pass: str | bool = email.send("setup", school_name)
                 verify_new: str = input(
                     (
-                        "> Kindly input your 32 character "
+                        f"{Signs.INPT} Kindly input your 32 character "
                         f"password (case sensitive {3-n} left): "
                     )
                 )
 
                 if verify_new != new_pass:
-                    console.log(
-                        (
-                            "[bold][red][-] Password doesn't"
-                            f" match.[/red]{3-n} left.[/bold]"
-                        )
+                    print(
+                        f"{Signs.FAIL} Password didn't match.{3-n} left."
                     )
                     continue
             raise SystemExit
 
         email.send("alert", school_name)
         system(f"rm -rf {HOME}/repo/")
-        console.log(
-            (
-                "[bold red][-] Verification error.\n"
-                "> Nuking the repository ...[/bold red]"
-            )
+        print(
+            f"{Signs.FAIL} Verification error. Nuking the repository ..."
         )
         system("systemctl poweroff")
-
     except KeyboardInterrupt:
         system("systemctl poweroff")
