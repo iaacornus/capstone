@@ -1,3 +1,4 @@
+from os import walk
 from os.path import dirname
 from typing import Any
 
@@ -19,35 +20,22 @@ def demo() -> None:
     BASE_PATH: str = "/".join(dirname(__file__).split("/")[:-1])
     PATH: str = f"{BASE_PATH}/sample/"
 
+    sample_encodings: list[Any] = []
     with console.status(
             "[bold magenta][+] Loading user images ...[/bold magenta]",
             spinner="simpleDots"
         ):
         # load face references from PATH.
         # ezekiel lopez encoding
-        ref_face: Any = load_image_file(f"{PATH}/test_1.png")
-        # laisie angela donato encoding
-        ref_face_2: Any = load_image_file(f"{PATH}/test_2.png")
-        # nicole amber hennessey encoding
-        ref_face_3: Any = load_image_file(f"{PATH}/test_3.png")
-        # raven gose encoding
-        ref_face_4: Any = load_image_file(f"{PATH}/test_4.png")
-        # fiona leigh pagtama encoding
-        ref_face_5: Any = load_image_file(f"{PATH}/test_5.png")
-
-        console.log("[bold green]> Faces loaded successfully.[/bold green]")
-
-    with console.status(
-            "[bold magenta][+] Encoding user faces ...[/bold magenta]",
-            spinner="simpleDots"
-        ):
-        #----------------------------------------------------------------
-        # encode the faces.
-        rf_encoding: Any = face_encodings(ref_face)[0]
-        rf_encoding2: Any = face_encodings(ref_face_2)[0]
-        rf_encoding3: Any = face_encodings(ref_face_3)[0]
-        rf_encoding4: Any = face_encodings(ref_face_4)[0]
-        rf_encoding5: Any = face_encodings(ref_face_5)[0]
+        for imgs in next(walk(PATH)):
+            try:
+                img_file: Any = load_image_file(f"{PATH}/{imgs}")
+            except FileNotFoundError:
+                continue
+            else:
+                encodings: Any = face_encodings(img_file)
+                if not not encodings:
+                    sample_encodings.append(encodings)
 
         console.log("[bold green]> Faces encoded successfully.[/bold green]")
 
@@ -59,14 +47,8 @@ def demo() -> None:
         ):
         face_recognition(
             av_cams_,
-            face_encodings_= (
-                    rf_encoding,
-                    rf_encoding2,
-                    rf_encoding3,
-                    rf_encoding4,
-                    rf_encoding5
-                ),
-            face_names_= (
+            sample_encodings,
+            face_names_=(
                     "Ezekiel Lopez",
                     "Laisie Angela Donato",
                     "Nicole Amber Hennessey",
