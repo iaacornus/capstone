@@ -1,14 +1,12 @@
-# Capstone
-
 ![](https://api.codiga.io/project/33619/score/svg)
 
-Main branch of the project.
+# Capstone
+
+This is program, with experimental and some untested parts, starting from commit by iaacornus: 7d8829659ae63ca88bca17d200d3fc3cfff327de, for example of implementation and use of the project of Group 5 for fulfillment in subject, Capstone.
 
 # Install
 
-## Advanced install
-
-Refer to [install](INSTALL.md) for instructions on how to install the program.
+Refer to [install](INSTALL.md) for more detailed instructions on how to install the program.
 
 ## Simple install
 
@@ -18,15 +16,13 @@ Clone the repository with:
 git clone https://github.com/testno0/capstone
 ```
 
-Install dependencies with
+Execute the setup script, which includes user setup with:
 
 ```bash
-pip install -r requirements.txt
+./capstone/src/sutils/./pre_setup.sh
 ```
 
-Activate the `virtual env` from python using this tutorial [https://realpython.com/python-virtual-environments-a-primer/](https://realpython.com/python-virtual-environments-a-primer/).
-
-# TapTap
+# EasyWiz
 
 The help can be accessed with `-h` flag and outputs all the help.
 
@@ -43,5 +39,4 @@ options:
   -destroy, --destroy  Destroy the user database.
   -demo, --demo        Face recognition demonstration.
   -v, --verbose        Show the processes of program.
-
 ```
