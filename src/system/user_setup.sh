@@ -1,7 +1,5 @@
-# test 1: #* passed!
-
 if [ ! -d "$HOME/.att_sys/user_info" ]; then
-    # user information setup : #* pass
+    # user information setup
     echo -e "\e[1;32m> User setup ...\e[0m"
 
     # take the username and email of the user
@@ -28,9 +26,6 @@ if [ ! -d "$HOME/.att_sys/user_info" ]; then
     done
 
     systemctl poweroff
-
 else
-    #* passed
     echo -e "\e[1;31m> System already setup ...\e[0m"
-
 fi
