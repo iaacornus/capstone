@@ -32,6 +32,7 @@ class Email:
 
     def send(
             self: Self,
+            HOME: str,
             access: str,
             school_name: str,
             student_name: str = None
@@ -48,9 +49,6 @@ class Email:
         """
 
         msg: object = EmailMessage()
-
-        HOME: str = expanduser("~")
-
         msg["From"]: str = self.sender_email
         msg["To"]: str = self.receiver_email
         str_set: list[str] = [
