@@ -21,12 +21,17 @@ from src.misc.signs import Signs
 class FaceRecog:
     def __init__(
             self: Self,
+            av_cams: bool,
             HOME: str,
             receiver_email: str,
             user: str,
             school_name: str
         ) -> None:
         print(f"{Signs.PROC} Initiating utilities ...")
+
+        if not av_cams:
+            raise SystemExit(f"{Signs.FAIL} No cameras found, aborting ...")
+
         self.email: object = Email(
                 HOME,
                 receiver_email,
@@ -48,9 +53,6 @@ class FaceRecog:
         face_locations: list[Any] = []
         face_encodings: list[Any] = []
         face_names: list[Any] = []
-
-        if not av_cams:
-            raise SystemExit(f"{Signs.FAIL} No cameras found, aborting ...")
 
         # video capture
         vid: object = VideoCapture(0)
