@@ -108,8 +108,6 @@ class System:
             system(f"mkdir -p {self.PATH}")
             system(f"git clone --branch database {self.repo}")
             system(f"mv {self.HOME}/capstone {self.PATH}")
-            return True
-
         except (
                 SystemError,
                 KeyboardInterrupt,
@@ -117,6 +115,8 @@ class System:
                 ConnectionError
             ):
             return False
+        else:
+            return True
 
     def get_data(self: Self) -> None:
         """Scrape the data from the pulled repository."""
