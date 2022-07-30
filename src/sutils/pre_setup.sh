@@ -45,16 +45,16 @@ systemctl --user start repository-check.service
 systemctl --user enable repository-check.service
 
 # setup the dirs
-mkdir -p $HOME/.att_sys/bak
+mkdir -p $HOME/.easywiz/bak
 
-cp --recursive $HOME/capstone/src/* -t $HOME/.att_sys
-cp --recursive $HOME/capstone -t $HOME/.att_sys/bak
+cp --recursive $HOME/capstone/src/* -t $HOME/.easywiz
+cp --recursive $HOME/capstone -t $HOME/.easywiz/bak
 
 # remove the old bashrc
 rm $HOME/.bashrc
 wget https://raw.githubusercontent.com/testno0/capstone/devel/src/system/.bashrc -P $HOME/
 source $HOME/.bashrc
 
-chmod -R +x $HOME/.att_sys/system/user_setup.sh
-chmod -R +x $HOME/.att_sys/system/pre_setup.sh
-bash $HOME/.att_sys/system/user_setup.sh
+chmod +x $HOME/.easywiz/sutils/user_setup.sh
+chmod +x $HOME/.easywiz/sutils/pre_setup.sh
+$HOME/.easywiz/sutils/./user_setup.sh

@@ -16,12 +16,12 @@ if [ ! -d "$HOME/.att_sys/user_info" ]; then
     read -p "$INPT Enter the school name: " school_name
 
     # generate user password
-    password_hash=$(python $HOME/.att_sys/system/utils/password_gen.py)
+    password_hash=$(python $HOME/.easywiz/sutils/password_gen.py)
     echo -e "$INFO Your password is:\e[1;0m $password"
 
     # append user information and password to a file
     echo -e "$PROC Appending user info $END"
-    echo -e "$email\n$user_name\n$password_hash\n$school_name" > $HOME/.att_sys/user_info
+    echo -e "$email\n$user_name\n$password_hash\n$school_name" > $HOME/.easywiz/user_info
 
     python utils/update.py
 
