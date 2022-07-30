@@ -63,15 +63,15 @@ def program_options() -> None:
 
     try:
         if args.use:
-            main(expanduser("~")) #? likely passing
+            main(expanduser("~"))
         elif args.update:
-            update() #* passed
+            update()
         elif args.setup:
             print(f"{Signs.PROC} Setting up the program ...")
-            system("./$HOME/.easywiz/system/setup.sh") #* passed
+            system("./$HOME/.easywiz/system/setup.sh")
         elif args.destroy:
             print(f"{Signs.PROC} Removing the program ...")
-            system("rm -rf $HOME/.easywiz") #* passed
+            system("rm -rf $HOME/.easywiz")
         elif args.demo:
             demo()
     except (
