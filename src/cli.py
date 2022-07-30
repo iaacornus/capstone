@@ -5,6 +5,7 @@ from os.path import expanduser
 from main import main
 from demo import demo
 from src.sutils.update import update
+from src.misc.signs import Signs
 
 
 def program_options() -> None:
@@ -57,24 +58,20 @@ def program_options() -> None:
         help="Face recognition demonstration.",
         action="store_true"
     )
-    # show most of the background processes of the program
-    parser.add_argument(
-        "-v", "--verbose",
-        help="Show the processes of program.",
-        action="store_true"
-    )
 
     args = parser.parse_args()
 
     try:
         if args.use:
-            main(expanduser("~"), args.verbose) #? likely passing
+            main(expanduser("~")) #? likely passing
         elif args.update:
             update() #* passed
         elif args.setup:
-            system("./$HOME/.att_sys/system/setup.sh") #* passed
+            print(f"{Signs.PROC} Setting up the program ...")
+            system("./$HOME/.easywiz/system/setup.sh") #* passed
         elif args.destroy:
-            system("echo 'rm -rf $HOME/.att_sys'") #* passed
+            print(f"{Signs.PROC} Removing the program ...")
+            system("rm -rf $HOME/.easywiz") #* passed
         elif args.demo:
             demo()
     except (
@@ -82,7 +79,7 @@ def program_options() -> None:
             KeyboardInterrupt,
             SystemError
         ) as Err:
-        raise SystemExit(f"Encounter: {Err}, aborting ...")
+        raise SystemExit(f"{Signs.FAIL} {Err}, aborting ...")
 
 
 if __name__ == "__main__":
