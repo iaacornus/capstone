@@ -41,7 +41,6 @@ class FaceRecog:
 
     def face_recognition(
             self: Self,
-            av_cams: bool,
             known_fe: tuple[str] | list[str],
             known_fnames: tuple[str] | list[str]
         ) -> None:
