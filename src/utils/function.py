@@ -91,7 +91,7 @@ class System:
         self.repo = repo
         self.PATH = f"{self.HOME}/.easywiz/repo"
 
-    def pull_data(self: Self) -> tuple[bool, str | None]:
+    def pull_data(self: Self) -> bool:
         """Fetch the repository in the server."""
 
         try:
@@ -108,9 +108,9 @@ class System:
                 OSError,
                 ConnectionError
             ) as Err:
-            return False, Err
+            return False
         else:
-            return True, None
+            return True
 
     def get_data(self: Self) -> None:
         """Scrape the data from the pulled repository."""
