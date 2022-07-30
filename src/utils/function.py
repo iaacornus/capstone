@@ -1,6 +1,5 @@
 from json import load
 from typing_extensions import Self
-from system import stdout
 from os import system
 from os.path import exists
 
