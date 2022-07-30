@@ -14,7 +14,7 @@ from src.misc.signs import Signs
 
 def initiate(HOME: str) -> tuple[
         str, str, tuple[dict[str, list[str]], dict[str, list[str]]],
-    ]:
+    ] | None:
     """Initiate the program."""
 
     print(f"{Signs.PROC} Fetching user credentials ...")
@@ -50,12 +50,19 @@ def initiate(HOME: str) -> tuple[
             data: tuple[
                     dict[str, list[str]], dict[str, list[str]]
                 ] = sys_initiate.setup(school_name)[0]
+        else:
+            return receiver_email, school_name, data
 
-    return receiver_email, school_name, data
+    return None
 
 
 def main(HOME: str) -> None:
     receiver_email, school_name, data = initiate(HOME)
+    if receiver_email is None:
+        raise SystemExit(
+            f"{Signs.FAIL} Repository related error, aborting ..."
+        )
+
     face_recog: object = FaceRecog(receiver_email, "Admin", school_name)
 
     PATH: str = f"{HOME}/.easywiz/repo/student_data/imgs/"
