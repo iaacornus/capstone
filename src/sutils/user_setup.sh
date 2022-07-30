@@ -23,8 +23,7 @@ if [ ! -d "$HOME/.att_sys/user_info" ]; then
     echo -e "$PROC Appending user info $END"
     echo -e "$email\n$user_name\n$password_hash\n$school_name" > $HOME/.easywiz/user_info
 
-    python utils/update.py
-
+    python $HOME/.easywiz/sutils/update.py
     sec=10
     while [ $sec -ge 0 ]; do
         echo -e "$SUCCESS Setup done! Rebooting after :" $sec"s $END\r"
