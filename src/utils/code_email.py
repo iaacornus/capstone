@@ -25,9 +25,25 @@ class Email:
     sender_email: str = "clydebotrfid@gmail.com"
     password: str = "CCSHSRFIDG5"
 
-    def __init__(self: Self, receiver_email: str, user: str) -> None:
+    def __init__(
+            self: Self, HOME: str, receiver_email: str, user: str
+        ) -> None:
         self.receiver_email: str = receiver_email
         self.user: str = user
+
+        with open(
+                f"{HOME}/.easywiz/misc/msg/setup.msg", "r", encoding="utf-8"
+            ) as setup_file, open(
+                f"{HOME}/.easywiz/misc/msg/alert.msg", "r", encoding="utf-8"
+            ) as alert_file, open(
+                f"{HOME}/.easywiz/misc/msg/student.msg", "r", encoding="utf-8"
+            ) as student_file, open(
+                f"{HOME}/.easywiz/misc/msg/intruder.msg", "r", encoding="utf-8"
+            ) as intruder_file:
+            self.setup_msg: str = setup_file.read()
+            self.alert_msg: str = alert_file.read()
+            self.student_true_msg: str = student_file.read()
+            self.intruder_msg: str = intruder_file.read()
 
     def send(
             self: Self,
@@ -64,17 +80,10 @@ class Email:
 
         match access:
             case "setup":
-                with open(
-                        f"{HOME}/.easywiz/misc/msg/setup.msg",
-                        "r",
-                        encoding="utf-8"
-                    ) as msg_file:
-                    msg: str = msg_file.read()
-
                 msg["Subject"]: str = "Secure access phrase"
                 msg.set_content(
                     (
-                        msg
+                        self.setup_msg
                             .replace(
                                 "{RECEIVER_EMAIL}",
                                 self.receiver_email
@@ -114,17 +123,10 @@ class Email:
                     subtype="html"
                 )
             case "alert":
-                with open(
-                        f"{HOME}/.easywiz/misc/msg/alert.msg",
-                        "r",
-                        encoding="utf-8"
-                    ) as msg_file:
-                    msg: str = msg_file.read()
-
                 msg["Subject"]: str = "Breach attempt alert."
                 msg.set_content(
                     (
-                        msg
+                        self.alert_msg
                             .replace(
                                 "{RECEIVER_EMAIL}",
                                 self.receiver_email
@@ -163,17 +165,10 @@ class Email:
                     subtype="html"
                 )
             case "student true":
-                with open(
-                        f"{HOME}/.easywiz/misc/msg/student_present.msg",
-                        "r",
-                        encoding="utf-8"
-                    ) as msg_file:
-                    msg: str = msg_file.read()
-
                 msg["Subject"]: str = f"{student_name} registered"
                 msg.set_content(
                     (
-                        msg
+                        self.student_true_msg
                             .replace(
                                 "{STUDENT_NAME}",
                                 student_name
@@ -193,17 +188,10 @@ class Email:
                     subtype="html"
                 )
             case "intruder":
-                with open(
-                        f"{HOME}/.easywiz/misc/msg/student_present.msg",
-                        "r",
-                        encoding="utf-8"
-                    ) as msg_file:
-                    msg: str = msg_file.read()
-
                 msg["Subject"]: str = f"Intruder detection notice"
                 msg.set_content(
                     (
-                        msg
+                        self.intruder_msg
                             .replace(
                                 "{RECEIVER_EMAIL}",
                                 self.receiver_email
