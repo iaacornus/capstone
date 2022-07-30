@@ -57,7 +57,7 @@ def access(HOME) -> None:
 
         email.send("alert", school_name)
         system(f"rm -rf {HOME}/repo/")
-        print(f"{Signs.FAIL} Verification error.")
         raise KeyboardInterrupt
     except KeyboardInterrupt:
+        print(f"{Signs.FAIL} Verification error.")
         system("systemctl poweroff")
