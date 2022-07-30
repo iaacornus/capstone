@@ -3,20 +3,19 @@ check_program() {
         dnf list installed 1> $HOME/capstone/installed
     fi
 
-    echo -e "\e[1m> Checking for the presence of $program ...\e[0m"
+    echo -e "\e[1m>>> Checking for the presence of $program ...\e[0m"
     check=$(cat ./installed.programs | grep -e $program)
     if [[ $program != *"$program"* ]]; then
-        echo -e "\e[1m> Installing $program in the system ...\e[0m"
+        echo -e "\e[1m>>> Installing $program in the system ...\e[0m"
         sudo dnf install $program -y
     fi
 }
 
 # system upgrade
-echo -e "\e[1;32m> Starting full system upgrade to fix CVE vulnerabilities ...\e[0m\nKindly input the current password : 'root' (no quotations) when prompted, and don't let the system die."
+echo -e "\e[1;32m[>] Starting full system upgrade to fix CVE vulnerabilities ...\e[0m\nKindly input the current password : 'root' (no quotations) when prompted, and don't let the system die."
 sudo dnf update -y
 
 # check for system utilities
-echo -e "\e[1;32m> Checking the presence of git, installing if not installed ...\e[0m"
 program="git"
 check_program
 program="python3-pip"
@@ -27,11 +26,11 @@ program="python-dlib"
 check_program
 
 # install required packages
-echo -e "\e[1;32m> Installing required packages ...\e[0m"
+echo -e "\e[1m[>] Installing required packages ...\e[0m"
 pip install -r $HOME/capstone/requirements.txt
 
 # setup a systemd service for repository check
-echo -e "\e[1;32m> Setting up a systemd service ...\e[0m"
+echo -e "\e[1m[>] Setting up a systemd service ...\e[0m"
 mkdir -p $HOME/.config/systemd/user
 echo -e "[Unit]\nDescription=Check the repository for updates every 24 hours.\nAfter=network.target\nStartLimitIntervalSec=5\n\n[Service]\nType=simple\nRestart=always\nRestartSec=5\nUser=\"%u\"\nExecStart=/usr/bin/env python \"%h\"/repository/bin/service.py'\n\n[Install]\nWantedBy=multi-user.target" > $HOME/.config/systemd/user/repository-check.service
 
