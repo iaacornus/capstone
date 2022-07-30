@@ -1,5 +1,5 @@
 from os import walk
-from os.path import dirname
+from os.path import dirname, expanduser
 from typing import Any
 
 from face_recognition import (
@@ -7,7 +7,7 @@ from face_recognition import (
     face_encodings,
 )
 
-from src.utils.face_recog import face_recognition
+from src.utils.face_recog import FaceRecog
 from src.utils.function import av_cams
 from src.misc.signs import Signs
 
@@ -18,6 +18,12 @@ def demo() -> None:
     BASE_PATH: str = "/".join(dirname(__file__).split("/")[:-1])
     PATH: str = f"{BASE_PATH}/sample/"
     av_cams_: bool = av_cams()
+    face_recog: object = FaceRecog(
+        expanduser("~"),
+        None,
+        None,
+        None
+    )
 
     print(f"{Signs.PROC} Encoding Images ...")
 
@@ -40,7 +46,7 @@ def demo() -> None:
             f"{Signs.PROC} Running face recognition ..."
         )
     )
-    face_recognition(
+    face_recog.face_recognition(
         av_cams_,
         sample_encodings,
         face_names_=(
