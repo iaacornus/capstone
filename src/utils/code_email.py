@@ -1,4 +1,5 @@
 from os import getlogin
+from os.path import expanduser
 from random import choice
 from string import (
     ascii_lowercase,
@@ -49,6 +50,8 @@ class Email:
         console: object = Console()
         msg: object = EmailMessage()
 
+        HOME: str = expanduser("~")
+
         msg["From"]: str = self.sender_email
         msg["To"]: str = self.receiver_email
         str_set: list[str] = [
@@ -63,7 +66,11 @@ class Email:
             )
 
         if access == "setup":
-            with open("../msg/setup.msg", "r", encoding="utf-8") as msg_file:
+            with open(
+                    f"{HOME}/.easywiz/misc/msg/setup.msg",
+                    "r",
+                    encoding="utf-8"
+                ) as msg_file:
                 msg: str = msg_file.read()
 
             msg["Subject"]: str = "Secure access phrase"
@@ -110,7 +117,11 @@ class Email:
             )
 
         elif access == "alert":
-            with open("../msg/setup.msg", "r", encoding="utf-8") as msg_file:
+            with open(
+                    f"{HOME}/.easywiz/misc/msg/alert.msg",
+                    "r",
+                    encoding="utf-8"
+                ) as msg_file:
                 msg: str = msg_file.read()
 
             msg["Subject"]: str = "Breach attempt alert."
@@ -162,7 +173,11 @@ class Email:
             )
 
         elif access == "student true":
-            with open("../msg/setup.msg", "r", encoding="utf-8") as msg_file:
+            with open(
+                    f"{HOME}/.easywiz/misc/msg/student_present.msg",
+                    "r",
+                    encoding="utf-8"
+                ) as msg_file:
                 msg: str = msg_file.read()
 
             msg["Subject"]: str = f"{student_name} registered"

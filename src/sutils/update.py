@@ -29,11 +29,12 @@ def update() -> None:
                     ".com/testno0/capstone {HOME} &> /dev/null"
                 )
             )
+            system("mv $HOME/capstone $HOME/.easywiz/repo/")
         else:
             console.log(
                 "[bold magenta][+] Pulling updates ...[/bold magenta]"
             )
-            system(f"cd {HOME}/.att_sys/repo/ && git pull")
+            system(f"cd {HOME}/.easywiz/repo/; git pull > /dev/null")
 
 
 if __name__ == "__main__":

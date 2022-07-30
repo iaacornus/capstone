@@ -8,7 +8,7 @@ def access(HOME) -> None:
     """For repository access. Not fool proof."""
 
     with open(
-            f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
+            f"{HOME}/.easywiz/user_info", "r", encoding="utf-8"
         ) as info:
         source: list[str] = info.readlines()
 
