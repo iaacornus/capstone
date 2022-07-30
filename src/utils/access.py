@@ -18,6 +18,7 @@ def access(HOME: str) -> None | NoReturn:
     school_name: str = source[3].strip()
 
     email: object = Email(
+            HOME,
             source[0].strip(),
             source[1].strip()
         )

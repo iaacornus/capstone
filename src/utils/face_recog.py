@@ -20,10 +20,15 @@ from src.misc.signs import Signs
 
 class FaceRecog:
     def __init__(
-            self: Self, receiver_email: str, user: str, school_name: str
+            self: Self,
+            HOME: str,
+            receiver_email: str,
+            user: str,
+            school_name: str
         ) -> None:
         print(f"{Signs.PROC} Initiating utilities ...")
         self.email: object = Email(
+                HOME,
                 receiver_email,
                 user
             )
