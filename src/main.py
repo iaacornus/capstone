@@ -71,7 +71,7 @@ def main(HOME: str) -> None:
     student_encodings: list[Any] = []
 
     print(
-        f"{Signs.PROC} Fetching student data from local repository ..."
+        f"{Signs.PROC} Processing fetched student data ..."
     )
     for name, std_data in data[1].items():
         print(f"{Signs.PASS} Student: {name} appended.")

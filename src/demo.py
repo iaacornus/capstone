@@ -19,24 +19,27 @@ def demo() -> None:
     PATH: str = f"{BASE_PATH}/sample/"
     av_cams_: bool = av_cams()
 
-    print(f"{Signs.PROC} Encoding Images")
+    print(f"{Signs.PROC} Encoding Images ...")
 
     sample_encodings: list[Any] = []
     for imgs in next(walk(PATH)):
         try:
             img_file: Any = load_image_file(f"{PATH}/{imgs}")
         except FileNotFoundError:
+            print(f"{Signs.FAIL} File is not found, skipping ...")
             continue
         else:
             encodings: Any = face_encodings(img_file)
             if not not encodings:
+                print(f"{Signs.PASS} File successfully encoded.")
                 sample_encodings.append(encodings)
 
-    print(f"{Signs.PASS} Faces encoded successfully.")
-
-    # load the function with the parameters it needs, unpack the tuple
-    # for the decoding.
-    print(f"{Signs.PROC} Running face recognition ...")
+    print(
+        (
+            f"{Signs.PASS} Faces encoded successfully.\n"
+            f"{Signs.PROC} Running face recognition ..."
+        )
+    )
     face_recognition(
         av_cams_,
         sample_encodings,

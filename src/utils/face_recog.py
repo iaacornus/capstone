@@ -45,9 +45,7 @@ class FaceRecog:
         face_names: list[Any] = []
 
         if not av_cams:
-            raise SystemExit(
-                f"{Signs.FAIL} There are no available cameras, aborting ..."
-            )
+            raise SystemExit(f"{Signs.FAIL} No cameras found, aborting ...")
 
         # video capture
         vid: object = VideoCapture(0)
@@ -73,12 +71,18 @@ class FaceRecog:
 
                 face_names: list[Any] = []
                 for face_encoding in face_encodings:
-                    matches: Any = compare_faces(known_fe, face_encoding)
+                    matches: Any = compare_faces(
+                            known_fe,
+                            face_encoding
+                        )
                     name: str = "unknown"
 
                     # Or instead, use the known face with the smallest
                     # distance to the new face
-                    face_distances: Any = face_distance(known_fe, face_encoding)
+                    face_distances: Any = face_distance(
+                            known_fe,
+                            face_encoding
+                        )
                     best_match_index: Any = argmin(face_distances)
 
                     if matches[best_match_index]:

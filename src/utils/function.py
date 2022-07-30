@@ -17,6 +17,7 @@ from src.misc.signs import Signs
 
 def av_cams() -> bool:
     """Check the working cameras in the machine."""
+
     index: int = 0
     cam_arr: list[int] = []
 
@@ -25,6 +26,7 @@ def av_cams() -> bool:
         cap = VideoCapture(index)
 
         if cap.read()[0]:
+            print(f"{Signs.PASS} Camera: {index} found.")
             cam_arr.append(index)
             cap.release()
             index += 1
@@ -94,7 +96,9 @@ class System:
         """Fetch the repository in the server."""
 
         try:
-            print(f"{Signs.PROC} Pulling data from repository ...")
+            print(
+                f"{Signs.PROC} Pulling data from remote repository ..."
+            )
             if exists(f"{self.PATH}"):
                 system(f"rm -rf {self.PATH}")
 
@@ -168,4 +172,5 @@ class System:
                 f"{Signs.FAIL} Too much error, aborting ..."
             )
         else:
+            print(f"{Signs.PASS} Repository data fetched successfully.")
             return self.get_data()
