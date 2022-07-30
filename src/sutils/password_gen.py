@@ -20,10 +20,8 @@ def password_gen() -> None:
         ]
     password: str = "".join([choice(choice(str_set)) for x in range(32)])
 
-    for n in range(10):
-        print(f"Your password is: {password}\nRemoving in {10-n}", end="\r")
-        sleep(1)
-
+    print(password, end="\r")
+    sleep(10)
     print(
         sha256(password.encode("utf-8")).hexdigest()
     )
