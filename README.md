@@ -29,7 +29,7 @@ The help can be accessed with `-h` flag and outputs all the help.
 ```bash
 usage: taptap [OPTIONS]
 
-This is a program designed to interact with the TapTap, an RFID system designed by Capstone Group 5.
+Implementation example for the project by Group 5 in subject, Capstone.
 
 options:
   -h, --help           show this help message and exit
@@ -38,5 +38,4 @@ options:
   -setup, --usersetup  Setup the user (prompts to input the passphrase sent via email, if used again).
   -destroy, --destroy  Destroy the user database.
   -demo, --demo        Face recognition demonstration.
-  -v, --verbose        Show the processes of program.
 ```
