@@ -122,8 +122,8 @@ class FaceRecog:
             # display the resulting image
             imshow("Video", frame)
 
-            # hit 'q' on the keyboard to quit!
-            if waitKey(1) & 0xFF == ord('q'):
+            # hit "q" on the keyboard to quit!
+            if waitKey(1) & 0xFF == ord("q"):
                 break
 
         vid.release()
