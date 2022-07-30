@@ -1,26 +1,34 @@
-from os import system
+from os import system, walk
 from os.path import exists
 from sys import stdout
+from typing import Any
 
 from rich.console import Console
+from face_recognition import (
+    load_image_file,
+    face_encodings
+)
 
 from src.utils.function import System, av_cams
-from src.utils.code_email import Email
-from src.utils.face_recog import face_recognition
+from src.utils.face_recog import FaceRecog
 
 
-def main(HOME: str, verbose: bool = False) -> None:
+def initiate(
+        console: object,
+        HOME: str,
+    ) -> tuple[
+            str, str, tuple[dict[str, list[str]], dict[str, list[str]]],
+        ]:
+    """Initiate the program."""
+
     with open(
             f"{HOME}/.easywiz/user_info", "r", encoding="utf-8"
         ) as info:
         source: list[str] = info.readlines()
 
-    PATH: str = f"{HOME}/.easywiz/repo/student_data/imgs"
     receiver_email: str = source[0].strip()
     school_name: str = source[3].strip()
-    student_data_proc: list[str] = []
 
-    console: object = Console()
     sys_initiate: object = System(
             HOME,
             "https://github.com/testno0/capstone",
