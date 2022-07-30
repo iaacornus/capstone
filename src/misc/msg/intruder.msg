@@ -2,7 +2,7 @@
 <html>
     </body>
         <p align=justify>
-            Hello, TapTap is here to alert <b>{RECEIVER_EMAIL} ({USER}) from {SCHOOL_NAME} of possible intruder.</b><br><br>
+            Hello, TapTap is here to alert <b>{RECEIVER_EMAIL} ({USER}) from {SCHOOL_NAME} of possible intruder at {DATETIME}.</b><br><br>
         </p>
 
         <p align=justify>

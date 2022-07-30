@@ -115,7 +115,6 @@ class Email:
                 ),
                 subtype="html"
             )
-
         elif access == "alert":
             with open(
                     f"{HOME}/.easywiz/misc/msg/alert.msg",
@@ -171,7 +170,6 @@ class Email:
                 """,
                 subtype="html"
             )
-
         elif access == "student true":
             with open(
                     f"{HOME}/.easywiz/misc/msg/student_present.msg",
@@ -191,6 +189,40 @@ class Email:
                         .replace(
                             "{SCHOOL_NAME}",
                             school_name
+                        )
+                        .replace(
+                            "{DATETIME}",
+                            datetime.now().strftime(
+                                "%d/%m/%Y %H:%M:%S"
+                            )
+                        )
+
+                ),
+                subtype="html"
+            )
+        elif access == "intruder":
+            with open(
+                    f"{HOME}/.easywiz/misc/msg/student_present.msg",
+                    "r",
+                    encoding="utf-8"
+                ) as msg_file:
+                msg: str = msg_file.read()
+
+            msg["Subject"]: str = f"Intruder detection notice"
+            msg.set_content(
+                (
+                    msg
+                        .replace(
+                            "{RECEIVER_EMAIL}",
+                            self.receiver_email
+                        )
+                        .replace(
+                            "{SCHOOL_NAME}",
+                            school_name
+                        )
+                        .replace(
+                            "{USER}",
+                            self.user
                         )
                         .replace(
                             "{DATETIME}",
