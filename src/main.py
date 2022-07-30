@@ -1,5 +1,5 @@
 from os import system
-from os.path import expanduser, exists
+from os.path import exists
 from sys import stdout
 
 from rich.console import Console
@@ -11,11 +11,11 @@ from src.utils.face_recog import face_recognition
 
 def main(HOME: str, verbose: bool = False) -> None:
     with open(
-            f"{HOME}/.att_sys/user_info", "r", encoding="utf-8"
+            f"{HOME}/.easywiz/user_info", "r", encoding="utf-8"
         ) as info:
         source: list[str] = info.readlines()
 
-    PATH: str = f"{expanduser('~')}/.att_sys/capstone/student_data/imgs"
+    PATH: str = f"{HOME}/.easywiz/repo/student_data/imgs"
     receiver_email: str = source[0].strip()
     school_name: str = source[3].strip()
     student_data_proc: list[str] = []
@@ -23,7 +23,7 @@ def main(HOME: str, verbose: bool = False) -> None:
     console: object = Console()
     sys_initiate: object = System(
         HOME,
-        "https://github.com/testno0/repo",
+        "https://github.com/testno0/capstone",
         receiver_email
     )
 
@@ -79,7 +79,7 @@ def main(HOME: str, verbose: bool = False) -> None:
                 )
             student_data_proc.append(student_data["student"])
 
-    encoding_path: str = f"{HOME}/.att_sys/student_data/encoding.py"
+    encoding_path: str = f"{HOME}/.easywiz/student_data/encoding.py"
     if not exists(encoding_path):
         with console.status(
                 "[bold magenta]> Creating encoding module ...[/bold magenta]",

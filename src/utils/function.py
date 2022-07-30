@@ -96,7 +96,7 @@ class System:
     def __init__(self: Self, HOME: str, repo: str) -> None:
         self.HOME = HOME
         self.repo = repo
-        self.PATH = f"{self.HOME}/repo"
+        self.PATH = f"{self.HOME}/.easywiz/repo"
 
     def pull_data(self: Self) -> bool:
         """Fetch the repository in the server."""
@@ -105,6 +105,7 @@ class System:
             if exists(f"{self.PATH}"):
                 system(f"rm -rf {self.PATH}")
 
+            system(f"mkdir -p {self.PATH}")
             system(f"git clone --branch database {self.repo}")
             system(f"mv {self.HOME}/capstone {self.PATH}")
             return True
