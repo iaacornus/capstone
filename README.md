@@ -2,8 +2,6 @@
 
 # Capstone
 
-This branch is for implementation of Python > 3.10 features.
-
 This is program, with experimental and some untested parts, starting from commit by iaacornus: 7d8829659ae63ca88bca17d200d3fc3cfff327de, for example of implementation and use of the project of Group 5 for fulfillment in subject, Capstone.
 
 # Install
