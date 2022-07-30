@@ -22,10 +22,10 @@ def main(HOME: str, verbose: bool = False) -> None:
 
     console: object = Console()
     sys_initiate: object = System(
-        HOME,
-        "https://github.com/testno0/capstone",
-        receiver_email
-    )
+            HOME,
+            "https://github.com/testno0/capstone",
+            receiver_email
+        )
 
     with console.status(
             "[bold magenta][+] Fetching data ...[/bold magenta]",
