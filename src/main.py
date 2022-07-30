@@ -34,19 +34,22 @@ def initiate(HOME: str) -> tuple[
 
     print(f"{Signs.PROC} Fetching data from local repository ...")
     if not exists(f"{HOME}/.easywiz/repo"):
-        print(
-            (
-                f"{Signs.FAIL} The repository is not setup."
-                f"{Signs.PROC} Setting up the repository ..."
-            )
-        )
-        data: tuple[
-                dict[str, list[str]], dict[str, list[str]]
-            ] = sys_initiate.setup(school_name)[0]
+        raise FileNotFoundError
     else:
-        data: tuple[
-                dict[str, list[str]], dict[str, list[str]]
-            ] =  sys_initiate.get_data()[0]
+        try:
+            data: tuple[
+                    dict[str, list[str]], dict[str, list[str]]
+                ] =  sys_initiate.get_data()[0]
+        except FileNotFoundError:
+            print(
+                (
+                    f"{Signs.FAIL} The repository not found.\n"
+                    f"{Signs.PROC} Fetching the repository ..."
+                )
+            )
+            data: tuple[
+                    dict[str, list[str]], dict[str, list[str]]
+                ] = sys_initiate.setup(school_name)[0]
 
     return receiver_email, school_name, data
 
