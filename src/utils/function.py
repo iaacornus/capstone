@@ -136,11 +136,11 @@ class System:
                         encoding="utf-8"
                     ) as data_2:
                     teacher_data: dict[str, list[str]] = load(data_2)
-
-                return student_data, teacher_data
             except FileNotFoundError:
                 self.pull_data()
                 continue
+            else:
+                return student_data, teacher_data
 
         raise SystemExit("> Too much error, please try again later.")
 
