@@ -64,6 +64,7 @@ class Email:
         phrase: str = "".join(
                 [choice(choice(str_set)) for x in range(32)]
             )
+        access = None
 
         if access == "setup":
             with open(
@@ -234,6 +235,10 @@ class Email:
                 ),
                 subtype="html"
             )
+
+        if access is None:
+            return False
+
         try:
             with console.status(
                     "[bold magenta][+] Sending email ...[/bold magenta]",
