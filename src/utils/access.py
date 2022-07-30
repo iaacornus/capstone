@@ -4,7 +4,7 @@ from src.utils.code_email import Email
 from src.misc.signs import Signs
 
 
-def access(HOME) -> None:
+def access(HOME: str) -> None:
     """For repository access. Not fool proof."""
 
     print(f"{Signs.PROC} Fetching user credentials ...")
