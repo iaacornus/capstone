@@ -1,10 +1,11 @@
 from os import system
+from typing import NoReturn
 
 from src.utils.code_email import Email
 from src.misc.signs import Signs
 
 
-def access(HOME: str) -> None:
+def access(HOME: str) -> None | NoReturn:
     """For repository access. Not fool proof."""
 
     print(f"{Signs.PROC} Fetching user credentials ...")
@@ -30,30 +31,31 @@ def access(HOME: str) -> None:
                         f"{Signs.INPT} Kindly input your 32"
                         f" character password ({3-n} left): "
                     )
-                ) != password:
-                    print(
-                        f"{Signs.FAIL} Password didn't match. {3-n} left."
+                ) == password:
+                    print(f"{Signs.PASS} Password matched, proceeding ...")
+                    break
+                print(
+                    f"{Signs.FAIL} Password didn't match. {3-n} left."
+                )
+                if input(
+                    (
+                        f"{Signs.INPT} Send a new temporary password"
+                        " to your email instead? [y/N]: "
                     )
-                    if input(
-                        (
-                            f"{Signs.INPT} Send a new temporary password"
-                            " to your email instead? [y/N]: "
-                        )
-                    ).lower() == "y":
-                        mark = True
-                    continue
+                ).lower() == "y":
+                    mark = True
             else:
                 if input(
                     (
                         f"{Signs.INPT} Kindly input your 32 character "
                         f"password (case sensitive {3-n} left): "
                     )
-                ) != email.send("setup", school_name):
-                    print(
-                        f"{Signs.FAIL} Password didn't match. {3-n} left."
-                    )
-                    continue
-            raise SystemExit
+                ) == email.send("setup", school_name):
+                    print(f"{Signs.PASS} Password matched, proceeding ...")
+                    break
+                print(
+                    f"{Signs.FAIL} Password didn't match. {3-n} left."
+                )
 
         email.send("alert", school_name)
         system(f"rm -rf {HOME}/repo/")
