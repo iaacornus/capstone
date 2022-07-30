@@ -47,97 +47,63 @@ def initiate(
                     "Setting up the repository ...[/bold magenta]"
                 )
             )
-            student_data: tuple[
+            data: tuple[
                     dict[str, list[str]], dict[str, list[str]]
                 ] = sys_initiate.setup(school_name)[0]
         else:
-            student_data: tuple[
+            data: tuple[
                     dict[str, list[str]], dict[str, list[str]]
-                ] =  sys_initiate.get_data()
+                ] =  sys_initiate.get_data()[0]
+
+    return receiver_email, school_name, data
+
+
+def main(HOME: str, verbose: bool = False) -> None:
+    console: object = Console()
+    receiver_email, school_name, data = initiate(console, HOME)
+
+    face_recog: object = FaceRecog(receiver_email, "Admin", school_name)
+
+    PATH: str = f"{HOME}/.easywiz/repo/student_data/imgs/"
+    IMGS_PATH: list[str] = []
+    student_names: list[str] = []
+    face_encodings: list[Any] = []
 
     with console.status(
-            "[bold magenta][+] Fetching student names ...[/bold magenta]",
+            "[bold magenta][+] Fetching data ...[/bold magenta]",
             spinner="simpleDots"
         ):
-        if verbose: # for verbose
-            student_names: list[str] = []
-            for name in student_data["name_init"]:
-                console.log(
-                    (
-                        f"[green]> [/green][cyan]{name}"
-                        "[/cyan][green] appended ...[/green]"
-                    )
-                )
-                student_names.append(name)
-        else: # this is more optimized and faster, thus preferred
-            student_names: list[str] = list(student_data["name_init"])
-
-    with console.status(
-            "[bold magenta]> Processing student data ...[/bold]",
-            spinner="simpleDots"
-        ):
-        for student in student_names:
-            if verbose: # just print the student name and other information, and proceed
-                        # with the iteration process.
-                console.log(
-                    (
-                        f"[green]> Fetching data of [/green]"
-                        "[cyan]{student}[/cyan] [green]...[/green]"
-                    )
-                )
-            student_data_proc.append(student_data["student"])
-
-    encoding_path: str = f"{HOME}/.easywiz/student_data/encoding.py"
-    if not exists(encoding_path):
-        with console.status(
-                "[bold magenta]> Creating encoding module ...[/bold magenta]",
-                spinner="simpleDots"
-            ):
-            # initiate the file and add the needed import
-            system(
+        for name, std_data in data[1].items():
+            console.log(
                 (
-                    f"echo -e 'import face_recognition as fr"
-                    " \n\nclass Encoding:\n' > {encoding_path}"
+                    f"[green]> [/green][cyan]{name}"
+                    "[/cyan][green] appended ...[/green]"
                 )
             )
-            for i in range(len(student_data_proc)-1):
-                system(
-                    (
-                        f"echo '    face_ref_{i} = fr.load_image_file("
-                        f"{PATH}/std{i}.png)' >> {encoding_path}"
-                    )
-                )
+            student_names.append(name)
+            IMGS_PATH.append(f"{PATH}/{std_data[0]}")
+
+    with console.status(
+            "[bold magenta][>] Appending image encoding ...[/bold magenta]",
+            spinner="simpleDots"
+        ):
+        for imgs in next(walk(IMGS_PATH)):
+            try:
+                img_file: Any = load_image_file(f"{IMGS_PATH}/{imgs}")
+                img_encode: Any = face_encodings(img_file)
+            except FileNotFoundError:
+                continue
+            else:
+                if not not img_encode:
+                    face_encodings.append(img_encode[0])
 
     # notify the user
     console.log("[bold green][+] System is ready.[/bold green]")
     stdout.write("\033[K") # remove the messages
 
-    email: object = Email(
-        source[0].strip(),
-        source[1].strip()
-    )
     av_cams_eval: bool = av_cams()
 
     while True:
-        student = face_recognition(
-                av_cams_eval,
-                console,
-                face_encodings_=tuple(student_data_proc), # use tuple to avoid mutations
-                face_names_=tuple(student_names),
-            )
-        # some configurations for email function, can add more and can
-        # be tweaked further for different use.
-        # if student:
-        #     email.send(
-        #         "student true",
-        #         school_name,
-        #         student_data["ID"]
-        #     )
-        # else:
-        #     console.log(f"Face is not {student}.")
-        #     email.send(
-        #         "student absent",
-        #         school_name,
-        #         student
-        #     )
-        # continue
+        face_recog.face_recognition(
+            av_cams_eval, face_encodings, student_names
+        )
