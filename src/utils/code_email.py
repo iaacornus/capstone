@@ -1,5 +1,4 @@
 from os import getlogin
-from os.path import expanduser
 from random import choice
 from string import (
     ascii_lowercase,
