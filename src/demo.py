@@ -19,6 +19,7 @@ def demo() -> None:
     PATH: str = f"{BASE_PATH}/sample/"
     av_cams_: bool = av_cams()
     face_recog: object = FaceRecog(
+        av_cams_,
         expanduser("~"),
         None,
         None,
@@ -47,7 +48,6 @@ def demo() -> None:
         )
     )
     face_recog.face_recognition(
-        av_cams_,
         sample_encodings,
         face_names_=(
                 "Ezekiel Lopez",

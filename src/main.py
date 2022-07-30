@@ -63,7 +63,10 @@ def main(HOME: str) -> None:
             f"{Signs.FAIL} Repository related error, aborting ..."
         )
 
-    face_recog: object = FaceRecog(receiver_email, "Admin", school_name)
+    av_cams_eval: bool = av_cams()
+    face_recog: object = FaceRecog(
+            av_cams_eval, HOME, receiver_email, "Admin", school_name
+        )
 
     PATH: str = f"{HOME}/.easywiz/repo/student_data/imgs/"
     IMGS_PATH: list[str] = []
@@ -94,9 +97,5 @@ def main(HOME: str) -> None:
     # notify the user
     print(f"{Signs.PASS} System is ready.")
 
-    av_cams_eval: bool = av_cams()
-
     while True:
-        face_recog.face_recognition(
-            av_cams_eval, face_encodings, student_names
-        )
+        face_recog.face_recognition(face_encodings, student_names)
