@@ -1,4 +1,4 @@
-from os.path import expanduser, dirname
+from os.path import dirname
 from typing import Any
 
 from face_recognition import (
@@ -7,8 +7,8 @@ from face_recognition import (
 )
 from rich.console import Console
 
-from face_recog import face_recognition
-from function import av_cams
+from src.utils.face_recog import face_recognition
+from src.utils.function import av_cams
 
 
 def demo() -> None:

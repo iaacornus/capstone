@@ -13,7 +13,7 @@ from cv2 import (
 )
 from rich.console import Console
 
-from bin.access import access
+from src.utils.access import access
 
 
 def av_cams() -> bool:

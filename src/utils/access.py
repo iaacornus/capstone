@@ -1,7 +1,7 @@
 from os import system
 from rich.console import Console
 
-from bin.code_email import Email
+from src.utils.code_email import Email
 
 
 def access(HOME) -> None:

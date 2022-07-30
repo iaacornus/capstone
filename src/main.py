@@ -4,9 +4,9 @@ from sys import stdout
 
 from rich.console import Console
 
-from function import System, av_cams
-from bin.code_email import Email
-from face_recog import face_recognition
+from src.utils.function import System, av_cams
+from src.utils.code_email import Email
+from src.utils.face_recog import face_recognition
 
 
 def main(HOME: str, verbose: bool = False) -> None:

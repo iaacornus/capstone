@@ -4,7 +4,7 @@ from os.path import expanduser
 
 from main import main
 from demo import demo
-from system.utils.update import update
+from src.sutils.update import update
 
 
 def program_options() -> None:

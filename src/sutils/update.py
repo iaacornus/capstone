@@ -3,7 +3,7 @@ from os.path import expanduser, exists
 
 from rich.console import Console
 
-from src.bin.access import access
+from src.utils.access import access
 
 
 def update() -> None:
