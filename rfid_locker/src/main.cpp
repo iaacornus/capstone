@@ -23,30 +23,25 @@ void lcd_print(
         int sdelay,
         bool clear=false,
         bool s_clear=false
-    )
-{
-    if (clear)
-    {
+    ) {
+    if (clear) {
         lcd.clear();
     }
 
     lcd.setCursor(x, y);
     lcd.print(message);
 
-    if (sdelay != 0)
-    {
+    if (sdelay != 0) {
         delay(sdelay);
     }
 
-    if (s_clear)
-    {
+    if (s_clear) {
         lcd.clear();
     }
 
 }
 
-void setup()
-{
+void setup() {
     Serial.begin(9600);
     servo.write(70);
     lcd.init();
@@ -57,41 +52,35 @@ void setup()
 
 }
 
-void loop()
-{
+void loop() {
     lcd_print("Welcome", 6, 1, 0);
     lcd_print("Please scan the card", 0, 2, 0);
 
-    if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
-    {
+    if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial()) {
         return;
     }
 
     String ID = "";
-    for (byte i = 0; i < rfid.uid.size; i++)
-    {
+    for (byte i = 0; i < rfid.uid.size; i++) {
         ID.concat(String(rfid.uid.uidByte[i] < 0x10 ? " 0" : " "));
         ID.concat(String(rfid.uid.uidByte[i], HEX));
     }
     ID.toUpperCase();
 
-    if (ID.substring(1) == UID || ID.substring(1) == UID_2)
-    {
+    if (ID.substring(1) == UID || ID.substring(1) == UID_2) {
         lock = false;
         lcd_print("Door opened.", 4, 1, 3000, true, true);
         servo.write(160);
 
         // 18000 ms for 5 minutes
-        if (timer.hasPassed(18000) || rfid.PICC_ReadCardSerial())
-        {
+        if (timer.hasPassed(18000) || rfid.PICC_ReadCardSerial()) {
             servo.write(70);
             timer.restart();
             lcd_print("Door locked.", 4, 1, 3000, true, true);
             lock = true;
         }
     }
-    else
-    {
+    else {
         lcd_print("Access denied.", 4, 1, 5000, true, true);
     }
 
