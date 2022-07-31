@@ -132,16 +132,15 @@ class System:
                         f"{self.PATH}/student_data/info.json",
                         "r",
                         encoding="utf-8"
-                    ) as data_1:
-                    data_1: TextIO
-                    student_data: dict[str, list[str]] = load(data_1)
-
-                with open(
+                    ) as data_1, open(
                         f"{self.PATH}/teacher_data/info.json",
                         "r",
                         encoding="utf-8"
                     ) as data_2:
+                    data_1: TextIO
                     data_2: TextIO
+
+                    student_data: dict[str, list[str]] = load(data_1)
                     teacher_data: dict[str, list[str]] = load(data_2)
             except FileNotFoundError:
                 print(
@@ -155,9 +154,7 @@ class System:
                 )
                 return student_data, teacher_data
 
-        raise SystemExit(
-            f"{Signs.FAIL} Too much error, aborting ..."
-        )
+        raise SystemExit(f"{Signs.FAIL} Too much error, aborting ...")
 
     def setup(self: Self) -> None | NoReturn:
         """Setup function."""
@@ -173,9 +170,7 @@ class System:
                     continue
                 break
         except KeyboardInterrupt:
-            raise SystemExit(
-                f"{Signs.FAIL} Too much error, aborting ..."
-            )
+            raise SystemExit(f"{Signs.FAIL} Too much error, aborting ...")
         else:
             print(f"{Signs.PASS} Repository data fetched successfully.")
             return self.get_data()
