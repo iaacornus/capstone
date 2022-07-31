@@ -1,0 +1,27 @@
+Capstone Group 5 Project
+========================
+
+I was a little bored in the past couple of days, thus the whole code based were refactored.
+
+There are main changes and various branch that became the output:
+    vEx -- contains experimental and untested changes, but should come with significant optimizations.
+        *main branch (this branch) also contains the said changes
+    v1.f -- derived from v1.0, and main branch before the start of the commit.
+        *this branch is unoptimized and is bloated with stupid code and mechanisms.
+
+====
+vEx changelog:
+
+- strict compliance to
+    1. pep 0008
+    2. pep 0257
+    3. pep 484
+    4. pep 0526
+- optimizations of algorithm
+- increased security, as opposed to v1.0 and v1.f which stores the 32-key generated password in its raw form in text file, vEx stores its sha256 hash, and use of getpass instead of raw input function
+- removal of unnecessary parts
+- fix of experimental parts of v1.0 and v1.f, since the said branch also contains experimental and untested code, but is significantly less than vEx branch.
+- fix of setup scripts
+- updated dir and adaption of the change of name in the manscript (taptap -> easywiz)
+- project structure update
+- easier log in due to use of sequence matcher ratios
