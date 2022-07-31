@@ -1,4 +1,4 @@
-![](https://app.codiga.io/hub/project/34257/capstone)
+![](https://api.codiga.io/project/34257/score/svg)
 
 # Capstone
 
