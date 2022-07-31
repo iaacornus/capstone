@@ -1,6 +1,7 @@
 from json import load
+from shutil import move
 from typing_extensions import Self
-from os import system
+from os import system, mkdir, remove
 from os.path import exists
 from typing import Any, NoReturn, TextIO
 
@@ -101,11 +102,11 @@ class System:
                 f"{Signs.PROC} Pulling data from remote repository ..."
             )
             if exists(f"{self.PATH}"):
-                system(f"rm -rf {self.PATH}")
+                remove(self.PATH)
 
-            system(f"mkdir -p {self.PATH}")
+            mkdir(self.PATH)
             system(f"git clone --branch database {self.repo}")
-            system(f"mv {self.HOME}/capstone {self.PATH}")
+            move(f"{self.HOME}/capstone", self.PATH)
         except (
                 SystemError,
                 KeyboardInterrupt,
