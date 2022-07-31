@@ -1,5 +1,5 @@
 from os import system
-from typing import NoReturn
+from typing import NoReturn, TextIO
 
 from src.utils.code_email import Email
 from src.misc.signs import Signs
@@ -12,6 +12,7 @@ def access(HOME: str) -> None | NoReturn:
     with open(
             f"{HOME}/.easywiz/user_info", "r", encoding="utf-8"
         ) as info:
+        info: TextIO
         source: list[str] = info.readlines()
 
     password: str = source[2].strip()
@@ -26,6 +27,7 @@ def access(HOME: str) -> None | NoReturn:
 
     try:
         for n in range(3):
+            n: int
             if not mark:
                 if input(
                     (

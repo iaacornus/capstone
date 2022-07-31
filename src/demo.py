@@ -30,6 +30,7 @@ def demo() -> None:
 
     sample_encodings: list[Any] = []
     for imgs in next(walk(PATH)):
+        imgs: str
         try:
             img_file: Any = load_image_file(f"{PATH}/{imgs}")
         except FileNotFoundError:

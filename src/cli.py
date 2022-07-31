@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 from os import system
 from os.path import expanduser
+from typing import NoReturn
 
 from main import main
 from demo import demo
@@ -8,7 +9,7 @@ from src.sutils.update import update
 from src.misc.signs import Signs
 
 
-def program_options() -> None:
+def program_options() -> None | NoReturn:
     """This is an example use of the algorithm via cli program."""
 
     description: str = (

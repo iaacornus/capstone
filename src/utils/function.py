@@ -2,6 +2,7 @@ from json import load
 from typing_extensions import Self
 from os import system
 from os.path import exists
+from typing import Any, NoReturn, TextIO
 
 from cv2 import (
     VideoCapture,
@@ -23,7 +24,7 @@ def av_cams() -> bool:
 
     print(f"{Signs.PROC} Searching for available cameras ...")
     while True:
-        cap = VideoCapture(index)
+        cap: Any = VideoCapture(index)
 
         if cap.read()[0]:
             print(f"{Signs.PASS} Camera: {index} found.")
@@ -76,7 +77,7 @@ def draw_rectangle(
         color, FILLED
     )
 
-    font = FONT_HERSHEY_DUPLEX
+    font: int = FONT_HERSHEY_DUPLEX
     putText(
         frame, name,
         (left + 6, bottom - 6),
@@ -88,9 +89,9 @@ class System:
     """For initiation and setup of the program."""
 
     def __init__(self: Self, HOME: str, repo: str) -> None:
-        self.HOME = HOME
-        self.repo = repo
-        self.PATH = f"{self.HOME}/.easywiz/repo"
+        self.HOME: str = HOME
+        self.repo: str = repo
+        self.PATH: str = f"{self.HOME}/.easywiz/repo"
 
     def pull_data(self: Self) -> bool:
         """Fetch the repository in the server."""
@@ -117,7 +118,7 @@ class System:
             print(f"{Signs.PASS} Repository fetched.")
             return True
 
-    def get_data(self: Self) -> None:
+    def get_data(self: Self) -> None | NoReturn:
         """Scrape the data from the pulled repository."""
 
         for _ in range(3):
@@ -130,6 +131,7 @@ class System:
                         "r",
                         encoding="utf-8"
                     ) as data_1:
+                    data_1: TextIO
                     student_data: dict[str, list[str]] = load(data_1)
 
                 with open(
@@ -137,6 +139,7 @@ class System:
                         "r",
                         encoding="utf-8"
                     ) as data_2:
+                    data_2: TextIO
                     teacher_data: dict[str, list[str]] = load(data_2)
             except FileNotFoundError:
                 print(
@@ -154,7 +157,7 @@ class System:
             f"{Signs.FAIL} Too much error, aborting ..."
         )
 
-    def setup(self: Self) -> None:
+    def setup(self: Self) -> None | NoReturn:
         """Setup function."""
 
         if not access(self.HOME):

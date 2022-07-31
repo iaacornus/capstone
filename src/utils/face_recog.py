@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, NoReturn
 from typing_extensions import Self
 from numpy import argmin, ndarray
 from cv2 import (
@@ -26,7 +26,7 @@ class FaceRecog:
             receiver_email: str,
             user: str,
             school_name: str
-        ) -> None:
+        ) -> None | NoReturn:
         print(f"{Signs.PROC} Initiating utilities ...")
 
         if not av_cams:
@@ -57,15 +57,16 @@ class FaceRecog:
         vid: object = VideoCapture(0)
         while True:
             # take frame and references from video capture
+            frame: Any
             _, frame = vid.read()
 
             # resizing to smaller frame, to avoid much larger use of gpu and
             # memory, also to decrease the processing time convert to
             # another color.
-            small_frame = resize(frame, (0, 0), fx=0.25, fy=0.25)
+            small_frame: Any = resize(frame, (0, 0), fx=0.25, fy=0.25)
 
             # convert to another color.
-            rgb_small_frame = small_frame[:, :, ::-1]
+            rgb_small_frame: Any = small_frame[:, :, ::-1]
 
             if process_this_frame:
                 # get all the face endcoding and location in the current
@@ -77,6 +78,7 @@ class FaceRecog:
 
                 face_names: list[Any] = []
                 for face_encoding in face_encodings:
+                    face_encoding: list[Any]
                     matches: Any = compare_faces(
                             known_fe,
                             face_encoding
@@ -96,10 +98,10 @@ class FaceRecog:
                     face_names.append(name)
 
                 for (top, right, bottom, left) in face_locations:
-                    top *= 4
-                    right *= 4
-                    bottom *= 4
-                    left *= 4
+                    top: float | int = top*4
+                    right: float | int = right*4
+                    bottom: float | int = bottom*4
+                    left: float | int = left*4
 
                     # output the box in the frame
                     if name != "unknown":

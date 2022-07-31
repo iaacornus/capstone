@@ -11,6 +11,7 @@ from datetime import datetime
 from email.message import EmailMessage
 from ssl import SSLContext, create_default_context
 from smtplib import SMTP_SSL
+from typing import TextIO
 from typing_extensions import Self
 
 from geocoder import ip
@@ -40,6 +41,10 @@ class Email:
             ) as student_file, open(
                 f"{HOME}/.easywiz/misc/msg/intruder.msg", "r", encoding="utf-8"
             ) as intruder_file:
+            setup_file: TextIO
+            alert_file: TextIO
+            student_file: TextIO
+            intruder_file: TextIO
             self.setup_msg: str = setup_file.read()
             self.alert_msg: str = alert_file.read()
             self.student_true_msg: str = student_file.read()
@@ -75,7 +80,7 @@ class Email:
         phrase: str = "".join(
                 [choice(choice(str_set)) for x in range(32)]
             )
-        access = None
+        access: str = None
 
         match access:
             case "setup":
@@ -229,6 +234,7 @@ class Email:
                     self.port,
                     context=context
                 ) as server:
+                server: object
                 server.login(self.sender_email, self.password)
                 server.send_message(msg)
         except ConnectionError:
