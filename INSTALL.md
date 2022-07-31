@@ -18,11 +18,10 @@ python -m pip install pip --upgrade
 pip install -r requirements.txt
 ```
 
-The package layout of the program is:
+## Project layout
 
 ```
-+-- command_logs
-+-- deprecated
++-- archive
 |   +-- README.md
 |   +-- rfid
 |   |   +-- main2.cpp
@@ -44,10 +43,41 @@ The package layout of the program is:
 |       +-- obama1.jpg
 |       `-- obama2.jpg
 +-- INSTALL.md
-+-- logs
++-- install.sh
++-- LICENSE
++-- pre_setup.sh
 +-- README.md
 +-- requirements.txt
-+-- rfid_locker
++-- sample
+|   +-- test_1.png
+|   +-- test_2.png
+|   +-- test_3.png
+|   +-- test_4.png
+|   `-- test_5.png
++-- src
+|   +-- cli.py
+|   +-- demo.py
+|   +-- __init__.py
+|   +-- main.py
+|   +-- misc
+|   |   +-- __init__.py
+|   |   +-- msg
+|   |   |   +-- alert.msg
+|   |   |   +-- intruder.msg
+|   |   |   +-- setup.msg
+|   |   |   `-- student.msg
+|   |   `-- signs.py
+|   +-- sutils
+|   |   +-- __init__.py
+|   |   +-- password_gen.py
+|   |   `-- update.py
+|   `-- utils
+|       +-- access.py
+|       +-- code_email.py
+|       +-- face_recog.py
+|       +-- function.py
+|       `-- __init__.py
++-- src_rfid_locker
 |   +-- include
 |   |   `-- README
 |   +-- platformio.ini
@@ -55,38 +85,7 @@ The package layout of the program is:
 |   |   `-- main.cpp
 |   `-- test
 |       `-- README
-+-- sample
-|   +-- test_1.png
-|   +-- test_2.jpg
-|   +-- test_2.png
-|   +-- test_3.png
-|   +-- test_4.png
-|   `-- test_5.png
-`-- src
-    +-- cli.py
-    +-- demo.py
-    +-- __init__.py
-    +-- main.py
-    +-- misc
-    |   +-- __init__.py
-    |   +-- msg
-    |   |   +-- alert.msg
-    |   |   +-- intruder.msg
-    |   |   +-- setup.msg
-    |   |   `-- student_present.msg
-    |   `-- signs.py
-    +-- sutils
-    |   +-- __init__.py
-    |   +-- password_gen.py
-    |   +-- pre_setup.sh
-    |   +-- update.py
-    |   `-- user_setup.sh
-    `-- utils
-        +-- access.py
-        +-- code_email.py
-        +-- face_recog.py
-        +-- function.py
-        `-- __init__.py
+`-- user_setup.sh
 ```
 
 Then move the source code of the program from the package directory, with `cp -r src/* $HOME/.easywiz/`. And add `alias easywiz="python $HOME/.easywiz/cli.py` before `unset rc`, or move `.bashrc` to `$HOME/` and do `source $HOME/.bashrc`.
