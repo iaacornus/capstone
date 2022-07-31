@@ -1,8 +1,8 @@
 # Capstone
 
-![](https://api.codiga.io/project/33619/score/svg)
+![](https://api.codiga.io/project/34257/score/svg)
 
-Main branch of the project.
+Production branch of the project but with unoptimized and stupid code.
 
 # Install
 
@@ -43,5 +43,4 @@ options:
   -destroy, --destroy  Destroy the user database.
   -demo, --demo        Face recognition demonstration.
   -v, --verbose        Show the processes of program.
-
 ```

@@ -5,7 +5,7 @@ You can either do this or run `pre_setup.sh` and `user_setup.sh`.
 Clone the repository with `git`, if `git` is not installed install it via the package manager.
 
 ```bash
-git clone --branch v1.0 https://github.com/testno0/capstone
+git clone --branch v1.f https://github.com/testno0/capstone
 ```
 
 Or you can download the latest source code from github.
