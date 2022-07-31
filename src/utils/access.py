@@ -1,3 +1,4 @@
+from hashlib import sha256
 from getpass import getpass
 from os import system
 from typing import NoReturn, TextIO
@@ -16,7 +17,7 @@ def access(HOME: str) -> None | NoReturn:
         info: TextIO
         source: list[str] = info.readlines()
 
-    password: str = source[2].strip()
+    hash_ref: str = source[2].strip()
     school_name: str = source[3].strip()
 
     email: object = Email(
@@ -24,41 +25,38 @@ def access(HOME: str) -> None | NoReturn:
             source[0].strip(),
             source[1].strip()
         )
-    mark: bool = False
 
     try:
         for n in range(3):
             n: int
-            if not mark:
-                if getpass(
+            password_inpt: str = getpass(
                     (
                         f"{Signs.INPT} Kindly input your 32"
                         f" character password ({3-n} left): "
                     )
-                ) == password:
-                    print(f"{Signs.PASS} Password matched, proceeding ...")
-                    break
+                )
+            passwd_hash: str = str(
+                    sha256(password_inpt.encode("utf-8")).hexdigest()
+                )
 
-                print(f"{Signs.FAIL} Password didn't match. {3-n} left.")
-                if input(
-                    (
-                        f"{Signs.INPT} Send a new temporary password"
-                        " to your email instead? [y/N]: "
-                    )
-                ).lower() == "y":
-                    print(f"{Signs.PROC} Sending new temporary password ...")
-                    mark = True
-            else:
-                if getpass(
-                    (
-                        f"{Signs.INPT} Kindly input your 32 character "
-                        f"password (case sensitive {3-n} left): "
-                    )
-                ) == email.send("setup", school_name):
-                    print(f"{Signs.PASS} Password matched, proceeding ...")
-                    break
+            if  passwd_hash == hash_ref:
+                print(f"{Signs.PASS} Password matched, proceeding ...")
+                break
 
-                print(f"{Signs.FAIL} Password didn't match. {3-n} left.")
+            if input(
+                (
+                    f"{Signs.INPT} Send a new temporary password"
+                    " to your email instead? [y/N]: "
+                )
+            ).lower() == "y":
+                print(f"{Signs.PROC} Sending new temporary password ...")
+                hash_ref: str = str(
+                        sha256(
+                            email.send("setup", school_name).encode("utf-8")
+                        ).hexdigest()
+                    )
+
+            print(f"{Signs.FAIL} Password didn't match. {3-n} left.")
 
         system(f"rm -rf {HOME}/repo/")
         raise KeyboardInterrupt
