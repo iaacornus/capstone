@@ -16,10 +16,10 @@ Clone the repository with:
 git clone https://github.com/testno0/capstone
 ```
 
-Execute the setup script, which includes user setup with:
+Execute the install script, which includes user setup with:
 
 ```bash
-./capstone/src/sutils/./pre_setup.sh
+cd capstone; ./install.sh
 ```
 
 # EasyWiz
@@ -27,7 +27,7 @@ Execute the setup script, which includes user setup with:
 The help can be accessed with `-h` flag and outputs all the help.
 
 ```bash
-usage: taptap [OPTIONS]
+usage: easywiz [OPTIONS]
 
 Implementation example for the project by Group 5 in subject, Capstone.
 

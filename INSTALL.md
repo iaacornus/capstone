@@ -1,6 +1,6 @@
 # Installation
 
-You can either do this or run `pre_setup.sh` and `user_setup.sh`.
+You can either do this or run `install.sh`.
 
 Clone the repository with `git`, if `git` is not installed install it via the package manager.
 
@@ -91,6 +91,6 @@ The package layout of the program is:
 
 Then move the source code of the program from the package directory, with `cp -r src/* $HOME/.easywiz/`. And add `alias easywiz="python $HOME/.easywiz/cli.py` before `unset rc`, or move `.bashrc` to `$HOME/` and do `source $HOME/.bashrc`.
 
-For user setup, create a file named `user_info` in `$HOME/.att_sys/` and include your email, username, password hash using SHA256, and school name, in each new line. For password, you can use `python $HOME/.easywiz/sutils/password_gen.py` to generate a password, or use your own.
+For user setup, create a file named `user_info` in `$HOME/.easywiz/` and include your email, username, password hash using SHA256, and school name, in each new line. For password, you can use `python $HOME/.easywiz/sutils/password_gen.py` to generate a password, or use your own.
 
 And finally, reboot.
