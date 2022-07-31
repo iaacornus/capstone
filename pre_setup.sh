@@ -1,6 +1,6 @@
-SUCCESS="\e[1m[ \e[32mPASS$END\e[1m ]\e[0m"
-FAIL="\e[1m[ \e[31m FAIL$END\e[1m ]\e[0m"
-INFO="$END[ INFO ]\e[0m"
+SUCCESS="\e[1m[ \e[32mPASS\e[0m\e[1m ]\e[0m"
+FAIL="\e[1m[ \e[31m FAIL\e[0m\e[1m ]\e[0m"
+INFO="\e[1m[ INFO ]\e[0m"
 PROC="\e[1m[ PROC ]\e[0m"
 END="... \e[0m"
 
