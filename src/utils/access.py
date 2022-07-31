@@ -37,15 +37,15 @@ def access(HOME: str) -> None | NoReturn:
                 ) == password:
                     print(f"{Signs.PASS} Password matched, proceeding ...")
                     break
-                print(
-                    f"{Signs.FAIL} Password didn't match. {3-n} left."
-                )
+
+                print(f"{Signs.FAIL} Password didn't match. {3-n} left.")
                 if input(
                     (
                         f"{Signs.INPT} Send a new temporary password"
                         " to your email instead? [y/N]: "
                     )
                 ).lower() == "y":
+                    print(f"{Signs.PROC} Sending new temporary password ...")
                     mark = True
             else:
                 if input(
@@ -56,9 +56,8 @@ def access(HOME: str) -> None | NoReturn:
                 ) == email.send("setup", school_name):
                     print(f"{Signs.PASS} Password matched, proceeding ...")
                     break
-                print(
-                    f"{Signs.FAIL} Password didn't match. {3-n} left."
-                )
+
+                print(f"{Signs.FAIL} Password didn't match. {3-n} left.")
 
         email.send("alert", school_name)
         system(f"rm -rf {HOME}/repo/")
