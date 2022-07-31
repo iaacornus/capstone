@@ -59,9 +59,9 @@ def access(HOME: str) -> None | NoReturn:
 
                 print(f"{Signs.FAIL} Password didn't match. {3-n} left.")
 
-        email.send("alert", school_name)
         system(f"rm -rf {HOME}/repo/")
         raise KeyboardInterrupt
     except KeyboardInterrupt:
+        email.send("alert", school_name)
         print(f"{Signs.FAIL} Verification error.")
         system("systemctl poweroff")
