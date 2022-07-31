@@ -2,6 +2,7 @@ from hashlib import sha256
 from getpass import getpass
 from os import system
 from typing import NoReturn, TextIO
+from difflib import SequenceMatcher as SeqMat
 
 from src.utils.code_email import Email
 from src.misc.signs import Signs
@@ -39,8 +40,18 @@ def access(HOME: str) -> None | NoReturn:
                     sha256(password_inpt.encode("utf-8")).hexdigest()
                 )
 
-            if  passwd_hash == hash_ref:
+            if passwd_hash == hash_ref:
                 print(f"{Signs.PASS} Password matched, proceeding ...")
+                break
+            elif (
+                per_diff := SeqMat(passwd_hash, hash_ref).ratio()
+            ) >= 0.8:
+                print(
+                    (
+                        f"{Signs.INFO} The password doesn't match, but "
+                        f"is {per_diff*100} similar, login accepted ..."
+                    )
+                )
                 break
 
             if input(
