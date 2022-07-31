@@ -22,9 +22,7 @@ def password_gen() -> None:
 
     print(password, end="\r")
     sleep(10)
-    print(
-        sha256(password.encode("utf-8")).hexdigest()
-    )
+    print(sha256(password.encode("utf-8")).hexdigest())
 
 
 if __name__ == "__main__":

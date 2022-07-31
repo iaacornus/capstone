@@ -26,7 +26,7 @@ def update() -> None:
             # clone the repository and redirect stdout to /dev/null, this is a secret
             system(
                 (
-                    f"git clone -b database https://github"
+                    f"git clone --branch database https://github"
                     ".com/testno0/capstone {HOME} &> /dev/null"
                 )
             )
