@@ -18,29 +18,70 @@ python -m pip install pip --upgrade
 pip install -r requirements.txt
 ```
 
-The package layout of the program is:
+## Project layout
 
 ```
-$HOME/
-`--.att_sys/
-|  `--bin/
-|  |  `--access.py
-|  |  `--code_email.py
-|  `--system/
-|  |  `--utils/
-|  |  |  `--password_gen.py
-|  |  |  `--update.py
-|  |  `--.bashrc
-|  |  `--pre_setup.sh
-|  |  `--user_setup.sh
-|  `--misc
-|  |  `--colors.py
-|  `--cli.py
-|  `--main.py
-|  `--function.py
-|  `--face_recog.py
-|  `--demo.py
-`--...
++-- archives
+|   +-- README.md
+|   +-- rfid
+|   |   +-- main2.cpp
+|   |   +-- main.cpp
+|   |   `-- main.cpp.bak
+|   `-- test_faces
+|       +-- biden1.jpg
+|       +-- biden2.jpg
+|       +-- f0.jpg
+|       +-- f1.jpg
+|       +-- f2.jpg
+|       +-- f3.jpg
+|       +-- f4.jpg
+|       +-- f5.jpg
+|       +-- f6.jpg
+|       +-- f7.jpg
+|       +-- f8.jpg
+|       +-- f9.jpg
+|       +-- obama1.jpg
+|       `-- obama2.jpg
++-- INSTALL.md
++-- LICENSE
++-- README.md
++-- requirements.txt
++-- rfid_locker
+|   +-- include
+|   |   `-- README
+|   +-- platformio.ini
+|   +-- src
+|   |   `-- main.cpp
+|   `-- test
+|       `-- README
++-- sample
+|   +-- test_1.png
+|   +-- test_2.jpg
+|   +-- test_2.png
+|   +-- test_3.png
+|   +-- test_4.png
+|   `-- test_5.png
+`-- src
+    +-- bin
+    |   +-- access.py
+    |   `-- code_email.py
+    +-- cli.py
+    +-- demo.py
+    +-- face_recog.py
+    +-- function.py
+    +-- __init__.py
+    +-- main.py
+    +-- misc
+    |   +-- colors.py
+    |   `-- __init__.py
+    `-- system
+        +-- __init__.py
+        +-- pre_setup.sh
+        +-- user_setup.sh
+        `-- utils
+            +-- __init__.py
+            +-- password_gen.py
+            `-- update.py
 ```
 
 Then move the source code of the program from the package directory, via `cp -r src/* $HOME/.att_sys/`. And add `alias taptap="python $HOME/.att_sys/cli.py` before `unset rc`, or move `.bashrc` to `$HOME/` and do `source $HOME/.bashrc`.
