@@ -114,10 +114,11 @@ class System:
                 ConnectionError
             ) as Err:
             print(f"{Signs.FAIL} {Err}, retrying ...")
-            return False
         else:
             print(f"{Signs.PASS} Repository fetched.")
             return True
+
+        return False
 
     def get_data(self: Self) -> None | NoReturn:
         """Scrape the data from the pulled repository."""
