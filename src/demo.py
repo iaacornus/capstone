@@ -38,7 +38,7 @@ def demo() -> None:
             continue
         else:
             encodings: Any = face_encodings(img_file)
-            if not not encodings:
+            if encodings:
                 print(f"{Signs.PASS} File successfully encoded.")
                 sample_encodings.append(encodings)
 
