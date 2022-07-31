@@ -1,5 +1,5 @@
 SUCCESS="\e[1m[ \e[32mPASS\e[0m\e[1m ]\e[0m"
-FAIL="\e[1m[ \e[31m FAIL\e[0m\e[1m ]\e[0m"
+FAIL="\e[1m[ \e[31mFAIL\e[0m\e[1m ]\e[0m"
 INFO="\e[1m[ INFO ]\e[0m"
 PROC="\e[1m[ PROC ]\e[0m"
 INPT="\e[1m[ INPT ]\e[0m"
