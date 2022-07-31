@@ -1,3 +1,4 @@
+from getpass import getpass
 from os import system
 from typing import NoReturn, TextIO
 
@@ -29,7 +30,7 @@ def access(HOME: str) -> None | NoReturn:
         for n in range(3):
             n: int
             if not mark:
-                if input(
+                if getpass(
                     (
                         f"{Signs.INPT} Kindly input your 32"
                         f" character password ({3-n} left): "
@@ -48,7 +49,7 @@ def access(HOME: str) -> None | NoReturn:
                     print(f"{Signs.PROC} Sending new temporary password ...")
                     mark = True
             else:
-                if input(
+                if getpass(
                     (
                         f"{Signs.INPT} Kindly input your 32 character "
                         f"password (case sensitive {3-n} left): "
